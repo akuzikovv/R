@@ -1,4 +1,5 @@
 Feature: Teacher Other Home Page
+
   Background:
     Given open login page
     When Click on the sign in teacher button
@@ -8,10 +9,10 @@ Feature: Teacher Other Home Page
 
   Scenario: Header contains all necessary elements
     Then  Header contains textbuttons:
-      |home|
-      |messaging|
-      |bookings|
-      |jobs    |
+      | home      |
+      | messaging |
+      | bookings  |
+      | jobs      |
     Then  Header contains bell icon
     Then  Header contains user photo icon
     Then  Header contains user name "Test"
@@ -23,16 +24,15 @@ Feature: Teacher Other Home Page
     Then User is logout
     When  Close window
 
-
   Scenario: Left column contains all necessary elements
     Then  Supply Teacher's Left panel contains all necessary elements:
-      |rgba(220, 0, 142, 1)|
-      |add a photo         |
-      |Clearance status|
-      |Who’s veiwed your profile|
-      |Quick Links              |
-      |Job search               |
-      |Saved jobs               |
-      |Blog                     |
-      |Forum                    |
+      | rgba(220, 0, 142, 1)      |
+      | add a photo               |
+      | Clearance status          |
+      | Who’s veiwed your profile |
+      | Quick Links               |
+      | Job search                |
+      | Saved jobs                |
+      | Blog                      |
+      | Forum                     |
 
