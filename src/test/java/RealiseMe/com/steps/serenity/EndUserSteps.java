@@ -115,4 +115,14 @@ public class EndUserSteps  extends ScenarioSteps {
         ArrayList<String> results = teacherSupplyHomePage.leftPanelContainsAllNecessaryElements(list);
         Assert.assertTrue("Left panel is wrong. "+ results, "true".equals(results.get(0)));
     }
+
+    @Step
+    public void clickOnTheLOGOUTButton() {
+        header.clickOnTheLOGOUTButton();
+    }
+
+    @Step
+    public void tableContainsTitle() {
+        teacherSupplyHomePage.tableContainsTitle();
+    }
 }

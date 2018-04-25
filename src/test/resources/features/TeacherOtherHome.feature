@@ -15,12 +15,13 @@ Feature: Teacher Other Home Page
       | jobs      |
     Then  Header contains bell icon
     Then  Header contains user photo icon
-    Then  Header contains user name "Test"
+    Then  Header contains user name "Lord Voldemort"
     Then  Header contains arrow down button
     When  Close window
 
   Scenario: Logout
     When Click on the arrow down button
+    When Click on the LOGOUT button
     Then User is logout
     When  Close window
 

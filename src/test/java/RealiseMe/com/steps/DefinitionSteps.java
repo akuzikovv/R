@@ -110,7 +110,14 @@ public class DefinitionSteps {
     }
 
 
+    @When("^Click on the LOGOUT button$")
+    public void clickOnTheLOGOUTButton() throws Throwable {
+        steps.clickOnTheLOGOUTButton();
+    }
 
-
+    @Then("^Table contains \"([^\"]*)\" title$")
+    public void tableContainsTitle(String arg0) throws Throwable {
+        steps.tableContainsTitle();
+    }
 }
 

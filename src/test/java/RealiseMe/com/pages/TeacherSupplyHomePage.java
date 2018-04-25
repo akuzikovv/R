@@ -42,4 +42,12 @@ public class TeacherSupplyHomePage extends PageObject {
         }
         return results;
     }
+
+    public boolean tableContainsTitle() {
+        if (!$(ILocators.firstTable).isPresent()){
+            return false;
+        }
+        else $(ILocators.firstTable).click();
+        return true;
+    }
 }

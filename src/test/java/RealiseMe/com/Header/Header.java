@@ -59,4 +59,12 @@ public class Header extends PageObject {
         else $(ILocators.arrow_down_button).click();
         return true;
     }
+
+    public boolean clickOnTheLOGOUTButton() {
+        if (!$(ILocators.LOGOUT_BUTTON).isPresent()){
+            return false;
+        }
+        else $(ILocators.LOGOUT_BUTTON).click();
+        return true;
+    }
 }

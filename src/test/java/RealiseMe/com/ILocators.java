@@ -12,6 +12,7 @@ public interface ILocators {
     String user_photo_icon = "//li[@class='user-name desktop']//img[@alt='users icon']";
     String user_name = "//li[@class='user-name desktop']//span";
     String arrow_down_button =  "//li[@class='user-name desktop']//i[@class='icon-arrow-down icons']";
+    String LOGOUT_BUTTON = "//div[.='Logout']";
 
     ///////////////////LOGIN PAGE ///////////////////////////
 
@@ -54,6 +55,10 @@ public interface ILocators {
     String fourth_row_3 = "//li[@class='LeftPanel-item']//a[.='Blog']";
     String fourth_row_4 = "//li[@class='LeftPanel-item']//a[.='Forum']";
     String clearance_status_link = "//a[.='Clearance status']";
+
+    //////////////////////  first table
+
+    String firstTable = "(//div[@class='components-wrapper'])[1]";
 
 
 
