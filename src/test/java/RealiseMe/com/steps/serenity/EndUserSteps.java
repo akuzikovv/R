@@ -1,13 +1,13 @@
 package RealiseMe.com.steps.serenity;
 
 import RealiseMe.com.Header.Header;
-import RealiseMe.com.pages.AuthorizationPage;
-import RealiseMe.com.pages.LoginPage;
-import RealiseMe.com.pages.TeacherOtherHomePage;
-import RealiseMe.com.pages.TeacherSupplyHomePage;
+import RealiseMe.com.ILocators;
+import RealiseMe.com.pages.*;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.steps.ScenarioSteps;
 import org.junit.Assert;
+import org.openqa.selenium.By;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,8 +16,11 @@ public class EndUserSteps  extends ScenarioSteps {
     Header header;
     LoginPage loginPage;
     AuthorizationPage authorizationPage;
-    TeacherOtherHomePage teacherOtherHomePage;
-    TeacherSupplyHomePage teacherSupplyHomePage;
+    HomePage HomePage;
+    SupplyTeacherHomePage supplyTeacherHomePage;
+    OtherTeacherHomePage otherTeacherHomePage;
+    SchoolHomePage schoolHomePage;
+    LandingPage landingPage;
 
 
     @Step
@@ -107,12 +110,12 @@ public class EndUserSteps  extends ScenarioSteps {
 
     @Step
     public void otherTeacherSLeftPanelContainsAllNecessaryElements(List<String> list) {
-        ArrayList<String> results = teacherOtherHomePage.leftPanelContainsAllNecessaryElements(list);
+        ArrayList<String> results = otherTeacherHomePage.otherTeacherleftPanelContainsAllNecessaryElements(list);
         Assert.assertTrue("Left panel is wrong. "+ results, "true".equals(results.get(0)));
     }
     @Step
     public void supplyTeacherSLeftPanelContainsAllNecessaryElements(List<String> list) {
-        ArrayList<String> results = teacherSupplyHomePage.leftPanelContainsAllNecessaryElements(list);
+        ArrayList<String> results = supplyTeacherHomePage.supplyTeacherleftPanelContainsAllNecessaryElements(list);
         Assert.assertTrue("Left panel is wrong. "+ results, "true".equals(results.get(0)));
     }
 
@@ -122,7 +125,89 @@ public class EndUserSteps  extends ScenarioSteps {
     }
 
     @Step
-    public void tableContainsTitle() {
-        teacherSupplyHomePage.tableContainsTitle();
+    public void tableContainsTitle(String arg0) {
+        ArrayList<String> results = HomePage.tableContainsTitle(arg0);
+        Assert.assertTrue("Title is wrong. "+ results, "true".equals(results.get(0)));
+    }
+
+    @Step
+    public void tableContainsViewAllButton(String arg0) {
+        Assert.assertTrue("'"+arg0+"' button is absent", HomePage.tableContainsViewAllButton(arg0));
+    }
+
+    @Step
+    public void teacherSupplyfirstTableContainsAllNecessaryColumns(List<String> list) {
+        ArrayList<String> results = supplyTeacherHomePage.teacherSupplyfirstTableContainsAllNecessaryColumns(list);
+        Assert.assertTrue("Table is wrong. "+ results, "true".equals(results.get(0)));
+    }
+
+    @Step
+    public void teacherOtherfirstTableContainsAllNecessaryColumns(List<String> list) {
+        ArrayList<String> results = otherTeacherHomePage.teacherOtherfirstTableContainsAllNecessaryColumns(list);
+        Assert.assertTrue("Table is wrong. "+ results, "true".equals(results.get(0)));
+    }
+
+    @Step
+    public void schoolfirstTableContainsAllNecessaryColumns(List<String> list) {
+        ArrayList<String> results = schoolHomePage.schoolfirstTableContainsAllNecessaryColumns(list);
+        Assert.assertTrue("Table is wrong. "+ results, "true".equals(results.get(0)));
+    }
+
+    @Step
+    public void theFiveLinesInTheTableAreDisplayed() {
+        Assert.assertTrue("Table contains less then 5 lines", HomePage.theFiveLinesInTheTableAreDisplayed());
+    }
+
+    @Step
+    public void schoolLeftPanelContainsAllNecessaryElements(List<String> list) {
+        ArrayList<String> results = schoolHomePage.schoolLeftPanelContainsAllNecessaryElements(list);
+        Assert.assertTrue("Left panel is wrong. "+ results, "true".equals(results.get(0)));
+    }
+
+    @Step
+    public void openLandingPage() {
+        getDriver().manage().window().maximize();
+        landingPage.open();
+
+    }
+
+    @Step
+    public void enterToTheSearchField(String arg0) {
+        landingPage.enterToTheSearchField(arg0);
+    }
+
+    @Step
+    public void clickSearchButton() {
+        landingPage.clickSearchButton();
+    }
+
+    @Step
+    public void theIsDisplayedInTheSearchResult(String arg0) {
+        ArrayList<String> results = landingPage.firstSearchResult(arg0);
+        Assert.assertTrue("Job isn't found"+ results, "true".equals(results.get(0)));
+
+    }
+
+    @Step
+    public void clickOnTheSaveButton() {
+        landingPage.clickOnTheSaveButton();
+    }
+
+    @Step
+    public void theButtonIsHighlighted(String arg0) {
+        Assert.assertTrue("Button isn't highlighted as saved",landingPage.theButtonIsHighlighted(arg0));
+    }
+
+    @Step
+    public void clickOnTheJobTitle() {
+        landingPage.clickOnTheJobTitle();
+    }
+
+
+    @Step
+    public void theJobPreviewPageIsOpenedWithNecessaryElements(List<String> list) {
+        ArrayList<String> results = landingPage.theJobPreviewPageIsOpenedWithNecessaryElements(list);
+        Assert.assertTrue("Preview page is wrong "+ results, "true".equals(results.get(0)));
+
     }
 }

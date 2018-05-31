@@ -30,7 +30,7 @@ Feature: Landing page
     When Click on the job title
     Then The job preview page is opened with necessary elements
     |Preview|
-    |Head of Herbology|
+    |Head of Herbology1|
     |Posted:|
     |Apply by: |
     |School   |

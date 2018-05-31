@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="RealiseMe.com.DefinitionTestSuite" time="83.532" tests="71" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="RealiseMe.com.DefinitionTestSuite" time="160.869" tests="122" errors="0" skipped="0" failures="0">
   <properties>
     <property name="idea.version" value="2017.2"/>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
@@ -60,75 +60,126 @@
     <property name="sun.desktop" value="gnome"/>
     <property name="sun.cpu.isalist" value=""/>
   </properties>
-  <testcase name="Given open login page" classname="Scenario: Teacher Authorization page" time="0.001"/>
+  <testcase name="Given open login page" classname="Scenario: Teacher Authorization page" time="0"/>
   <testcase name="When Click on the sign in teacher button" classname="Scenario: Teacher Authorization page" time="0"/>
   <testcase name="Then Authorization page contains necessary elements" classname="Scenario: Teacher Authorization page" time="0"/>
-  <testcase name="Scenario: Teacher Authorization page" classname="Scenario: Teacher Authorization page" time="0.64"/>
+  <testcase name="Scenario: Teacher Authorization page" classname="Scenario: Teacher Authorization page" time="1.183"/>
   <testcase name="Given open login page" classname="Scenario: School Authorization page" time="0"/>
   <testcase name="When Click on the sign in school button" classname="Scenario: School Authorization page" time="0"/>
   <testcase name="Then Authorization page contains necessary elements" classname="Scenario: School Authorization page" time="0"/>
-  <testcase name="Scenario: School Authorization page" classname="Scenario: School Authorization page" time="0.1"/>
-  <testcase name="Given open login page" classname="Scenario: Login page" time="0"/>
+  <testcase name="Scenario: School Authorization page" classname="Scenario: School Authorization page" time="0.097"/>
+  <testcase name="Given open login page" classname="Scenario: Login page" time="0.001"/>
   <testcase name="Then Header contains textbuttons:" classname="Scenario: Login page" time="0"/>
   <testcase name="Then Login page contains pictures" classname="Scenario: Login page" time="0"/>
   <testcase name="Then Login page contains" classname="Scenario: Login page" time="0"/>
-  <testcase name="Scenario: Login page" classname="Scenario: Login page" time="0.094"/>
+  <testcase name="Scenario: Login page" classname="Scenario: Login page" time="0.084"/>
   <testcase name="Given open login page" classname="Scenario: Header contains all necessary elements" time="0"/>
   <testcase name="Given open login page" classname="Scenario: Header contains all necessary elements" time="0"/>
-  <testcase name="When Click on the sign in teacher button" classname="Scenario: Header contains all necessary elements" time="0.001"/>
-  <testcase name="When Click on the sign in teacher button" classname="Scenario: Header contains all necessary elements" time="0"/>
-  <testcase name="When Enter login &quot;satintest1+teacherOther@gmail.com&quot;" classname="Scenario: Header contains all necessary elements" time="0"/>
+  <testcase name="Given open login page" classname="Scenario: Header contains all necessary elements" time="0"/>
+  <testcase name="When Click on the sign in school button" classname="Scenario: Header contains all necessary elements" time="0"/>
+  <testcase name="When Enter login &quot;satintest1+school@gmail.com&quot;" classname="Scenario: Header contains all necessary elements" time="0"/>
+  <testcase name="When Enter password &quot;Test123!&quot;" classname="Scenario: Header contains all necessary elements" time="0"/>
   <testcase name="When Enter password &quot;Test123!&quot;" classname="Scenario: Header contains all necessary elements" time="0"/>
   <testcase name="When Enter password &quot;Test123!&quot;" classname="Scenario: Header contains all necessary elements" time="0"/>
   <testcase name="When Click on the Log in button" classname="Scenario: Header contains all necessary elements" time="0"/>
   <testcase name="When Click on the Log in button" classname="Scenario: Header contains all necessary elements" time="0"/>
+  <testcase name="When Click on the Log in button" classname="Scenario: Header contains all necessary elements" time="0"/>
+  <testcase name="Then Header contains textbuttons:" classname="Scenario: Header contains all necessary elements" time="0"/>
   <testcase name="Then Header contains textbuttons:" classname="Scenario: Header contains all necessary elements" time="0"/>
   <testcase name="Then Header contains textbuttons:" classname="Scenario: Header contains all necessary elements" time="0"/>
   <testcase name="Then Header contains bell icon" classname="Scenario: Header contains all necessary elements" time="0"/>
   <testcase name="Then Header contains bell icon" classname="Scenario: Header contains all necessary elements" time="0"/>
+  <testcase name="Then Header contains bell icon" classname="Scenario: Header contains all necessary elements" time="0"/>
   <testcase name="Then Header contains user photo icon" classname="Scenario: Header contains all necessary elements" time="0"/>
   <testcase name="Then Header contains user photo icon" classname="Scenario: Header contains all necessary elements" time="0"/>
-  <testcase name="Then Header contains user name &quot;Lord Voldemort&quot;" classname="Scenario: Header contains all necessary elements" time="0"/>
+  <testcase name="Then Header contains user photo icon" classname="Scenario: Header contains all necessary elements" time="0"/>
+  <testcase name="Then Header contains user name &quot;Hermione Granger&quot;" classname="Scenario: Header contains all necessary elements" time="0"/>
   <testcase name="Then Header contains arrow down button" classname="Scenario: Header contains all necessary elements" time="0"/>
   <testcase name="Then Header contains arrow down button" classname="Scenario: Header contains all necessary elements" time="0"/>
+  <testcase name="Then Header contains arrow down button" classname="Scenario: Header contains all necessary elements" time="0"/>
+  <testcase name="When Close window" classname="Scenario: Header contains all necessary elements" time="0"/>
   <testcase name="When Close window" classname="Scenario: Header contains all necessary elements" time="0"/>
   <testcase name="When Close window" classname="Scenario: Header contains all necessary elements" time="0"/>
   <testcase name="Scenario: Header contains all necessary elements" classname="Scenario: Header contains all necessary elements" time="0.031"/>
-  <testcase name="Scenario: Header contains all necessary elements" classname="Scenario: Header contains all necessary elements" time="0.042"/>
+  <testcase name="Scenario: Header contains all necessary elements" classname="Scenario: Header contains all necessary elements" time="0.033"/>
+  <testcase name="Scenario: Header contains all necessary elements" classname="Scenario: Header contains all necessary elements" time="0.038"/>
   <testcase name="Given open login page" classname="Scenario: Logout" time="0"/>
   <testcase name="Given open login page" classname="Scenario: Logout" time="0"/>
-  <testcase name="When Click on the sign in teacher button" classname="Scenario: Logout" time="0"/>
-  <testcase name="When Click on the sign in teacher button" classname="Scenario: Logout" time="0"/>
-  <testcase name="When Enter login &quot;satintest1+teacherOther@gmail.com&quot;" classname="Scenario: Logout" time="0"/>
+  <testcase name="Given open login page" classname="Scenario: Logout" time="0"/>
+  <testcase name="When Click on the sign in school button" classname="Scenario: Logout" time="0"/>
+  <testcase name="When Enter login &quot;satintest1+school@gmail.com&quot;" classname="Scenario: Logout" time="0"/>
+  <testcase name="When Enter password &quot;Test123!&quot;" classname="Scenario: Logout" time="0"/>
   <testcase name="When Enter password &quot;Test123!&quot;" classname="Scenario: Logout" time="0"/>
   <testcase name="When Enter password &quot;Test123!&quot;" classname="Scenario: Logout" time="0"/>
   <testcase name="When Click on the Log in button" classname="Scenario: Logout" time="0"/>
-  <testcase name="When Click on the Log in button" classname="Scenario: Logout" time="0.001"/>
+  <testcase name="When Click on the Log in button" classname="Scenario: Logout" time="0"/>
+  <testcase name="When Click on the Log in button" classname="Scenario: Logout" time="0"/>
+  <testcase name="When Click on the arrow down button" classname="Scenario: Logout" time="0.001"/>
   <testcase name="When Click on the arrow down button" classname="Scenario: Logout" time="0"/>
   <testcase name="When Click on the arrow down button" classname="Scenario: Logout" time="0"/>
   <testcase name="When Click on the LOGOUT button" classname="Scenario: Logout" time="0"/>
   <testcase name="When Click on the LOGOUT button" classname="Scenario: Logout" time="0"/>
+  <testcase name="When Click on the LOGOUT button" classname="Scenario: Logout" time="0"/>
   <testcase name="Then User is logout" classname="Scenario: Logout" time="0"/>
   <testcase name="Then User is logout" classname="Scenario: Logout" time="0"/>
+  <testcase name="Then User is logout" classname="Scenario: Logout" time="0"/>
+  <testcase name="When Close window" classname="Scenario: Logout" time="0"/>
   <testcase name="When Close window" classname="Scenario: Logout" time="0"/>
   <testcase name="When Close window" classname="Scenario: Logout" time="0"/>
   <testcase name="Scenario: Logout" classname="Scenario: Logout" time="0.038"/>
-  <testcase name="Scenario: Logout" classname="Scenario: Logout" time="0.052"/>
+  <testcase name="Scenario: Logout" classname="Scenario: Logout" time="0.046"/>
+  <testcase name="Scenario: Logout" classname="Scenario: Logout" time="0.068"/>
   <testcase name="Given open login page" classname="Scenario: Left column contains all necessary elements" time="0"/>
   <testcase name="Given open login page" classname="Scenario: Left column contains all necessary elements" time="0"/>
+  <testcase name="Given open login page" classname="Scenario: Left column contains all necessary elements" time="0"/>
+  <testcase name="When Click on the sign in school button" classname="Scenario: Left column contains all necessary elements" time="0"/>
+  <testcase name="When Enter login &quot;satintest1+school@gmail.com&quot;" classname="Scenario: Left column contains all necessary elements" time="0"/>
+  <testcase name="When Enter password &quot;Test123!&quot;" classname="Scenario: Left column contains all necessary elements" time="0"/>
+  <testcase name="When Enter password &quot;Test123!&quot;" classname="Scenario: Left column contains all necessary elements" time="0"/>
+  <testcase name="When Enter password &quot;Test123!&quot;" classname="Scenario: Left column contains all necessary elements" time="0"/>
+  <testcase name="When Click on the Log in button" classname="Scenario: Left column contains all necessary elements" time="0"/>
+  <testcase name="When Click on the Log in button" classname="Scenario: Left column contains all necessary elements" time="0"/>
+  <testcase name="When Click on the Log in button" classname="Scenario: Left column contains all necessary elements" time="0"/>
+  <testcase name="Then School Left panel contains all necessary elements:" classname="Scenario: Left column contains all necessary elements" time="0"/>
+  <testcase name="When Close window" classname="Scenario: Left column contains all necessary elements" time="0"/>
+  <testcase name="When Close window" classname="Scenario: Left column contains all necessary elements" time="0"/>
+  <testcase name="Scenario: Left column contains all necessary elements" classname="Scenario: Left column contains all necessary elements" time="0.051"/>
+  <testcase name="Scenario: Left column contains all necessary elements" classname="Scenario: Left column contains all necessary elements" time="0.1"/>
+  <testcase name="Scenario: Left column contains all necessary elements" classname="Scenario: Left column contains all necessary elements" time="0.052"/>
+  <testcase name="Given open login page" classname="Scenario: Upcoming Supply Bookings table contains all necessary elements" time="0"/>
+  <testcase name="When Click on the sign in school button" classname="Scenario: Upcoming Supply Bookings table contains all necessary elements" time="0"/>
+  <testcase name="When Enter login &quot;satintest1+school@gmail.com&quot;" classname="Scenario: Upcoming Supply Bookings table contains all necessary elements" time="0"/>
+  <testcase name="When Enter password &quot;Test123!&quot;" classname="Scenario: Upcoming Supply Bookings table contains all necessary elements" time="0"/>
+  <testcase name="When Click on the Log in button" classname="Scenario: Upcoming Supply Bookings table contains all necessary elements" time="0"/>
+  <testcase name="Then Table contains &quot;Upcoming Supply Bookings&quot; title" classname="Scenario: Upcoming Supply Bookings table contains all necessary elements" time="0"/>
+  <testcase name="Then Table contains &quot;view all&quot; button" classname="Scenario: Upcoming Supply Bookings table contains all necessary elements" time="0"/>
+  <testcase name="Then School first Table contains next columns:" classname="Scenario: Upcoming Supply Bookings table contains all necessary elements" time="0"/>
+  <testcase name="Then The five lines in the table are displayed" classname="Scenario: Upcoming Supply Bookings table contains all necessary elements" time="0"/>
+  <testcase name="Scenario: Upcoming Supply Bookings table contains all necessary elements" classname="Scenario: Upcoming Supply Bookings table contains all necessary elements" time="0.115"/>
+  <testcase name="When Click on the sign in teacher button" classname="Scenario: Header contains all necessary elements" time="0"/>
+  <testcase name="When Click on the sign in teacher button" classname="Scenario: Header contains all necessary elements" time="0"/>
+  <testcase name="When Enter login &quot;satintest1+teacherOther@gmail.com&quot;" classname="Scenario: Header contains all necessary elements" time="0"/>
+  <testcase name="Then Header contains user name &quot;Lord Voldemort&quot;" classname="Scenario: Header contains all necessary elements" time="0"/>
+  <testcase name="When Click on the sign in teacher button" classname="Scenario: Logout" time="0"/>
+  <testcase name="When Click on the sign in teacher button" classname="Scenario: Logout" time="0"/>
+  <testcase name="When Enter login &quot;satintest1+teacherOther@gmail.com&quot;" classname="Scenario: Logout" time="0"/>
   <testcase name="When Click on the sign in teacher button" classname="Scenario: Left column contains all necessary elements" time="0"/>
-  <testcase name="When Click on the sign in teacher button" classname="Scenario: Left column contains all necessary elements" time="0.001"/>
+  <testcase name="When Click on the sign in teacher button" classname="Scenario: Left column contains all necessary elements" time="0"/>
   <testcase name="When Enter login &quot;satintest1+teacherOther@gmail.com&quot;" classname="Scenario: Left column contains all necessary elements" time="0"/>
-  <testcase name="When Enter password &quot;Test123!&quot;" classname="Scenario: Left column contains all necessary elements" time="0"/>
-  <testcase name="When Enter password &quot;Test123!&quot;" classname="Scenario: Left column contains all necessary elements" time="0"/>
-  <testcase name="When Click on the Log in button" classname="Scenario: Left column contains all necessary elements" time="0"/>
-  <testcase name="When Click on the Log in button" classname="Scenario: Left column contains all necessary elements" time="0"/>
   <testcase name="Then Other Teacher&apos;s Left panel contains all necessary elements:" classname="Scenario: Left column contains all necessary elements" time="0"/>
-  <testcase name="Scenario: Left column contains all necessary elements" classname="Scenario: Left column contains all necessary elements" time="0.107"/>
-  <testcase name="Scenario: Left column contains all necessary elements" classname="Scenario: Left column contains all necessary elements" time="0.131"/>
   <testcase name="When Enter login &quot;satintest1+teacherSupply@gmail.com&quot;" classname="Scenario: Header contains all necessary elements" time="0"/>
-  <testcase name="Then Header contains user name &quot;Severus Snape&quot;" classname="Scenario: Header contains all necessary elements" time="0"/>
-  <testcase name="When Enter login &quot;satintest1+teacherSupply@gmail.com&quot;" classname="Scenario: Logout" time="0.001"/>
+  <testcase name="Then Header contains user name &quot;Test3 Test3&quot;" classname="Scenario: Header contains all necessary elements" time="0"/>
+  <testcase name="When Enter login &quot;satintest1+teacherSupply@gmail.com&quot;" classname="Scenario: Logout" time="0"/>
   <testcase name="When Enter login &quot;satintest1+teacherSupply@gmail.com&quot;" classname="Scenario: Left column contains all necessary elements" time="0"/>
   <testcase name="Then Supply Teacher&apos;s Left panel contains all necessary elements:" classname="Scenario: Left column contains all necessary elements" time="0"/>
+  <testcase name="Given open login page" classname="Scenario: Recent Invites table contains all necessary elements" time="0"/>
+  <testcase name="When Click on the sign in teacher button" classname="Scenario: Recent Invites table contains all necessary elements" time="0"/>
+  <testcase name="When Enter login &quot;satintest1+teacherSupply@gmail.com&quot;" classname="Scenario: Recent Invites table contains all necessary elements" time="0"/>
+  <testcase name="When Enter password &quot;Test123!&quot;" classname="Scenario: Recent Invites table contains all necessary elements" time="0"/>
+  <testcase name="When Click on the Log in button" classname="Scenario: Recent Invites table contains all necessary elements" time="0"/>
+  <testcase name="Then Table contains &quot;Recent Invites&quot; title" classname="Scenario: Recent Invites table contains all necessary elements" time="0"/>
+  <testcase name="Then Table contains &quot;view all&quot; button" classname="Scenario: Recent Invites table contains all necessary elements" time="0"/>
+  <testcase name="Then Teacher Supply first Table contains next columns:" classname="Scenario: Recent Invites table contains all necessary elements" time="0"/>
+  <testcase name="Then The five lines in the table are displayed" classname="Scenario: Recent Invites table contains all necessary elements" time="0"/>
+  <testcase name="Scenario: Recent Invites table contains all necessary elements" classname="Scenario: Recent Invites table contains all necessary elements" time="0.103"/>
 </testsuite>

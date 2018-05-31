@@ -117,7 +117,78 @@ public class DefinitionSteps {
 
     @Then("^Table contains \"([^\"]*)\" title$")
     public void tableContainsTitle(String arg0) throws Throwable {
-        steps.tableContainsTitle();
+        steps.tableContainsTitle(arg0);
+    }
+
+    @Then("^Table contains \"([^\"]*)\" button$")
+    public void tableContainsButton(String arg0) throws Throwable {
+        steps.tableContainsViewAllButton(arg0);
+    }
+
+    @Then("^Teacher Supply first Table contains next columns:$")
+    public void teacherSupplyfirstTableContainsNextColumns(List<String> list) throws Throwable {
+       steps.teacherSupplyfirstTableContainsAllNecessaryColumns(list);
+    }
+
+    @Then("^Teacher Other first Table contains next columns:$")
+    public void teacherOtherfirstTableContainsNextColumns(List<String> list) throws Throwable {
+        steps.teacherOtherfirstTableContainsAllNecessaryColumns(list);
+    }
+
+    @Then("^School first Table contains next columns:$")
+    public void schoolfirstTableContainsNextColumns(List<String> list) throws Throwable {
+        steps.schoolfirstTableContainsAllNecessaryColumns(list);
+    }
+
+    @Then("^The five lines in the table are displayed$")
+    public void theFiveLinesInTheTableAreDisplayed() throws Throwable {
+        steps.theFiveLinesInTheTableAreDisplayed();
+    }
+
+    @Then("^School Left panel contains all necessary elements:$")
+    public void schoolLeftPanelContainsAllNecessaryElements(List<String>list) throws Throwable {
+        steps.schoolLeftPanelContainsAllNecessaryElements(list);
+    }
+
+    @Given("^open landing page$")
+    public void openLandingPage() throws Throwable {
+        steps.openLandingPage();
+    }
+
+    @When("^Enter \"([^\"]*)\" to the search field$")
+    public void enterToTheSearchField(String arg0) throws Throwable {
+        steps.enterToTheSearchField(arg0);
+    }
+
+    @When("^Click search button$")
+    public void clickSearchButton() throws Throwable {
+        steps.clickSearchButton();
+    }
+
+    @Then("^The \"([^\"]*)\" is displayed in the search result$")
+    public void theIsDisplayedInTheSearchResult(String arg0) throws Throwable {
+        steps.theIsDisplayedInTheSearchResult(arg0);
+    }
+
+    @When("^Click on the Save button$")
+    public void clickOnTheSaveButton() throws Throwable {
+       steps.clickOnTheSaveButton();
+    }
+
+    @Then("^The \"([^\"]*)\" button is highlighted$")
+    public void theButtonIsHighlighted(String arg0) throws Throwable {
+        steps.theButtonIsHighlighted(arg0);
+    }
+
+    @When("^Click on the job title$")
+    public void clickOnTheJobTitle() throws Throwable {
+        steps.clickOnTheJobTitle();
+    }
+
+
+    @Then("^The job preview page is opened with necessary elements$")
+    public void theJobPreviewPageIsOpenedWithNecessaryElements(List<String>list) throws Throwable {
+        steps.theJobPreviewPageIsOpenedWithNecessaryElements(list);
     }
 }
 
