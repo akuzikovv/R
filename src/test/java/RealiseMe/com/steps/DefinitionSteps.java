@@ -19,6 +19,11 @@ public class DefinitionSteps {
         steps.openLoginPage();
     }
 
+    @Then("^Landing page header contains textbuttons:$")
+    public void landingPageHeaderContainsTextbuttons(List<String> list) throws Throwable {
+        steps.landingPageHeaderContainsTextbuttons(list);
+    }
+
     @Then("^Header contains textbuttons:$")
     public void headerContainsTextbuttons(List<String> list) throws Throwable {
         steps.headerContainsTextbuttons(list);
@@ -115,9 +120,14 @@ public class DefinitionSteps {
         steps.clickOnTheLOGOUTButton();
     }
 
-    @Then("^Table contains \"([^\"]*)\" title$")
-    public void tableContainsTitle(String arg0) throws Throwable {
-        steps.tableContainsTitle(arg0);
+    @Then("^First table contains \"([^\"]*)\" title$")
+    public void firstTableContainsTitle(String arg0) throws Throwable {
+        steps.firstTableContainsTitle(arg0);
+    }
+
+    @Then("^Second table contains \"([^\"]*)\" title$")
+    public void secondTableContainsTitle(String arg0) throws Throwable {
+        steps.secondTableContainsTitle(arg0);
     }
 
     @Then("^Table contains \"([^\"]*)\" button$")
@@ -190,5 +200,20 @@ public class DefinitionSteps {
     public void theJobPreviewPageIsOpenedWithNecessaryElements(List<String>list) throws Throwable {
         steps.theJobPreviewPageIsOpenedWithNecessaryElements(list);
     }
+
+    @When("^Click on the Apply button$")
+    public void clickOnTheApplyButton() throws Throwable {
+        steps.clickOnTheApplyButton();
+    }
+
+    @When("^Click on the login button$")
+    public void clickOnTheLoginButton() throws Throwable {
+        steps.clickOnTheLoginButton();
+    }
+
+//    @When("^Open report$")
+//    public void openReport() throws Throwable {
+//        steps.openReport();
+//    }
 }
 

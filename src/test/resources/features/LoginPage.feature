@@ -1,7 +1,8 @@
 Feature: Login page
 
   Scenario: Login page
-    Given open login page
+    Given open landing page
+    When Click on the login button
     Then  Header contains textbuttons:
       | home      |
       | messaging |

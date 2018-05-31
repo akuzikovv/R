@@ -8,46 +8,46 @@ import java.util.List;
 
 public class Header extends PageObject {
 
+    public ArrayList<String> landingPageHeaderContainsTextbuttons(List<String> list) {
+        ArrayList<String> labels = new ArrayList<>();
+        ArrayList<String> results = new ArrayList<>();
+        results.add(0, "true");
+        if (!$(ILocators.blog).isPresent()) {
+            results.set(0, "false");
+            results.add("Header is absent" + "\n");
+        } else {
+            labels.add($(ILocators.blog).getText());
+            labels.add($(ILocators.forum).getText());
+            labels.add($(ILocators.login).getText());
+            labels.add($(ILocators.sign_up).getText());
+            for (int i = 0; i < list.size(); i++) {
+                if (!list.get(i).equals(labels.get(i))) {
+                    results.set(0, "false");
+                    results.add("Expected: " + list.get(i) + "; but found: " + labels.get(i) + "\n");
+                }
+            }
+        }
+        return results;
+    }
+
     public ArrayList<String> headerContainsTextbuttons(List<String> list) {
         ArrayList<String> labels = new ArrayList<>();
         ArrayList<String> results = new ArrayList<>();
-        try {
-            results.add(0, "true");
-            if (!$(ILocators.home).isPresent()) {
-                results.set(0, "false");
-                results.add("Header is absent" + "\n");
-            } else {
-                labels.add($(ILocators.home).getText());
-                labels.add($(ILocators.messaging).getText());
-                labels.add($(ILocators.bookings).getText());
-                labels.add($(ILocators.jobs).getText());
-                for (int i = 0; i < list.size(); i++) {
-                    if (!list.get(i).equals(labels.get(i))) {
-                        results.set(0, "false");
-                        results.add("Expected: " + list.get(i) + "; but found: " + labels.get(i) + "\n");
-                    }
+        results.add(0, "true");
+        if (!$(ILocators.home).isPresent()) {
+            results.set(0, "false");
+            results.add("Header is absent" + "\n");
+        } else {
+            labels.add($(ILocators.home).getText());
+            labels.add($(ILocators.messaging).getText());
+            labels.add($(ILocators.bookings).getText());
+            labels.add($(ILocators.jobs).getText());
+            for (int i = 0; i < list.size(); i++) {
+                if (!list.get(i).equals(labels.get(i))) {
+                    results.set(0, "false");
+                    results.add("Expected: " + list.get(i) + "; but found: " + labels.get(i) + "\n");
                 }
             }
-        } catch (Exception e) {
-        }
-        try {
-            results.add(0, "true");
-            if (!$(ILocators.blog).isPresent()) {
-                results.set(0, "false");
-                results.add("Header is absent" + "\n");
-            } else {
-                labels.add($(ILocators.blog).getText());
-                labels.add($(ILocators.forum).getText());
-                labels.add($(ILocators.login).getText());
-                labels.add($(ILocators.sign_up).getText());
-                for (int i = 0; i < list.size(); i++) {
-                    if (!list.get(i).equals(labels.get(i))) {
-                        results.set(0, "false");
-                        results.add("Expected: " + list.get(i) + "; but found: " + labels.get(i) + "\n");
-                    }
-                }
-            }
-        } catch (Exception e) {
         }
         return results;
     }
@@ -64,7 +64,7 @@ public class Header extends PageObject {
 
     public String headerContainsUserName(String arg0) {
         String results = "true";
-        if (!$(ILocators.user_name).getText().equals(arg0)) {
+        if (!$(ILocators.user_name).getText().trim().equals(arg0)) {
             results = ("Expected: " + arg0 + "; but found: " + $(ILocators.user_name).getText() + "\n");
         }
         return results;

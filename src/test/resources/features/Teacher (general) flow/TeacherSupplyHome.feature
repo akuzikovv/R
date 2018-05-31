@@ -1,11 +1,17 @@
 Feature: Teacher Other Home Page
 
   Background:
-    Given open login page
+    Given open landing page
+    When Click on the login button
     When Click on the sign in teacher button
     When Enter login "satintest1+teacherSupply@gmail.com"
     When Enter password "Test123!"
     When Click on the Log in button
+
+  Scenario: Teacher Authorization page
+    When Click on the sign in teacher button
+    Then  Authorization page contains necessary elements
+      | Don't remember your password? |
 
   Scenario: Header contains all necessary elements
     Then  Header contains textbuttons:
@@ -15,7 +21,7 @@ Feature: Teacher Other Home Page
       | jobs      |
     Then  Header contains bell icon
     Then  Header contains user photo icon
-    Then  Header contains user name "Test3 Test3"
+    Then  Header contains user name "Severus Snape"
     Then  Header contains arrow down button
     When  Close window
 
@@ -40,7 +46,7 @@ Feature: Teacher Other Home Page
 
 
   Scenario: Recent Invites table contains all necessary elements
-    Then Table contains "Recent Invites" title
+    Then First table contains "Recent Invites" title
     Then Table contains "view all" button
     Then Teacher Supply first Table contains next columns:
     |school|
@@ -53,14 +59,14 @@ Feature: Teacher Other Home Page
 #    Then All lines sorted by date
 
   Scenario: Recent active bookings  table contains all necessary elements
-    Then Table contains "Recent active bookings" title
+    Then Second table contains "Recent active bookings" title
     Then Table contains "view all" button
-    Then Teacher Supply second Table contains next columns:
-      |school|
-      |date|
-      |total days|
-      |rate      |
-      |cancel |
+#    Then Teacher Supply second Table contains next columns:
+#      |school|
+#      |date|
+#      |total days|
+#      |rate      |
+#      |cancel |
     Then The five lines in the table are displayed
 #    Then All lines sorted by date
 

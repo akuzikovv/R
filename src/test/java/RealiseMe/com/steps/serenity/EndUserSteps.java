@@ -5,6 +5,8 @@ import RealiseMe.com.ILocators;
 import RealiseMe.com.pages.*;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.steps.ScenarioSteps;
+import org.fluentlenium.core.annotation.Page;
+import org.hibernate.validator.constraints.URL;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 
@@ -30,10 +32,17 @@ public class EndUserSteps  extends ScenarioSteps {
     }
 
     @Step
+    public void landingPageHeaderContainsTextbuttons(List<String> list) {
+        ArrayList<String> results = header.landingPageHeaderContainsTextbuttons(list);
+        Assert.assertTrue("Header is wrong"+ results, "true".equals(results.get(0)));
+    }
+
+    @Step
     public void headerContainsTextbuttons(List<String> list) {
         ArrayList<String> results = header.headerContainsTextbuttons(list);
         Assert.assertTrue("Header is wrong"+ results, "true".equals(results.get(0)));
     }
+
     @Step
     public void loginPageContainsPictures() {
         Assert.assertTrue("Pictures are absent" ,loginPage.loginPageContainsPictures());
@@ -125,8 +134,14 @@ public class EndUserSteps  extends ScenarioSteps {
     }
 
     @Step
-    public void tableContainsTitle(String arg0) {
-        ArrayList<String> results = HomePage.tableContainsTitle(arg0);
+    public void firstTableContainsTitle(String arg0) {
+        ArrayList<String> results = HomePage.firstTableContainsTitle(arg0);
+        Assert.assertTrue("Title is wrong. "+ results, "true".equals(results.get(0)));
+    }
+
+    @Step
+    public void secondTableContainsTitle(String arg0) {
+        ArrayList<String> results = HomePage.secondTableContainsTitle(arg0);
         Assert.assertTrue("Title is wrong. "+ results, "true".equals(results.get(0)));
     }
 
@@ -210,4 +225,20 @@ public class EndUserSteps  extends ScenarioSteps {
         Assert.assertTrue("Preview page is wrong "+ results, "true".equals(results.get(0)));
 
     }
+
+    @Step
+    public void clickOnTheApplyButton() {
+        landingPage.clickOnTheApplyButton();
+    }
+
+    public void clickOnTheLoginButton() {
+        landingPage.clickOnTheLoginButton();
+    }
+
+//    @Step
+//    public void openReport() {
+//        getDriver().manage().window().maximize();
+//        getDriver().get("file:///home/akuzikov/IdeaProjects/RealiseMecom/target/site/serenity/index.html");
+//
+//    }
 }

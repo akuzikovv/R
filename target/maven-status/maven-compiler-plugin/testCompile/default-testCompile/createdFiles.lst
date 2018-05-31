@@ -1,6 +1,7 @@
 RealiseMe/com/pages/AuthorizationPage.class
 RealiseMe/com/pages/SupplyTeacherHomePage.class
 RealiseMe/com/steps/DefinitionSteps.class
+RealiseMe/com/pages/LandingPage.class
 RealiseMe/com/DefinitionTestSuite.class
 RealiseMe/com/pages/SchoolHomePage.class
 RealiseMe/com/steps/serenity/EndUserSteps.class

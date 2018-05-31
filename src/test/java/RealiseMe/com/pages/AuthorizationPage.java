@@ -26,7 +26,7 @@ public class AuthorizationPage extends PageObject{
             results.set(0, "false");
             results.add("Text is absent" + "\n");
         }else {
-            labels.add($(ILocators.DontRememberPass).getText());
+            labels.add($(ILocators.DontRememberPass_for_school).getText());
             for (int i = 0; i < list.size(); i++) {
                 if (!list.get(i).equals(labels.get(i))) {
                     results.set(0, "false");

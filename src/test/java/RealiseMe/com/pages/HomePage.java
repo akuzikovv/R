@@ -9,36 +9,27 @@ import java.util.List;
 
 public class HomePage extends PageObject {
 
-
-
-    public ArrayList<String> tableContainsTitle(String arg0) {
+    public ArrayList<String> firstTableContainsTitle(String arg0) {
         ArrayList<String> results = new ArrayList<>();
         results.add(0, "true");
-        try {
-            if (!$(ILocators.firstTable_titile1).isPresent()) {
-                results.set(0, "false");
-                results.add("Title is absent" + "\n");
+            if (arg0.equals($(ILocators.firstTable_titile1).getText())) {
+                results.set(0, "true");
             } else {
-                if (!arg0.equals($(ILocators.firstTable_titile1).getText())) {
-                    results.set(0, "false");
-                    results.add("Expected: " + arg0 + "; but found: " + $(ILocators.firstTable_titile1).getText() + "\n");
-                }
-            }
-        }catch (Exception e){}
-
-        try {
-            if (!$(ILocators.firstTable_titile2).isPresent()) {
                 results.set(0, "false");
-                results.add("Title is absent" + "\n");
-            } else {
-                if (!arg0.equals($(ILocators.firstTable_titile2).getText())) {
-                    results.set(0, "false");
-                    results.add("Expected: " + arg0 + "; but found: " + $(ILocators.firstTable_titile2).getText() + "\n");
-                }
+                results.add("Expected: " + arg0 + "; but found: " + $(ILocators.firstTable_titile1).getText() + "\n");
             }
-        }catch (Exception e){}
+        return results;
+    }
 
-
+    public ArrayList<String> secondTableContainsTitle(String arg0) {
+        ArrayList<String> results = new ArrayList<>();
+        results.add(0, "true");
+        if (arg0.equals($(ILocators.firstTable_titile2).getText())) {
+                results.set(0, "true");
+            } else {
+                results.set(0, "false");
+                results.add("Expected: " + arg0 + "; but found: " + $(ILocators.firstTable_titile2).getText() + "\n");
+            }
         return results;
     }
 

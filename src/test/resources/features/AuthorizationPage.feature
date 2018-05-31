@@ -1,7 +1,8 @@
 Feature: Authorization page
 
   Background:
-    Given open login page
+    Given open landing page
+    When Click on the login button
 
   Scenario: Teacher Authorization page
     When Click on the sign in teacher button

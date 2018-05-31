@@ -3,6 +3,7 @@
 /home/akuzikov/IdeaProjects/RealiseMecom/src/test/java/RealiseMe/com/pages/AuthorizationPage.java
 /home/akuzikov/IdeaProjects/RealiseMecom/src/test/java/RealiseMe/com/DefinitionTestSuite.java
 /home/akuzikov/IdeaProjects/RealiseMecom/src/test/java/RealiseMe/com/Header/Header.java
+/home/akuzikov/IdeaProjects/RealiseMecom/src/test/java/RealiseMe/com/pages/LandingPage.java
 /home/akuzikov/IdeaProjects/RealiseMecom/src/test/java/RealiseMe/com/pages/SchoolHomePage.java
 /home/akuzikov/IdeaProjects/RealiseMecom/src/test/java/RealiseMe/com/steps/serenity/EndUserSteps.java
 /home/akuzikov/IdeaProjects/RealiseMecom/src/test/java/RealiseMe/com/pages/HomePage.java

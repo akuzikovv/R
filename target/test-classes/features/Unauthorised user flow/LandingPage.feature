@@ -2,7 +2,7 @@ Feature: Landing page
 
   Scenario: Unauthorised user job search and save
     Given open landing page
-    Then  Header contains textbuttons:
+    Then  Landing page header contains textbuttons:
       | blog      |
       | forum |
       | login  |
@@ -30,7 +30,7 @@ Feature: Landing page
     When Click on the job title
     Then The job preview page is opened with necessary elements
     |Preview|
-    |Head of Herbology1|
+    |Head of Herbology|
     |Posted:|
     |Apply by: |
     |School   |
@@ -44,3 +44,4 @@ Feature: Landing page
     | Documents          |
     |Video prescreening  |
     |Video interview     |
+    When Click on the Apply button

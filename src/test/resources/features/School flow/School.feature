@@ -1,7 +1,8 @@
 Feature: Teacher Other Home Page
 
   Background:
-    Given open login page
+    Given open landing page
+    When Click on the login button
     When Click on the sign in school button
     When Enter login "satintest1+school@gmail.com"
     When Enter password "Test123!"
@@ -42,7 +43,7 @@ Feature: Teacher Other Home Page
 
 
   Scenario: Upcoming Supply Bookings table contains all necessary elements
-    Then Table contains "Upcoming Supply Bookings" title
+    Then Second table contains "Upcoming Supply Bookings" title
     Then Table contains "view all" button
     Then School first Table contains next columns:
       | teacher     |

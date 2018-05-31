@@ -74,6 +74,7 @@ public interface ILocators {
     String Email_field = "//input[@placeholder='yours@example.com']";
     String Password_field = "//input[@placeholder='your password']";
     String DontRememberPass = "(//a)[2]";
+    String DontRememberPass_for_school = "(//a)[4]";
     String Log_In = "//button[@type='submit']";
 
     ////////////////////  Home Page ////////////////////
@@ -100,8 +101,8 @@ public interface ILocators {
 
     //////////////////////  first table
 
-    String firstTable_titile1 = "(//div[@class='components-name'])[1]";
-    String firstTable_titile2 = "(//div[@class='components-name'])[2]";
+    String firstTable_titile1 = "(//div[@class='components-name'])[2]";
+    String firstTable_titile2 = "(//div[@class='components-name'])[4]";
     String first_column1 = "(//div[@class='table-header']//p)[7]";
     String second_column1 = "(//div[@class='table-header']//p)[8]";
     String third_column1= "(//div[@class='table-header']//p)[9]";

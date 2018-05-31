@@ -99,4 +99,12 @@ public class LandingPage extends PageObject {
         }
         return results;
     }
+
+    public void clickOnTheApplyButton() {
+        $(ILocators.apply_button).click();
+    }
+
+    public void clickOnTheLoginButton() {
+        $(ILocators.login).click();
+    }
 }
