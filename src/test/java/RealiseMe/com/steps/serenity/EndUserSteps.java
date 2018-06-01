@@ -9,6 +9,8 @@ import RealiseMe.com.pages.Teacher.SupplyTeacherHomePage;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.steps.ScenarioSteps;
 import org.junit.Assert;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,8 +30,15 @@ public class EndUserSteps  extends ScenarioSteps {
 
     @Step
     public void openLoginPage() {
-        getDriver().manage().window().maximize();
-        loginPage.open();
+        String os = System.getProperty("os.name").toLowerCase();
+        WebDriver driver = new ChromeDriver();
+        if (os.contains("mac")) {
+            System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + "/chromedriver");
+            driver.manage().window().maximize();
+        } else {
+            getDriver().manage().window().maximize();
+            loginPage.open();
+        }
     }
 
     @Step

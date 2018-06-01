@@ -51,3 +51,15 @@ Feature: Teacher Other Home Page
       | JOB TITLE |
       | CREATED    |
       | edit and post |
+
+  Scenario: Post a new job
+    When Click on the "POST A NEW JOB" button
+    Then  "Post a Job" page contains all necessary elements:
+      | Jobs      |
+      | live      |
+      | archived  |
+      | draft     |
+      | JOB TITLE |
+      | STATUS    |
+      | view applicants |
+      | move to archive |

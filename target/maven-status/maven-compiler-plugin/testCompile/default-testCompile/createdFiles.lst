@@ -1,0 +1,13 @@
+RealiseMe/com/pages/AuthorizationPage.class
+RealiseMe/com/pages/Header/Header.class
+RealiseMe/com/steps/DefinitionSteps.class
+RealiseMe/com/pages/Teacher/SupplyTeacherHomePage.class
+RealiseMe/com/pages/LandingPage.class
+RealiseMe/com/pages/School/SchoolHomePage.class
+RealiseMe/com/DefinitionTestSuite.class
+RealiseMe/com/steps/serenity/EndUserSteps.class
+RealiseMe/com/pages/HomePage.class
+RealiseMe/com/pages/School/SchoolJobsPage.class
+RealiseMe/com/pages/Teacher/OtherTeacherHomePage.class
+RealiseMe/com/ILocators.class
+RealiseMe/com/pages/LoginPage.class
