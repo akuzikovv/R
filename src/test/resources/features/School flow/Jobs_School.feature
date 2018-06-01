@@ -1,9 +1,10 @@
 Feature: Teacher Other Home Page
 
   Background:
-    Given open login page
-    When Click on the sign in teacher button
-    When Enter login "satintest1+teacherSupply@gmail.com"
+    Given open landing page
+    When Click on the login button
+    When Click on the sign in school button
+    When Enter login "satintest1+school@gmail.com"
     When Enter password "Test123!"
     When Click on the Log in button
 
@@ -15,13 +16,14 @@ Feature: Teacher Other Home Page
       | jobs      |
     Then  Header contains bell icon
     Then  Header contains user photo icon
-    Then  Header contains user name "Test3 Test3"
+    Then  Header contains user name "Hermione Granger"
     Then  Header contains arrow down button
     When  Close window
 
 
 
   Scenario: Jobs page contains necessary elements
+    When Click on the "jobs" button in the header
     Then  Jobs page contains all necessary elements:
       | Jobs      |
       | live      |
@@ -41,7 +43,7 @@ Feature: Teacher Other Home Page
       | view applicants |
       | repost |
     When Click on the draft tab
-    Then draft tab is opened with all necessary elements:
+    Then Draft tab is opened with all necessary elements:
       | Jobs      |
       | live      |
       | archived  |
@@ -49,3 +51,15 @@ Feature: Teacher Other Home Page
       | JOB TITLE |
       | CREATED    |
       | edit and post |
+
+  Scenario: Post a new job
+    When Click on the "POST A NEW JOB" button
+    Then  "Post a Job" page contains all necessary elements:
+      | Jobs      |
+      | live      |
+      | archived  |
+      | draft     |
+      | JOB TITLE |
+      | STATUS    |
+      | view applicants |
+      | move to archive |

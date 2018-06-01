@@ -31,6 +31,29 @@ public interface ILocators {
     String first_result_saved_button = "(//p[.=' Saved'])[1]";
 
 
+    //////////////////  SCHOOL JOBS PAGE ///////////////////////
+
+
+    String Jobs = "//h3[@class='booking-title']";
+    String live = "(//a[@href='#/school/job/live'])[2]";
+    String archived = "//a[@href='#/school/job/archived']";
+    String draft = "//a[@href='#/school/job/draft']";
+    String JOB_TITLE = "(//p[@class='name'])[1]";
+    String JOB_STATUS = "(//p[@class='status'])[1]";
+    String view_applicants1 = "(//p[@class='view'])[2]";
+    String move_to_archive = "(//p[@class='archive'])[2]";
+    String repost = "//a[@class='repost']";
+    String CREATED = "(//p[@class='created'])[1]";
+    String edit_and_post = "(//a[@href='#/school/post-new-job'])[2]";
+    String Archived_on = "(//p)[4]";
+    String Posted_on = "(//p[@class='name'])[2]";
+    String Last_saved_on = "(//p[@class='name'])[2]";
+    String POST_A_NEW_JOB = "//a[@href='#/school/post-new-job']";
+
+    /////////////// SCHOOL POST JOB /////////////////////
+    String Post_a_Job = "//span[@class='booking-search-title']";
+
+
 
 
     ///////////////////////// PREVIEW PAGE //////////////////////

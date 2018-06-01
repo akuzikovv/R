@@ -7,6 +7,7 @@ import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import net.thucydides.core.annotations.Steps;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class DefinitionSteps {
@@ -209,6 +210,46 @@ public class DefinitionSteps {
     @When("^Click on the login button$")
     public void clickOnTheLoginButton() throws Throwable {
         steps.clickOnTheLoginButton();
+    }
+
+    @When("^Click on the \"([^\"]*)\" button in the header$")
+    public void clickOnTheButtonInTheHeader(String arg0) throws Throwable {
+        steps.clickOnTheButtonInTheHeader(arg0);
+    }
+
+    @Then("^Jobs page contains all necessary elements:$")
+    public void jobsPageContainsAllNecessaryElements(List<String>list) throws Throwable {
+        steps.jobsPageContainsAllNecessaryElements(list);
+    }
+
+    @When("^Click on the archived tab$")
+    public void clickOnTheArchivedTab() throws Throwable {
+       steps.clickOnTheArchivedTab();
+    }
+
+    @Then("^Archived tab is opened with all necessary elements:$")
+    public void archivedTabIsOpenedWithAllNecessaryElements(List<String>list) throws Throwable {
+        steps.archivedTabIsOpenedWithAllNecessaryElements(list);
+    }
+
+    @When("^Click on the draft tab$")
+    public void clickOnTheDraftTab() throws Throwable {
+      steps.clickOnTheDraftTab();
+    }
+
+    @Then("^Draft tab is opened with all necessary elements:$")
+    public void draftTabIsOpenedWithAllNecessaryElements(List<String>list) throws Throwable {
+       steps.draftTabIsOpenedWithAllNecessaryElements(list);
+    }
+
+    @When("^Click on the \"([^\"]*)\" button$")
+    public void clickOnTheButton(String arg0) throws Throwable {
+        steps.clickOnThePostNewJobButton(arg0);
+    }
+
+    @Then("^\"([^\"]*)\" page contains all necessary elements:$")
+    public void postJobPageContainsAllNecessaryElements(String arg0,List<String>list) throws Throwable {
+        steps.postJobPageContainsAllNecessaryElements(arg0,list);
     }
 
 //    @When("^Open report$")

@@ -12,12 +12,12 @@ public class HomePage extends PageObject {
     public ArrayList<String> firstTableContainsTitle(String arg0) {
         ArrayList<String> results = new ArrayList<>();
         results.add(0, "true");
-            if (arg0.equals($(ILocators.firstTable_titile1).getText())) {
-                results.set(0, "true");
-            } else {
-                results.set(0, "false");
-                results.add("Expected: " + arg0 + "; but found: " + $(ILocators.firstTable_titile1).getText() + "\n");
-            }
+        if (arg0.equals($(ILocators.firstTable_titile1).getText())) {
+            results.set(0, "true");
+        } else {
+            results.set(0, "false");
+            results.add("Expected: " + arg0 + "; but found: " + $(ILocators.firstTable_titile1).getText() + "\n");
+        }
         return results;
     }
 
@@ -25,11 +25,11 @@ public class HomePage extends PageObject {
         ArrayList<String> results = new ArrayList<>();
         results.add(0, "true");
         if (arg0.equals($(ILocators.firstTable_titile2).getText())) {
-                results.set(0, "true");
-            } else {
-                results.set(0, "false");
-                results.add("Expected: " + arg0 + "; but found: " + $(ILocators.firstTable_titile2).getText() + "\n");
-            }
+            results.set(0, "true");
+        } else {
+            results.set(0, "false");
+            results.add("Expected: " + arg0 + "; but found: " + $(ILocators.firstTable_titile2).getText() + "\n");
+        }
         return results;
     }
 
@@ -38,21 +38,16 @@ public class HomePage extends PageObject {
             if (!$(ILocators.viewall_button1).getText().equals(arg0)) {
                 return false;
             }
-
-        }catch (Exception e){}
-
+        } catch (Exception e) {
+        }
         try {
             if (!$(ILocators.viewall_button2).getText().equals(arg0)) {
                 return false;
             }
-
-        }catch (Exception e){}
-
-
+        } catch (Exception e) {
+        }
         return true;
     }
-
-
 
     public boolean theFiveLinesInTheTableAreDisplayed() {
         if (!$(ILocators.first_line).isPresent() &&

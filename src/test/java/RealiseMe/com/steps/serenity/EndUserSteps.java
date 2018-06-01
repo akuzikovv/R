@@ -1,14 +1,14 @@
 package RealiseMe.com.steps.serenity;
 
-import RealiseMe.com.Header.Header;
-import RealiseMe.com.ILocators;
+import RealiseMe.com.pages.Header.Header;
 import RealiseMe.com.pages.*;
+import RealiseMe.com.pages.School.SchoolHomePage;
+import RealiseMe.com.pages.School.SchoolJobsPage;
+import RealiseMe.com.pages.Teacher.OtherTeacherHomePage;
+import RealiseMe.com.pages.Teacher.SupplyTeacherHomePage;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.steps.ScenarioSteps;
-import org.fluentlenium.core.annotation.Page;
-import org.hibernate.validator.constraints.URL;
 import org.junit.Assert;
-import org.openqa.selenium.By;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,6 +23,7 @@ public class EndUserSteps  extends ScenarioSteps {
     OtherTeacherHomePage otherTeacherHomePage;
     SchoolHomePage schoolHomePage;
     LandingPage landingPage;
+    SchoolJobsPage schoolJobsPage;
 
 
     @Step
@@ -231,8 +232,58 @@ public class EndUserSteps  extends ScenarioSteps {
         landingPage.clickOnTheApplyButton();
     }
 
+
+
+    @Step
     public void clickOnTheLoginButton() {
         landingPage.clickOnTheLoginButton();
+    }
+
+
+
+    @Step
+    public void clickOnTheButtonInTheHeader(String arg0) {
+        schoolJobsPage.clickOnTheButtonInTheHeader(arg0);
+    }
+
+    @Step
+    public void jobsPageContainsAllNecessaryElements(List<String>list) {
+        ArrayList<String> results = schoolJobsPage.jobsPageContainsAllNecessaryElements(list);
+        Assert.assertTrue("Jobs page is wrong"+ results, "true".equals(results.get(0)));
+    }
+
+    @Step
+    public void clickOnTheArchivedTab() {
+        schoolJobsPage.clickOnTheArchivedTab();
+    }
+
+    @Step
+    public void archivedTabIsOpenedWithAllNecessaryElements(List<String> list) {
+        ArrayList<String> results = schoolJobsPage.archivedTabIsOpenedWithAllNecessaryElements(list);
+        Assert.assertTrue("Archived tab is wrong"+ results, "true".equals(results.get(0)));
+    }
+
+    @Step
+    public void clickOnTheDraftTab() {
+        schoolJobsPage.clickOnTheDraftTab();
+    }
+
+
+    @Step
+    public void draftTabIsOpenedWithAllNecessaryElements(List<String> list) {
+        ArrayList<String> results = schoolJobsPage.draftTabIsOpenedWithAllNecessaryElements(list);
+        Assert.assertTrue("Archived tab is wrong"+ results, "true".equals(results.get(0)));
+    }
+
+    @Step
+    public void clickOnThePostNewJobButton(String arg0) {
+        schoolJobsPage.clickOnThePostNewJobButton(arg0);
+    }
+
+    @Step
+    public void postJobPageContainsAllNecessaryElements(String arg0, List<String> list) {
+        ArrayList<String> results = schoolJobsPage.postJobPageContainsAllNecessaryElements(arg0,list);
+        Assert.assertTrue("Archived tab is wrong"+ results, "true".equals(results.get(0)));
     }
 
 //    @Step
