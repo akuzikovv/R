@@ -290,9 +290,9 @@ public class EndUserSteps  extends ScenarioSteps {
     }
 
     @Step
-    public void postJobPageContainsAllNecessaryElements(String arg0, List<String> list) {
-        ArrayList<String> results = schoolJobsPage.postJobPageContainsAllNecessaryElements(arg0,list);
-        Assert.assertTrue("Archived tab is wrong"+ results, "true".equals(results.get(0)));
+    public void postJobPageContainsAllNecessaryElements(List<String> list) {
+        ArrayList<String> results = schoolJobsPage.postJobPageContainsAllNecessaryElements(list);
+        Assert.assertTrue("Create jpb page is wrong"+ results, "true".equals(results.get(0)));
     }
 
 //    @Step

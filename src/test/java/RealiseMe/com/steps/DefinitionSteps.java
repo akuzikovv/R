@@ -247,9 +247,9 @@ public class DefinitionSteps {
         steps.clickOnThePostNewJobButton(arg0);
     }
 
-    @Then("^\"([^\"]*)\" page contains all necessary elements:$")
-    public void postJobPageContainsAllNecessaryElements(String arg0,List<String>list) throws Throwable {
-        steps.postJobPageContainsAllNecessaryElements(arg0,list);
+    @Then("Post a Job page contains all necessary elements:$")
+    public void postJobPageContainsAllNecessaryElements(List<String>list) throws Throwable {
+        steps.postJobPageContainsAllNecessaryElements(list);
     }
 
 //    @When("^Open report$")

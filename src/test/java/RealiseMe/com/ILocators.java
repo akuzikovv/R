@@ -51,7 +51,49 @@ public interface ILocators {
     String POST_A_NEW_JOB = "//a[@href='#/school/post-new-job']";
 
     /////////////// SCHOOL POST JOB /////////////////////
+
     String Post_a_Job = "//span[@class='booking-search-title']";
+    String choose_from_draft = "(//label[@for='savedSearch'])[1]";
+    String draftDropdown ="(//i[@class='icon material-icons input-group__append-icon input-group__icon-cb'])[1]";
+    String job_details = "//span[.='Job Details']";
+    String jobName = "//label[@for='position-name']";
+    String example_name_text = "//input[@placeholder='EXAMPLE: Maths teacher in Essex']";
+    String jobDescription = "//label[@for='job-description']";
+    String upload_text = "//p[.='Upload application form']";
+    String note_upload_text = "//p[@class='add-documents-note']";
+    String salary_text = "//label[@for='salary']";
+    String Contract_term = "//p[.='Contract term*']";
+    String Flexi_Job_share = "//label[.='Flexi/ Job share']";
+    String Permanent = "//label[.='Permanent']";
+    String Contract_type = "//p[.='Contract type*']";
+    String Part_time = "//label[.='Part-time']";
+    String Full_time = "//label[.='Full-time']";
+    String Closing_date = "//p[@class='date-title']";
+    String date_format = "//input[@placeholder='DD/MM/YYYY']";
+    String Enter_skills_needed = "//p[@class='skills-needed-title']";
+    String Additional_Details = "//span[.='Additional Details']";
+    String Video_prescreening_questions = "(//p[@class='details-title'])[1]";
+    String I_want_to_request = "//label[.='I want to request video prescreening questions to be answered for enhanced application.']";
+    String Video_interview = "(//p[@class='details-title'])[2]";
+    String interview_checkbox_text = "//label[.='Please tick if you want to request first stage interview with the candidates.']";
+    String Please_contact_us = "//span[.='Please contact us to arrange the interview.']";
+    String Anonymisation = "//p[@class='anonymisation-title']";
+    String anonimisation_text = "(//span[@class='note'])[2]";
+    String Boost_your_job_s_visibility_by_enhancing_your_advert   = "(//div[@class='title'])[3]";
+    String SASAD = "//label[.='SASAD - Socially Augmented, Sentiment and AI Direct']";
+    String SAAID = "//label[.='SAAID - Socially Augmented and AI Direct']";
+    String SA = "//label[.='SA - Socially Augmented']";
+    String Invite_a_coworker = "(//div[@class='title']//span[@data-v-5f6cf490])[4]";
+    String add_coworkers_as_an_admin = "(//span[@data-v-5f6cf490])[11]";
+    String post_job_button = "//button[@class='post-job']";
+    String save_draft_button = "//button[@class='save-draft']";
+
+
+
+
+
+
+
 
 
 
