@@ -252,6 +252,16 @@ public class DefinitionSteps {
         steps.postJobPageContainsAllNecessaryElements(list);
     }
 
+    @When("^Click on the Post Job button$")
+    public void clickOnThePostJobButton() throws Throwable {
+       steps.clickOnThePostJobButton();
+    }
+
+    @Then("^Warning messages are appeared:$")
+    public void warningMessagesAreAppeared(List<String>list) throws Throwable {
+       steps.warningMessagesAreAppeared(list);
+    }
+
 //    @When("^Open report$")
 //    public void openReport() throws Throwable {
 //        steps.openReport();

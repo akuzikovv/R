@@ -295,6 +295,18 @@ public class EndUserSteps  extends ScenarioSteps {
         Assert.assertTrue("Create jpb page is wrong"+ results, "true".equals(results.get(0)));
     }
 
+    @Step
+    public void clickOnThePostJobButton() {
+        schoolJobsPage.clickOnThePostJobButton();
+    }
+
+    @Step
+    public void warningMessagesAreAppeared(List<String> list) {
+        ArrayList<String> results =  schoolJobsPage.warningMessagesAreAppeared(list);;
+        Assert.assertTrue("Create jpb page is wrong"+ results, "true".equals(results.get(0)));
+
+    }
+
 //    @Step
 //    public void openReport() {
 //        getDriver().manage().window().maximize();

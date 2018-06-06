@@ -87,6 +87,13 @@ public interface ILocators {
     String add_coworkers_as_an_admin = "(//span[@data-v-5f6cf490])[11]";
     String post_job_button = "//button[@class='post-job']";
     String save_draft_button = "//button[@class='save-draft']";
+    String warning_name = "//span[.='The jobname field is required.']";
+    String warning_description = "//span[.='The jobdescription field is required.']";
+    String warning_salary = "//span[.='The jobsalary field is required.']";
+    String warning_contactTerm = "//span[.='The contractTerm field is required.']";
+    String warning_contactType = "//span[.='The contractTypes field is required.']";
+    String warning_closingDate = "//span[.='The closingDate field is required.']";
+
 
 
 
