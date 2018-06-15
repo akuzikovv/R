@@ -1,11 +1,9 @@
 package RealiseMe.com.pages;
 
 import RealiseMe.com.ILocators;
-import com.opera.core.systems.scope.protos.ExecProtos;
-import net.thucydides.core.pages.PageObject;
+import net.serenitybdd.core.pages.PageObject;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class HomePage extends PageObject {
 

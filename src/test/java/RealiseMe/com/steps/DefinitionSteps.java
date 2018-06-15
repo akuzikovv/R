@@ -262,6 +262,11 @@ public class DefinitionSteps {
        steps.warningMessagesAreAppeared(list);
     }
 
+    @When("^Click on the school \"([^\"]*)\" button$")
+    public void clickOnTheSchoolButton(String arg0) throws Throwable {
+        steps.clickOnTheSignSchool_Landing_Button(arg0);
+    }
+
 //    @When("^Open report$")
 //    public void openReport() throws Throwable {
 //        steps.openReport();

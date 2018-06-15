@@ -1,8 +1,8 @@
 package RealiseMe.com.pages;
 
 import RealiseMe.com.ILocators;
+import net.serenitybdd.core.pages.PageObject;
 import net.thucydides.core.annotations.DefaultUrl;
-import net.thucydides.core.pages.PageObject;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -105,6 +105,15 @@ public class LandingPage extends PageObject {
     }
 
     public void clickOnTheLoginButton() {
+//        waitFor($(ILocators.login).waitUntilClickable());
         $(ILocators.login).click();
+    }
+
+    public boolean clickOnTheSignSchool_Landing_Button(String arg0) {
+        if ($(ILocators.school_sign_in).getText().equals(arg0)){
+            $(ILocators.school_sign_in).click();
+            return true;
+        }else return false;
+
     }
 }

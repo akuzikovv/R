@@ -1,15 +1,15 @@
 package RealiseMe.com.pages;
 
 import RealiseMe.com.ILocators;
+import net.serenitybdd.core.pages.PageObject;
 import net.thucydides.core.annotations.DefaultUrl;
-import net.thucydides.core.pages.PageObject;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @DefaultUrl("http://qa.realiseme.com.s3-website-us-east-1.amazonaws.com")
 
-public class LoginPage extends PageObject{
+public class LoginPage extends PageObject {
 
     public boolean loginPageContainsPictures() {
         $(ILocators.image_school).isPresent();

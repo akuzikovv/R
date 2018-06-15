@@ -1,13 +1,12 @@
 package RealiseMe.com.pages;
 
 import RealiseMe.com.ILocators;
-import net.thucydides.core.annotations.DefaultUrl;
-import net.thucydides.core.pages.PageObject;
+import net.serenitybdd.core.pages.PageObject;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class AuthorizationPage extends PageObject{
+public class AuthorizationPage extends PageObject {
 
     public ArrayList<String> authorizationPageContainsNecessaryElements(List<String> list) {
         ArrayList<String> labels = new ArrayList<>();

@@ -19,7 +19,10 @@ public interface ILocators {
     String user_name = "//li[@class='user-name desktop']//span";
     String arrow_down_button =  "//li[@class='user-name desktop']//i[@class='icon-arrow-down icons']";
     String LOGOUT_BUTTON = "//div[.='Logout']";
-
+    String spinner = "//div[@class='spinner-wrapper']";
+    String button = "//button";
+    String span = "//span";
+//[@class='button']
 
     /////////////////// LANDING PAGE ////////////////////////////
 
@@ -29,6 +32,9 @@ public interface ILocators {
     String first_result = "(//p[@class='job-details-title']//a)[1]";
     String first_result_save_button = "(//p[@class='save'])[1]";
     String first_result_saved_button = "(//p[.=' Saved'])[1]";
+    String school_sign_in = "(//button[@class='button'])[2]";
+    String teacher_sign_in = "(//button[@class='button'])[1]";
+
 
 
     //////////////////  SCHOOL JOBS PAGE ///////////////////////

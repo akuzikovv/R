@@ -1,12 +1,12 @@
 package RealiseMe.com.pages.School;
 
 import RealiseMe.com.ILocators;
-import net.thucydides.core.pages.PageObject;
+import net.serenitybdd.core.pages.PageObject;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class SchoolHomePage  extends PageObject{
+public class SchoolHomePage  extends PageObject {
 
     public ArrayList<String> schoolLeftPanelContainsAllNecessaryElements(List<String> list) {
         ArrayList<String> labels = new ArrayList<>();
@@ -66,5 +66,6 @@ public class SchoolHomePage  extends PageObject{
             }
         }
         return results;
+
     }
 }

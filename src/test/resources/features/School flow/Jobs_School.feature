@@ -3,8 +3,9 @@ Feature: School Jobs
   Background:
     Given open landing page
     When Click on the login button
-    When Click on the sign in school button
-    When Enter login "satintest1+school@gmail.com"
+#    When Click on the sign in school button
+    When Click on the school "sign up your school today!" button
+    When Enter login "satintest2_school@yopmail.com"
     When Enter password "Test123!"
     When Click on the Log in button
 
@@ -99,6 +100,6 @@ Feature: School Jobs
       | The jobname field is required.        |
       | The jobdescription field is required. |
       | The jobsalary field is required.      |
-#      | The contractTerm field is required.   |
-#      | The contractTypes field is required.  |
+      | The contractTerm field is required.   |
+      | The contractTypes field is required.  |
       | The closingDate field is required.    |

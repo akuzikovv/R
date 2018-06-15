@@ -1,8 +1,7 @@
 package RealiseMe.com.pages.School;
 
 import RealiseMe.com.ILocators;
-import net.thucydides.core.pages.PageObject;
-import org.junit.Assert;
+import net.serenitybdd.core.pages.PageObject;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,6 +9,8 @@ import java.util.List;
 public class SchoolJobsPage extends PageObject {
 
     public void clickOnTheButtonInTheHeader(String arg0) {
+//        waitFor($(ILocators.jobs).waitUntilEnabled());
+        waitABit(5000);
         if ($(ILocators.jobs).getText().equals(arg0)){
             $(ILocators.jobs).click();
         }
@@ -126,6 +127,7 @@ public class SchoolJobsPage extends PageObject {
     }
 
     public void clickOnThePostNewJobButton(String arg0) {
+        waitABit(1000);
         if ($(ILocators.POST_A_NEW_JOB).getText().equals(arg0)){
             $(ILocators.POST_A_NEW_JOB).click();
         }
@@ -192,18 +194,19 @@ public class SchoolJobsPage extends PageObject {
 
     public void clickOnThePostJobButton() {
         $(ILocators.post_job_button).click();
-//        waitABit(80000);
+        waitABit(8000);
     }
 
     public ArrayList<String> warningMessagesAreAppeared(List<String> list) {
         ArrayList<String> labels = new ArrayList<>();
         ArrayList<String> results = new ArrayList<>();
         results.add(0, "true");
+//        waitFor(String.valueOf($(ILocators.warning_contactTerm).isVisible()));
             labels.add($(ILocators.warning_name).getText().trim());
             labels.add($(ILocators.warning_description).getText().trim().substring(0,4));
             labels.add($(ILocators.warning_salary).getText().trim().substring(0,8));
-//            labels.add($(ILocators.warning_contactTerm).getText().trim().substring(0,5));
-//            labels.add($(ILocators.warning_contactType).getText().trim());
+            labels.add($(ILocators.warning_contactTerm).getText().trim().substring(0,5));
+            labels.add($(ILocators.warning_contactType).getText().trim());
             labels.add($(ILocators.warning_closingDate).getText().trim());
             for (int i = 0; i < list.size(); i++) {
                 if (!list.get(i).equals(labels.get(i))) {

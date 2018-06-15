@@ -1,9 +1,7 @@
 package RealiseMe.com.pages.Teacher;
 
 import RealiseMe.com.ILocators;
-import net.thucydides.core.pages.PageObject;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
+import net.serenitybdd.core.pages.PageObject;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -307,6 +307,12 @@ public class EndUserSteps  extends ScenarioSteps {
 
     }
 
+    @Step
+    public void clickOnTheSignSchool_Landing_Button(String arg0) {
+        Assert.assertTrue("Button is absent",landingPage.clickOnTheSignSchool_Landing_Button(arg0));
+        ;
+    }
+
 //    @Step
 //    public void openReport() {
 //        getDriver().manage().window().maximize();
