@@ -116,4 +116,8 @@ public class LandingPage extends PageObject {
         }else return false;
 
     }
+
+    public void clickOnTheAgreeButtonAtTheBanner() {
+        $(ILocators.cookies_button).click();
+    }
 }

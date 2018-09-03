@@ -39,7 +39,7 @@ public class Header extends PageObject {
             results.add("Header is absent" + "\n");
         } else {
             labels.add($(ILocators.home).getText());
-            labels.add($(ILocators.messaging).getText());
+//            labels.add($(ILocators.messaging).getText());
             labels.add($(ILocators.bookings).getText());
             labels.add($(ILocators.jobs).getText());
             for (int i = 0; i < list.size(); i++) {

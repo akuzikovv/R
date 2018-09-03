@@ -2,22 +2,23 @@ Feature: School Jobs
 
   Background:
     Given open landing page
+    When click on the agree button at the banner
     When Click on the login button
 #    When Click on the sign in school button
-    When Click on the school "sign up your school today!" button
-    When Enter login "satintest2_school@yopmail.com"
+    When Click on the school "I am a school" button
+    When Enter login "qaautotestschool@yopmail.com"
     When Enter password "Test123!"
     When Click on the Log in button
 
   Scenario: Header contains all necessary elements
     Then  Header contains textbuttons:
       | home      |
-      | messaging |
+#      | messaging |
       | bookings  |
       | jobs      |
     Then  Header contains bell icon
     Then  Header contains user photo icon
-    Then  Header contains user name "Hermione Granger"
+    Then  Header contains user name "Main Admin"
     Then  Header contains arrow down button
     When  Close window
 
@@ -36,7 +37,7 @@ Feature: School Jobs
     When Click on the archived tab
     Then Archived tab is opened with all necessary elements:
       | Jobs            |
-      | live            |
+#      | live            |
       | archived        |
       | draft           |
       | JOB TITLE       |
@@ -45,7 +46,7 @@ Feature: School Jobs
     When Click on the draft tab
     Then Draft tab is opened with all necessary elements:
       | Jobs          |
-      | live          |
+#      | live          |
       | archived      |
       | draft         |
       | JOB TITLE     |

@@ -26,6 +26,7 @@ public interface ILocators {
 
     /////////////////// LANDING PAGE ////////////////////////////
 
+    String cookies_button = "//div[@class='Cookie__button']";
     String keyword_search = "//input[@class='input keyword']";
     String search_button ="//button[.='search']";
     String search_result = "//div[@class='result-wrapper']";
@@ -41,7 +42,10 @@ public interface ILocators {
 
 
     String Jobs = "//h3[@class='booking-title']";
-    String live = "(//a[@href='#/school/job/live'])[2]";
+    String live = "//a[@class='tabs__item--active tabs__item']";
+    String live_qty = "//a[@class='tabs__item--active tabs__item']//span";
+    String archived_qty = "//a[@class='tabs__item--active tabs__item']//span";
+    String draft_qty = "//a[@class='tabs__item--active tabs__item']//span";
     String archived = "//a[@href='#/school/job/archived']";
     String draft = "//a[@href='#/school/job/draft']";
     String JOB_TITLE = "(//p[@class='name'])[1]";

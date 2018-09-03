@@ -20,6 +20,33 @@ public class SchoolJobsPage extends PageObject {
         ArrayList<String> labels = new ArrayList<>();
         ArrayList<String> results = new ArrayList<>();
         results.add(0, "true");
+        waitABit(2000);
+        if($(ILocators.live_qty).getText().equals("(0)")){
+            if (!$(ILocators.live).isPresent()||
+                    !$(ILocators.archived).isPresent()||
+                    !$(ILocators.draft).isPresent()||
+                    !$(ILocators.JOB_TITLE).isPresent()||
+                    !$(ILocators.JOB_STATUS).isPresent()){
+                results.set(0, "false");
+                results.add("Some Elements are absent or wrong1" + "\n");
+            }
+            else {
+                labels.add($(ILocators.Jobs).getText().trim());
+                labels.add($(ILocators.live).getText().trim().substring(0,4));
+                labels.add($(ILocators.archived).getText().trim().substring(0,8));
+                labels.add($(ILocators.draft).getText().trim().substring(0,5));
+                labels.add($(ILocators.JOB_TITLE).getText().trim());
+                labels.add($(ILocators.JOB_STATUS).getText().trim());
+                labels.add("view applicants");
+                labels.add("move to archive");
+                for (int i = 0; i < list.size(); i++) {
+                    if (!list.get(i).equals(labels.get(i))) {
+                        results.set(0, "false");
+                        results.add("Expected: " + list.get(i) + "; but found: " + labels.get(i) + "\n");
+                    }
+                }
+            }
+        }else{
         if (!$(ILocators.Jobs).isPresent()||
                 !$(ILocators.live).isPresent()||
                 !$(ILocators.archived).isPresent()||
@@ -31,7 +58,7 @@ public class SchoolJobsPage extends PageObject {
                 !$(ILocators.Posted_on).getText().contains("Posted on")
                 ) {
             results.set(0, "false");
-            results.add("Some Elements are absent or wrong" + "\n");
+            results.add("Some Elements are absent or wrong2" + "\n");
         } else {
             labels.add($(ILocators.Jobs).getText().trim());
             labels.add($(ILocators.live).getText().trim().substring(0,4));
@@ -47,7 +74,7 @@ public class SchoolJobsPage extends PageObject {
                         results.add("Expected: " + list.get(i) + "; but found: " + labels.get(i) + "\n");
                     }
                 }
-            }
+            }}
         return results;
     }
 
@@ -59,6 +86,31 @@ public class SchoolJobsPage extends PageObject {
         ArrayList<String> labels = new ArrayList<>();
         ArrayList<String> results = new ArrayList<>();
         results.add(0, "true");
+        if($(ILocators.archived_qty).getText().equals("(0)")){
+            if (!$(ILocators.Jobs).isPresent()||
+                    !$(ILocators.live).isPresent()||
+                    !$(ILocators.archived).isPresent()||
+                    !$(ILocators.draft).isPresent()||
+                    !$(ILocators.JOB_TITLE).isPresent()
+                    ) {
+                results.set(0, "false");
+                results.add("Some Elements are absent or wrong" + "\n");
+            } else {
+                labels.add($(ILocators.Jobs).getText().trim());
+//                labels.add($(ILocators.live).getText().trim().substring(0, 4));
+                labels.add($(ILocators.archived).getText().trim().substring(0, 8));
+                labels.add($(ILocators.draft).getText().trim().substring(0, 5));
+                labels.add($(ILocators.JOB_TITLE).getText().trim());
+                labels.add("view applicants");
+                labels.add("repost");
+                for (int i = 0; i < list.size(); i++) {
+                    if (!list.get(i).equals(labels.get(i))) {
+                        results.set(0, "false");
+                        results.add("Expected: " + list.get(i) + "; but found: " + labels.get(i) + "\n");
+                    }
+                }
+            }
+        }else{
         if (!$(ILocators.Jobs).isPresent()||
                 !$(ILocators.live).isPresent()||
                 !$(ILocators.archived).isPresent()||
@@ -72,8 +124,8 @@ public class SchoolJobsPage extends PageObject {
             results.add("Some Elements are absent or wrong" + "\n");
         } else {
             labels.add($(ILocators.Jobs).getText().trim());
-            labels.add($(ILocators.live).getText().trim().substring(0,4));
-            labels.add($(ILocators.archived).getText().trim().substring(0,8));
+//            labels.add($(ILocators.live).getText().trim().substring(0,4));
+            labels.add($(ILocators.archived).getText().trim().substring(0, 8));
             labels.add($(ILocators.draft).getText().trim().substring(0,5));
             labels.add($(ILocators.JOB_TITLE).getText().trim());
             labels.add($(ILocators.view_applicants1).getText().trim());
@@ -84,7 +136,7 @@ public class SchoolJobsPage extends PageObject {
                     results.add("Expected: " + list.get(i) + "; but found: " + labels.get(i) + "\n");
                 }
             }
-        }
+        }}
         return results;
 
     }
@@ -97,6 +149,32 @@ public class SchoolJobsPage extends PageObject {
         ArrayList<String> labels = new ArrayList<>();
         ArrayList<String> results = new ArrayList<>();
         results.add(0, "true");
+        if($(ILocators.draft_qty).getText().equals("(0)")){
+            if (!$(ILocators.Jobs).isPresent()||
+                    !$(ILocators.live).isPresent()||
+                    !$(ILocators.archived).isPresent()||
+                    !$(ILocators.draft).isPresent()||
+                    !$(ILocators.JOB_TITLE).isPresent()||
+                    !$(ILocators.CREATED).isPresent()
+                    ) {
+                results.set(0, "false");
+                results.add("Some Elements are absent or wrong" + "\n");
+            } else {
+                labels.add($(ILocators.Jobs).getText().trim());
+//                labels.add($(ILocators.live).getText().trim().substring(0, 4));
+                labels.add($(ILocators.archived).getText().trim().substring(0, 8));
+                labels.add($(ILocators.draft).getText().trim().substring(0, 5));
+                labels.add($(ILocators.JOB_TITLE).getText().trim());
+                labels.add($(ILocators.CREATED).getText().trim());
+                labels.add("edit and post");
+                for (int i = 0; i < list.size(); i++) {
+                    if (!list.get(i).equals(labels.get(i))) {
+                        results.set(0, "false");
+                        results.add("Expected: " + list.get(i) + "; but found: " + labels.get(i) + "\n");
+                    }
+                }
+            }
+        }else {
         if (!$(ILocators.Jobs).isPresent()||
                 !$(ILocators.live).isPresent()||
                 !$(ILocators.archived).isPresent()||
@@ -110,7 +188,7 @@ public class SchoolJobsPage extends PageObject {
             results.add("Some Elements are absent or wrong" + "\n");
         } else {
             labels.add($(ILocators.Jobs).getText().trim());
-            labels.add($(ILocators.live).getText().trim().substring(0,4));
+//            labels.add($(ILocators.live).getText().trim().substring(0,4));
             labels.add($(ILocators.archived).getText().trim().substring(0,8));
             labels.add($(ILocators.draft).getText().trim().substring(0,5));
             labels.add($(ILocators.JOB_TITLE).getText().trim());
@@ -122,7 +200,7 @@ public class SchoolJobsPage extends PageObject {
                     results.add("Expected: " + list.get(i) + "; but found: " + labels.get(i) + "\n");
                 }
             }
-        }
+        }}
         return results;
     }
 

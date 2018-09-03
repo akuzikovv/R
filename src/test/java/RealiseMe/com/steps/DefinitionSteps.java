@@ -267,6 +267,11 @@ public class DefinitionSteps {
         steps.clickOnTheSignSchool_Landing_Button(arg0);
     }
 
+    @When("^click on the agree button at the banner$")
+    public void clickOnTheAgreeButtonAtTheBanner() throws Throwable {
+       steps.clickOnTheAgreeButtonAtTheBanner();
+    }
+
 //    @When("^Open report$")
 //    public void openReport() throws Throwable {
 //        steps.openReport();
