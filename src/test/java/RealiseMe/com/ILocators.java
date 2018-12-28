@@ -10,7 +10,7 @@ public interface ILocators {
     String home = "//span[.='home']";
     String blog = "//span[.='blog']";
     String forum = "//span[.='forum']";
-    String login = "//span[.='login']";
+    String login = "//span[contains(.,'login')]";
     String sign_up = "//span[.='sign up']";
     String messaging = "//span[.='messaging']";
     String bookings = "//span[.='bookings']";
@@ -33,8 +33,49 @@ public interface ILocators {
     String first_result = "(//p[@class='job-details-title']//a)[1]";
     String first_result_save_button = "(//p[@class='save'])[1]";
     String first_result_saved_button = "(//p[.=' Saved'])[1]";
-    String school_sign_in = "(//button[@class='button'])[2]";
-    String teacher_sign_in = "(//button[@class='button'])[1]";
+    String school_sign_in = "//button[contains(.,'Login as a school')]";
+    String teacher_sign_in = "//button[contains(.,'Login as a teacher')]";
+
+    //////////////////  SCHOOL Bookings PAGE ///////////////////////
+    String Find_Supply_Staff = "//span[contains(.,'Find Supply Staff')]";
+    String START_SEARCH  = "//a[contains(.,'START SEARCH')]";
+    String SEARCH_RESULTS  = "//a[contains(.,'SEARCH RESULTS')]";
+    String REVIEW_INVITATIONS = "//a[@class='booking-creation-step review-invitations']";
+    String  INVITES = "//a[@class='booking-creation-step invites']";
+    String I_want_to_use_my_saved_search = "//label[contains(.,'I want to use my saved search')]";
+    String Job_Details = "//span[contains(.,'Job Details')]";
+    String Name_your_job_posting_title = "//label[contains(.,'Name your job posting*')]";
+    String Name_your_job_posting_input = "//input[@placeholder='EXAMPLE: Maths teacher in Essex']";
+    String Describethe_job_title = "//label[contains(.,'Describe the job*')]";
+    String Describethe_job_input = "//textarea[@id='job-description']";
+    String characters_left = "//span[@class='char-left'][contains(.,'5000 characters left')]";
+    String Teacher_type = "//h3[contains(.,'Teacher type*')]";
+    String Teacher_checkbox_title = "//label[contains(.,'Teacher')]";
+    String TA_checkbox_title = "//label[contains(.,'TA')]";
+    String Dates_required = "//p[contains(.,'Date(s) required*')]";
+    String Full_Day_Start_time = "//input[contains(@id,'full-day-start-time')]";
+    String Full_Day_End_time = "//input[contains(@id,'full-day-end-time')]";
+    String Half_Day_Start_time = "//input[contains(@id,'half-day-start-time')]";
+    String Half_Day_End_time = "//input[contains(@id,'half-day-end-time')]";
+    String Rate_input = "//input[@id='rate-for-day']";
+    String Note1  = "//span[contains(.,'Note: click on date to switch between full and half day. If the booking is less than half day, please contact us to proceed.')]";
+    String Rate_title = "//label[contains(.,'Rate*')]";
+    String Note2 = "//span[contains(.,'Note: half day is two-third the rate you entered')]";
+    String Any_specialist_subject_required_title = "//p[contains(.,'Any specialist subject(s) required?')]";
+    String Any_age_group_required_title = "//p[contains(.,'Any age group(s) required?')]";
+    String Additional_documents_title = "//p[contains(.,'Additional document(s)')]";
+    String Anonymisation_title = "//p[contains(.,'Anonymisation')]";
+    String Anonymisation_text = "//span[contains(.,'You have anonymisation turned OFF ON,\n" +
+            "      if you wish to remove any bias in screening procress,\n" +
+            "      please click to turn on. You can always change it in your account setting.')]";
+    String I_want_to_save_this_search_for_future_use_title = "//label[@for='save-search'][contains(.,'I want to save this search for future use')]";
+    String Invite_a_coworker_booking = "//span[contains(.,'Invite a coworker to help you hire - you can easily add any coworkers as an admin in your\n" +
+            "        account setting.')]";
+    String SHOW_RESULTS = "//a[contains(.,'SHOW RESULTS')]";
+    String Please_fill_in_all_required_fields_to_continue = "//span[contains(.,'Please fill in all required fields to continue')]";
+    String CLose_popup = "//div[contains(@class,'g--active dialog')]//div[@class='close']";
+
+
 
 
 
@@ -46,8 +87,8 @@ public interface ILocators {
     String live_qty = "//a[@class='tabs__item--active tabs__item']//span";
     String archived_qty = "//a[@class='tabs__item--active tabs__item']//span";
     String draft_qty = "//a[@class='tabs__item--active tabs__item']//span";
-    String archived = "//a[@href='#/school/job/archived']";
-    String draft = "//a[@href='#/school/job/draft']";
+    String archived = "(//a[@class='tabs__item'])[1]";
+    String draft = "//a[@href='/school/job/draft']";
     String JOB_TITLE = "(//p[@class='name'])[1]";
     String JOB_STATUS = "(//p[@class='status'])[1]";
     String view_applicants1 = "(//p[@class='view'])[2]";

@@ -1,7 +1,9 @@
 package RealiseMe.com.steps.serenity;
 
+import RealiseMe.com.pages.CommonActions.CommonActions;
 import RealiseMe.com.pages.Header.Header;
 import RealiseMe.com.pages.*;
+import RealiseMe.com.pages.School.SchoolBookingsPage;
 import RealiseMe.com.pages.School.SchoolHomePage;
 import RealiseMe.com.pages.School.SchoolJobsPage;
 import RealiseMe.com.pages.Teacher.OtherTeacherHomePage;
@@ -26,6 +28,8 @@ public class EndUserSteps  extends ScenarioSteps {
     SchoolHomePage schoolHomePage;
     LandingPage landingPage;
     SchoolJobsPage schoolJobsPage;
+    CommonActions commonActions;
+    SchoolBookingsPage schoolBookingsPage;
 
 
     @Step
@@ -252,7 +256,7 @@ public class EndUserSteps  extends ScenarioSteps {
 
     @Step
     public void clickOnTheButtonInTheHeader(String arg0) {
-        schoolJobsPage.clickOnTheButtonInTheHeader(arg0);
+        header.clickOnTheButtonInTheHeader(arg0);
     }
 
     @Step
@@ -273,8 +277,8 @@ public class EndUserSteps  extends ScenarioSteps {
     }
 
     @Step
-    public void clickOnTheDraftTab() {
-        schoolJobsPage.clickOnTheDraftTab();
+    public void clickOnTheTab(String arg0) {
+        commonActions.clickOnTheTab(arg0);
     }
 
 
@@ -285,8 +289,8 @@ public class EndUserSteps  extends ScenarioSteps {
     }
 
     @Step
-    public void clickOnThePostNewJobButton(String arg0) {
-        schoolJobsPage.clickOnThePostNewJobButton(arg0);
+    public void clickOnTheButton(String arg0) {
+        commonActions.clickOnTheButton(arg0);
     }
 
     @Step
@@ -302,20 +306,98 @@ public class EndUserSteps  extends ScenarioSteps {
 
     @Step
     public void warningMessagesAreAppeared(List<String> list) {
-        ArrayList<String> results =  schoolJobsPage.warningMessagesAreAppeared(list);;
+        ArrayList<String> results =  schoolJobsPage.warningMessagesAreAppeared(list);
         Assert.assertTrue("Create jpb page is wrong"+ results, "true".equals(results.get(0)));
 
     }
 
     @Step
     public void clickOnTheSignSchool_Landing_Button(String arg0) {
-        Assert.assertTrue("Button is absent",landingPage.clickOnTheSignSchool_Landing_Button(arg0));
+        ArrayList<String> results =  landingPage.clickOnTheSignSchool_Landing_Button(arg0);
+        Assert.assertTrue("Button is absent Or"+ results,"true".equals(results.get(0)));
 
     }
 
     @Step
     public void clickOnTheAgreeButtonAtTheBanner() {
         landingPage.clickOnTheAgreeButtonAtTheBanner();
+    }
+
+    @Step
+    public void bookingsPageContainsAllNecessaryElements(List<String>list) {
+        ArrayList<String> results = schoolJobsPage.jobsPageContainsAllNecessaryElements(list);
+        Assert.assertTrue("Jobs page is wrong"+ results, "true".equals(results.get(0)));
+    }
+
+    @Step
+    public void newSupplyBookingPageContainsAllNecessaryText(List<String> list) {
+        ArrayList<String> results = schoolBookingsPage.newSupplyBookingPageContainsAllNecessaryText(list);
+        Assert.assertTrue("Create booking page is wrong"+ results, "true".equals(results.get(0)));
+    }
+
+    @Step
+    public void theFieldIsHighlightedRed(String arg0) {
+        Assert.assertTrue(arg0 + " "+"Field isn't highlighted red", commonActions.theFieldIsHighlightedRed(arg0));
+    }
+
+    @Step
+    public void enterTextToTheNameYourJobPostingField() {
+        schoolBookingsPage.enterTextToTheNameYourJobPostingField();
+    }
+
+    @Step
+    public void enterTextToTheDescribeTheJobField() {
+        schoolBookingsPage.enterTextToTheDescribeTheJobField();
+    }
+
+    @Step
+    public void chooseCheckbox(String arg0) {
+        commonActions.chooseCheckbox(arg0);
+    }
+
+    @Step
+    public void chooseFullDayInTheMonthOfAvailableCalendar(String arg0, String arg1) {
+        schoolBookingsPage.chooseFullDayInTheMonthOfAvailableCalendar(arg0,arg1);
+    }
+
+    @Step
+    public void chooseHalfDayInTheMonthOfAvailableCalendar(String arg0, String arg1) {
+        schoolBookingsPage.chooseHalfDayInTheMonthOfAvailableCalendar(arg0,arg1);
+    }
+
+    @Step
+    public void chooseFullDayStartTime(String arg0) {
+        schoolBookingsPage.chooseFullDayStartTime(arg0);
+    }
+
+    @Step
+    public void chooseFullDayEndTime(String arg0) {
+        schoolBookingsPage.chooseFullDayEndTime(arg0);
+    }
+
+    @Step
+    public void chooseHalfDayStartTime(String arg0) {
+        schoolBookingsPage.chooseHalfDayStartTime(arg0);
+    }
+
+    @Step
+    public void chooseHalfDayEndTime(String arg0) {
+        schoolBookingsPage.chooseHalfDayEndTime(arg0);
+    }
+
+    @Step
+    public void enterRate(String arg0) {
+        schoolBookingsPage.enterRate(arg0);
+    }
+
+    @Step
+    public void closePopup() {
+        commonActions.closePopup();
+    }
+
+    @Step
+    public void waitTime() {
+        waitABit(7000);
     }
 
 //    @Step

@@ -2,19 +2,13 @@ package RealiseMe.com.pages.School;
 
 import RealiseMe.com.ILocators;
 import net.serenitybdd.core.pages.PageObject;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class SchoolJobsPage extends PageObject {
-
-    public void clickOnTheButtonInTheHeader(String arg0) {
-//        waitFor($(ILocators.jobs).waitUntilEnabled());
-        waitABit(5000);
-        if ($(ILocators.jobs).getText().equals(arg0)){
-            $(ILocators.jobs).click();
-        }
-    }
 
     public ArrayList<String> jobsPageContainsAllNecessaryElements(List<String> list) {
         ArrayList<String> labels = new ArrayList<>();
@@ -141,9 +135,7 @@ public class SchoolJobsPage extends PageObject {
 
     }
 
-    public void clickOnTheDraftTab() {
-        $(ILocators.draft).click();
-    }
+
 
     public ArrayList<String> draftTabIsOpenedWithAllNecessaryElements(List<String> list) {
         ArrayList<String> labels = new ArrayList<>();
@@ -204,12 +196,7 @@ public class SchoolJobsPage extends PageObject {
         return results;
     }
 
-    public void clickOnThePostNewJobButton(String arg0) {
-        waitABit(1000);
-        if ($(ILocators.POST_A_NEW_JOB).getText().equals(arg0)){
-            $(ILocators.POST_A_NEW_JOB).click();
-        }
-    }
+
 
     public ArrayList<String> postJobPageContainsAllNecessaryElements( List<String> list) {
         ArrayList<String> labels = new ArrayList<>();

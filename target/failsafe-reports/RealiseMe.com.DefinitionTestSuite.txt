@@ -1,0 +1,16 @@
+-------------------------------------------------------------------------------
+Test set: RealiseMe.com.DefinitionTestSuite
+-------------------------------------------------------------------------------
+Tests run: 32, Failures: 2, Errors: 0, Skipped: 21, Time elapsed: 34.766 sec <<< FAILURE! - in RealiseMe.com.DefinitionTestSuite
+Then New Supply Booking page contains all necessary text:(Scenario: Create booking with required fields)  Time elapsed: 0.004 sec  <<< FAILURE!
+java.lang.AssertionError: 
+Create booking page is wrong[false, Expected: Teacher  1111111111111111111; but found: Teacher
+, Expected: TA                    11111111111111111111111111; but found: TA
+]
+
+Scenario: Create booking with required fields  Time elapsed: 0.004 sec  <<< FAILURE!
+java.lang.AssertionError: 
+Create booking page is wrong[false, Expected: Teacher  1111111111111111111; but found: Teacher
+, Expected: TA                    11111111111111111111111111; but found: TA
+]
+

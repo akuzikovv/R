@@ -2,6 +2,8 @@ package RealiseMe.com.pages.Header;
 
 import RealiseMe.com.ILocators;
 import net.serenitybdd.core.pages.PageObject;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -88,5 +90,11 @@ public class Header extends PageObject {
         } else $(ILocators.LOGOUT_BUTTON).click();
         return true;
 
+    }
+
+    public void clickOnTheButtonInTheHeader(String arg0) {
+        waitABit(5000);
+        WebElement xpath = getDriver().findElement(By.xpath("//span[.='" + arg0 +"']"));
+        xpath.click();
     }
 }

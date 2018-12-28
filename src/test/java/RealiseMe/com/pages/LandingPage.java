@@ -109,12 +109,17 @@ public class LandingPage extends PageObject {
         $(ILocators.login).click();
     }
 
-    public boolean clickOnTheSignSchool_Landing_Button(String arg0) {
-        if ($(ILocators.school_sign_in).getText().equals(arg0)){
+    public ArrayList<String> clickOnTheSignSchool_Landing_Button(String arg0) {
+        ArrayList<String> results = new ArrayList<>();
+        results.add(0, "true");
+        if ($(ILocators.school_sign_in).getText().replace("\n", " ").equals(arg0)){
             $(ILocators.school_sign_in).click();
-            return true;
-        }else return false;
-
+            results.set(0, "true");
+        }else {
+            results.set(0, "false");
+            results.add("Expected: " + arg0 + "; but found: " + $(ILocators.school_sign_in).getText().replace("\n", " ") + "\n");
+        }
+            return results;
     }
 
     public void clickOnTheAgreeButtonAtTheBanner() {

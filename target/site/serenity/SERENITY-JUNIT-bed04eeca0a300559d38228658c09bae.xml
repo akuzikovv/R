@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?><testsuite errors="0" failures="1" name="School Bookings" skipped="0" tests="1" time="32.99" timestamp="2018-12-361 08:11:42"><testcase name="Create booking with required fields"><failure message="Create booking page is wrong[false, Expected: Teacher  1111111111111111111; but found: Teacher&#10;, Expected: TA                    11111111111111111111111111; but found: TA&#10;]" type="java.lang.AssertionError">Create booking page is wrong[false, Expected: Teacher  1111111111111111111; but found: Teacher
+, Expected: TA                    11111111111111111111111111; but found: TA
+]</failure><system-err>Create booking page is wrong[false, Expected: Teacher  1111111111111111111; but found: Teacher
+, Expected: TA                    11111111111111111111111111; but found: TA
+]
+RealiseMe.com.steps.serenity.EndUserSteps.newSupplyBookingPageContainsAllNecessaryText(EndUserSteps.java:335)
+RealiseMe.com.steps.DefinitionSteps.newSupplyBookingPageContainsAllNecessaryText(DefinitionSteps.java:283)
+✽.Then New Supply Booking page contains all necessary text:(src/test/resources/features/School flow/Bookings_School.feature:23)
+</system-err></testcase></testsuite>

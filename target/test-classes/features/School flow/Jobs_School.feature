@@ -5,8 +5,9 @@ Feature: School Jobs
     When click on the agree button at the banner
     When Click on the login button
 #    When Click on the sign in school button
-    When Click on the school "I am a school" button
-    When Enter login "qaautotestschool@yopmail.com"
+    When Click on the school "Login as a school" button
+#    When Enter login "qaautotestschool@yopmail.com"
+    When Enter login "newtestschool2@yopmail.com"
     When Enter password "Test123!"
     When Click on the Log in button
 
@@ -32,8 +33,8 @@ Feature: School Jobs
       | draft           |
       | JOB TITLE       |
       | STATUS          |
-      | view applicants |
-      | move to archive |
+#      | view applicants |
+#      | move to archive |
     When Click on the archived tab
     Then Archived tab is opened with all necessary elements:
       | Jobs            |
@@ -43,7 +44,7 @@ Feature: School Jobs
       | JOB TITLE       |
       | view applicants |
       | repost          |
-    When Click on the draft tab
+    When Click on the "draft" tab
     Then Draft tab is opened with all necessary elements:
       | Jobs          |
 #      | live          |

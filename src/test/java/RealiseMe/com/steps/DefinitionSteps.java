@@ -7,7 +7,6 @@ import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import net.thucydides.core.annotations.Steps;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class DefinitionSteps {
@@ -232,9 +231,11 @@ public class DefinitionSteps {
         steps.archivedTabIsOpenedWithAllNecessaryElements(list);
     }
 
-    @When("^Click on the draft tab$")
-    public void clickOnTheDraftTab() throws Throwable {
-      steps.clickOnTheDraftTab();
+
+
+    @When("^Click on the \"([^\"]*)\" tab$")
+    public void clickOnTheTab(String arg0) throws Throwable {
+        steps.clickOnTheTab(arg0);
     }
 
     @Then("^Draft tab is opened with all necessary elements:$")
@@ -244,7 +245,7 @@ public class DefinitionSteps {
 
     @When("^Click on the \"([^\"]*)\" button$")
     public void clickOnTheButton(String arg0) throws Throwable {
-        steps.clickOnThePostNewJobButton(arg0);
+        steps.clickOnTheButton(arg0);
     }
 
     @Then("Post a Job page contains all necessary elements:$")
@@ -271,6 +272,84 @@ public class DefinitionSteps {
     public void clickOnTheAgreeButtonAtTheBanner() throws Throwable {
        steps.clickOnTheAgreeButtonAtTheBanner();
     }
+
+    @Then("^Bookings page contains all necessary elements:$")
+    public void bookingsPageContainsAllNecessaryElements(List<String>list) throws Throwable {
+       steps.bookingsPageContainsAllNecessaryElements(list);
+    }
+
+    @Then("^New Supply Booking page contains all necessary text:$")
+    public void newSupplyBookingPageContainsAllNecessaryText(List<String>list) throws Throwable {
+        steps.newSupplyBookingPageContainsAllNecessaryText(list);
+    }
+
+    @Then("^The \"([^\"]*)\" field is highlighted red$")
+    public void theFieldIsHighlightedRed(String arg0) throws Throwable {
+       steps.theFieldIsHighlightedRed(arg0);
+    }
+
+    @When("^Enter text to the Name your job posting field$")
+    public void enterTextToTheNameYourJobPostingField() throws Throwable {
+        steps.enterTextToTheNameYourJobPostingField();
+    }
+
+    @When("^Enter text to the Describe the job field$")
+    public void enterTextToTheDescribeTheJobField() throws Throwable {
+        steps.enterTextToTheDescribeTheJobField();
+    }
+
+    @When("^Choose \"([^\"]*)\" checkbox$")
+    public void chooseCheckbox(String arg0) throws Throwable {
+       steps.chooseCheckbox(arg0);
+    }
+
+    @When("^Choose full day \"([^\"]*)\" in the \"([^\"]*)\" month of available calendar$")
+    public void chooseFullDayInTheMonthOfAvailableCalendar(String arg0, String arg1) throws Throwable {
+        steps.chooseFullDayInTheMonthOfAvailableCalendar(arg0,arg1);
+    }
+
+    @When("^Choose half day \"([^\"]*)\" in the \"([^\"]*)\" month of available calendar$")
+    public void chooseHalfDayInTheMonthOfAvailableCalendar(String arg0, String arg1) throws Throwable {
+        steps.chooseHalfDayInTheMonthOfAvailableCalendar(arg0,arg1);
+    }
+
+    @When("^Choose full day start time \"([^\"]*)\"$")
+    public void chooseFullDayStartTime(String arg0) throws Throwable {
+       steps.chooseFullDayStartTime(arg0);
+    }
+
+    @When("^Choose full day end time \"([^\"]*)\"$")
+    public void chooseFullDayEndTime(String arg0) throws Throwable {
+        steps.chooseFullDayEndTime(arg0);
+    }
+
+    @When("^Choose half day start time \"([^\"]*)\"$")
+    public void chooseHalfDayStartTime(String arg0) throws Throwable {
+        steps.chooseHalfDayStartTime(arg0);
+    }
+
+    @When("^Choose half day end time \"([^\"]*)\"$")
+    public void chooseHalfDayEndTime(String arg0) throws Throwable {
+        steps.chooseHalfDayEndTime(arg0);
+    }
+
+
+
+    @When("^Enter \"([^\"]*)\" rate$")
+    public void enterRate(String arg0) throws Throwable {
+        steps.enterRate(arg0);
+    }
+
+    @When("^Close popup$")
+    public void closePopup() throws Throwable {
+        steps.closePopup();
+    }
+
+    @When("^wait time$")
+    public void waitTime() throws Throwable {
+        steps.waitTime();
+    }
+
 
 //    @When("^Open report$")
 //    public void openReport() throws Throwable {
