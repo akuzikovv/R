@@ -5,7 +5,7 @@ Feature:  School Bookings
     When click on the agree button at the banner
     When Click on the login button
     When Click on the school "Login as a school" button
-    When Enter login "qaautotestschool@yopmail.com"
+    When Enter login "newtestschool2@yopmail.com"
     When Enter password "Test123!"
     When Click on the Log in button
 
@@ -69,8 +69,10 @@ Feature:  School Bookings
     When Choose "I want to invite top THREE candidates" checkbox
     When Click on the "Review Invitations" button
 #    When Check popup for UNCLEARED USERS
-    When Close popup
+#    When Close popup
     When Click on the "SEND" button
+#    When Choose "Agree to waiver and continue" checkbox
+#    When Click on the "ok" button
     When Click on the "View all invites" button
     When  wait time
 

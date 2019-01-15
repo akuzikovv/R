@@ -5,7 +5,7 @@ Feature:  School Bookings
     When click on the agree button at the banner
     When Click on the login button
     When Click on the school "Login as a school" button
-    When Enter login "qaautotestschool@yopmail.com"
+    When Enter login "newtestschool2@yopmail.com"
     When Enter password "Test123!"
     When Click on the Log in button
 
@@ -33,8 +33,8 @@ Feature:  School Bookings
     |Describe the job*              |
     |5000 characters left           |
     |Teacher type*                  |
-    |Teacher  1111111111111111111                      |
-    |TA                    11111111111111111111111111         |
+    |Teacher                        |
+    |TA                             |
     |Date(s) required*              |
     |Note: click on date to switch between full and half day. If the booking is less than half day, please contact us to proceed. |
     |Rate*                                                                                                                        |
@@ -69,8 +69,10 @@ Feature:  School Bookings
     When Choose "I want to invite top THREE candidates" checkbox
     When Click on the "Review Invitations" button
 #    When Check popup for UNCLEARED USERS
-    When Close popup
+#    When Close popup
     When Click on the "SEND" button
+#    When Choose "Agree to waiver and continue" checkbox
+#    When Click on the "ok" button
     When Click on the "View all invites" button
     When  wait time
 
