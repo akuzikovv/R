@@ -69,7 +69,7 @@ Feature:  School Bookings
     When Choose "I want to invite top THREE candidates" checkbox
     When Click on the "Review Invitations" button
 #    When Check popup for UNCLEARED USERS
-    When Close popup
+#    When Close popup
     When Click on the "SEND" button
 #    When Choose "Agree to waiver and continue" checkbox
 #    When Click on the "ok" button
