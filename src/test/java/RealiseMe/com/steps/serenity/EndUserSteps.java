@@ -195,7 +195,7 @@ public class EndUserSteps  extends ScenarioSteps {
 
     @Step
     public void openLandingPage() {
-        getDriver().manage().window().maximize();
+        getDriver().manage().window();
         landingPage.open();
 
     }
