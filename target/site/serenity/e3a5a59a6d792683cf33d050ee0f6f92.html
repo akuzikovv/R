@@ -1,10 +1,8 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/html">
-
-
 <head>
     <meta charset="UTF-8"/>
-    <title>Requirements</title>
+    <title>Capabilities</title>
     <link rel="shortcut icon" href="favicon.ico">
 
 <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
@@ -30,78 +28,28 @@
 <script type="text/javascript" src="jqplot/1.0.8/plugins/jqplot.pieRenderer.min.js"></script>
 
 
-
-
     <script class="code" type="text/javascript">$(document).ready(function () {
-        var plot1 = $.jqplot('coverage_pie_chart', [
-            [
-                ['Passing', 0],
-                ['Pending', 0],
-                ['Ignored', 0],
-                ['Failing', 0],
-                ['Errors',  1],
-                ['Compromised',  0],
-                ['Untested',  2],
-            ]
-        ], {
-            gridPadding: {top: 0, bottom: 38, left: 0, right: 0},
-            seriesColors: [
-                '#30cb23',
-                '#a2f2f2',
-                '#eeeadd',
-                '#f8001f',
-                '#fc6e1f',
-                'fuchsia',
-                'darkgrey'],
-            seriesDefaults: {
-                renderer: $.jqplot.PieRenderer,
-                trendline: {show: false},
-                rendererOptions: {padding: 8, showDataLabels: true}
-            },
-            legend: {
-                show: true,
-                placement: 'outside',
-                rendererOptions: {
-                    numberRows: 3
-                },
-                location: 's',
-                marginTop: '15px'
-            },
-            series: [
-                {label: '0 requirements tested successfully'},
-                {label: '0 requirements pending'},
-                {label: '0} requirements skipped'},
-                {label: '0} requirements with failures'},
-                {label: '1} requirements with errors'},
-                {label: '0} requirements compromised'},
-                {label: '2} requirements untested'},
-            ]
-        });
-        // Results table
-        $('#test-results-table').DataTable({
-            "order": [
-                [ 1, "asc" ]
-            ],
-            "pageLength": 100,
-            "lengthMenu": [ [50, 100, 200, -1] , [50, 100, 200, "All"] ]
-        });
 
         // Results table
         $('#req-results-table').DataTable({
             "order": [
-                [ 1, "asc" ]
-            ],
-            "pageLength": 100,
-            "lengthMenu": [ [50, 100, 200, -1] , [50, 100, 200, "All"] ]
-        });
-
-        $('#examples-table').DataTable({
-            "order": [
-                [2, "asc"]
+                [ 2, "asc" ]
             ],
             "pageLength": 25
         });
-        $("#requirements-tabs").tabs();
+        $('#test-results-table').DataTable({
+            "order": [
+                [ 2, "asc" ]
+            ],
+            "pageLength": 25
+        });
+        $('#examples-table').DataTable({
+            "order": [
+                [ 2, "asc" ]
+            ],
+            "pageLength": 25
+        });
+        $("#tabs").tabs();
         $("#test-tabs").tabs();
     })
     ;
@@ -138,157 +86,51 @@
 
 
 <div class="middlecontent">
-    <div id="contenttop">
-        <div class="middlebg">
-            <span class="breadcrumbs">
-            <a href='index.html'>Home</a> > <a href="capabilities.html">Requirements</a>
-            </span>
-        </div>
-        <div class="rightbg"></div>
+<div id="contenttop">
+    <div class="middlebg">
+        <span class="breadcrumbs"><a href="index.html">Home</a>
+            > Capabilities
+        </span>
     </div>
+    <div class="rightbg"></div>
+</div>
 
-    <div class="clr"></div>
+<div class="clr"></div>
 
-    <!--/* starts second table*/-->
-
+<!--/* starts second table*/-->
 <div>
     <ul class="nav nav-tabs" role="tablist">
         <li >
             <a href="index.html"><i class="fa fa-check-square-o"></i> Overall Test Results</a>
         </li>
-        <li class="active">
-            <a href="#"><i class="fa fa-book"></i> Requirements</a>
+        <li >
+            <a href="capabilities.html"><i class="fa fa-book"></i> Requirements</a>
         </li>
         <li >
             <a href="d782c44557441225cc92a5e35bf4b23b.html"><i class="fa fa-comments-o"></i> Features</a>
         </li>
-        <li >
-            <a href="e3a5a59a6d792683cf33d050ee0f6f92.html"><i class="fa fa-comments-o"></i> Capabilities</a>
+        <li class="active">
+            <a href="#"><i class="fa fa-comments-o"></i> Capabilities</a>
         </li>
     </ul>
-    <span class="date-and-time"><a href="build-info.html"><i class="fa fa-info-circle"></i></a> Report generated 21-01-2019 13:58</span>
+    <span class="date-and-time"><a href="build-info.html"><i class="fa fa-info-circle"></i></a> Report generated 21-01-2019 13:59</span>
     <br style="clear:left"/>
 </div>
 
-    <div class="clr"></div>
+<div class="clr"></div>
 
-    <div id="beforetable"></div>
-    <div id="results-dashboard">
-        <div class="middlb">
-            <div class="table">
+<div id="beforetable"></div>
+<div id="results-dashboard">
+<div class="middlb">
+<div class="table">
 
-                <div id="requirements-summary">
-                    <div id="coverage_pie_chart"
-                         style="margin-top:10px; margin-left:10px; width:250px; height:250px;"></div>
-                    <div id="coverage_summary">
-                        <div>
-                            <h4>Requirements Overview</h4>
-                            <table class="summary-table">
-                                <head>
-                                    <tr>
-                                        <th>Requirement Type</th>
-                                        <th>Total</th>
-                                        <th>Pass&nbsp;<i class="icon-check"></i></th>
-                                        <th>Fail&nbsp;<i class="icon-thumbs-down"></i></th>
-                                        <th>Pending&nbsp;<i class="icon-calendar"></i></th>
-                                        <th>Ignored&nbsp;<i class="icon-ban-circle"></i></th>
-                                            <th>Untested&nbsp;<i class="icon-question"></i></th>
-                                    </tr>
-                                </head>
-                                <body>
-                                    <tr>
-                                        <td class="summary-leading-column"><a href="#requirements-tabs">Features</a></td>
-                                        <td>7</td>
-                                        <td>0</td>
-                                        <td>0</td>
-                                        <td>0</td>
-                                        <td>0</td>
-                                            <td>6</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="summary-leading-column"><a href="e3a5a59a6d792683cf33d050ee0f6f92.html">Capabilities</a></td>
-                                        <td>3</td>
-                                        <td>0</td>
-                                        <td>0</td>
-                                        <td>0</td>
-                                        <td>0</td>
-                                            <td>2</td>
-                                    </tr>
-
-                                <tr>
-                                    <td class="summary-leading-column"><a href="#test-results-table">Acceptance Criteria (tests)</a></td>
-                                    <td>1</td>
-                                    <td>0</td>
-                                    <td>1</td>
-                                    <td>0</td>
-                                    <td>0</td>
-                                    <td></td>
-                                </tr>
-                                </body>
-                            </table>
-                        </div>
-
-
-
-
-
-<div>
-    <h4>Test Result Summary</h4>
-    <table class="summary-table">
-        <head>
-            <tr>
-                <th>Test Type</th>
-                <th>Total</th>
-                <th>Pass&nbsp;<i class="icon-check"/> </th>
-                <th>Fail&nbsp;<i class="icon-thumbs-down"/></th>
-                <th>Pending&nbsp;<i class="icon-calendar"/></th>
-                <th>Ignored&nbsp;<i class="icon-ban-circle"/></th>
-            </tr>
-        </head>
-        <body>
-        <tr>
-            <td class="summary-leading-column">Automated</td>
-            <td>1</td>
-            <td>0 (0%)</td>
-            <td>1 (100%)</td>
-            <td>0 (0%)</td>
-            <td>0 (0%)</td>
-        </tr>
-        <tr>
-            <td class="summary-leading-column">Manual</td>
-            <td>0</td>
-            <td>0 (0%)</td>
-            <td>0 (0%)</td>
-            <td>0 (0%)</td>
-            <td>0 (0%)</td>
-        </tr>
-        <tr>
-            <td class="summary-leading-column">Total</td>
-            <td>1</td>
-            <td>0 (0%)</td>
-            <td>1 (0%)</td>
-            <td>0 (0%)</td>
-            <td>0 (0%)</td>
-        </tr>
-        <tr>
-            <td class="summary-leading-column">Total Duration</td>
-                <td colspan="5">1 minutes 16 seconds</td>
-        </tr>
-        </body>
-    </table>
-</div>
-                    </div>
-                </div>
-                <div class="clr"></div>
-
-                <div id="requirements-tabs">
-                        <ul>
-                                <li><a href="#tabs-1">
-                                Features (5)
-                                </a></li>
-                        </ul>
-                        <div id="tabs-1" class="capabilities-table">
-                            <div id="tabs-1" class="capabilities-table">
+    <div id="tabs">
+            <ul>
+                    <li><a href="#tabs-1">
+                    Capabilities (3)
+                    </a></li>
+            </ul>
+            <div id="tabs-1" class="capabilities-table">
 
 
 <div id="req_list_tests" class="table">
@@ -298,7 +140,7 @@
             <tr>
                 <th width="30" class="test-results-heading">&nbsp;</th>
                 <th width="65" class="test-results-heading">ID</th>
-                <th width="525" class="test-results-heading">Feature</th>
+                <th width="525" class="test-results-heading">Capability</th>
                     <th width="65" class="test-results-heading">Features</th>
                 <th class="test-results-heading" width="75px">Automated<br/>Tests</th>
                     <th class="test-results-heading" width="75px">Manual<br/>Tests</th>
@@ -322,12 +164,12 @@
                         <a href="javaScript:void(0)" class="read-more-link">
                             <img src="images/plus.png" height="16"/></a>
                         <span class="requirementName"><a
-                                href="9c79d288b4dc0332cc913730b5a8cf0b.html">Authorization page</a></span>
+                                href="f4124304110da15e724a7dcf79b9b8d3.html">Unauthorised user flow</a></span>
 
-                        <div class="requirementNarrative read-more-text"></div>
+                        <div class="requirementNarrative read-more-text">Unauthorised user flow</div>
                     </td>
 
-                        <td class="bluetext requirementRowCell">0</td>
+                        <td class="bluetext requirementRowCell">1</td>
 
                     <td class="greentext highlighted-value requirementRowCell">0</td>
 <!--
@@ -439,286 +281,75 @@
         </td>
         <td width="125px">
             <div class="percentagebar"
-                 title="Authorization page:
+                 title="Unauthorised user flow:
   - Passing Features: 0 (0%
   - Features Failing: 0 (0%
   - Features Failing with errors: 0
   - Compromised Features: 0
   - Pending Features: 0
   - Ignored or skipped Features: 0
-  - Untested Features: 1 (0%"
+  - Untested Features: 1 (100%"
                  style="width: 125px;">
                 <div class="pendingbar"
-                     title="Authorization page:
+                     title="Unauthorised user flow:
   - Passing Features: 0 (0%
   - Features Failing: 0 (0%
   - Features Failing with errors: 0
   - Compromised Features: 0
   - Pending Features: 0
   - Ignored or skipped Features: 0
-  - Untested Features: 1 (0%"
+  - Untested Features: 1 (100%"
                      style="width: 0px;">
                     <div class="ignoredbar"
                          style="width: 0px;"
-                         title="Authorization page:
+                         title="Unauthorised user flow:
   - Passing Features: 0 (0%
   - Features Failing: 0 (0%
   - Features Failing with errors: 0
   - Compromised Features: 0
   - Pending Features: 0
   - Ignored or skipped Features: 0
-  - Untested Features: 1 (0%">
+  - Untested Features: 1 (100%">
                         <div class="compromisedbar"
                              style="width: 0px;"
-                             title="Authorization page:
+                             title="Unauthorised user flow:
   - Passing Features: 0 (0%
   - Features Failing: 0 (0%
   - Features Failing with errors: 0
   - Compromised Features: 0
   - Pending Features: 0
   - Ignored or skipped Features: 0
-  - Untested Features: 1 (0%">
+  - Untested Features: 1 (100%">
                             <div class="errorbar"
                                  style="width: 0px;"
-                                 title="Authorization page:
+                                 title="Unauthorised user flow:
   - Passing Features: 0 (0%
   - Features Failing: 0 (0%
   - Features Failing with errors: 0
   - Compromised Features: 0
   - Pending Features: 0
   - Ignored or skipped Features: 0
-  - Untested Features: 1 (0%">
+  - Untested Features: 1 (100%">
                                 <div class="failingbar"
                                      style="width: 0px;"
-                                     title="Authorization page:
+                                     title="Unauthorised user flow:
   - Passing Features: 0 (0%
   - Features Failing: 0 (0%
   - Features Failing with errors: 0
   - Compromised Features: 0
   - Pending Features: 0
   - Ignored or skipped Features: 0
-  - Untested Features: 1 (0%">
+  - Untested Features: 1 (100%">
                                     <div class="passingbar"
                                          style="width: 0px;"
-                                         title="Authorization page:
+                                         title="Unauthorised user flow:
   - Passing Features: 0 (0%
   - Features Failing: 0 (0%
   - Features Failing with errors: 0
   - Compromised Features: 0
   - Pending Features: 0
   - Ignored or skipped Features: 0
-  - Untested Features: 1 (0%">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </td>
-    </tr>
-</table>
-                    </td>
-                </tr>
-
-
-                <tr class="test-SUCCESS requirementRow">
-                    <td class="requirementRowCell">
-                        <span class="status_icon"><i class='fa fa-square-o pending-icon ' title='PENDING'></i></span>
-                        <span style="display:none">2</span>
-                    </td>
-                    <td class="cardNumber requirementRowCell"></td>
-
-                    <td class="SUCCESS-text requirementRowCell">
-                        <a href="javaScript:void(0)" class="read-more-link">
-                            <img src="images/plus.png" height="16"/></a>
-                        <span class="requirementName"><a
-                                href="6be1361f1e9e16e630e3b14d3f0a9589.html">Login page</a></span>
-
-                        <div class="requirementNarrative read-more-text"></div>
-                    </td>
-
-                        <td class="bluetext requirementRowCell">0</td>
-
-                    <td class="greentext highlighted-value requirementRowCell">0</td>
-<!--
-                    <td class="greentext requirementRowCell">0</td>
-                    <td class="bluetext requirementRowCell">0</td>
-                    <td class="redtext requirementRowCell">0</td>
-                    <td class="lightorangetext requirementRowCell">0</td>
-                    <td class="violettext requirementRowCell">0</td>
--->
-                        <td class="greentext highlighted-value requirementRowCell">0</td>
-<!--
-                        <td class="greentext requirementRowCell">0</td>
-                        <td class="bluetext requirementRowCell">0</td>
-                        <td class="redtext requirementRowCell">0</td>
-                        <td class="lightorangetext requirementRowCell">0</td>
-                        -->
-
-                    <td width="125px" class="lightgreentext requirementRowCell">
-
-
-<table>
-    <tr>
-        <td width="40px">
-            <div class="small">0%</div>
-        </td>
-        <td width="125px">
-            <div class="percentagebar"
-                 title="  - Total tests: 0
-  - Passing tests: 0 (0%)
-  - Failing tests: 0 (0%)
-  - Tests with errors: 0 (0%)
-  - Compromised tests 0 (0%)
-  - Pending tests: 0 (0%)
-  - Ignored or skipped tests: 0 (0%)"
-                 style="width: 125px;">
-                <div class="pendingbar"
-                     title="  - Total tests: 0
-  - Passing tests: 0 (0%)
-  - Failing tests: 0 (0%)
-  - Tests with errors: 0 (0%)
-  - Compromised tests 0 (0%)
-  - Pending tests: 0 (0%)
-  - Ignored or skipped tests: 0 (0%)"
-                     style="width: 0px;">
-                    <div class="ignoredbar"
-                         style="width: 0px;"
-                         title="  - Total tests: 0
-  - Passing tests: 0 (0%)
-  - Failing tests: 0 (0%)
-  - Tests with errors: 0 (0%)
-  - Compromised tests 0 (0%)
-  - Pending tests: 0 (0%)
-  - Ignored or skipped tests: 0 (0%)">
-                        <div class="compromisedbar"
-                             style="width: 0px;"
-                             title="  - Total tests: 0
-  - Passing tests: 0 (0%)
-  - Failing tests: 0 (0%)
-  - Tests with errors: 0 (0%)
-  - Compromised tests 0 (0%)
-  - Pending tests: 0 (0%)
-  - Ignored or skipped tests: 0 (0%)">
-                            <div class="errorbar"
-                                 style="width: 0px;"
-                                 title="  - Total tests: 0
-  - Passing tests: 0 (0%)
-  - Failing tests: 0 (0%)
-  - Tests with errors: 0 (0%)
-  - Compromised tests 0 (0%)
-  - Pending tests: 0 (0%)
-  - Ignored or skipped tests: 0 (0%)">
-                                <div class="failingbar"
-                                     style="width: 0px;"
-                                     title="  - Total tests: 0
-  - Passing tests: 0 (0%)
-  - Failing tests: 0 (0%)
-  - Tests with errors: 0 (0%)
-  - Compromised tests 0 (0%)
-  - Pending tests: 0 (0%)
-  - Ignored or skipped tests: 0 (0%)">
-                                    <div class="passingbar"
-                                         style="width: 0px;"
-                                         title="  - Total tests: 0
-  - Passing tests: 0 (0%)
-  - Failing tests: 0 (0%)
-  - Tests with errors: 0 (0%)
-  - Compromised tests 0 (0%)
-  - Pending tests: 0 (0%)
-  - Ignored or skipped tests: 0 (0%)">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </td>
-    </tr>
-</table>
-                    </td>
-
-                    <td width="125px" class="lightgreentext requirementRowCell">
-
-
-<table>
-    <tr>
-        <td width="40px">
-            <div class="small">0%</div>
-        </td>
-        <td width="125px">
-            <div class="percentagebar"
-                 title="Login page:
-  - Passing Features: 0 (0%
-  - Features Failing: 0 (0%
-  - Features Failing with errors: 0
-  - Compromised Features: 0
-  - Pending Features: 0
-  - Ignored or skipped Features: 0
-  - Untested Features: 1 (0%"
-                 style="width: 125px;">
-                <div class="pendingbar"
-                     title="Login page:
-  - Passing Features: 0 (0%
-  - Features Failing: 0 (0%
-  - Features Failing with errors: 0
-  - Compromised Features: 0
-  - Pending Features: 0
-  - Ignored or skipped Features: 0
-  - Untested Features: 1 (0%"
-                     style="width: 0px;">
-                    <div class="ignoredbar"
-                         style="width: 0px;"
-                         title="Login page:
-  - Passing Features: 0 (0%
-  - Features Failing: 0 (0%
-  - Features Failing with errors: 0
-  - Compromised Features: 0
-  - Pending Features: 0
-  - Ignored or skipped Features: 0
-  - Untested Features: 1 (0%">
-                        <div class="compromisedbar"
-                             style="width: 0px;"
-                             title="Login page:
-  - Passing Features: 0 (0%
-  - Features Failing: 0 (0%
-  - Features Failing with errors: 0
-  - Compromised Features: 0
-  - Pending Features: 0
-  - Ignored or skipped Features: 0
-  - Untested Features: 1 (0%">
-                            <div class="errorbar"
-                                 style="width: 0px;"
-                                 title="Login page:
-  - Passing Features: 0 (0%
-  - Features Failing: 0 (0%
-  - Features Failing with errors: 0
-  - Compromised Features: 0
-  - Pending Features: 0
-  - Ignored or skipped Features: 0
-  - Untested Features: 1 (0%">
-                                <div class="failingbar"
-                                     style="width: 0px;"
-                                     title="Login page:
-  - Passing Features: 0 (0%
-  - Features Failing: 0 (0%
-  - Features Failing with errors: 0
-  - Compromised Features: 0
-  - Pending Features: 0
-  - Ignored or skipped Features: 0
-  - Untested Features: 1 (0%">
-                                    <div class="passingbar"
-                                         style="width: 0px;"
-                                         title="Login page:
-  - Passing Features: 0 (0%
-  - Features Failing: 0 (0%
-  - Features Failing with errors: 0
-  - Compromised Features: 0
-  - Pending Features: 0
-  - Ignored or skipped Features: 0
-  - Untested Features: 1 (0%">
+  - Untested Features: 1 (100%">
                                     </div>
                                 </div>
                             </div>
@@ -1153,278 +784,22 @@
 </table>
                     </td>
                 </tr>
-
-
-                <tr class="test-SUCCESS requirementRow">
-                    <td class="requirementRowCell">
-                        <span class="status_icon"><i class='fa fa-square-o pending-icon ' title='PENDING'></i></span>
-                        <span style="display:none">2</span>
-                    </td>
-                    <td class="cardNumber requirementRowCell"></td>
-
-                    <td class="SUCCESS-text requirementRowCell">
-                        <a href="javaScript:void(0)" class="read-more-link">
-                            <img src="images/plus.png" height="16"/></a>
-                        <span class="requirementName"><a
-                                href="f4124304110da15e724a7dcf79b9b8d3.html">Unauthorised user flow</a></span>
-
-                        <div class="requirementNarrative read-more-text">Unauthorised user flow</div>
-                    </td>
-
-                        <td class="bluetext requirementRowCell">1</td>
-
-                    <td class="greentext highlighted-value requirementRowCell">0</td>
-<!--
-                    <td class="greentext requirementRowCell">0</td>
-                    <td class="bluetext requirementRowCell">0</td>
-                    <td class="redtext requirementRowCell">0</td>
-                    <td class="lightorangetext requirementRowCell">0</td>
-                    <td class="violettext requirementRowCell">0</td>
--->
-                        <td class="greentext highlighted-value requirementRowCell">0</td>
-<!--
-                        <td class="greentext requirementRowCell">0</td>
-                        <td class="bluetext requirementRowCell">0</td>
-                        <td class="redtext requirementRowCell">0</td>
-                        <td class="lightorangetext requirementRowCell">0</td>
-                        -->
-
-                    <td width="125px" class="lightgreentext requirementRowCell">
-
-
-<table>
-    <tr>
-        <td width="40px">
-            <div class="small">0%</div>
-        </td>
-        <td width="125px">
-            <div class="percentagebar"
-                 title="  - Total tests: 0
-  - Passing tests: 0 (0%)
-  - Failing tests: 0 (0%)
-  - Tests with errors: 0 (0%)
-  - Compromised tests 0 (0%)
-  - Pending tests: 0 (0%)
-  - Ignored or skipped tests: 0 (0%)"
-                 style="width: 125px;">
-                <div class="pendingbar"
-                     title="  - Total tests: 0
-  - Passing tests: 0 (0%)
-  - Failing tests: 0 (0%)
-  - Tests with errors: 0 (0%)
-  - Compromised tests 0 (0%)
-  - Pending tests: 0 (0%)
-  - Ignored or skipped tests: 0 (0%)"
-                     style="width: 0px;">
-                    <div class="ignoredbar"
-                         style="width: 0px;"
-                         title="  - Total tests: 0
-  - Passing tests: 0 (0%)
-  - Failing tests: 0 (0%)
-  - Tests with errors: 0 (0%)
-  - Compromised tests 0 (0%)
-  - Pending tests: 0 (0%)
-  - Ignored or skipped tests: 0 (0%)">
-                        <div class="compromisedbar"
-                             style="width: 0px;"
-                             title="  - Total tests: 0
-  - Passing tests: 0 (0%)
-  - Failing tests: 0 (0%)
-  - Tests with errors: 0 (0%)
-  - Compromised tests 0 (0%)
-  - Pending tests: 0 (0%)
-  - Ignored or skipped tests: 0 (0%)">
-                            <div class="errorbar"
-                                 style="width: 0px;"
-                                 title="  - Total tests: 0
-  - Passing tests: 0 (0%)
-  - Failing tests: 0 (0%)
-  - Tests with errors: 0 (0%)
-  - Compromised tests 0 (0%)
-  - Pending tests: 0 (0%)
-  - Ignored or skipped tests: 0 (0%)">
-                                <div class="failingbar"
-                                     style="width: 0px;"
-                                     title="  - Total tests: 0
-  - Passing tests: 0 (0%)
-  - Failing tests: 0 (0%)
-  - Tests with errors: 0 (0%)
-  - Compromised tests 0 (0%)
-  - Pending tests: 0 (0%)
-  - Ignored or skipped tests: 0 (0%)">
-                                    <div class="passingbar"
-                                         style="width: 0px;"
-                                         title="  - Total tests: 0
-  - Passing tests: 0 (0%)
-  - Failing tests: 0 (0%)
-  - Tests with errors: 0 (0%)
-  - Compromised tests 0 (0%)
-  - Pending tests: 0 (0%)
-  - Ignored or skipped tests: 0 (0%)">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </td>
-    </tr>
-</table>
-                    </td>
-
-                    <td width="125px" class="lightgreentext requirementRowCell">
-
-
-<table>
-    <tr>
-        <td width="40px">
-            <div class="small">0%</div>
-        </td>
-        <td width="125px">
-            <div class="percentagebar"
-                 title="Unauthorised user flow:
-  - Passing Features: 0 (0%
-  - Features Failing: 0 (0%
-  - Features Failing with errors: 0
-  - Compromised Features: 0
-  - Pending Features: 0
-  - Ignored or skipped Features: 0
-  - Untested Features: 1 (100%"
-                 style="width: 125px;">
-                <div class="pendingbar"
-                     title="Unauthorised user flow:
-  - Passing Features: 0 (0%
-  - Features Failing: 0 (0%
-  - Features Failing with errors: 0
-  - Compromised Features: 0
-  - Pending Features: 0
-  - Ignored or skipped Features: 0
-  - Untested Features: 1 (100%"
-                     style="width: 0px;">
-                    <div class="ignoredbar"
-                         style="width: 0px;"
-                         title="Unauthorised user flow:
-  - Passing Features: 0 (0%
-  - Features Failing: 0 (0%
-  - Features Failing with errors: 0
-  - Compromised Features: 0
-  - Pending Features: 0
-  - Ignored or skipped Features: 0
-  - Untested Features: 1 (100%">
-                        <div class="compromisedbar"
-                             style="width: 0px;"
-                             title="Unauthorised user flow:
-  - Passing Features: 0 (0%
-  - Features Failing: 0 (0%
-  - Features Failing with errors: 0
-  - Compromised Features: 0
-  - Pending Features: 0
-  - Ignored or skipped Features: 0
-  - Untested Features: 1 (100%">
-                            <div class="errorbar"
-                                 style="width: 0px;"
-                                 title="Unauthorised user flow:
-  - Passing Features: 0 (0%
-  - Features Failing: 0 (0%
-  - Features Failing with errors: 0
-  - Compromised Features: 0
-  - Pending Features: 0
-  - Ignored or skipped Features: 0
-  - Untested Features: 1 (100%">
-                                <div class="failingbar"
-                                     style="width: 0px;"
-                                     title="Unauthorised user flow:
-  - Passing Features: 0 (0%
-  - Features Failing: 0 (0%
-  - Features Failing with errors: 0
-  - Compromised Features: 0
-  - Pending Features: 0
-  - Ignored or skipped Features: 0
-  - Untested Features: 1 (100%">
-                                    <div class="passingbar"
-                                         style="width: 0px;"
-                                         title="Unauthorised user flow:
-  - Passing Features: 0 (0%
-  - Features Failing: 0 (0%
-  - Features Failing with errors: 0
-  - Compromised Features: 0
-  - Pending Features: 0
-  - Ignored or skipped Features: 0
-  - Untested Features: 1 (100%">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </td>
-    </tr>
-</table>
-                    </td>
-                </tr>
             </tbody>
         </table>
     </div>
 </div>
 
-                            </div>
-                        </div>
-<table>
-    <tr>
-        <td>
-            <div><h3>Acceptance Criteria</h3></div>
-            <div id="test_list_tests" class="table">
-                <div class="test-results">
-                    <table id="test-results-table">
-                        <thead>
-                        <tr>
-                            <th width="50" class="test-results-heading">&nbsp;</th>
-                            <th width="%" class="test-results-heading">Tests</th>
-                            <th width="70" class="test-results-heading">Steps</th>
-
-                            <th width="100" class="test-results-heading">Duration<br>(seconds)</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-
-                            <tr class="test-ERROR">
-                                <td><span class="summary-icon"><i class='fa fa-exclamation-triangle error-icon ' title='ERROR'></i></span>
-                                    
-                                    <span style="display:none">ERROR</span></td>
-                                <td class="ERROR-text">
-                                    <div class="ellipsis">
-
-                                        <a href="bed04eeca0a300559d38228658c09bae.html" class="ellipsis" title="No such element exception: no such el...">
-                                            Create Booking With Required Fields
-                                                <span class="related-issue-title"></span>
-                                        </a>
-                                    </div>
-                                </td>
-
-                                <td class="lightgreentext">57</td>
-
-
-                                <td class="lightgreentext">76.34</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
             </div>
-        </td>
-    </tr>
-</table>
-</div>
-                </div>
-            </div>
-        </div>
     </div>
 </div>
 </div>
 </div>
-<div id="bottomfooter">
-    <span class="version">Serenity BDD version 1.2.2</span>
 </div>
+<div id="beforefooter"></div>
+<div id="bottomfooter">
+<span class="version">Serenity BDD version 1.2.2</span>
+</div>
+
+
 </body>
 </html>

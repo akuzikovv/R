@@ -1,8 +1,8 @@
 -------------------------------------------------------------------------------
 Test set: RealiseMe.com.DefinitionTestSuite
 -------------------------------------------------------------------------------
-Tests run: 31, Failures: 0, Errors: 2, Skipped: 3, Time elapsed: 78.22 s <<< FAILURE! - in RealiseMe.com.DefinitionTestSuite
-When Close popup(Scenario: Create booking with required fields)  Time elapsed: 0.005 s  <<< ERROR!
+Tests run: 31, Failures: 0, Errors: 2, Skipped: 3, Time elapsed: 77.762 sec <<< FAILURE! - in RealiseMe.com.DefinitionTestSuite
+When Close popup(Scenario: Create booking with required fields)  Time elapsed: 0.004 sec  <<< ERROR!
 net.serenitybdd.core.exceptions.SerenityManagedException: 
 no such element: Unable to locate element: {"method":"xpath","selector":"//div[contains(@class,'g--active dialog')]//div[@class='close']"}
   (Session info: chrome=71.0.3578.98)
@@ -12,11 +12,11 @@ For documentation on this error, please visit: http://seleniumhq.org/exceptions/
 Build info: version: '2.53.1', revision: 'a36b8b1cd5757287168e54b817830adce9b0158d', time: '2016-06-30 19:26:09'
 System info: host: 'SB-87', ip: '127.0.1.1', os.name: 'Linux', os.arch: 'amd64', os.version: '4.4.0-141-generic', java.version: '1.8.0_102'
 Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities [{applicationCacheEnabled=false, rotatable=false, mobileEmulationEnabled=false, networkConnectionEnabled=false, chrome={chromedriverVersion=2.38.552522 (437e6fbedfa8762dec75e2c5b3ddb86763dc9dcb), userDataDir=/tmp/.org.chromium.Chromium.KBtqzo}, takesHeapSnapshot=true, pageLoadStrategy=normal, databaseEnabled=false, handlesAlerts=true, hasTouchScreen=false, version=71.0.3578.98, platform=LINUX, browserConnectionEnabled=false, nativeEvents=true, acceptSslCerts=false, acceptInsecureCerts=false, locationContextEnabled=true, webStorageEnabled=true, browserName=chrome, takesScreenshot=true, javascriptEnabled=true, cssSelectorsEnabled=true, setWindowRect=true, unexpectedAlertBehaviour=}]
-Session ID: ae096cbf2895091fff82786c42320646
+Capabilities [{applicationCacheEnabled=false, rotatable=false, mobileEmulationEnabled=false, networkConnectionEnabled=false, chrome={chromedriverVersion=2.38.552522 (437e6fbedfa8762dec75e2c5b3ddb86763dc9dcb), userDataDir=/tmp/.org.chromium.Chromium.z8gUFT}, takesHeapSnapshot=true, pageLoadStrategy=normal, databaseEnabled=false, handlesAlerts=true, hasTouchScreen=false, version=71.0.3578.98, platform=LINUX, browserConnectionEnabled=false, nativeEvents=true, acceptSslCerts=false, acceptInsecureCerts=false, locationContextEnabled=true, webStorageEnabled=true, browserName=chrome, takesScreenshot=true, javascriptEnabled=true, cssSelectorsEnabled=true, setWindowRect=true, unexpectedAlertBehaviour=}]
+Session ID: f19e2dd6662a08b39830376939e17348
 *** Element info: {Using=xpath, value=//div[contains(@class,'g--active dialog')]//div[@class='close']}
 
-Scenario: Create booking with required fields  Time elapsed: 0.006 s  <<< ERROR!
+Scenario: Create booking with required fields  Time elapsed: 0.005 sec  <<< ERROR!
 net.serenitybdd.core.exceptions.SerenityManagedException: 
 no such element: Unable to locate element: {"method":"xpath","selector":"//div[contains(@class,'g--active dialog')]//div[@class='close']"}
   (Session info: chrome=71.0.3578.98)
@@ -26,7 +26,7 @@ For documentation on this error, please visit: http://seleniumhq.org/exceptions/
 Build info: version: '2.53.1', revision: 'a36b8b1cd5757287168e54b817830adce9b0158d', time: '2016-06-30 19:26:09'
 System info: host: 'SB-87', ip: '127.0.1.1', os.name: 'Linux', os.arch: 'amd64', os.version: '4.4.0-141-generic', java.version: '1.8.0_102'
 Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities [{applicationCacheEnabled=false, rotatable=false, mobileEmulationEnabled=false, networkConnectionEnabled=false, chrome={chromedriverVersion=2.38.552522 (437e6fbedfa8762dec75e2c5b3ddb86763dc9dcb), userDataDir=/tmp/.org.chromium.Chromium.KBtqzo}, takesHeapSnapshot=true, pageLoadStrategy=normal, databaseEnabled=false, handlesAlerts=true, hasTouchScreen=false, version=71.0.3578.98, platform=LINUX, browserConnectionEnabled=false, nativeEvents=true, acceptSslCerts=false, acceptInsecureCerts=false, locationContextEnabled=true, webStorageEnabled=true, browserName=chrome, takesScreenshot=true, javascriptEnabled=true, cssSelectorsEnabled=true, setWindowRect=true, unexpectedAlertBehaviour=}]
-Session ID: ae096cbf2895091fff82786c42320646
+Capabilities [{applicationCacheEnabled=false, rotatable=false, mobileEmulationEnabled=false, networkConnectionEnabled=false, chrome={chromedriverVersion=2.38.552522 (437e6fbedfa8762dec75e2c5b3ddb86763dc9dcb), userDataDir=/tmp/.org.chromium.Chromium.z8gUFT}, takesHeapSnapshot=true, pageLoadStrategy=normal, databaseEnabled=false, handlesAlerts=true, hasTouchScreen=false, version=71.0.3578.98, platform=LINUX, browserConnectionEnabled=false, nativeEvents=true, acceptSslCerts=false, acceptInsecureCerts=false, locationContextEnabled=true, webStorageEnabled=true, browserName=chrome, takesScreenshot=true, javascriptEnabled=true, cssSelectorsEnabled=true, setWindowRect=true, unexpectedAlertBehaviour=}]
+Session ID: f19e2dd6662a08b39830376939e17348
 *** Element info: {Using=xpath, value=//div[contains(@class,'g--active dialog')]//div[@class='close']}
 
