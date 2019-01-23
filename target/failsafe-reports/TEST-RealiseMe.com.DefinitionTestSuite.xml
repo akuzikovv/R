@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="RealiseMe.com.DefinitionTestSuite" time="88.778" tests="32" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="RealiseMe.com.DefinitionTestSuite" time="99.661" tests="32" errors="0" skipped="0" failures="0">
   <properties>
     <property name="idea.version" value="2017.2"/>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
@@ -61,12 +61,12 @@
     <property name="sun.cpu.isalist" value=""/>
   </properties>
   <testcase name="Given open landing page" classname="Scenario: Create booking with required fields" time="0.001"/>
-  <testcase name="When click on the agree button at the banner" classname="Scenario: Create booking with required fields" time="0.001"/>
+  <testcase name="When click on the agree button at the banner" classname="Scenario: Create booking with required fields" time="0.002"/>
   <testcase name="When Click on the login button" classname="Scenario: Create booking with required fields" time="0"/>
   <testcase name="When Click on the school &quot;Login as a school&quot; button" classname="Scenario: Create booking with required fields" time="0"/>
   <testcase name="When Enter login &quot;newtestschool2@yopmail.com&quot;" classname="Scenario: Create booking with required fields" time="0"/>
   <testcase name="When Enter password &quot;Test123!&quot;" classname="Scenario: Create booking with required fields" time="0"/>
-  <testcase name="When Click on the Log in button" classname="Scenario: Create booking with required fields" time="0"/>
+  <testcase name="When Click on the Log in button" classname="Scenario: Create booking with required fields" time="0.001"/>
   <testcase name="When Click on the &quot;bookings&quot; button in the header" classname="Scenario: Create booking with required fields" time="0"/>
   <testcase name="When Click on the &quot;New Supply Booking&quot; button" classname="Scenario: Create booking with required fields" time="0"/>
   <testcase name="Then New Supply Booking page contains all necessary text:" classname="Scenario: Create booking with required fields" time="0"/>
@@ -79,11 +79,11 @@
   <testcase name="When Choose &quot;TA&quot; checkbox" classname="Scenario: Create booking with required fields" time="0"/>
   <testcase name="When Choose &quot;I want to save this search for future use&quot; checkbox" classname="Scenario: Create booking with required fields" time="0"/>
   <testcase name="When Choose full day &quot;23&quot; in the &quot;2&quot; month of available calendar" classname="Scenario: Create booking with required fields" time="0"/>
-  <testcase name="When Choose half day &quot;15&quot; in the &quot;2&quot; month of available calendar" classname="Scenario: Create booking with required fields" time="0.002"/>
+  <testcase name="When Choose half day &quot;15&quot; in the &quot;2&quot; month of available calendar" classname="Scenario: Create booking with required fields" time="0"/>
   <testcase name="When Choose full day start time &quot;8:00&quot;" classname="Scenario: Create booking with required fields" time="0"/>
   <testcase name="When Choose full day end time &quot;17:00&quot;" classname="Scenario: Create booking with required fields" time="0"/>
   <testcase name="When Choose half day start time &quot;11:00&quot;" classname="Scenario: Create booking with required fields" time="0"/>
-  <testcase name="When Choose half day end time &quot;15:00&quot;" classname="Scenario: Create booking with required fields" time="0"/>
+  <testcase name="When Choose half day end time &quot;15:00&quot;" classname="Scenario: Create booking with required fields" time="0.001"/>
   <testcase name="When Enter &quot;200&quot; rate" classname="Scenario: Create booking with required fields" time="0"/>
   <testcase name="When Choose &quot;I want to invite top THREE candidates&quot; checkbox" classname="Scenario: Create booking with required fields" time="0"/>
   <testcase name="When Click on the &quot;Review Invitations&quot; button" classname="Scenario: Create booking with required fields" time="0"/>
@@ -91,5 +91,5 @@
   <testcase name="When Click on the &quot;SEND&quot; button" classname="Scenario: Create booking with required fields" time="0"/>
   <testcase name="When Click on the &quot;View all invites&quot; button" classname="Scenario: Create booking with required fields" time="0"/>
   <testcase name="When wait time" classname="Scenario: Create booking with required fields" time="0"/>
-  <testcase name="Scenario: Create booking with required fields" classname="Scenario: Create booking with required fields" time="0.938"/>
+  <testcase name="Scenario: Create booking with required fields" classname="Scenario: Create booking with required fields" time="1.049"/>
 </testsuite>
