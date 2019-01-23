@@ -68,7 +68,7 @@ Feature:  School Bookings
     When Click on the "SHOW RESULTS" button
 #    Then The SEARCH RESULTS page contains all necessary elements
     When Choose "I want to invite top THREE candidates" checkbox
-#    When Click on the "Review Invitations" button
+    When Click on the "Review Invitations" button
 #    When Check popup for UNCLEARED USERS
     When Close popup
     When Click on the "SEND" button
