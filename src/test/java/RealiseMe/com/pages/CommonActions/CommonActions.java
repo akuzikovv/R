@@ -5,7 +5,10 @@ import net.serenitybdd.core.pages.PageObject;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
+import java.util.ArrayList;
+
 public class CommonActions extends PageObject {
+    public ArrayList<String> names;
 
     public void clickOnTheButton(String arg0) {
         WebElement xpath = getDriver().findElement(By.xpath("//a[contains(.,'" + arg0 + "')]"));
@@ -39,5 +42,32 @@ public class CommonActions extends PageObject {
 
     public void closePopup() {
         $(ILocators.CLose_popup).click();
+    }
+
+    public void getNamesOfTeachers() {
+        names = new ArrayList<>();
+        for (int i = 1; i < 4; i++) {
+            names.add(getDriver().findElement(By.xpath("(//p[@class='name'])[" + i + "]")).getText());
+        }
+    }
+
+    public ArrayList<String> appropriateTeachersAreDisplayedInTheInvitesList() {
+        ArrayList<String> results = new ArrayList<>();
+        results.add(0, "true");
+        for (int i = 0; i < 3; i++) {
+            for (int y = 1; y < 11; y++) {
+                if (names.get(i).equals(getDriver().findElement(By.xpath("(//p[@class='name'])[" + y + "]")).getText())) {
+                    results.set(0, "true");
+                    break;
+                } else {
+                    results.set(0, "false");
+                }
+                if ((y == 10) & (!names.get(i).equals(getDriver().findElement(By.xpath("(//p[@class='name'])[" + y + "]")).getText()))) {
+                    getDriver().findElement(By.xpath("//span[contains(text(),'Next')]")).click();
+                    y = 1;
+                }
+            }
+        }
+        return results;
     }
 }

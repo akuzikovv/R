@@ -399,6 +399,16 @@ public class EndUserSteps  extends ScenarioSteps {
     public void waitTime() {
         waitABit(7000);
     }
+    @Step
+    public void getNamesOfTeachers() {
+        commonActions.getNamesOfTeachers();
+    }
+
+    @Step
+    public void appropriateTeachersAreDisplayedInTheInvitesList() {
+        ArrayList<String> results = commonActions.appropriateTeachersAreDisplayedInTheInvitesList();
+        Assert.assertTrue("Teacher aren't invited" + results, "true".equals(results.get(0)));
+    }
 
 //    @Step
 //    public void openReport() {

@@ -350,6 +350,16 @@ public class DefinitionSteps {
         steps.waitTime();
     }
 
+    @When("^Get names of teachers$")
+    public void getNamesOfTeachers() throws Throwable {
+        steps.getNamesOfTeachers();
+    }
+
+    @Then("^Appropriate teachers are displayed in the invites list$")
+    public void appropriateTeachersAreDisplayedInTheInvitesList() throws Throwable {
+        steps.appropriateTeachersAreDisplayedInTheInvitesList();
+    }
+
 
 //    @When("^Open report$")
 //    public void openReport() throws Throwable {
