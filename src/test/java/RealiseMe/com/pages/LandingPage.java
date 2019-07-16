@@ -7,7 +7,7 @@ import net.thucydides.core.annotations.DefaultUrl;
 import java.util.ArrayList;
 import java.util.List;
 
-@DefaultUrl("http://qa.realiseme.com.s3-website-us-east-1.amazonaws.com")
+@DefaultUrl("http://uat.realiseme.com.s3-website-us-east-1.amazonaws.com")
 public class LandingPage extends PageObject {
 
     public void enterToTheSearchField(String arg0) {

@@ -4,11 +4,13 @@ import RealiseMe.com.ILocators;
 import net.serenitybdd.core.pages.PageObject;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import RealiseMe.com.pages.CommonActions.CommonActions;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class SchoolBookingsPage extends PageObject {
+    CommonActions commonActions;
 
     public ArrayList<String> newSupplyBookingPageContainsAllNecessaryText(List<String> list) {
         ArrayList<String> labels = new ArrayList<>();
@@ -58,12 +60,12 @@ public class SchoolBookingsPage extends PageObject {
         return results;
     }
 
-    public void enterTextToTheNameYourJobPostingField() {
-        $(ILocators.Name_your_job_posting_input).type("Autotest Booking");
+    public void enterTextToTheNameYourJobPostingField(String arg0) {
+        $(ILocators.Name_your_job_posting_input).type(arg0);
     }
 
-    public void enterTextToTheDescribeTheJobField() {
-        $(ILocators.Describethe_job_input).sendKeys("Lorem ipsum dolor sit amet, consectetuer adipiscing elit. ");
+    public void enterTextToTheDescribeTheJobField(String arg0) {
+        $(ILocators.Describethe_job_input).sendKeys(arg0+ "\n"+"Lorem ipsum dolor sit amet, consectetuer adipiscing elit. ");
     }
 
     public void chooseFullDayInTheMonthOfAvailableCalendar(String arg0, String arg1) {
@@ -103,6 +105,50 @@ public class SchoolBookingsPage extends PageObject {
 
     public void enterRate(String arg0) {
         $(ILocators.Rate_input).type(arg0);
+    }
+
+    public ArrayList<String> checkUnclearedPopup(String arg0) {
+        ArrayList<String> results = new ArrayList<>();
+        results.add(0, "true");
+        if ($(ILocators.Uncleared_status).isPresent() & !getDriver().findElement(By.xpath("//div[contains(text(),'You have selected a teacher that has not yet completed clearance.')]")).getText().equals(arg0) ) {
+            results.set(0, "false");
+            results.add("Text in the uncleared popup is absent or wrong" + "\n");
+        } else {
+
+        }
+        return results;
+    }
+
+    public void clickOnTheButtonAtTheTeacherWithStatus(String arg0) {
+      for (int i = 1 ; i <11 ;i++){
+          if (getDriver().findElement(By.xpath("(//div[@class='table-status']//span)[" + i + "]")).getText().equals(arg0)){
+              getDriver().findElement(By.xpath("(//div[@class='invite-to-job'])[" + i + "]")).click();
+              break;
+          }
+          if ((i==10) & !getDriver().findElement(By.xpath("(//div[@class='table-status']//span)[" + i + "]")).getText().equals(arg0)) {
+              getDriver().findElement(By.xpath("//span[contains(text(),'Next')]")).click();
+          i=0;
+          }
+      }
+    }
+
+    public ArrayList<String> checkPengingPopup(String arg0) {
+        ArrayList<String> results = new ArrayList<>();
+        results.add(0, "true");
+        if ($(ILocators.Pending_status).isPresent() & !getDriver().findElement(By.xpath("//div[contains(text(),'You have selected a teacher whose DBS clearance is')]")).getText().equals(arg0) ) {
+            results.set(0, "false");
+            results.add("Text in the uncleared popup is absent or wrong" + "\n");
+        } else {
+
+        }
+        return results;
+    }
+
+    public boolean theOKButtonIsnTClickable() {
+        if ($(ILocators.Disabled_OK).isPresent()){
+            return true;
+        }
+        else return false;
     }
 }
 

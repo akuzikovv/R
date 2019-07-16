@@ -3,9 +3,9 @@ Feature: Landing page
   Scenario: Unauthorised user job search and save
     Given open landing page
     Then  Landing page header contains textbuttons:
-      | blog      |
-      | forum |
-      | login  |
+      | blog         |
+      | forum        |
+      | login        |
       | sign up      |
     When Enter "Head of Herbology" to the search field
     When Click search button
@@ -29,17 +29,17 @@ Feature: Landing page
     Then The "Head of Herbology" is displayed in the search result
     When Click on the job title
     Then The job preview page is opened with necessary elements
-    |Preview|
-    |Head of Herbology|
-    |Posted:|
-    |Apply by: |
-    |School   |
-    |Job Description|
-    |APPLY           |
-    |Contract Type      |
-    |Contract Term      |
-    |Salary            |
-    |School Profile     |
+    |Preview             |
+    |Head of Herbology   |
+    |Posted:             |
+    |Apply by:           |
+    |School              |
+    |Job Description     |
+    |APPLY               |
+    |Contract Type       |
+    |Contract Term       |
+    |Salary              |
+    |School Profile      |
     | Skills & Essentials|
     | Documents          |
     |Video prescreening  |

@@ -11,7 +11,7 @@ import org.junit.runner.RunWith;
 //        "src/test/resources/features/LoginPage.feature",
 //        "src/test/resources/features/AuthorizationPage.feature",
 //        "src/test/resources/features/Teacher (general) flow/TeacherSupplyHome.feature",
-//        "src/test/resources/features/Teacher (general) flow/TeacherOtherHome.feature",
+//        "src/test/resources/features/Teacher (general) flow/TeacherOtherFlow.feature",
 //        "src/test/resources/features/School flow/School.feature",
 
 })

@@ -288,14 +288,14 @@ public class DefinitionSteps {
        steps.theFieldIsHighlightedRed(arg0);
     }
 
-    @When("^Enter text to the Name your job posting field$")
-    public void enterTextToTheNameYourJobPostingField() throws Throwable {
-        steps.enterTextToTheNameYourJobPostingField();
+    @When("^Enter \"([^\"]*)\" to the Name your job posting field$")
+    public void enterTextToTheNameYourJobPostingField(String arg0) throws Throwable {
+        steps.enterTextToTheNameYourJobPostingField(arg0);
     }
 
-    @When("^Enter text to the Describe the job field$")
-    public void enterTextToTheDescribeTheJobField() throws Throwable {
-        steps.enterTextToTheDescribeTheJobField();
+    @When("^Enter \"([^\"]*)\" to the Describe the job field$")
+    public void enterTextToTheDescribeTheJobField(String arg0) throws Throwable {
+        steps.enterTextToTheDescribeTheJobField(arg0);
     }
 
     @When("^Choose \"([^\"]*)\" checkbox$")
@@ -358,6 +358,32 @@ public class DefinitionSteps {
     @Then("^Appropriate teachers are displayed in the invites list$")
     public void appropriateTeachersAreDisplayedInTheInvitesList() throws Throwable {
         steps.appropriateTeachersAreDisplayedInTheInvitesList();
+    }
+
+    @When("^Check uncleared popup \"([^\"]*)\"$")
+    public void checkUnclearedPopup(String arg0) throws Throwable {
+       steps.checkUnclearedPopup(arg0);
+    }
+
+    @When("^Get statuses of teachers$")
+    public void getStatusesOfTeachers() throws Throwable {
+        steps.getStatusesOfTeachers();
+
+    }
+
+    @When("^Click on the Invite to job button at the teacher with \"([^\"]*)\" status$")
+    public void clickOnTheButtonAtTheTeacherWithStatus(String arg0) throws Throwable {
+        steps.clickOnTheButtonAtTheTeacherWithStatus(arg0);
+    }
+
+    @Then("^Check penging popup \"([^\"]*)\"$")
+    public void checkPengingPopup(String arg0) throws Throwable {
+        steps.checkPengingPopup(arg0);
+    }
+
+    @Then("^The OK button isn't clickable$")
+    public void theOKButtonIsnTClickable() throws Throwable {
+        steps.theOKButtonIsnTClickable();
     }
 
 

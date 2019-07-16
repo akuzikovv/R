@@ -2,6 +2,8 @@ package RealiseMe.com.pages.Teacher;
 
 import RealiseMe.com.ILocators;
 import net.serenitybdd.core.pages.PageObject;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,32 +14,29 @@ public class OtherTeacherHomePage extends PageObject {
         ArrayList<String> labels = new ArrayList<>();
         ArrayList<String> results = new ArrayList<>();
         results.add(0, "true");
-        if (!$(ILocators.left_panel).isPresent()
-                || !$(ILocators.second_row).isPresent()
-                || !$(ILocators.third_row).isPresent()
-                || !$(ILocators.fourth_row).isPresent()
-                || !$(ILocators.number_of_visitors).isPresent()
-                ) {
-            results.set(0, "false");
-            results.add("Left column is wrong" + "\n");
-        } else {
-            labels.add($(ILocators.first_row).getCssValue("background-color"));
-            labels.add($(ILocators.add_photo).getText());
-            labels.add($(ILocators.second_row_title).getText());
-            labels.add($(ILocators.second_row_link1).getText());
-            labels.add($(ILocators.third_row_link).getText());
-            labels.add($(ILocators.fourth_row_title).getText());
-            labels.add($(ILocators.fourth_row_1).getText());
-            labels.add($(ILocators.fourth_row_2).getText());
-            labels.add($(ILocators.fourth_row_3).getText());
-            labels.add($(ILocators.fourth_row_4).getText());
-            for (int i = 0; i < list.size(); i++) {
-                if (!list.get(i).equals(labels.get(i))) {
-                    results.set(0, "false");
-                    results.add("Expected: " + list.get(i) + "; but found: " + labels.get(i) + "\n");
-                }
+//        if (!$(ILocators.left_panel).isPresent()
+//                || !$(ILocators.second_row).isPresent()
+//                || !$(ILocators.third_row).isPresent()
+//                || !$(ILocators.fourth_row).isPresent()
+////                || !$(ILocators.number_of_visitors).isPresent()
+//                ) {
+//            results.set(0, "false");
+//            results.add("Left column is wrong" + "\n");
+//        } else {
+//        labels.add($(ILocators.first_row).getCssValue("background-color"));
+        labels.add($(ILocators.add_photo).getText());
+        labels.add(getDriver().findElement(By.xpath("//h3[contains(.,'" + list.get(1) + "')]")).getText());
+        labels.add(getDriver().findElement(By.xpath("//a[contains(text(),'" + list.get(2) + "')]")).getText());
+        labels.add(getDriver().findElement(By.xpath("//a[contains(text(),'" + list.get(3) + "')]")).getText());
+        labels.add(getDriver().findElement(By.xpath("(//a[contains(text(),'" + list.get(4) + "')])[2]")).getText());
+        labels.add(getDriver().findElement(By.xpath("(//a[contains(text(),'" + list.get(5) + "')])[2]")).getText());
+        for (int i = 0; i < list.size(); i++) {
+            if (!list.get(i).equals(labels.get(i))) {
+                results.set(0, "false");
+                results.add("Expected: " + list.get(i) + "; but found: " + labels.get(i) + "\n");
             }
         }
+//        }
         return results;
     }
 

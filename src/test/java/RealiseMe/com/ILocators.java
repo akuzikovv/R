@@ -7,7 +7,7 @@ public interface ILocators {
 ///////////////////////////  HEADER ///////////////////////////
     String header = "//div[@class='Header']";
     String jobs = "//span[.='jobs']";
-    String home = "//span[.='home']";
+    String dashboard = "//span[.='dashboard']";
     String blog = "//span[.='blog']";
     String forum = "//span[.='forum']";
     String login = "//span[contains(.,'login')]";
@@ -74,7 +74,10 @@ public interface ILocators {
     String SHOW_RESULTS = "//a[contains(.,'SHOW RESULTS')]";
     String Please_fill_in_all_required_fields_to_continue = "//span[contains(.,'Please fill in all required fields to continue')]";
     String CLose_popup = "//div[contains(@class,'g--active dialog')]//div[@class='close']";
-
+    String Uncleared_status = "//span[@class='uncleared']";
+    String Pending_status = "//span[@class='pending']";
+    String Uncleared_popup = "//div[@class='title-body']";
+    String Disabled_OK = "//button[@class='action-btn confirm-btn btn-disabled']";
 
 
 
@@ -83,22 +86,22 @@ public interface ILocators {
 
 
     String Jobs = "//h3[@class='booking-title']";
-    String live = "//a[@class='tabs__item--active tabs__item']";
-    String live_qty = "//a[@class='tabs__item--active tabs__item']//span";
-    String archived_qty = "//a[@class='tabs__item--active tabs__item']//span";
-    String draft_qty = "//a[@class='tabs__item--active tabs__item']//span";
-    String archived = "(//a[@class='tabs__item'])[1]";
-    String draft = "//a[@href='/school/job/draft']";
+    String live = "//a[contains(text(),'live')]";
+    String live_qty = "//a[contains(text(),'live')]//span";
+    String archived_qty = "//a[contains(text(),'archived')]//span";
+    String draft_qty = "//a[contains(text(),'draft')]//span";
+    String archived = "//a[contains(text(),'archived')]";
+    String draft = "//a[contains(text(),'draft')]";
     String JOB_TITLE = "(//p[@class='name'])[1]";
     String JOB_STATUS = "(//p[@class='status'])[1]";
-    String view_applicants1 = "(//p[@class='view'])[2]";
+    String view_applicants1 = "//a[contains(text(),'view applicants')]";
     String move_to_archive = "(//p[@class='archive'])[2]";
     String repost = "//a[@class='repost']";
     String CREATED = "(//p[@class='created'])[1]";
-    String edit_and_post = "(//a[@href='#/school/post-new-job'])[2]";
+    String edit_and_post = "//a[contains(text(),'edit and post')]";
     String Archived_on = "(//p)[4]";
     String Posted_on = "(//p[@class='name'])[2]";
-    String Last_saved_on = "(//p[@class='name'])[2]";
+    String Last_saved_on = "//p[contains(text(),'Last saved on')]";
     String POST_A_NEW_JOB = "//a[@href='#/school/post-new-job']";
 
     /////////////// SCHOOL POST JOB /////////////////////
@@ -206,7 +209,7 @@ public interface ILocators {
     String left_panel = "//div[@class='LeftPanel']";
     String welcome = "//h3[@class='LeftPanel-user']";
     String add_photo = "//label[@class='LeftPanel-label']";
-    String first_row ="//div[@class='LeftPanel-wrapper LeftPanel-profile']";
+    String first_row ="//div[@class='spinner-wrap LeftPanel-wrapper LeftPanel-profile']";
     String second_row = "//div[@class='LeftPanel-wrapper LeftPanel-verified']";
     String third_row = "//div[@class='LeftPanel-wrapper LeftPanel-visited']";
     String fourth_row = "//div[@class='LeftPanel-wrapper LeftPanel-links']";

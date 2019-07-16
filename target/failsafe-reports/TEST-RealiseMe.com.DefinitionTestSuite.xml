@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="RealiseMe.com.DefinitionTestSuite" time="79.497" tests="31" errors="2" skipped="2" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="RealiseMe.com.DefinitionTestSuite" time="136.994" tests="33" errors="0" skipped="0" failures="0">
   <properties>
     <property name="idea.version" value="2017.2"/>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
@@ -31,7 +31,7 @@
     <property name="java.specification.name" value="Java Platform API Specification"/>
     <property name="java.class.version" value="52.0"/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
-    <property name="os.version" value="4.4.0-141-generic"/>
+    <property name="os.version" value="4.4.0-155-generic"/>
     <property name="user.home" value="/home/akuzikov"/>
     <property name="user.timezone" value="Europe/Zaporozhye"/>
     <property name="java.awt.printerjob" value="sun.print.PSPrinterJob"/>
@@ -64,7 +64,7 @@
   <testcase name="When click on the agree button at the banner" classname="Scenario: Create booking with required fields" time="0"/>
   <testcase name="When Click on the login button" classname="Scenario: Create booking with required fields" time="0"/>
   <testcase name="When Click on the school &quot;Login as a school&quot; button" classname="Scenario: Create booking with required fields" time="0"/>
-  <testcase name="When Enter login &quot;newtestschool2@yopmail.com&quot;" classname="Scenario: Create booking with required fields" time="0"/>
+  <testcase name="When Enter login &quot;newuatschool28@yopmail.com&quot;" classname="Scenario: Create booking with required fields" time="0"/>
   <testcase name="When Enter password &quot;Test123!&quot;" classname="Scenario: Create booking with required fields" time="0"/>
   <testcase name="When Click on the Log in button" classname="Scenario: Create booking with required fields" time="0"/>
   <testcase name="When Click on the &quot;bookings&quot; button in the header" classname="Scenario: Create booking with required fields" time="0"/>
@@ -80,43 +80,17 @@
   <testcase name="When Choose &quot;I want to save this search for future use&quot; checkbox" classname="Scenario: Create booking with required fields" time="0"/>
   <testcase name="When Choose full day &quot;23&quot; in the &quot;2&quot; month of available calendar" classname="Scenario: Create booking with required fields" time="0"/>
   <testcase name="When Choose half day &quot;15&quot; in the &quot;2&quot; month of available calendar" classname="Scenario: Create booking with required fields" time="0"/>
-  <testcase name="When Choose full day start time &quot;8:00&quot;" classname="Scenario: Create booking with required fields" time="0.008"/>
-  <testcase name="When Choose full day end time &quot;17:00&quot;" classname="Scenario: Create booking with required fields" time="0.001"/>
+  <testcase name="When Choose full day start time &quot;8:00&quot;" classname="Scenario: Create booking with required fields" time="0"/>
+  <testcase name="When Choose full day end time &quot;17:00&quot;" classname="Scenario: Create booking with required fields" time="0"/>
   <testcase name="When Choose half day start time &quot;11:00&quot;" classname="Scenario: Create booking with required fields" time="0"/>
   <testcase name="When Choose half day end time &quot;15:00&quot;" classname="Scenario: Create booking with required fields" time="0"/>
   <testcase name="When Enter &quot;200&quot; rate" classname="Scenario: Create booking with required fields" time="0"/>
   <testcase name="When Choose &quot;I want to invite top THREE candidates&quot; checkbox" classname="Scenario: Create booking with required fields" time="0"/>
+  <testcase name="When Get names of teachers" classname="Scenario: Create booking with required fields" time="0"/>
   <testcase name="When Click on the &quot;Review Invitations&quot; button" classname="Scenario: Create booking with required fields" time="0"/>
-  <testcase name="When Click on the &quot;SEND&quot; button" classname="Scenario: Create booking with required fields" time="0.003">
-    <error message="unknown error: Element &lt;a data-v-2334f0d0=&quot;&quot; class=&quot;review-invitations&quot;&gt;...&lt;/a&gt; is not clickable at point (1260, 795). Other element would receive the click: &lt;div class=&quot;overlay overlay--active&quot; style=&quot;z-index: 201;&quot;&gt;&lt;/div&gt;&#10;  (Session info: chrome=71.0.3578.98)&#10;  (Driver info: chromedriver=2.38.552522 (437e6fbedfa8762dec75e2c5b3ddb86763dc9dcb),platform=Linux 4.4.0-141-generic x86_64) (WARNING: The server did not provide any stacktrace information)&#10;Command duration or timeout: 41 milliseconds&#10;Build info: version: &apos;2.53.1&apos;, revision: &apos;a36b8b1cd5757287168e54b817830adce9b0158d&apos;, time: &apos;2016-06-30 19:26:09&apos;&#10;System info: host: &apos;SB-87&apos;, ip: &apos;127.0.1.1&apos;, os.name: &apos;Linux&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;4.4.0-141-generic&apos;, java.version: &apos;1.8.0_102&apos;&#10;Driver info: org.openqa.selenium.chrome.ChromeDriver&#10;Capabilities [{applicationCacheEnabled=false, rotatable=false, mobileEmulationEnabled=false, networkConnectionEnabled=false, chrome={chromedriverVersion=2.38.552522 (437e6fbedfa8762dec75e2c5b3ddb86763dc9dcb), userDataDir=/tmp/.org.chromium.Chromium.QTI1lo}, takesHeapSnapshot=true, pageLoadStrategy=normal, databaseEnabled=false, handlesAlerts=true, hasTouchScreen=false, version=71.0.3578.98, platform=LINUX, browserConnectionEnabled=false, nativeEvents=true, acceptSslCerts=false, acceptInsecureCerts=false, locationContextEnabled=true, webStorageEnabled=true, browserName=chrome, takesScreenshot=true, javascriptEnabled=true, cssSelectorsEnabled=true, setWindowRect=true, unexpectedAlertBehaviour=}]&#10;Session ID: 9dd396313572dc004a1696486b59ae6f" type="net.serenitybdd.core.exceptions.SerenityManagedException"><![CDATA[net.serenitybdd.core.exceptions.SerenityManagedException: 
-unknown error: Element <a data-v-2334f0d0="" class="review-invitations">...</a> is not clickable at point (1260, 795). Other element would receive the click: <div class="overlay overlay--active" style="z-index: 201;"></div>
-  (Session info: chrome=71.0.3578.98)
-  (Driver info: chromedriver=2.38.552522 (437e6fbedfa8762dec75e2c5b3ddb86763dc9dcb),platform=Linux 4.4.0-141-generic x86_64) (WARNING: The server did not provide any stacktrace information)
-Command duration or timeout: 41 milliseconds
-Build info: version: '2.53.1', revision: 'a36b8b1cd5757287168e54b817830adce9b0158d', time: '2016-06-30 19:26:09'
-System info: host: 'SB-87', ip: '127.0.1.1', os.name: 'Linux', os.arch: 'amd64', os.version: '4.4.0-141-generic', java.version: '1.8.0_102'
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities [{applicationCacheEnabled=false, rotatable=false, mobileEmulationEnabled=false, networkConnectionEnabled=false, chrome={chromedriverVersion=2.38.552522 (437e6fbedfa8762dec75e2c5b3ddb86763dc9dcb), userDataDir=/tmp/.org.chromium.Chromium.QTI1lo}, takesHeapSnapshot=true, pageLoadStrategy=normal, databaseEnabled=false, handlesAlerts=true, hasTouchScreen=false, version=71.0.3578.98, platform=LINUX, browserConnectionEnabled=false, nativeEvents=true, acceptSslCerts=false, acceptInsecureCerts=false, locationContextEnabled=true, webStorageEnabled=true, browserName=chrome, takesScreenshot=true, javascriptEnabled=true, cssSelectorsEnabled=true, setWindowRect=true, unexpectedAlertBehaviour=}]
-Session ID: 9dd396313572dc004a1696486b59ae6f
-]]></error>
-  </testcase>
-  <testcase name="Scenario: Create booking with required fields" classname="Scenario: Create booking with required fields" time="0.003">
-    <error message="unknown error: Element &lt;a data-v-2334f0d0=&quot;&quot; class=&quot;review-invitations&quot;&gt;...&lt;/a&gt; is not clickable at point (1260, 795). Other element would receive the click: &lt;div class=&quot;overlay overlay--active&quot; style=&quot;z-index: 201;&quot;&gt;&lt;/div&gt;&#10;  (Session info: chrome=71.0.3578.98)&#10;  (Driver info: chromedriver=2.38.552522 (437e6fbedfa8762dec75e2c5b3ddb86763dc9dcb),platform=Linux 4.4.0-141-generic x86_64) (WARNING: The server did not provide any stacktrace information)&#10;Command duration or timeout: 41 milliseconds&#10;Build info: version: &apos;2.53.1&apos;, revision: &apos;a36b8b1cd5757287168e54b817830adce9b0158d&apos;, time: &apos;2016-06-30 19:26:09&apos;&#10;System info: host: &apos;SB-87&apos;, ip: &apos;127.0.1.1&apos;, os.name: &apos;Linux&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;4.4.0-141-generic&apos;, java.version: &apos;1.8.0_102&apos;&#10;Driver info: org.openqa.selenium.chrome.ChromeDriver&#10;Capabilities [{applicationCacheEnabled=false, rotatable=false, mobileEmulationEnabled=false, networkConnectionEnabled=false, chrome={chromedriverVersion=2.38.552522 (437e6fbedfa8762dec75e2c5b3ddb86763dc9dcb), userDataDir=/tmp/.org.chromium.Chromium.QTI1lo}, takesHeapSnapshot=true, pageLoadStrategy=normal, databaseEnabled=false, handlesAlerts=true, hasTouchScreen=false, version=71.0.3578.98, platform=LINUX, browserConnectionEnabled=false, nativeEvents=true, acceptSslCerts=false, acceptInsecureCerts=false, locationContextEnabled=true, webStorageEnabled=true, browserName=chrome, takesScreenshot=true, javascriptEnabled=true, cssSelectorsEnabled=true, setWindowRect=true, unexpectedAlertBehaviour=}]&#10;Session ID: 9dd396313572dc004a1696486b59ae6f" type="net.serenitybdd.core.exceptions.SerenityManagedException"><![CDATA[net.serenitybdd.core.exceptions.SerenityManagedException: 
-unknown error: Element <a data-v-2334f0d0="" class="review-invitations">...</a> is not clickable at point (1260, 795). Other element would receive the click: <div class="overlay overlay--active" style="z-index: 201;"></div>
-  (Session info: chrome=71.0.3578.98)
-  (Driver info: chromedriver=2.38.552522 (437e6fbedfa8762dec75e2c5b3ddb86763dc9dcb),platform=Linux 4.4.0-141-generic x86_64) (WARNING: The server did not provide any stacktrace information)
-Command duration or timeout: 41 milliseconds
-Build info: version: '2.53.1', revision: 'a36b8b1cd5757287168e54b817830adce9b0158d', time: '2016-06-30 19:26:09'
-System info: host: 'SB-87', ip: '127.0.1.1', os.name: 'Linux', os.arch: 'amd64', os.version: '4.4.0-141-generic', java.version: '1.8.0_102'
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities [{applicationCacheEnabled=false, rotatable=false, mobileEmulationEnabled=false, networkConnectionEnabled=false, chrome={chromedriverVersion=2.38.552522 (437e6fbedfa8762dec75e2c5b3ddb86763dc9dcb), userDataDir=/tmp/.org.chromium.Chromium.QTI1lo}, takesHeapSnapshot=true, pageLoadStrategy=normal, databaseEnabled=false, handlesAlerts=true, hasTouchScreen=false, version=71.0.3578.98, platform=LINUX, browserConnectionEnabled=false, nativeEvents=true, acceptSslCerts=false, acceptInsecureCerts=false, locationContextEnabled=true, webStorageEnabled=true, browserName=chrome, takesScreenshot=true, javascriptEnabled=true, cssSelectorsEnabled=true, setWindowRect=true, unexpectedAlertBehaviour=}]
-Session ID: 9dd396313572dc004a1696486b59ae6f
-]]></error>
-  </testcase>
-  <testcase name="When Click on the &quot;View all invites&quot; button" classname="Scenario: Create booking with required fields" time="0">
-    <skipped/>
-  </testcase>
-  <testcase name="When wait time" classname="Scenario: Create booking with required fields" time="0">
-    <skipped/>
-  </testcase>
+  <testcase name="When Click on the &quot;SEND&quot; button" classname="Scenario: Create booking with required fields" time="0"/>
+  <testcase name="When Click on the &quot;View all invites&quot; button" classname="Scenario: Create booking with required fields" time="0"/>
+  <testcase name="Then Appropriate teachers are displayed in the invites list" classname="Scenario: Create booking with required fields" time="0"/>
+  <testcase name="When wait time" classname="Scenario: Create booking with required fields" time="0"/>
+  <testcase name="Scenario: Create booking with required fields" classname="Scenario: Create booking with required fields" time="0.821"/>
 </testsuite>

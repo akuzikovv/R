@@ -285,7 +285,7 @@ public class EndUserSteps  extends ScenarioSteps {
     @Step
     public void draftTabIsOpenedWithAllNecessaryElements(List<String> list) {
         ArrayList<String> results = schoolJobsPage.draftTabIsOpenedWithAllNecessaryElements(list);
-        Assert.assertTrue("Archived tab is wrong"+ results, "true".equals(results.get(0)));
+        Assert.assertTrue("Draft tab is wrong"+ results, "true".equals(results.get(0)));
     }
 
     @Step
@@ -341,13 +341,13 @@ public class EndUserSteps  extends ScenarioSteps {
     }
 
     @Step
-    public void enterTextToTheNameYourJobPostingField() {
-        schoolBookingsPage.enterTextToTheNameYourJobPostingField();
+    public void enterTextToTheNameYourJobPostingField(String arg0) {
+        schoolBookingsPage.enterTextToTheNameYourJobPostingField(arg0);
     }
 
     @Step
-    public void enterTextToTheDescribeTheJobField() {
-        schoolBookingsPage.enterTextToTheDescribeTheJobField();
+    public void enterTextToTheDescribeTheJobField(String arg0) {
+        schoolBookingsPage.enterTextToTheDescribeTheJobField(arg0);
     }
 
     @Step
@@ -408,6 +408,34 @@ public class EndUserSteps  extends ScenarioSteps {
     public void appropriateTeachersAreDisplayedInTheInvitesList() {
         ArrayList<String> results = commonActions.appropriateTeachersAreDisplayedInTheInvitesList();
         Assert.assertTrue("Teacher aren't invited" + results, "true".equals(results.get(0)));
+    }
+
+    @Step
+    public void checkUnclearedPopup(String arg0) {
+        ArrayList<String> results = schoolBookingsPage.checkUnclearedPopup(arg0);
+        Assert.assertTrue("Popup is incorrect" + results, "true".equals(results.get(0)));
+    }
+
+    @Step
+    public void getStatusesOfTeachers() {
+        commonActions.getStatusOfTeachers();
+    }
+
+    @Step
+    public void clickOnTheButtonAtTheTeacherWithStatus(String arg0) {
+        schoolBookingsPage.clickOnTheButtonAtTheTeacherWithStatus(arg0);
+    }
+
+    @Step
+    public void checkPengingPopup(String arg0) {
+        ArrayList<String> results = schoolBookingsPage.checkPengingPopup(arg0);
+        Assert.assertTrue("Popup is incorrect" + results, "true".equals(results.get(0)));
+    }
+
+    @Step
+    public void theOKButtonIsnTClickable() {
+        Assert.assertTrue("Field isn't highlighted red", schoolBookingsPage.theOKButtonIsnTClickable());
+
     }
 
 //    @Step

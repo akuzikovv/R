@@ -8,11 +8,18 @@ import org.openqa.selenium.WebElement;
 import java.util.ArrayList;
 
 public class CommonActions extends PageObject {
-    public ArrayList<String> names;
+    public ArrayList<String> names,status_of_teacher;
 
     public void clickOnTheButton(String arg0) {
-        WebElement xpath = getDriver().findElement(By.xpath("//a[contains(.,'" + arg0 + "')]"));
-        xpath.click();
+        try {
+            WebElement xpath = getDriver().findElement(By.xpath("//a[contains(.,'" + arg0 + "')]"));
+            xpath.click();
+        }catch (Exception e){ }
+        try {
+            WebElement xpath = getDriver().findElement(By.xpath("//button[contains(.,'" + arg0 + "')]"));
+            xpath.click();
+        }catch (Exception e){ }
+
     }
 
     public void clickOnTheTab(String arg0) {
@@ -45,16 +52,31 @@ public class CommonActions extends PageObject {
     }
 
     public void getNamesOfTeachers() {
+        String counter = getDriver().findElement(By.xpath("//a[contains(.,'INVITES')]")).getText().substring(9,10);
+        int max = Integer.parseInt(counter);
         names = new ArrayList<>();
-        for (int i = 1; i < 4; i++) {
-            names.add(getDriver().findElement(By.xpath("(//p[@class='name'])[" + i + "]")).getText());
+        for (int i = 1; i < max; i++) {
+
+            names.add(getDriver().findElement(By.xpath("(//div[@class='table-info']//p[@class='name'])[" + i + "]")).getText());
+
         }
+
+    }
+
+    public void getStatusOfTeachers() {
+        status_of_teacher = new ArrayList<>();
+        for (int i = 1; i < 11; i++) {
+            status_of_teacher.add(getDriver().findElement(By.xpath("(//div[@class='table-status']//span)[" + i + "]")).getText());
+        }
+
     }
 
     public ArrayList<String> appropriateTeachersAreDisplayedInTheInvitesList() {
         ArrayList<String> results = new ArrayList<>();
         results.add(0, "true");
-        for (int i = 0; i < 3; i++) {
+        String counter = getDriver().findElement(By.xpath("//a[@href='/school/booking/invite'][contains(.,'invites')]")).getText().substring(9,10);
+        int max2 = Integer.parseInt(counter);
+        for (int i = 1; i < max2; i++) {
             for (int y = 1; y < 11; y++) {
                 if (names.get(i).equals(getDriver().findElement(By.xpath("(//p[@class='name'])[" + y + "]")).getText())) {
                     results.set(0, "true");
