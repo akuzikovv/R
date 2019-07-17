@@ -63,11 +63,12 @@ public class CommonActions extends PageObject {
 
     }
 
-    public void getStatusOfTeachers() {
+    public ArrayList<String> getStatusOfTeachers() {
         status_of_teacher = new ArrayList<>();
-        for (int i = 1; i < 11; i++) {
+        for (int i = 1; i < 4; i++) {
             status_of_teacher.add(getDriver().findElement(By.xpath("(//div[@class='table-status']//span)[" + i + "]")).getText());
         }
+        return status_of_teacher;
 
     }
 

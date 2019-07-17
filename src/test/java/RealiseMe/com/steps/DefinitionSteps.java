@@ -386,6 +386,11 @@ public class DefinitionSteps {
         steps.theOKButtonIsnTClickable();
     }
 
+    @When("^Check popups depending of teacher's status and click on the \"SEND\" button$")
+    public void checkPopupsDependingOfTeacherSStatus() throws Throwable {
+        steps.checkPopupsDependingOfTeacherSStatus();
+    }
+
 
 //    @When("^Open report$")
 //    public void openReport() throws Throwable {

@@ -4,13 +4,10 @@ import RealiseMe.com.ILocators;
 import net.serenitybdd.core.pages.PageObject;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import RealiseMe.com.pages.CommonActions.CommonActions;
-
 import java.util.ArrayList;
 import java.util.List;
 
 public class SchoolBookingsPage extends PageObject {
-    CommonActions commonActions;
 
     public ArrayList<String> newSupplyBookingPageContainsAllNecessaryText(List<String> list) {
         ArrayList<String> labels = new ArrayList<>();
@@ -150,5 +147,6 @@ public class SchoolBookingsPage extends PageObject {
         }
         else return false;
     }
+
 }
 

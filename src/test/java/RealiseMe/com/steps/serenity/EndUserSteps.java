@@ -1,5 +1,6 @@
 package RealiseMe.com.steps.serenity;
 
+import RealiseMe.com.ILocators;
 import RealiseMe.com.pages.CommonActions.CommonActions;
 import RealiseMe.com.pages.Header.Header;
 import RealiseMe.com.pages.*;
@@ -436,6 +437,33 @@ public class EndUserSteps  extends ScenarioSteps {
     public void theOKButtonIsnTClickable() {
         Assert.assertTrue("Field isn't highlighted red", schoolBookingsPage.theOKButtonIsnTClickable());
 
+    }
+
+    @Step
+    public void checkPopupsDependingOfTeacherSStatus() {
+        ArrayList<String> results = new ArrayList<>();
+        results.add(0, "false");
+        if (commonActions.getStatusOfTeachers().get(0).equals("uncleared")||
+                commonActions.getStatusOfTeachers().get(1).equals("uncleared")||
+                commonActions.getStatusOfTeachers().get(2).equals("uncleared")){
+           checkUnclearedPopup((ILocators.Uncleared_popup_text).toString());
+            closePopup();
+            results.set(0, "true");
+        }
+        if (commonActions.getStatusOfTeachers().get(0).equals("pending")||
+                commonActions.getStatusOfTeachers().get(1).equals("pending")||
+                commonActions.getStatusOfTeachers().get(2).equals("pending")){
+            clickOnTheButton("SEND");
+            checkPengingPopup((ILocators.Pending_popup_text).toString());
+            chooseCheckbox("Agree to waiver and continue");
+            clickOnTheButton("Ok");
+            results.set(0, "true");
+        }
+        else {
+            clickOnTheButton("SEND");
+            results.set(0, "true");
+        }
+        Assert.assertTrue("Popups are incorrect" + results, "true".equals(results.get(0)));
     }
 
 //    @Step

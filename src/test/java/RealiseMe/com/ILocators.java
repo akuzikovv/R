@@ -78,7 +78,8 @@ public interface ILocators {
     String Pending_status = "//span[@class='pending']";
     String Uncleared_popup = "//div[@class='title-body']";
     String Disabled_OK = "//button[@class='action-btn confirm-btn btn-disabled']";
-
+    String Uncleared_popup_text = "You have selected a teacher that has not yet completed clearance. They will not be able to accept this booking until they are fully cleared.";
+    String Pending_popup_text = "You have selected a teacher whose DBS clearance is still pending. Before continuing, you will need to agree to our clearance waiver.";
 
 
 
