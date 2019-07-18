@@ -1,0 +1,4 @@
+"Story","Title","Result","Date","Stability","Duration (s)"
+"Booking Creation","Create booking for CLEARED teacher","ERROR","2019-07-17T19:20:36.880+03:00","0.0","103.11"
+"Booking Creation","Create booking for PENDING teacher","ERROR","2019-07-17T19:18:43.730+03:00","0.0","112.95"
+"Booking Creation","Create booking for UNCLEARED teacher","ERROR","2019-07-17T19:16:58.357+03:00","0.0","105.05"

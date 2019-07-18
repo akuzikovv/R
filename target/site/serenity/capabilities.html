@@ -35,13 +35,13 @@
     <script class="code" type="text/javascript">$(document).ready(function () {
         var plot1 = $.jqplot('coverage_pie_chart', [
             [
-                ['Passing', 1],
+                ['Passing', 0],
                 ['Pending', 0],
                 ['Ignored', 0],
                 ['Failing', 0],
-                ['Errors',  0],
+                ['Errors',  1],
                 ['Compromised',  0],
-                ['Untested',  2],
+                ['Untested',  5],
             ]
         ], {
             gridPadding: {top: 0, bottom: 38, left: 0, right: 0},
@@ -68,13 +68,13 @@
                 marginTop: '15px'
             },
             series: [
-                {label: '1 requirements tested successfully'},
+                {label: '0 requirements tested successfully'},
                 {label: '0 requirements pending'},
                 {label: '0} requirements skipped'},
                 {label: '0} requirements with failures'},
-                {label: '0} requirements with errors'},
+                {label: '1} requirements with errors'},
                 {label: '0} requirements compromised'},
-                {label: '2} requirements untested'},
+                {label: '5} requirements untested'},
             ]
         });
         // Results table
@@ -166,7 +166,7 @@
             <a href="e3a5a59a6d792683cf33d050ee0f6f92.html"><i class="fa fa-comments-o"></i> Capabilities</a>
         </li>
     </ul>
-    <span class="date-and-time"><a href="build-info.html"><i class="fa fa-info-circle"></i></a> Report generated 12-07-2019 16:08</span>
+    <span class="date-and-time"><a href="build-info.html"><i class="fa fa-info-circle"></i></a> Report generated 17-07-2019 19:16</span>
     <br style="clear:left"/>
 </div>
 
@@ -198,28 +198,28 @@
                                 <body>
                                     <tr>
                                         <td class="summary-leading-column"><a href="#requirements-tabs">Features</a></td>
-                                        <td>9</td>
-                                        <td>1</td>
+                                        <td>10</td>
                                         <td>0</td>
                                         <td>0</td>
                                         <td>0</td>
-                                            <td>8</td>
+                                        <td>0</td>
+                                            <td>9</td>
                                     </tr>
                                     <tr>
                                         <td class="summary-leading-column"><a href="e3a5a59a6d792683cf33d050ee0f6f92.html">Capabilities</a></td>
-                                        <td>3</td>
-                                        <td>1</td>
+                                        <td>6</td>
                                         <td>0</td>
                                         <td>0</td>
                                         <td>0</td>
-                                            <td>2</td>
+                                        <td>0</td>
+                                            <td>5</td>
                                     </tr>
 
                                 <tr>
                                     <td class="summary-leading-column"><a href="#test-results-table">Acceptance Criteria (tests)</a></td>
-                                    <td>1</td>
-                                    <td>1</td>
-                                    <td>0</td>
+                                    <td>5</td>
+                                    <td>2</td>
+                                    <td>3</td>
                                     <td>0</td>
                                     <td>0</td>
                                     <td></td>
@@ -248,9 +248,9 @@
         <body>
         <tr>
             <td class="summary-leading-column">Automated</td>
-            <td>1</td>
-            <td>1 (100%)</td>
-            <td>0 (0%)</td>
+            <td>5</td>
+            <td>2 (40%)</td>
+            <td>3 (60%)</td>
             <td>0 (0%)</td>
             <td>0 (0%)</td>
         </tr>
@@ -264,15 +264,15 @@
         </tr>
         <tr>
             <td class="summary-leading-column">Total</td>
-            <td>1</td>
-            <td>1 (100%)</td>
-            <td>0 (0%)</td>
+            <td>5</td>
+            <td>2 (40%)</td>
+            <td>3 (0%)</td>
             <td>0 (0%)</td>
             <td>0 (0%)</td>
         </tr>
         <tr>
             <td class="summary-leading-column">Total Duration</td>
-                <td colspan="5">2 minutes 15 seconds</td>
+                <td colspan="5">8 minutes 8 seconds</td>
         </tr>
         </body>
     </table>
@@ -284,7 +284,7 @@
                 <div id="requirements-tabs">
                         <ul>
                                 <li><a href="#tabs-1">
-                                Features (5)
+                                Features (8)
                                 </a></li>
                         </ul>
                         <div id="tabs-1" class="capabilities-table">
@@ -522,6 +522,428 @@
                 </tr>
 
 
+                <tr class="test-ERROR requirementRow">
+                    <td class="requirementRowCell">
+                        <span class="status_icon"><i class='fa fa-exclamation-triangle error-icon ' title='ERROR'></i></span>
+                        <span style="display:none">4</span>
+                    </td>
+                    <td class="cardNumber requirementRowCell"></td>
+
+                    <td class="ERROR-text requirementRowCell">
+                        <a href="javaScript:void(0)" class="read-more-link">
+                            <img src="images/plus.png" height="16"/></a>
+                        <span class="requirementName"><a
+                                href="f8b091e5aab094de4dbe5ece2a1aab3c.html">Booking flow</a></span>
+
+                        <div class="requirementNarrative read-more-text">Booking flow</div>
+                    </td>
+
+                        <td class="bluetext requirementRowCell">1</td>
+
+                    <td class="greentext highlighted-value requirementRowCell">5</td>
+<!--
+                    <td class="greentext requirementRowCell">2</td>
+                    <td class="bluetext requirementRowCell">0</td>
+                    <td class="redtext requirementRowCell">0</td>
+                    <td class="lightorangetext requirementRowCell">3</td>
+                    <td class="violettext requirementRowCell">0</td>
+-->
+                        <td class="greentext highlighted-value requirementRowCell">0</td>
+<!--
+                        <td class="greentext requirementRowCell">0</td>
+                        <td class="bluetext requirementRowCell">0</td>
+                        <td class="redtext requirementRowCell">0</td>
+                        <td class="lightorangetext requirementRowCell">0</td>
+                        -->
+
+                    <td width="125px" class="lightgreentext requirementRowCell">
+
+
+<table>
+    <tr>
+        <td width="40px">
+            <div class="small">40%</div>
+        </td>
+        <td width="125px">
+            <div class="percentagebar"
+                 title="  - Total tests: 5
+  - Passing tests: 2 (40%)
+  - Failing tests: 0 (0%)
+  - Tests with errors: 3 (60%)
+  - Compromised tests 0 (0%)
+  - Pending tests: 0 (0%)
+  - Ignored or skipped tests: 0 (0%)"
+                 style="width: 125px;">
+                <div class="pendingbar"
+                     title="  - Total tests: 5
+  - Passing tests: 2 (40%)
+  - Failing tests: 0 (0%)
+  - Tests with errors: 3 (60%)
+  - Compromised tests 0 (0%)
+  - Pending tests: 0 (0%)
+  - Ignored or skipped tests: 0 (0%)"
+                     style="width: 125px;">
+                    <div class="ignoredbar"
+                         style="width: 125px;"
+                         title="  - Total tests: 5
+  - Passing tests: 2 (40%)
+  - Failing tests: 0 (0%)
+  - Tests with errors: 3 (60%)
+  - Compromised tests 0 (0%)
+  - Pending tests: 0 (0%)
+  - Ignored or skipped tests: 0 (0%)">
+                        <div class="compromisedbar"
+                             style="width: 125px;"
+                             title="  - Total tests: 5
+  - Passing tests: 2 (40%)
+  - Failing tests: 0 (0%)
+  - Tests with errors: 3 (60%)
+  - Compromised tests 0 (0%)
+  - Pending tests: 0 (0%)
+  - Ignored or skipped tests: 0 (0%)">
+                            <div class="errorbar"
+                                 style="width: 125px;"
+                                 title="  - Total tests: 5
+  - Passing tests: 2 (40%)
+  - Failing tests: 0 (0%)
+  - Tests with errors: 3 (60%)
+  - Compromised tests 0 (0%)
+  - Pending tests: 0 (0%)
+  - Ignored or skipped tests: 0 (0%)">
+                                <div class="failingbar"
+                                     style="width: 50px;"
+                                     title="  - Total tests: 5
+  - Passing tests: 2 (40%)
+  - Failing tests: 0 (0%)
+  - Tests with errors: 3 (60%)
+  - Compromised tests 0 (0%)
+  - Pending tests: 0 (0%)
+  - Ignored or skipped tests: 0 (0%)">
+                                    <div class="passingbar"
+                                         style="width: 50px;"
+                                         title="  - Total tests: 5
+  - Passing tests: 2 (40%)
+  - Failing tests: 0 (0%)
+  - Tests with errors: 3 (60%)
+  - Compromised tests 0 (0%)
+  - Pending tests: 0 (0%)
+  - Ignored or skipped tests: 0 (0%)">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </td>
+    </tr>
+</table>
+                    </td>
+
+                    <td width="125px" class="lightgreentext requirementRowCell">
+
+
+<table>
+    <tr>
+        <td width="40px">
+            <div class="small">0%</div>
+        </td>
+        <td width="125px">
+            <div class="percentagebar"
+                 title="Booking flow:
+  - Passing Features: 0 (0%
+  - Features Failing: 0 (0%
+  - Features Failing with errors: 1
+  - Compromised Features: 0
+  - Pending Features: 0
+  - Ignored or skipped Features: 0
+  - Untested Features: 0 (0%"
+                 style="width: 125px;">
+                <div class="pendingbar"
+                     title="Booking flow:
+  - Passing Features: 0 (0%
+  - Features Failing: 0 (0%
+  - Features Failing with errors: 1
+  - Compromised Features: 0
+  - Pending Features: 0
+  - Ignored or skipped Features: 0
+  - Untested Features: 0 (0%"
+                     style="width: 125px;">
+                    <div class="ignoredbar"
+                         style="width: 125px;"
+                         title="Booking flow:
+  - Passing Features: 0 (0%
+  - Features Failing: 0 (0%
+  - Features Failing with errors: 1
+  - Compromised Features: 0
+  - Pending Features: 0
+  - Ignored or skipped Features: 0
+  - Untested Features: 0 (0%">
+                        <div class="compromisedbar"
+                             style="width: 125px;"
+                             title="Booking flow:
+  - Passing Features: 0 (0%
+  - Features Failing: 0 (0%
+  - Features Failing with errors: 1
+  - Compromised Features: 0
+  - Pending Features: 0
+  - Ignored or skipped Features: 0
+  - Untested Features: 0 (0%">
+                            <div class="errorbar"
+                                 style="width: 125px;"
+                                 title="Booking flow:
+  - Passing Features: 0 (0%
+  - Features Failing: 0 (0%
+  - Features Failing with errors: 1
+  - Compromised Features: 0
+  - Pending Features: 0
+  - Ignored or skipped Features: 0
+  - Untested Features: 0 (0%">
+                                <div class="failingbar"
+                                     style="width: 0px;"
+                                     title="Booking flow:
+  - Passing Features: 0 (0%
+  - Features Failing: 0 (0%
+  - Features Failing with errors: 1
+  - Compromised Features: 0
+  - Pending Features: 0
+  - Ignored or skipped Features: 0
+  - Untested Features: 0 (0%">
+                                    <div class="passingbar"
+                                         style="width: 0px;"
+                                         title="Booking flow:
+  - Passing Features: 0 (0%
+  - Features Failing: 0 (0%
+  - Features Failing with errors: 1
+  - Compromised Features: 0
+  - Pending Features: 0
+  - Ignored or skipped Features: 0
+  - Untested Features: 0 (0%">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </td>
+    </tr>
+</table>
+                    </td>
+                </tr>
+
+
+                <tr class="test-SUCCESS requirementRow">
+                    <td class="requirementRowCell">
+                        <span class="status_icon"><i class='fa fa-square-o pending-icon ' title='PENDING'></i></span>
+                        <span style="display:none">2</span>
+                    </td>
+                    <td class="cardNumber requirementRowCell"></td>
+
+                    <td class="SUCCESS-text requirementRowCell">
+                        <a href="javaScript:void(0)" class="read-more-link">
+                            <img src="images/plus.png" height="16"/></a>
+                        <span class="requirementName"><a
+                                href="d5280b7ce184ed4a406bd33613b73ef8.html">Job flow</a></span>
+
+                        <div class="requirementNarrative read-more-text">Job flow</div>
+                    </td>
+
+                        <td class="bluetext requirementRowCell">2</td>
+
+                    <td class="greentext highlighted-value requirementRowCell">0</td>
+<!--
+                    <td class="greentext requirementRowCell">0</td>
+                    <td class="bluetext requirementRowCell">0</td>
+                    <td class="redtext requirementRowCell">0</td>
+                    <td class="lightorangetext requirementRowCell">0</td>
+                    <td class="violettext requirementRowCell">0</td>
+-->
+                        <td class="greentext highlighted-value requirementRowCell">0</td>
+<!--
+                        <td class="greentext requirementRowCell">0</td>
+                        <td class="bluetext requirementRowCell">0</td>
+                        <td class="redtext requirementRowCell">0</td>
+                        <td class="lightorangetext requirementRowCell">0</td>
+                        -->
+
+                    <td width="125px" class="lightgreentext requirementRowCell">
+
+
+<table>
+    <tr>
+        <td width="40px">
+            <div class="small">0%</div>
+        </td>
+        <td width="125px">
+            <div class="percentagebar"
+                 title="  - Total tests: 0
+  - Passing tests: 0 (0%)
+  - Failing tests: 0 (0%)
+  - Tests with errors: 0 (0%)
+  - Compromised tests 0 (0%)
+  - Pending tests: 0 (0%)
+  - Ignored or skipped tests: 0 (0%)"
+                 style="width: 125px;">
+                <div class="pendingbar"
+                     title="  - Total tests: 0
+  - Passing tests: 0 (0%)
+  - Failing tests: 0 (0%)
+  - Tests with errors: 0 (0%)
+  - Compromised tests 0 (0%)
+  - Pending tests: 0 (0%)
+  - Ignored or skipped tests: 0 (0%)"
+                     style="width: 0px;">
+                    <div class="ignoredbar"
+                         style="width: 0px;"
+                         title="  - Total tests: 0
+  - Passing tests: 0 (0%)
+  - Failing tests: 0 (0%)
+  - Tests with errors: 0 (0%)
+  - Compromised tests 0 (0%)
+  - Pending tests: 0 (0%)
+  - Ignored or skipped tests: 0 (0%)">
+                        <div class="compromisedbar"
+                             style="width: 0px;"
+                             title="  - Total tests: 0
+  - Passing tests: 0 (0%)
+  - Failing tests: 0 (0%)
+  - Tests with errors: 0 (0%)
+  - Compromised tests 0 (0%)
+  - Pending tests: 0 (0%)
+  - Ignored or skipped tests: 0 (0%)">
+                            <div class="errorbar"
+                                 style="width: 0px;"
+                                 title="  - Total tests: 0
+  - Passing tests: 0 (0%)
+  - Failing tests: 0 (0%)
+  - Tests with errors: 0 (0%)
+  - Compromised tests 0 (0%)
+  - Pending tests: 0 (0%)
+  - Ignored or skipped tests: 0 (0%)">
+                                <div class="failingbar"
+                                     style="width: 0px;"
+                                     title="  - Total tests: 0
+  - Passing tests: 0 (0%)
+  - Failing tests: 0 (0%)
+  - Tests with errors: 0 (0%)
+  - Compromised tests 0 (0%)
+  - Pending tests: 0 (0%)
+  - Ignored or skipped tests: 0 (0%)">
+                                    <div class="passingbar"
+                                         style="width: 0px;"
+                                         title="  - Total tests: 0
+  - Passing tests: 0 (0%)
+  - Failing tests: 0 (0%)
+  - Tests with errors: 0 (0%)
+  - Compromised tests 0 (0%)
+  - Pending tests: 0 (0%)
+  - Ignored or skipped tests: 0 (0%)">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </td>
+    </tr>
+</table>
+                    </td>
+
+                    <td width="125px" class="lightgreentext requirementRowCell">
+
+
+<table>
+    <tr>
+        <td width="40px">
+            <div class="small">0%</div>
+        </td>
+        <td width="125px">
+            <div class="percentagebar"
+                 title="Job flow:
+  - Passing Features: 0 (0%
+  - Features Failing: 0 (0%
+  - Features Failing with errors: 0
+  - Compromised Features: 0
+  - Pending Features: 0
+  - Ignored or skipped Features: 0
+  - Untested Features: 2 (100%"
+                 style="width: 125px;">
+                <div class="pendingbar"
+                     title="Job flow:
+  - Passing Features: 0 (0%
+  - Features Failing: 0 (0%
+  - Features Failing with errors: 0
+  - Compromised Features: 0
+  - Pending Features: 0
+  - Ignored or skipped Features: 0
+  - Untested Features: 2 (100%"
+                     style="width: 0px;">
+                    <div class="ignoredbar"
+                         style="width: 0px;"
+                         title="Job flow:
+  - Passing Features: 0 (0%
+  - Features Failing: 0 (0%
+  - Features Failing with errors: 0
+  - Compromised Features: 0
+  - Pending Features: 0
+  - Ignored or skipped Features: 0
+  - Untested Features: 2 (100%">
+                        <div class="compromisedbar"
+                             style="width: 0px;"
+                             title="Job flow:
+  - Passing Features: 0 (0%
+  - Features Failing: 0 (0%
+  - Features Failing with errors: 0
+  - Compromised Features: 0
+  - Pending Features: 0
+  - Ignored or skipped Features: 0
+  - Untested Features: 2 (100%">
+                            <div class="errorbar"
+                                 style="width: 0px;"
+                                 title="Job flow:
+  - Passing Features: 0 (0%
+  - Features Failing: 0 (0%
+  - Features Failing with errors: 0
+  - Compromised Features: 0
+  - Pending Features: 0
+  - Ignored or skipped Features: 0
+  - Untested Features: 2 (100%">
+                                <div class="failingbar"
+                                     style="width: 0px;"
+                                     title="Job flow:
+  - Passing Features: 0 (0%
+  - Features Failing: 0 (0%
+  - Features Failing with errors: 0
+  - Compromised Features: 0
+  - Pending Features: 0
+  - Ignored or skipped Features: 0
+  - Untested Features: 2 (100%">
+                                    <div class="passingbar"
+                                         style="width: 0px;"
+                                         title="Job flow:
+  - Passing Features: 0 (0%
+  - Features Failing: 0 (0%
+  - Features Failing with errors: 0
+  - Compromised Features: 0
+  - Pending Features: 0
+  - Ignored or skipped Features: 0
+  - Untested Features: 2 (100%">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </td>
+    </tr>
+</table>
+                    </td>
+                </tr>
+
+
                 <tr class="test-SUCCESS requirementRow">
                     <td class="requirementRowCell">
                         <span class="status_icon"><i class='fa fa-square-o pending-icon ' title='PENDING'></i></span>
@@ -735,217 +1157,6 @@
 
                 <tr class="test-SUCCESS requirementRow">
                     <td class="requirementRowCell">
-                        <span class="status_icon"><i class='fa fa-check-square-o success-icon ' title='SUCCESS'></i></span>
-                        <span style="display:none">1</span>
-                    </td>
-                    <td class="cardNumber requirementRowCell"></td>
-
-                    <td class="SUCCESS-text requirementRowCell">
-                        <a href="javaScript:void(0)" class="read-more-link">
-                            <img src="images/plus.png" height="16"/></a>
-                        <span class="requirementName"><a
-                                href="45aa16e7b0844f4372b816f9ad9914ab.html">School flow</a></span>
-
-                        <div class="requirementNarrative read-more-text">School flow</div>
-                    </td>
-
-                        <td class="bluetext requirementRowCell">3</td>
-
-                    <td class="greentext highlighted-value requirementRowCell">1</td>
-<!--
-                    <td class="greentext requirementRowCell">1</td>
-                    <td class="bluetext requirementRowCell">0</td>
-                    <td class="redtext requirementRowCell">0</td>
-                    <td class="lightorangetext requirementRowCell">0</td>
-                    <td class="violettext requirementRowCell">0</td>
--->
-                        <td class="greentext highlighted-value requirementRowCell">0</td>
-<!--
-                        <td class="greentext requirementRowCell">0</td>
-                        <td class="bluetext requirementRowCell">0</td>
-                        <td class="redtext requirementRowCell">0</td>
-                        <td class="lightorangetext requirementRowCell">0</td>
-                        -->
-
-                    <td width="125px" class="lightgreentext requirementRowCell">
-
-
-<table>
-    <tr>
-        <td width="40px">
-            <div class="small">100%</div>
-        </td>
-        <td width="125px">
-            <div class="percentagebar"
-                 title="  - Total tests: 1
-  - Passing tests: 1 (100%)
-  - Failing tests: 0 (0%)
-  - Tests with errors: 0 (0%)
-  - Compromised tests 0 (0%)
-  - Pending tests: 0 (0%)
-  - Ignored or skipped tests: 0 (0%)"
-                 style="width: 125px;">
-                <div class="pendingbar"
-                     title="  - Total tests: 1
-  - Passing tests: 1 (100%)
-  - Failing tests: 0 (0%)
-  - Tests with errors: 0 (0%)
-  - Compromised tests 0 (0%)
-  - Pending tests: 0 (0%)
-  - Ignored or skipped tests: 0 (0%)"
-                     style="width: 125px;">
-                    <div class="ignoredbar"
-                         style="width: 125px;"
-                         title="  - Total tests: 1
-  - Passing tests: 1 (100%)
-  - Failing tests: 0 (0%)
-  - Tests with errors: 0 (0%)
-  - Compromised tests 0 (0%)
-  - Pending tests: 0 (0%)
-  - Ignored or skipped tests: 0 (0%)">
-                        <div class="compromisedbar"
-                             style="width: 125px;"
-                             title="  - Total tests: 1
-  - Passing tests: 1 (100%)
-  - Failing tests: 0 (0%)
-  - Tests with errors: 0 (0%)
-  - Compromised tests 0 (0%)
-  - Pending tests: 0 (0%)
-  - Ignored or skipped tests: 0 (0%)">
-                            <div class="errorbar"
-                                 style="width: 125px;"
-                                 title="  - Total tests: 1
-  - Passing tests: 1 (100%)
-  - Failing tests: 0 (0%)
-  - Tests with errors: 0 (0%)
-  - Compromised tests 0 (0%)
-  - Pending tests: 0 (0%)
-  - Ignored or skipped tests: 0 (0%)">
-                                <div class="failingbar"
-                                     style="width: 125px;"
-                                     title="  - Total tests: 1
-  - Passing tests: 1 (100%)
-  - Failing tests: 0 (0%)
-  - Tests with errors: 0 (0%)
-  - Compromised tests 0 (0%)
-  - Pending tests: 0 (0%)
-  - Ignored or skipped tests: 0 (0%)">
-                                    <div class="passingbar"
-                                         style="width: 125px;"
-                                         title="  - Total tests: 1
-  - Passing tests: 1 (100%)
-  - Failing tests: 0 (0%)
-  - Tests with errors: 0 (0%)
-  - Compromised tests 0 (0%)
-  - Pending tests: 0 (0%)
-  - Ignored or skipped tests: 0 (0%)">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </td>
-    </tr>
-</table>
-                    </td>
-
-                    <td width="125px" class="lightgreentext requirementRowCell">
-
-
-<table>
-    <tr>
-        <td width="40px">
-            <div class="small">33.3%</div>
-        </td>
-        <td width="125px">
-            <div class="percentagebar"
-                 title="School flow:
-  - Passing Features: 1 (33.3%
-  - Features Failing: 0 (0%
-  - Features Failing with errors: 0
-  - Compromised Features: 0
-  - Pending Features: 0
-  - Ignored or skipped Features: 0
-  - Untested Features: 2 (66.7%"
-                 style="width: 125px;">
-                <div class="pendingbar"
-                     title="School flow:
-  - Passing Features: 1 (33.3%
-  - Features Failing: 0 (0%
-  - Features Failing with errors: 0
-  - Compromised Features: 0
-  - Pending Features: 0
-  - Ignored or skipped Features: 0
-  - Untested Features: 2 (66.7%"
-                     style="width: 42px;">
-                    <div class="ignoredbar"
-                         style="width: 42px;"
-                         title="School flow:
-  - Passing Features: 1 (33.3%
-  - Features Failing: 0 (0%
-  - Features Failing with errors: 0
-  - Compromised Features: 0
-  - Pending Features: 0
-  - Ignored or skipped Features: 0
-  - Untested Features: 2 (66.7%">
-                        <div class="compromisedbar"
-                             style="width: 42px;"
-                             title="School flow:
-  - Passing Features: 1 (33.3%
-  - Features Failing: 0 (0%
-  - Features Failing with errors: 0
-  - Compromised Features: 0
-  - Pending Features: 0
-  - Ignored or skipped Features: 0
-  - Untested Features: 2 (66.7%">
-                            <div class="errorbar"
-                                 style="width: 42px;"
-                                 title="School flow:
-  - Passing Features: 1 (33.3%
-  - Features Failing: 0 (0%
-  - Features Failing with errors: 0
-  - Compromised Features: 0
-  - Pending Features: 0
-  - Ignored or skipped Features: 0
-  - Untested Features: 2 (66.7%">
-                                <div class="failingbar"
-                                     style="width: 42px;"
-                                     title="School flow:
-  - Passing Features: 1 (33.3%
-  - Features Failing: 0 (0%
-  - Features Failing with errors: 0
-  - Compromised Features: 0
-  - Pending Features: 0
-  - Ignored or skipped Features: 0
-  - Untested Features: 2 (66.7%">
-                                    <div class="passingbar"
-                                         style="width: 42px;"
-                                         title="School flow:
-  - Passing Features: 1 (33.3%
-  - Features Failing: 0 (0%
-  - Features Failing with errors: 0
-  - Compromised Features: 0
-  - Pending Features: 0
-  - Ignored or skipped Features: 0
-  - Untested Features: 2 (66.7%">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </td>
-    </tr>
-</table>
-                    </td>
-                </tr>
-
-
-                <tr class="test-SUCCESS requirementRow">
-                    <td class="requirementRowCell">
                         <span class="status_icon"><i class='fa fa-square-o pending-icon ' title='PENDING'></i></span>
                         <span style="display:none">2</span>
                     </td>
@@ -955,12 +1166,12 @@
                         <a href="javaScript:void(0)" class="read-more-link">
                             <img src="images/plus.png" height="16"/></a>
                         <span class="requirementName"><a
-                                href="dbee07f6d70622c220b4cbef4bf8aaae.html">Teacher (general) flow</a></span>
+                                href="47856e2f2d4f046c26ced4a506034aa3.html">School dashboard</a></span>
 
-                        <div class="requirementNarrative read-more-text">Teacher (general) flow</div>
+                        <div class="requirementNarrative read-more-text">School dashboard</div>
                     </td>
 
-                        <td class="bluetext requirementRowCell">3</td>
+                        <td class="bluetext requirementRowCell">1</td>
 
                     <td class="greentext highlighted-value requirementRowCell">0</td>
 <!--
@@ -1072,75 +1283,497 @@
         </td>
         <td width="125px">
             <div class="percentagebar"
-                 title="Teacher (general) flow:
+                 title="School dashboard:
   - Passing Features: 0 (0%
   - Features Failing: 0 (0%
   - Features Failing with errors: 0
   - Compromised Features: 0
   - Pending Features: 0
   - Ignored or skipped Features: 0
-  - Untested Features: 3 (100%"
+  - Untested Features: 1 (100%"
                  style="width: 125px;">
                 <div class="pendingbar"
-                     title="Teacher (general) flow:
+                     title="School dashboard:
   - Passing Features: 0 (0%
   - Features Failing: 0 (0%
   - Features Failing with errors: 0
   - Compromised Features: 0
   - Pending Features: 0
   - Ignored or skipped Features: 0
-  - Untested Features: 3 (100%"
+  - Untested Features: 1 (100%"
                      style="width: 0px;">
                     <div class="ignoredbar"
                          style="width: 0px;"
-                         title="Teacher (general) flow:
+                         title="School dashboard:
   - Passing Features: 0 (0%
   - Features Failing: 0 (0%
   - Features Failing with errors: 0
   - Compromised Features: 0
   - Pending Features: 0
   - Ignored or skipped Features: 0
-  - Untested Features: 3 (100%">
+  - Untested Features: 1 (100%">
                         <div class="compromisedbar"
                              style="width: 0px;"
-                             title="Teacher (general) flow:
+                             title="School dashboard:
   - Passing Features: 0 (0%
   - Features Failing: 0 (0%
   - Features Failing with errors: 0
   - Compromised Features: 0
   - Pending Features: 0
   - Ignored or skipped Features: 0
-  - Untested Features: 3 (100%">
+  - Untested Features: 1 (100%">
                             <div class="errorbar"
                                  style="width: 0px;"
-                                 title="Teacher (general) flow:
+                                 title="School dashboard:
   - Passing Features: 0 (0%
   - Features Failing: 0 (0%
   - Features Failing with errors: 0
   - Compromised Features: 0
   - Pending Features: 0
   - Ignored or skipped Features: 0
-  - Untested Features: 3 (100%">
+  - Untested Features: 1 (100%">
                                 <div class="failingbar"
                                      style="width: 0px;"
-                                     title="Teacher (general) flow:
+                                     title="School dashboard:
   - Passing Features: 0 (0%
   - Features Failing: 0 (0%
   - Features Failing with errors: 0
   - Compromised Features: 0
   - Pending Features: 0
   - Ignored or skipped Features: 0
-  - Untested Features: 3 (100%">
+  - Untested Features: 1 (100%">
                                     <div class="passingbar"
                                          style="width: 0px;"
-                                         title="Teacher (general) flow:
+                                         title="School dashboard:
   - Passing Features: 0 (0%
   - Features Failing: 0 (0%
   - Features Failing with errors: 0
   - Compromised Features: 0
   - Pending Features: 0
   - Ignored or skipped Features: 0
-  - Untested Features: 3 (100%">
+  - Untested Features: 1 (100%">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </td>
+    </tr>
+</table>
+                    </td>
+                </tr>
+
+
+                <tr class="test-SUCCESS requirementRow">
+                    <td class="requirementRowCell">
+                        <span class="status_icon"><i class='fa fa-square-o pending-icon ' title='PENDING'></i></span>
+                        <span style="display:none">2</span>
+                    </td>
+                    <td class="cardNumber requirementRowCell"></td>
+
+                    <td class="SUCCESS-text requirementRowCell">
+                        <a href="javaScript:void(0)" class="read-more-link">
+                            <img src="images/plus.png" height="16"/></a>
+                        <span class="requirementName"><a
+                                href="98a0f27a7f9bd2fc55e18c1f13025f6c.html">Teacher other</a></span>
+
+                        <div class="requirementNarrative read-more-text">Teacher other</div>
+                    </td>
+
+                        <td class="bluetext requirementRowCell">1</td>
+
+                    <td class="greentext highlighted-value requirementRowCell">0</td>
+<!--
+                    <td class="greentext requirementRowCell">0</td>
+                    <td class="bluetext requirementRowCell">0</td>
+                    <td class="redtext requirementRowCell">0</td>
+                    <td class="lightorangetext requirementRowCell">0</td>
+                    <td class="violettext requirementRowCell">0</td>
+-->
+                        <td class="greentext highlighted-value requirementRowCell">0</td>
+<!--
+                        <td class="greentext requirementRowCell">0</td>
+                        <td class="bluetext requirementRowCell">0</td>
+                        <td class="redtext requirementRowCell">0</td>
+                        <td class="lightorangetext requirementRowCell">0</td>
+                        -->
+
+                    <td width="125px" class="lightgreentext requirementRowCell">
+
+
+<table>
+    <tr>
+        <td width="40px">
+            <div class="small">0%</div>
+        </td>
+        <td width="125px">
+            <div class="percentagebar"
+                 title="  - Total tests: 0
+  - Passing tests: 0 (0%)
+  - Failing tests: 0 (0%)
+  - Tests with errors: 0 (0%)
+  - Compromised tests 0 (0%)
+  - Pending tests: 0 (0%)
+  - Ignored or skipped tests: 0 (0%)"
+                 style="width: 125px;">
+                <div class="pendingbar"
+                     title="  - Total tests: 0
+  - Passing tests: 0 (0%)
+  - Failing tests: 0 (0%)
+  - Tests with errors: 0 (0%)
+  - Compromised tests 0 (0%)
+  - Pending tests: 0 (0%)
+  - Ignored or skipped tests: 0 (0%)"
+                     style="width: 0px;">
+                    <div class="ignoredbar"
+                         style="width: 0px;"
+                         title="  - Total tests: 0
+  - Passing tests: 0 (0%)
+  - Failing tests: 0 (0%)
+  - Tests with errors: 0 (0%)
+  - Compromised tests 0 (0%)
+  - Pending tests: 0 (0%)
+  - Ignored or skipped tests: 0 (0%)">
+                        <div class="compromisedbar"
+                             style="width: 0px;"
+                             title="  - Total tests: 0
+  - Passing tests: 0 (0%)
+  - Failing tests: 0 (0%)
+  - Tests with errors: 0 (0%)
+  - Compromised tests 0 (0%)
+  - Pending tests: 0 (0%)
+  - Ignored or skipped tests: 0 (0%)">
+                            <div class="errorbar"
+                                 style="width: 0px;"
+                                 title="  - Total tests: 0
+  - Passing tests: 0 (0%)
+  - Failing tests: 0 (0%)
+  - Tests with errors: 0 (0%)
+  - Compromised tests 0 (0%)
+  - Pending tests: 0 (0%)
+  - Ignored or skipped tests: 0 (0%)">
+                                <div class="failingbar"
+                                     style="width: 0px;"
+                                     title="  - Total tests: 0
+  - Passing tests: 0 (0%)
+  - Failing tests: 0 (0%)
+  - Tests with errors: 0 (0%)
+  - Compromised tests 0 (0%)
+  - Pending tests: 0 (0%)
+  - Ignored or skipped tests: 0 (0%)">
+                                    <div class="passingbar"
+                                         style="width: 0px;"
+                                         title="  - Total tests: 0
+  - Passing tests: 0 (0%)
+  - Failing tests: 0 (0%)
+  - Tests with errors: 0 (0%)
+  - Compromised tests 0 (0%)
+  - Pending tests: 0 (0%)
+  - Ignored or skipped tests: 0 (0%)">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </td>
+    </tr>
+</table>
+                    </td>
+
+                    <td width="125px" class="lightgreentext requirementRowCell">
+
+
+<table>
+    <tr>
+        <td width="40px">
+            <div class="small">0%</div>
+        </td>
+        <td width="125px">
+            <div class="percentagebar"
+                 title="Teacher other:
+  - Passing Features: 0 (0%
+  - Features Failing: 0 (0%
+  - Features Failing with errors: 0
+  - Compromised Features: 0
+  - Pending Features: 0
+  - Ignored or skipped Features: 0
+  - Untested Features: 1 (100%"
+                 style="width: 125px;">
+                <div class="pendingbar"
+                     title="Teacher other:
+  - Passing Features: 0 (0%
+  - Features Failing: 0 (0%
+  - Features Failing with errors: 0
+  - Compromised Features: 0
+  - Pending Features: 0
+  - Ignored or skipped Features: 0
+  - Untested Features: 1 (100%"
+                     style="width: 0px;">
+                    <div class="ignoredbar"
+                         style="width: 0px;"
+                         title="Teacher other:
+  - Passing Features: 0 (0%
+  - Features Failing: 0 (0%
+  - Features Failing with errors: 0
+  - Compromised Features: 0
+  - Pending Features: 0
+  - Ignored or skipped Features: 0
+  - Untested Features: 1 (100%">
+                        <div class="compromisedbar"
+                             style="width: 0px;"
+                             title="Teacher other:
+  - Passing Features: 0 (0%
+  - Features Failing: 0 (0%
+  - Features Failing with errors: 0
+  - Compromised Features: 0
+  - Pending Features: 0
+  - Ignored or skipped Features: 0
+  - Untested Features: 1 (100%">
+                            <div class="errorbar"
+                                 style="width: 0px;"
+                                 title="Teacher other:
+  - Passing Features: 0 (0%
+  - Features Failing: 0 (0%
+  - Features Failing with errors: 0
+  - Compromised Features: 0
+  - Pending Features: 0
+  - Ignored or skipped Features: 0
+  - Untested Features: 1 (100%">
+                                <div class="failingbar"
+                                     style="width: 0px;"
+                                     title="Teacher other:
+  - Passing Features: 0 (0%
+  - Features Failing: 0 (0%
+  - Features Failing with errors: 0
+  - Compromised Features: 0
+  - Pending Features: 0
+  - Ignored or skipped Features: 0
+  - Untested Features: 1 (100%">
+                                    <div class="passingbar"
+                                         style="width: 0px;"
+                                         title="Teacher other:
+  - Passing Features: 0 (0%
+  - Features Failing: 0 (0%
+  - Features Failing with errors: 0
+  - Compromised Features: 0
+  - Pending Features: 0
+  - Ignored or skipped Features: 0
+  - Untested Features: 1 (100%">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </td>
+    </tr>
+</table>
+                    </td>
+                </tr>
+
+
+                <tr class="test-SUCCESS requirementRow">
+                    <td class="requirementRowCell">
+                        <span class="status_icon"><i class='fa fa-square-o pending-icon ' title='PENDING'></i></span>
+                        <span style="display:none">2</span>
+                    </td>
+                    <td class="cardNumber requirementRowCell"></td>
+
+                    <td class="SUCCESS-text requirementRowCell">
+                        <a href="javaScript:void(0)" class="read-more-link">
+                            <img src="images/plus.png" height="16"/></a>
+                        <span class="requirementName"><a
+                                href="b4db20ac9e2ee5bb28f3fdeca39a2cd5.html">Teacher supply</a></span>
+
+                        <div class="requirementNarrative read-more-text">Teacher supply</div>
+                    </td>
+
+                        <td class="bluetext requirementRowCell">2</td>
+
+                    <td class="greentext highlighted-value requirementRowCell">0</td>
+<!--
+                    <td class="greentext requirementRowCell">0</td>
+                    <td class="bluetext requirementRowCell">0</td>
+                    <td class="redtext requirementRowCell">0</td>
+                    <td class="lightorangetext requirementRowCell">0</td>
+                    <td class="violettext requirementRowCell">0</td>
+-->
+                        <td class="greentext highlighted-value requirementRowCell">0</td>
+<!--
+                        <td class="greentext requirementRowCell">0</td>
+                        <td class="bluetext requirementRowCell">0</td>
+                        <td class="redtext requirementRowCell">0</td>
+                        <td class="lightorangetext requirementRowCell">0</td>
+                        -->
+
+                    <td width="125px" class="lightgreentext requirementRowCell">
+
+
+<table>
+    <tr>
+        <td width="40px">
+            <div class="small">0%</div>
+        </td>
+        <td width="125px">
+            <div class="percentagebar"
+                 title="  - Total tests: 0
+  - Passing tests: 0 (0%)
+  - Failing tests: 0 (0%)
+  - Tests with errors: 0 (0%)
+  - Compromised tests 0 (0%)
+  - Pending tests: 0 (0%)
+  - Ignored or skipped tests: 0 (0%)"
+                 style="width: 125px;">
+                <div class="pendingbar"
+                     title="  - Total tests: 0
+  - Passing tests: 0 (0%)
+  - Failing tests: 0 (0%)
+  - Tests with errors: 0 (0%)
+  - Compromised tests 0 (0%)
+  - Pending tests: 0 (0%)
+  - Ignored or skipped tests: 0 (0%)"
+                     style="width: 0px;">
+                    <div class="ignoredbar"
+                         style="width: 0px;"
+                         title="  - Total tests: 0
+  - Passing tests: 0 (0%)
+  - Failing tests: 0 (0%)
+  - Tests with errors: 0 (0%)
+  - Compromised tests 0 (0%)
+  - Pending tests: 0 (0%)
+  - Ignored or skipped tests: 0 (0%)">
+                        <div class="compromisedbar"
+                             style="width: 0px;"
+                             title="  - Total tests: 0
+  - Passing tests: 0 (0%)
+  - Failing tests: 0 (0%)
+  - Tests with errors: 0 (0%)
+  - Compromised tests 0 (0%)
+  - Pending tests: 0 (0%)
+  - Ignored or skipped tests: 0 (0%)">
+                            <div class="errorbar"
+                                 style="width: 0px;"
+                                 title="  - Total tests: 0
+  - Passing tests: 0 (0%)
+  - Failing tests: 0 (0%)
+  - Tests with errors: 0 (0%)
+  - Compromised tests 0 (0%)
+  - Pending tests: 0 (0%)
+  - Ignored or skipped tests: 0 (0%)">
+                                <div class="failingbar"
+                                     style="width: 0px;"
+                                     title="  - Total tests: 0
+  - Passing tests: 0 (0%)
+  - Failing tests: 0 (0%)
+  - Tests with errors: 0 (0%)
+  - Compromised tests 0 (0%)
+  - Pending tests: 0 (0%)
+  - Ignored or skipped tests: 0 (0%)">
+                                    <div class="passingbar"
+                                         style="width: 0px;"
+                                         title="  - Total tests: 0
+  - Passing tests: 0 (0%)
+  - Failing tests: 0 (0%)
+  - Tests with errors: 0 (0%)
+  - Compromised tests 0 (0%)
+  - Pending tests: 0 (0%)
+  - Ignored or skipped tests: 0 (0%)">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </td>
+    </tr>
+</table>
+                    </td>
+
+                    <td width="125px" class="lightgreentext requirementRowCell">
+
+
+<table>
+    <tr>
+        <td width="40px">
+            <div class="small">0%</div>
+        </td>
+        <td width="125px">
+            <div class="percentagebar"
+                 title="Teacher supply:
+  - Passing Features: 0 (0%
+  - Features Failing: 0 (0%
+  - Features Failing with errors: 0
+  - Compromised Features: 0
+  - Pending Features: 0
+  - Ignored or skipped Features: 0
+  - Untested Features: 2 (100%"
+                 style="width: 125px;">
+                <div class="pendingbar"
+                     title="Teacher supply:
+  - Passing Features: 0 (0%
+  - Features Failing: 0 (0%
+  - Features Failing with errors: 0
+  - Compromised Features: 0
+  - Pending Features: 0
+  - Ignored or skipped Features: 0
+  - Untested Features: 2 (100%"
+                     style="width: 0px;">
+                    <div class="ignoredbar"
+                         style="width: 0px;"
+                         title="Teacher supply:
+  - Passing Features: 0 (0%
+  - Features Failing: 0 (0%
+  - Features Failing with errors: 0
+  - Compromised Features: 0
+  - Pending Features: 0
+  - Ignored or skipped Features: 0
+  - Untested Features: 2 (100%">
+                        <div class="compromisedbar"
+                             style="width: 0px;"
+                             title="Teacher supply:
+  - Passing Features: 0 (0%
+  - Features Failing: 0 (0%
+  - Features Failing with errors: 0
+  - Compromised Features: 0
+  - Pending Features: 0
+  - Ignored or skipped Features: 0
+  - Untested Features: 2 (100%">
+                            <div class="errorbar"
+                                 style="width: 0px;"
+                                 title="Teacher supply:
+  - Passing Features: 0 (0%
+  - Features Failing: 0 (0%
+  - Features Failing with errors: 0
+  - Compromised Features: 0
+  - Pending Features: 0
+  - Ignored or skipped Features: 0
+  - Untested Features: 2 (100%">
+                                <div class="failingbar"
+                                     style="width: 0px;"
+                                     title="Teacher supply:
+  - Passing Features: 0 (0%
+  - Features Failing: 0 (0%
+  - Features Failing with errors: 0
+  - Compromised Features: 0
+  - Pending Features: 0
+  - Ignored or skipped Features: 0
+  - Untested Features: 2 (100%">
+                                    <div class="passingbar"
+                                         style="width: 0px;"
+                                         title="Teacher supply:
+  - Passing Features: 0 (0%
+  - Features Failing: 0 (0%
+  - Features Failing with errors: 0
+  - Compromised Features: 0
+  - Pending Features: 0
+  - Ignored or skipped Features: 0
+  - Untested Features: 2 (100%">
                                     </div>
                                 </div>
                             </div>
@@ -1396,8 +2029,48 @@
                                 <td class="SUCCESS-text">
                                     <div class="ellipsis">
 
-                                        <a href="bed04eeca0a300559d38228658c09bae.html" class="ellipsis" title="">
-                                            Create Booking With Required Fields
+                                        <a href="f77c3a311fbf5500bfe7a246e1873e8e.html" class="ellipsis" title="">
+                                            Check Required Fields At The Create Booking Step
+                                                <span class="related-issue-title"></span>
+                                        </a>
+                                    </div>
+                                </td>
+
+                                <td class="lightgreentext">24</td>
+
+
+                                <td class="lightgreentext">46.83</td>
+                            </tr>
+
+                            <tr class="test-ERROR">
+                                <td><span class="summary-icon"><i class='fa fa-exclamation-triangle error-icon ' title='ERROR'></i></span>
+                                    
+                                    <span style="display:none">ERROR</span></td>
+                                <td class="ERROR-text">
+                                    <div class="ellipsis">
+
+                                        <a href="2ac7dba33ec24d9eb47d5f4a9ac4cc79.html" class="ellipsis" title="Index out of bounds exception: Index:...">
+                                            Create Booking For CLEARED Teacher
+                                                <span class="related-issue-title"></span>
+                                        </a>
+                                    </div>
+                                </td>
+
+                                <td class="lightgreentext">56</td>
+
+
+                                <td class="lightgreentext">103.11</td>
+                            </tr>
+
+                            <tr class="test-ERROR">
+                                <td><span class="summary-icon"><i class='fa fa-exclamation-triangle error-icon ' title='ERROR'></i></span>
+                                    
+                                    <span style="display:none">ERROR</span></td>
+                                <td class="ERROR-text">
+                                    <div class="ellipsis">
+
+                                        <a href="a621af75dbcfd710500bddc44fcf6d3d.html" class="ellipsis" title="Index out of bounds exception: Index:...">
+                                            Create Booking For PENDING Teacher
                                                 <span class="related-issue-title"></span>
                                         </a>
                                     </div>
@@ -1406,7 +2079,47 @@
                                 <td class="lightgreentext">64</td>
 
 
-                                <td class="lightgreentext">135.53</td>
+                                <td class="lightgreentext">112.95</td>
+                            </tr>
+
+                            <tr class="test-ERROR">
+                                <td><span class="summary-icon"><i class='fa fa-exclamation-triangle error-icon ' title='ERROR'></i></span>
+                                    
+                                    <span style="display:none">ERROR</span></td>
+                                <td class="ERROR-text">
+                                    <div class="ellipsis">
+
+                                        <a href="f19595b7bf025523a60ee829301d2112.html" class="ellipsis" title="Index out of bounds exception: Index:...">
+                                            Create Booking For UNCLEARED Teacher
+                                                <span class="related-issue-title"></span>
+                                        </a>
+                                    </div>
+                                </td>
+
+                                <td class="lightgreentext">60</td>
+
+
+                                <td class="lightgreentext">105.05</td>
+                            </tr>
+
+                            <tr class="test-SUCCESS">
+                                <td><span class="summary-icon"><i class='fa fa-check-square-o success-icon ' title='SUCCESS'></i></span>
+                                    
+                                    <span style="display:none">SUCCESS</span></td>
+                                <td class="SUCCESS-text">
+                                    <div class="ellipsis">
+
+                                        <a href="e3a4f826a364c34631afb5e8ebe28418.html" class="ellipsis" title="">
+                                            Create Booking For First Three Teachers In The Search Result List
+                                                <span class="related-issue-title"></span>
+                                        </a>
+                                    </div>
+                                </td>
+
+                                <td class="lightgreentext">62</td>
+
+
+                                <td class="lightgreentext">120.47</td>
                             </tr>
                         </tbody>
                     </table>

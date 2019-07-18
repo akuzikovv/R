@@ -51,15 +51,15 @@ public class CommonActions extends PageObject {
         $(ILocators.CLose_popup).click();
     }
 
-    public void getNamesOfTeachers() {
+    public ArrayList<String> getNamesOfTeachers() {
         String counter = getDriver().findElement(By.xpath("//a[contains(.,'INVITES')]")).getText().substring(9,10);
         int max = Integer.parseInt(counter);
         names = new ArrayList<>();
-        for (int i = 1; i < max; i++) {
+        for (int i = 1; i < max+1; i++) {
 
             names.add(getDriver().findElement(By.xpath("(//div[@class='table-info']//p[@class='name'])[" + i + "]")).getText());
-
         }
+        return names;
 
     }
 
@@ -75,19 +75,31 @@ public class CommonActions extends PageObject {
     public ArrayList<String> appropriateTeachersAreDisplayedInTheInvitesList() {
         ArrayList<String> results = new ArrayList<>();
         results.add(0, "true");
-        String counter = getDriver().findElement(By.xpath("//a[@href='/school/booking/invite'][contains(.,'invites')]")).getText().substring(9,10);
+        String counter = getDriver().findElement(By.xpath("//a[@href='/school/booking/invite'][contains(.,'invites')]")).getText().substring(9,11);
         int max2 = Integer.parseInt(counter);
-        for (int i = 1; i < max2; i++) {
-            for (int y = 1; y < 11; y++) {
-                if (names.get(i).equals(getDriver().findElement(By.xpath("(//p[@class='name'])[" + y + "]")).getText())) {
-                    results.set(0, "true");
-                    break;
-                } else {
-                    results.set(0, "false");
-                }
-                if ((y == 10) & (!names.get(i).equals(getDriver().findElement(By.xpath("(//p[@class='name'])[" + y + "]")).getText()))) {
-                    getDriver().findElement(By.xpath("//span[contains(text(),'Next')]")).click();
-                    y = 1;
+        if (max2<11){
+            for (int i = 0; i < 10; i++) {
+                for (int y = 1; y < 11; y++) {
+                    if (names.get(i).equals(getDriver().findElement(By.xpath("(//p[@class='name'])[" + y + "]")).getText())) {
+                        results.set(0, "true");
+                        break;
+                    } else {
+                        results.set(0, "false");
+                    }
+        }}}else {
+            for (int i = 0; i < 10; i++) {
+                for (int y = 1; y < 11; y++) {
+                    if (names.get(i).equals(getDriver().findElement(By.xpath("(//p[@class='name'])[" + y + "]")).getText())) {
+                        results.set(0, "true");
+                        i=9;
+                        break;
+                    } else {
+                        results.set(0, "false");
+                    }
+                    if ((y == 10) & (!names.get(i).equals(getDriver().findElement(By.xpath("(//p[@class='name'])[" + y + "]")).getText()))) {
+                        getDriver().findElement(By.xpath("//span[contains(text(),'Next')]")).click();
+                        y = 1;
+                    }
                 }
             }
         }
