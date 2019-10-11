@@ -252,4 +252,13 @@ public interface ILocators {
     String fifth_line ="(//div[@class='table-body'])[5]";
 
 
+
+    /////////////////////////  AGENCY /////////////////////////
+    String Supply_staff_name = "//div[contains(.,'Supply staff name')]/input";
+    String Total_daily_charge_excluding_VAT = "//div[contains(.,'Total daily charge excluding VAT')]/input";
+    String Subject = "//div[contains(.,'Subject')]/input";
+    String drag_drop = "//div[contains(.,'Profile / Confirmation of checks')]//input[@type='file']";
+
+
+
 }

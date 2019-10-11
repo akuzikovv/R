@@ -1,6 +1,7 @@
 package RealiseMe.com.steps.serenity;
 
 import RealiseMe.com.ILocators;
+import RealiseMe.com.pages.Agency.AgencyBookingPage;
 import RealiseMe.com.pages.CommonActions.CommonActions;
 import RealiseMe.com.pages.Header.Header;
 import RealiseMe.com.pages.*;
@@ -31,6 +32,7 @@ public class EndUserSteps  extends ScenarioSteps {
     SchoolJobsPage schoolJobsPage;
     CommonActions commonActions;
     SchoolBookingsPage schoolBookingsPage;
+    AgencyBookingPage agencyBookingPage;
 
 
     @Step
@@ -464,6 +466,39 @@ public class EndUserSteps  extends ScenarioSteps {
             results.set(0, "true");
         }
         Assert.assertTrue("Popups are incorrect" + results, "true".equals(results.get(0)));
+    }
+
+    @Step
+    public void clickOnTheButtonAtTheTeacherWithName(String arg0) {
+        schoolBookingsPage.clickOnTheButtonAtTheTeacherWithName(arg0);
+    }
+
+    @Step
+    public void findInviteWithJobTitle(String arg0) {
+        commonActions.findInviteWithJobTitle(arg0);
+        waitABit(5000);
+    }
+
+    @Step
+    public void clickOnTheButtonOfTheAppropriateBooking(String arg0) {
+        commonActions.clickOnTheButtonOfTheAppropriateBooking(arg0);
+    }
+
+
+
+    @Step
+    public void fillRequiredFields(List<String> list) {
+        agencyBookingPage.fillRequiredFields(list);
+    }
+
+    @Step
+    public void uploadFile(String arg0) {
+        commonActions.uploadFile(arg0);
+    }
+
+    @Step
+    public void choosePolicyCheckbox(String arg0) {
+        agencyBookingPage.choosePolicyCheckbox();
     }
 
 //    @Step

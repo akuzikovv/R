@@ -391,6 +391,38 @@ public class DefinitionSteps {
         steps.checkPopupsDependingOfTeacherSStatus();
     }
 
+    @When("^Click on the Invite to job button at the teacher with \"([^\"]*)\" name$")
+    public void clickOnTheInviteToJobButtonAtTheTeacherAgencyWithName(String arg0) throws Throwable {
+        steps.clickOnTheButtonAtTheTeacherWithName(arg0);
+    }
+
+    @When("^Find invite with \"([^\"]*)\" job title$")
+    public void findInviteWithJobTitle(String arg0) throws Throwable {
+        steps.findInviteWithJobTitle(arg0);
+    }
+
+    @When("^Click on the \"([^\"]*)\" button of the appropriate booking$")
+    public void clickOnTheButtonOfTheAppropriateBooking(String arg0) throws Throwable {
+        steps.clickOnTheButtonOfTheAppropriateBooking(arg0);
+    }
+
+
+
+    @When("^Fill required fields$")
+    public void fillRequiredFields(List<String>list) throws Throwable {
+        steps.fillRequiredFields(list);
+    }
+
+    @When("^Upload \"([^\"]*)\" file$")
+    public void uploadFile(String arg0) throws Throwable {
+       steps.uploadFile(arg0);
+    }
+
+    @When("^Choose \"([^\"]*)\" policy checkbox$")
+    public void choosePolicyCheckbox(String arg0) throws Throwable {
+        steps.choosePolicyCheckbox(arg0);
+    }
+
 
 //    @When("^Open report$")
 //    public void openReport() throws Throwable {
