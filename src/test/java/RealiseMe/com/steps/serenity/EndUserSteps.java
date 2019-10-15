@@ -501,6 +501,34 @@ public class EndUserSteps  extends ScenarioSteps {
         agencyBookingPage.choosePolicyCheckbox();
     }
 
+    @Step
+    public void findAcceptedInviteWithJobTitle(String arg0) {
+        schoolBookingsPage.findAcceptedInviteWithJobTitle(arg0);
+    }
+
+    @Step
+    public void approveAppropriateBooking() {
+        schoolBookingsPage.approveAppropriateBooking();
+    }
+
+    @Step
+    public void enteredTeacherNameIsDisplayed(String arg0) {
+        ArrayList<String> results = schoolBookingsPage.enteredTeacherNameIsDisplayed(arg0);
+        Assert.assertTrue(String.valueOf(results), "true".equals(results.get(0)));
+
+    }
+
+    @Step
+    public void attachedFileIsDisplayed(String arg0) {
+        ArrayList<String> results = schoolBookingsPage.attachedFileIsDisplayed(arg0);
+        Assert.assertTrue(String.valueOf(results), "true".equals(results.get(0)));
+    }
+
+    public void theRateIsDisplayed(String arg0) {
+        ArrayList<String> results = schoolBookingsPage.theRateIsDisplayed(arg0);
+        Assert.assertTrue(String.valueOf(results), "true".equals(results.get(0)));
+    }
+
 //    @Step
 //    public void openReport() {
 //        getDriver().manage().window().maximize();

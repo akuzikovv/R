@@ -3,13 +3,9 @@ package RealiseMe.com.pages.CommonActions;
 import RealiseMe.com.ILocators;
 import net.serenitybdd.core.pages.PageObject;
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 
-import java.awt.*;
-import java.awt.datatransfer.StringSelection;
-import java.awt.event.KeyEvent;
-import java.io.File;
 import java.util.ArrayList;
 
 public class CommonActions extends PageObject {
@@ -35,7 +31,6 @@ public class CommonActions extends PageObject {
             WebElement xpath = getDriver().findElement(By.xpath("//p[contains(.,'" + arg0 + "')]"));
             xpath.click();
         }catch (Exception e){ }
-
     }
 
     public void clickOnTheTab(String arg0) {
@@ -138,6 +133,14 @@ public class CommonActions extends PageObject {
          String counter = getDriver().findElement(By.xpath("//a[@href='/agency/booking/invite'][contains(.,'invites')]")).getText().substring(9,10);
        return   max2 = Integer.parseInt(counter);
         }catch (Exception e){}
+        try {
+            String counter = getDriver().findElement(By.xpath("//a[@href='/school/booking/invite'][contains(.,'invites')]")).getText().substring(9,11);
+            return   max2 = Integer.parseInt(counter);
+        }catch (Exception e){}
+        try {
+            String counter = getDriver().findElement(By.xpath("//a[@href='/school/booking/invite'][contains(.,'invites')]")).getText().substring(9,10);
+            return   max2 = Integer.parseInt(counter);
+        }catch (Exception e){}
 
         return max2;
     }
@@ -165,7 +168,9 @@ public class CommonActions extends PageObject {
                     getDriver().findElement(By.xpath("(//p[contains(.,'-')])[" + y + "]")).click();
                     y--;
                 }
-                if ((y == 10) & (getBookingCounter() > 10) & (!getDriver().findElement(By.xpath("//p[contains(.,'" + arg0 + "')]")).isDisplayed())) {
+                if ((y == 10) & (getBookingCounter() > 10) &
+                        (!getDriver().findElement(By.xpath("//p[contains(.,'" + arg0 + "')]")).isDisplayed()) &
+                        (getDriver().findElement(By.xpath("//span[contains(text(),'Next')]")).isDisplayed())) {
                     getDriver().findElement(By.xpath("//span[contains(text(),'Next')]")).click();
                     y = 1;
                 }
@@ -179,5 +184,19 @@ public class CommonActions extends PageObject {
     public void uploadFile(String arg0) {
         WebElement uploadElement = getDriver().findElement(By.xpath("//input[@class='input-file']"));
         uploadElement.sendKeys("/home/akuzikov/IdeaProjects/RealiseMecom/src/test/resources/Files/"+arg0);
+    }
+
+    public boolean isElementPresent(String selector) {
+//        getDriver().manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
+//        logger.debug("Is element present"+selector);
+        boolean returnVal = true;
+        try{
+            getDriver().findElement(By.xpath(selector));
+        } catch (NoSuchElementException e){
+            returnVal = false;
+        } finally {
+//            getDriver().manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
+        }
+        return returnVal;
     }
 }

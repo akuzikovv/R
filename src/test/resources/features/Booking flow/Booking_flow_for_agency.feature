@@ -54,6 +54,22 @@ Feature:  Booking Creation
     When Click on the "CONFIRM JOB" button
     When wait time
 
+  Scenario: Approve booking as school
+    When Click on the "Login as a school" button
+    When Enter login "newuatschool28@yopmail.com"
+    When Enter password "Test123!"
+    When Click on the Log in button
+    When Click on the "bookings" button in the header
+    When Find accepted invite with "Booking for agency" job title
+    Then Entered "Supply staff name" teacher name is displayed
+    Then Attached "Candidate Clearance Summary.pdf" file is displayed
+    Then The "162.27" rate is displayed
+#    When Approve appropriate booking
+    When wait time
+
+
+
+
 
 
 

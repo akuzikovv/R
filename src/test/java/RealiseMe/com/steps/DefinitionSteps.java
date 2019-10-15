@@ -1,6 +1,5 @@
 package RealiseMe.com.steps;
 import RealiseMe.com.steps.serenity.EndUserSteps;
-
 import cucumber.api.PendingException;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -421,6 +420,31 @@ public class DefinitionSteps {
     @When("^Choose \"([^\"]*)\" policy checkbox$")
     public void choosePolicyCheckbox(String arg0) throws Throwable {
         steps.choosePolicyCheckbox(arg0);
+    }
+
+    @When("^Find accepted invite with \"([^\"]*)\" job title$")
+    public void findAcceptedInviteWithJobTitle(String arg0) throws Throwable {
+        steps.findAcceptedInviteWithJobTitle(arg0);
+    }
+
+    @When("^Approve appropriate booking$")
+    public void approveAppropriateBooking() throws Throwable {
+       steps.approveAppropriateBooking();
+    }
+
+    @Then("^Entered \"([^\"]*)\" teacher name is displayed$")
+    public void enteredTeacherNameIsDisplayed(String arg0) throws Throwable {
+        steps.enteredTeacherNameIsDisplayed(arg0);
+    }
+
+    @Then("^Attached \"([^\"]*)\" file is displayed$")
+    public void attachedFileIsDisplayed(String arg0) throws Throwable {
+        steps.attachedFileIsDisplayed(arg0);
+    }
+
+    @Then("^The \"([^\"]*)\" rate is displayed$")
+    public void theRateIsDisplayed(String arg0) throws Throwable {
+        steps.theRateIsDisplayed(arg0);
     }
 
 

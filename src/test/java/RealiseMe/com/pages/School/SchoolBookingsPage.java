@@ -1,6 +1,7 @@
 package RealiseMe.com.pages.School;
 
 import RealiseMe.com.ILocators;
+import RealiseMe.com.pages.CommonActions.CommonActions;
 import net.serenitybdd.core.pages.PageObject;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -8,6 +9,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SchoolBookingsPage extends PageObject {
+
+    private int counter;
+    CommonActions  commonActions;
 
     public ArrayList<String> newSupplyBookingPageContainsAllNecessaryText(List<String> list) {
         ArrayList<String> labels = new ArrayList<>();
@@ -160,6 +164,68 @@ public class SchoolBookingsPage extends PageObject {
                 i=0;
             }
         }
+    }
+
+    public void findAcceptedInviteWithJobTitle(String arg0) {
+        counter=0;
+        for (int y = 1; y < commonActions.getBookingCounter()+1; y++) {
+            if (((!commonActions.isElementPresent("(//div[@class='table-row red-background'])["+ y +"]//a[@class='role']")) &
+                    (commonActions.getBookingCounter() > 10) & (getDriver().findElement(By.xpath("//span[contains(text(),'Next')]")).isDisplayed())) ||
+                    (y == 10) & (commonActions.getBookingCounter() > 10) & (commonActions.isElementPresent("//span[contains(text(),'Next')]"))){
+                getDriver().findElement(By.xpath("//span[contains(text(),'Next')]")).click();
+                y = 1;
+                waitABit(1000);
+            }
+            if ((getDriver().findElement(By.xpath("(//div[@class='table-row red-background'])["+ y +"]//a[@class='role']")).getText().equals(arg0)) &
+                    getDriver().findElement(By.xpath("(//div[@class='table-row red-background'])["+ y +"]//a[@class='role']")).isEnabled()) {
+                counter = y;
+                break;
+            }
+//            if ((y == 10) & (commonActions.getBookingCounter() > 10) & (getDriver().findElement(By.xpath("//span[contains(text(),'Next')]")).isDisplayed())) {
+//                    getDriver().findElement(By.xpath("//span[contains(text(),'Next')]")).click();
+//                    y = 1;
+//            }
+        }
+    }
+
+    public void approveAppropriateBooking() {
+        getDriver().findElement(By.xpath("(//i[@class='icon-check icons'])["+ counter +"]")).click();
+    }
+
+    public ArrayList<String> enteredTeacherNameIsDisplayed(String arg) {
+        ArrayList<String> results = new ArrayList<>();
+        results.add(0, "true");
+        if (!getDriver().findElement(By.xpath("(//div[@class='table-row red-background']//p[contains(.,'Supply staff name')])["+counter+"]")).getText().substring(19).equals(arg)){
+            results.set(0, "false");
+            results.add("Expected: " + arg + "; but found: " +
+                    getDriver().findElement(By.xpath("(//div[@class='table-row red-background']//p[contains(.,'Supply staff name')])["+counter+"]")).getText().substring(19) + "\n");
+        }
+        return results;
+
+        }
+
+    public ArrayList<String> attachedFileIsDisplayed(String arg0) {
+        getDriver().findElement(By.xpath("(//div[@class='table-row red-background']//div[@class='profile-content'])["+counter+"]")).click();
+        ArrayList<String> results = new ArrayList<>();
+        results.add(0, "true");
+        if (!getDriver().findElement(By.xpath("(//div[@class='table-row red-background']//li//a)["+counter+"]")).getText().equals(arg0)){
+            results.set(0, "false");
+            results.add("Expected: " + arg0 + "; but found: " +
+                    getDriver().findElement(By.xpath("(//div[@class='table-row red-background']//li//a)["+counter+"]")).getText() + "\n");
+        }
+        return results;
+
+    }
+
+    public ArrayList<String> theRateIsDisplayed(String arg0) {
+        ArrayList<String> results = new ArrayList<>();
+        results.add(0, "true");
+        if (!getDriver().findElement(By.xpath("(//div[@class='table-row red-background']//span[contains(.,'£')]/..)["+counter+"]")).getText().substring(2).equals(arg0)){
+            results.set(0, "false");
+            results.add("Expected: " + arg0 + "; but found: " +
+                    getDriver().findElement(By.xpath("(//div[@class='table-row red-background']//span[contains(.,'£')]/..)["+counter+"]")).getText().substring(2) + "\n");
+        }
+        return results;
     }
 }
 
