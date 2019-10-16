@@ -170,7 +170,7 @@ public class CommonActions extends PageObject {
                 }
                 if ((y == 10) & (getBookingCounter() > 10) &
                         (!getDriver().findElement(By.xpath("//p[contains(.,'" + arg0 + "')]")).isDisplayed()) &
-                        (getDriver().findElement(By.xpath("//span[contains(text(),'Next')]")).isDisplayed())) {
+                        (isElementPresent("//span[contains(text(),'Next')]"))) {
                     getDriver().findElement(By.xpath("//span[contains(text(),'Next')]")).click();
                     y = 1;
                 }

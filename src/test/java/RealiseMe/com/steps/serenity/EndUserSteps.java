@@ -2,9 +2,12 @@ package RealiseMe.com.steps.serenity;
 
 import RealiseMe.com.ILocators;
 import RealiseMe.com.pages.Agency.AgencyBookingPage;
+import RealiseMe.com.pages.AuthorizationPage;
 import RealiseMe.com.pages.CommonActions.CommonActions;
 import RealiseMe.com.pages.Header.Header;
-import RealiseMe.com.pages.*;
+import RealiseMe.com.pages.HomePage;
+import RealiseMe.com.pages.LandingPage;
+import RealiseMe.com.pages.LoginPage;
 import RealiseMe.com.pages.School.SchoolBookingsPage;
 import RealiseMe.com.pages.School.SchoolHomePage;
 import RealiseMe.com.pages.School.SchoolJobsPage;
@@ -484,8 +487,6 @@ public class EndUserSteps  extends ScenarioSteps {
         commonActions.clickOnTheButtonOfTheAppropriateBooking(arg0);
     }
 
-
-
     @Step
     public void fillRequiredFields(List<String> list) {
         agencyBookingPage.fillRequiredFields(list);
@@ -524,9 +525,15 @@ public class EndUserSteps  extends ScenarioSteps {
         Assert.assertTrue(String.valueOf(results), "true".equals(results.get(0)));
     }
 
+    @Step
     public void theRateIsDisplayed(String arg0) {
         ArrayList<String> results = schoolBookingsPage.theRateIsDisplayed(arg0);
         Assert.assertTrue(String.valueOf(results), "true".equals(results.get(0)));
+    }
+
+    @Step
+    public void declineAppropriateBooking() {
+        schoolBookingsPage.declineAppropriateBooking();
     }
 
 //    @Step

@@ -1,9 +1,10 @@
 package RealiseMe.com.steps;
+
 import RealiseMe.com.steps.serenity.EndUserSteps;
-import cucumber.api.PendingException;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import cucumber.runtime.model.CucumberScenario;
 import net.thucydides.core.annotations.Steps;
 
 import java.util.List;
@@ -12,6 +13,8 @@ public class DefinitionSteps {
 
     @Steps
     EndUserSteps steps;
+    DefinitionSteps definitionSteps;
+    private Class<CucumberScenario> cucumberScenarioClass;
 
     @Given("open login page")
     public void checkThatLoginPageIsOpened() {
@@ -447,8 +450,13 @@ public class DefinitionSteps {
         steps.theRateIsDisplayed(arg0);
     }
 
+    @When("^Decline appropriate booking$")
+    public void declineAppropriateBooking() throws Throwable {
+       steps.declineAppropriateBooking();
+    }
 
-//    @When("^Open report$")
+
+    //    @When("^Open report$")
 //    public void openReport() throws Throwable {
 //        steps.openReport();
 //    }

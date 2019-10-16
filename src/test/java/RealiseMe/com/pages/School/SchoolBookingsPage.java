@@ -170,7 +170,7 @@ public class SchoolBookingsPage extends PageObject {
         counter=0;
         for (int y = 1; y < commonActions.getBookingCounter()+1; y++) {
             if (((!commonActions.isElementPresent("(//div[@class='table-row red-background'])["+ y +"]//a[@class='role']")) &
-                    (commonActions.getBookingCounter() > 10) & (getDriver().findElement(By.xpath("//span[contains(text(),'Next')]")).isDisplayed())) ||
+                    (commonActions.getBookingCounter() > 10) & (commonActions.isElementPresent("//span[contains(text(),'Next')]"))) ||
                     (y == 10) & (commonActions.getBookingCounter() > 10) & (commonActions.isElementPresent("//span[contains(text(),'Next')]"))){
                 getDriver().findElement(By.xpath("//span[contains(text(),'Next')]")).click();
                 y = 1;
@@ -226,6 +226,10 @@ public class SchoolBookingsPage extends PageObject {
                     getDriver().findElement(By.xpath("(//div[@class='table-row red-background']//span[contains(.,'£')]/..)["+counter+"]")).getText().substring(2) + "\n");
         }
         return results;
+    }
+
+    public void declineAppropriateBooking() {
+        getDriver().findElement(By.xpath("(//i[@class='icon-close icons'])["+ counter +"]")).click();
     }
 }
 
