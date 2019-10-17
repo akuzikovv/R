@@ -62,7 +62,8 @@ public class SchoolBookingsPage extends PageObject {
     }
 
     public void enterTextToTheNameYourJobPostingField(String arg0) {
-        $(ILocators.Name_your_job_posting_input).type(arg0);
+        $(ILocators.Name_your_job_posting_input).waitUntilVisible().type(arg0);
+//        $(ILocators.Name_your_job_posting_input).type(arg0);
 
     }
 
@@ -154,12 +155,13 @@ public class SchoolBookingsPage extends PageObject {
     }
 
     public void clickOnTheButtonAtTheTeacherWithName(String arg0) {
-        for (int i = 1 ; i <11 ;i++){
+        for (int i = 0 ; i <20 ;i++){
+            i=i+1;
             if (getDriver().findElement(By.xpath("(//div[@class='table-info']//p)[" + i + "]")).getText().equals(arg0)){
                 getDriver().findElement(By.xpath("(//div[@class='invite-to-job'])[" + i + "]")).click();
                 break;
             }
-            if ((i==10) & !getDriver().findElement(By.xpath("(//div[@class='table-status']//span)[" + i + "]")).getText().equals(arg0)) {
+            if ((i==19) & !getDriver().findElement(By.xpath("(//div[@class='table-status']//span)[" + i + "]")).getText().equals(arg0) & (commonActions.isElementPresent("//span[contains(text(),'Next')]"))) {
                 getDriver().findElement(By.xpath("//span[contains(text(),'Next')]")).click();
                 i=0;
             }

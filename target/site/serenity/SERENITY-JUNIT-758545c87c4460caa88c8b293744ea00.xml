@@ -1,0 +1,1 @@
+<?xml version="1.0" encoding="UTF-8"?><testsuite errors="0" failures="0" name="Booking Creation" skipped="0" tests="4" time="790.08" timestamp="2019-10-290 12:45:49"><testcase name="Create booking for agency"/><testcase name="Accept booking as agency"/><testcase name="Approve booking as school"/><testcase name="Accept booking as agency and Decline booking as school"/></testsuite>
