@@ -154,6 +154,7 @@ public class CommonActions extends PageObject {
                 getDriver().findElement(By.xpath("(//p[contains(.,'+')])[" + y + "]")).click();
                 waitABit(1000);
                 if ((getDriver().findElement(By.xpath("((//div[@class='content-wrapper'])["+y+"]//p)[4]")).getText().substring(11).equals(arg0)) &
+                        (getDriver().findElement(By.xpath("(//span[contains(.,'accept')])["+counter+"]")).getAttribute("class").equals("tooltip green-background tooltip--top")) ||
                         (getDriver().findElement(By.xpath("(//span[contains(.,'accept')])["+counter+"]")).getAttribute("class").equals("tooltip green-background tooltip--top"))) {
                     i++;
                     waitABit(1000);
