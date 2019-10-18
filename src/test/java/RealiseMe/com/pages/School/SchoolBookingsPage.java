@@ -62,6 +62,7 @@ public class SchoolBookingsPage extends PageObject {
     }
 
     public void enterTextToTheNameYourJobPostingField(String arg0) {
+        waitABit(500);
         $(ILocators.Name_your_job_posting_input).waitUntilVisible().type(arg0);
 //        $(ILocators.Name_your_job_posting_input).type(arg0);
 
