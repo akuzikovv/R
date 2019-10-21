@@ -1,19 +1,17 @@
 package RealiseMe.com.CustomDriver;
 
-import RealiseMe.com.ILocators;
 import net.serenitybdd.core.time.SystemClock;
-import org.joda.time.DateTime;
-import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Cookie;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.events.WebDriverEventListener;
-import org.openqa.selenium.support.ui.Wait;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.joda.time.DateTime;
-public class EventHandler implements WebDriverEventListener  {
+
+import java.time.ZonedDateTime;
+
+public abstract class EventHandler implements WebDriverEventListener  {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(EventHandler.class);
 
@@ -90,12 +88,15 @@ public class EventHandler implements WebDriverEventListener  {
     }
 
     @Override
-    public void beforeChangeValueOf(WebElement webElement, WebDriver webDriver) {
-
+    public void beforeChangeValueOf(WebElement element,
+                                    WebDriver driver,
+                                    java.lang.CharSequence[] keysToSend){
     }
 
     @Override
-    public void afterChangeValueOf(WebElement webElement, WebDriver webDriver) {
+    public void afterChangeValueOf(WebElement element,
+                            WebDriver driver,
+                            java.lang.CharSequence[] keysToSend) {
 
     }
 
@@ -121,7 +122,6 @@ public class EventHandler implements WebDriverEventListener  {
         }
     }
 
-
     private void wait(WebDriver webDriver){
         SystemClock clock = new SystemClock() {
             @Override
@@ -130,7 +130,7 @@ public class EventHandler implements WebDriverEventListener  {
             }
 
             @Override
-            public DateTime getCurrentTime() {
+            public ZonedDateTime getCurrentTime() {
                 return null;
             }
         };
