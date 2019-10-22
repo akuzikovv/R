@@ -153,7 +153,7 @@ public class CommonActions extends PageObject {
             for (int y = 1; y < getBookingCounter()+1; y++) {
                 counter=y+i;
                 getDriver().findElement(By.xpath("(//p[contains(.,'+')])[" + y + "]")).click();
-//                waitABit(1000);
+                waitABit(1000);
 
 //                wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("((//div[@class='content-wrapper'])["+y+"]//p)[4]")));
                 if ((getDriver().findElement(By.xpath("((//div[@class='content-wrapper'])["+y+"]//p)[4]")).getText().substring(11).equals(arg0)) &
