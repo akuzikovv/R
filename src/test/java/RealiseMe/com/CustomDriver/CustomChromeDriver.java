@@ -1,10 +1,9 @@
 package RealiseMe.com.CustomDriver;
 
 import net.thucydides.core.webdriver.DriverSource;
-import org.openqa.selenium.OutputType;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.events.EventFiringWebDriver;
 
 public class CustomChromeDriver implements DriverSource {
@@ -16,60 +15,12 @@ public class CustomChromeDriver implements DriverSource {
 //        }
 //        DesiredCapabilities ignoreAlert = new DesiredCapabilities();
 //        ignoreAlert.setCapability(CapabilityType.UNEXPECTED_ALERT_BEHAVIOUR, UnexpectedAlertBehaviour.ACCEPT);
+        ChromeOptions chromeOptions = new ChromeOptions();
+        chromeOptions.addArguments("--whitelist-ip *");
         ChromeDriver driver = new ChromeDriver();
         driver.manage().deleteAllCookies();
         EventFiringWebDriver eventDriver = new EventFiringWebDriver(driver);
-        EventHandler handler = new EventHandler() {
-            @Override
-            public void beforeAlertAccept(WebDriver webDriver) {
-
-            }
-
-            @Override
-            public void afterAlertAccept(WebDriver webDriver) {
-
-            }
-
-            @Override
-            public void afterAlertDismiss(WebDriver webDriver) {
-
-            }
-
-            @Override
-            public void beforeAlertDismiss(WebDriver webDriver) {
-
-            }
-
-            @Override
-            public void beforeSwitchToWindow(String s, WebDriver webDriver) {
-
-            }
-
-            @Override
-            public void afterSwitchToWindow(String s, WebDriver webDriver) {
-
-            }
-
-            @Override
-            public <X> void beforeGetScreenshotAs(OutputType<X> outputType) {
-
-            }
-
-            @Override
-            public <X> void afterGetScreenshotAs(OutputType<X> outputType, X x) {
-
-            }
-
-            @Override
-            public void beforeGetText(WebElement webElement, WebDriver webDriver) {
-
-            }
-
-            @Override
-            public void afterGetText(WebElement webElement, WebDriver webDriver, String s) {
-
-            }
-        };
+        EventHandler handler = new EventHandler();
         eventDriver.register(handler);
         return eventDriver;
     }

@@ -10,7 +10,6 @@ RealiseMe/com/ILocators.class
 RealiseMe/com/pages/Agency/AgencyBookingPage.class
 RealiseMe/com/pages/School/SchoolBookingsPage.class
 RealiseMe/com/pages/CommonActions/CommonActions.class
-RealiseMe/com/CustomDriver/CustomChromeDriver$1.class
 RealiseMe/com/pages/Header/Header.class
 RealiseMe/com/pages/Teacher/SupplyTeacherHomePage.class
 RealiseMe/com/pages/School/SchoolHomePage.class

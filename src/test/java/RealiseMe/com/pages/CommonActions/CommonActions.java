@@ -5,8 +5,6 @@ import net.serenitybdd.core.pages.PageObject;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.ArrayList;
 
@@ -15,7 +13,7 @@ public class CommonActions extends PageObject {
     private ArrayList<String> names = new ArrayList<>();
     private int counter;
     private int b;
-    public WebDriverWait wait = new WebDriverWait(getDriver(), 15);
+//    public WebDriverWait wait = new WebDriverWait(getDriver(), 15);
 
     public void clickOnTheButton(String arg0) {
         try {
@@ -157,7 +155,7 @@ public class CommonActions extends PageObject {
                 getDriver().findElement(By.xpath("(//p[contains(.,'+')])[" + y + "]")).click();
 //                waitABit(1000);
 
-                wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("((//div[@class='content-wrapper'])["+y+"]//p)[4]")));
+//                wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("((//div[@class='content-wrapper'])["+y+"]//p)[4]")));
                 if ((getDriver().findElement(By.xpath("((//div[@class='content-wrapper'])["+y+"]//p)[4]")).getText().substring(11).equals(arg0)) &
                         (getDriver().findElement(By.xpath("(//span[contains(.,'accept')])["+counter+"]")).getAttribute("class").equals("tooltip green-background tooltip--top")) ||
                         (getDriver().findElement(By.xpath("(//span[contains(.,'accept')])["+counter+"]")).getAttribute("class").equals("tooltip green-background tooltip--top"))) {
