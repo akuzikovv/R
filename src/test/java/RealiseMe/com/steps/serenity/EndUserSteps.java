@@ -403,7 +403,7 @@ public class EndUserSteps  extends ScenarioSteps {
 
     @Step
     public void waitTime() {
-        waitABit(7000);
+        waitABit(2000);
     }
     @Step
     public void getNamesOfTeachers() {

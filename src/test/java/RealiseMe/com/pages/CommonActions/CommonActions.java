@@ -5,7 +5,8 @@ import net.serenitybdd.core.pages.PageObject;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
-
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import java.util.ArrayList;
 
 public class CommonActions extends PageObject {
@@ -13,7 +14,8 @@ public class CommonActions extends PageObject {
     private ArrayList<String> names = new ArrayList<>();
     private int counter;
     private int b;
-//    public WebDriverWait wait = new WebDriverWait(getDriver(), 15);
+    public WebDriverWait wait;
+
 
     public void clickOnTheButton(String arg0) {
         try {
@@ -148,37 +150,37 @@ public class CommonActions extends PageObject {
 
     public void findInviteWithJobTitle(String arg0) {
         waitABit(5000);
+        wait  = new WebDriverWait(getDriver(), 15);
         int i = 0;
         counter=0;
-            for (int y = 1; y < getBookingCounter()+1; y++) {
-                counter=y+i;
+        for (int y = 1; y < getBookingCounter()+1; y++) {
+            counter=y+i;
+            waitABit(1000);
+            if ( (getDriver().findElement(By.xpath("(//span[contains(.,'accept')])["+counter+"]")).getAttribute("class").equals("tooltip green-background tooltip--top"))) {
+                i++;
+                continue;
+            }else {
                 getDriver().findElement(By.xpath("(//p[contains(.,'+')])[" + y + "]")).click();
-                waitABit(2000);
-
-//                wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("((//div[@class='content-wrapper'])["+y+"]//p)[4]")));
-                if ((getDriver().findElement(By.xpath("((//div[@class='content-wrapper'])["+y+"]//p)[4]")).getText().substring(11).equals(arg0)) &
-                        (getDriver().findElement(By.xpath("(//span[contains(.,'accept')])["+counter+"]")).getAttribute("class").equals("tooltip green-background tooltip--top")) ||
-                        (getDriver().findElement(By.xpath("(//span[contains(.,'accept')])["+counter+"]")).getAttribute("class").equals("tooltip green-background tooltip--top"))) {
-                    i++;
-                    waitABit(1000);
-                }
-                if (getDriver().findElement(By.xpath("((//div[@class='content-wrapper'])["+y+"]//p)[4]")).getText().substring(11).equals(arg0) &
-                        (!getDriver().findElement(By.xpath("(//span[contains(.,'accept')])["+counter+"]")).getAttribute("class").equals("tooltip green-background tooltip--top"))) {
-                    counter=y+i;
-                    waitABit(1000);
-                    break;
-                } else {
-                    y++;
-                    getDriver().findElement(By.xpath("(//p[contains(.,'-')])[" + y + "]")).click();
-                    y--;
-                }
-                if ((y == 10) & (getBookingCounter() > 10) &
-                        (!getDriver().findElement(By.xpath("//p[contains(.,'" + arg0 + "')]")).isDisplayed()) &
-                        (isElementPresent("//span[contains(text(),'Next')]"))) {
-                    getDriver().findElement(By.xpath("//span[contains(text(),'Next')]")).click();
-                    y = 1;
-                }
+                            wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("((//div[@class='content-wrapper'])["+y+"]//p)[4]")));
             }
+            if (getDriver().findElement(By.xpath("((//div[@class='content-wrapper'])["+y+"]//p)[4]")).getText().substring(11).equals(arg0) &
+                    (!getDriver().findElement(By.xpath("(//span[contains(.,'accept')])["+counter+"]")).getAttribute("class").equals("tooltip green-background tooltip--top"))) {
+                counter=y+i;
+                waitABit(500);
+                break;
+            }
+            else {
+                y++;
+                getDriver().findElement(By.xpath("(//p[contains(.,'-')])[" + y + "]")).click();
+                y--;
+            }
+            if ((y == 10) & (getBookingCounter() > 10) &
+                    (!isElementPresent("((//div[@class='content-wrapper'])["+y+"]//p)[4]")) &
+                    (isElementPresent("//span[contains(text(),'Next')]"))) {
+                getDriver().findElement(By.xpath("//span[contains(text(),'Next')]")).click();
+                y = 1;
+            }
+        }
         }
 
     public void clickOnTheButtonOfTheAppropriateBooking(String arg0) {
@@ -191,15 +193,12 @@ public class CommonActions extends PageObject {
     }
 
     public boolean isElementPresent(String selector) {
-//        getDriver().manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
-//        logger.debug("Is element present"+selector);
         boolean returnVal = true;
         try{
             getDriver().findElement(By.xpath(selector));
         } catch (NoSuchElementException e){
             returnVal = false;
         } finally {
-//            getDriver().manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
         }
         return returnVal;
     }

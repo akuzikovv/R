@@ -1,0 +1,5 @@
+"Story","Title","Result","Date","Stability","Duration (s)"
+"Booking Creation","Accept booking as agency","SUCCESS","2019-10-23T12:25:10.187+03:00","0.0","99.88"
+"Booking Creation","Accept booking as agency and Decline booking as school","SUCCESS","2019-10-23T12:29:39.192+03:00","0.0","260.12"
+"Booking Creation","Approve booking as school","SUCCESS","2019-10-23T12:26:50.213+03:00","0.0","168.81"
+"Booking Creation","Create booking for agency","SUCCESS","2019-10-23T12:21:17.133+03:00","0.0","232.46"

@@ -5,6 +5,9 @@ import RealiseMe.com.pages.CommonActions.CommonActions;
 import net.serenitybdd.core.pages.PageObject;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -62,9 +65,9 @@ public class SchoolBookingsPage extends PageObject {
     }
 
     public void enterTextToTheNameYourJobPostingField(String arg0) {
-        waitABit(500);
-        $(ILocators.Name_your_job_posting_input).waitUntilVisible().type(arg0);
-//        $(ILocators.Name_your_job_posting_input).type(arg0);
+        commonActions.wait = new WebDriverWait(getDriver(),15);
+        commonActions.wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(ILocators.Name_your_job_posting_input)));
+        $(ILocators.Name_your_job_posting_input).type(arg0);
 
     }
 
