@@ -65,9 +65,16 @@ public class SchoolBookingsPage extends PageObject {
     }
 
     public void enterTextToTheNameYourJobPostingField(String arg0) {
-        commonActions.wait = new WebDriverWait(getDriver(),15);
+        commonActions.wait = new WebDriverWait(getDriver(),20);
         commonActions.wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(ILocators.Name_your_job_posting_input)));
-        $(ILocators.Name_your_job_posting_input).type(arg0);
+        try {
+            $(ILocators.Name_your_job_posting_input).type(arg0);
+        }
+        catch (Exception e){}
+        try {
+            $(ILocators.Name_your_job_posting_input_2).type(arg0);
+        }
+        catch (Exception e){}
 
     }
 

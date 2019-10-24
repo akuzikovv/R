@@ -1,7 +1,5 @@
 package RealiseMe.com;
 
-import org.yecht.Data;
-
 public interface ILocators {
 
 ///////////////////////////  HEADER ///////////////////////////
@@ -46,6 +44,7 @@ public interface ILocators {
     String Job_Details = "//span[contains(.,'Job Details')]";
     String Name_your_job_posting_title = "//label[contains(.,'Name your job posting*')]";
     String Name_your_job_posting_input = "//input[@placeholder='EXAMPLE: Maths teacher in Essex']";
+    String Name_your_job_posting_input_2="//input[@name='name']";
     String Describethe_job_title = "//label[contains(.,'Describe the job*')]";
     String Describethe_job_input = "//textarea[@id='job-description']";
     String characters_left = "//span[@class='char-left'][contains(.,'5000 characters left')]";
