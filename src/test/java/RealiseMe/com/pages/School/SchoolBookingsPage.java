@@ -182,12 +182,11 @@ public class SchoolBookingsPage extends PageObject {
     public void findAcceptedInviteWithJobTitle(String arg0) {
         counter=0;
         for (int y = 1; y < commonActions.getBookingCounter()+1; y++) {
-            if (((!commonActions.isElementPresent("(//div[@class='table-row red-background'])["+ y +"]//a[@class='role']")) &
-                    (commonActions.getBookingCounter() > 10) & (commonActions.isElementPresent("//span[contains(text(),'Next')]"))) ||
-                    (y == 10) & (commonActions.getBookingCounter() > 10) & (commonActions.isElementPresent("//span[contains(text(),'Next')]"))){
+            if (((!commonActions.isElementPresent("(//div[@class='table-row red-background'])["+ y +"]//a[@class='role']"))
+                    & (commonActions.isElementPresent("//span[contains(text(),'Next')]")))){
                 getDriver().findElement(By.xpath("//span[contains(text(),'Next')]")).click();
-                y = 1;
-                waitABit(1000);
+                y = 0;
+                continue;
             }
             if ((getDriver().findElement(By.xpath("(//div[@class='table-row red-background'])["+ y +"]//a[@class='role']")).getText().equals(arg0)) &
                     getDriver().findElement(By.xpath("(//div[@class='table-row red-background'])["+ y +"]//a[@class='role']")).isEnabled()) {

@@ -156,6 +156,14 @@ public class CommonActions extends PageObject {
         for (int y = 1; y < getBookingCounter()+1; y++) {
             counter=y+i;
             waitABit(1000);
+            if ((!isElementPresent("(//span[contains(.,'accept')])["+counter+"]") &
+                    (isElementPresent("//span[contains(text(),'Next')]")) )){
+                getDriver().findElement(By.xpath("//span[contains(text(),'Next')]")).click();
+                y = 0;
+                counter=0;
+                continue;
+            }
+
             if ( (getDriver().findElement(By.xpath("(//span[contains(.,'accept')])["+counter+"]")).getAttribute("class").equals("tooltip green-background tooltip--top"))) {
                 i++;
                 continue;
@@ -163,6 +171,7 @@ public class CommonActions extends PageObject {
                 getDriver().findElement(By.xpath("(//p[contains(.,'+')])[" + y + "]")).click();
                             wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("((//div[@class='content-wrapper'])["+y+"]//p)[4]")));
             }
+
             if (getDriver().findElement(By.xpath("((//div[@class='content-wrapper'])["+y+"]//p)[4]")).getText().substring(11).equals(arg0) &
                     (!getDriver().findElement(By.xpath("(//span[contains(.,'accept')])["+counter+"]")).getAttribute("class").equals("tooltip green-background tooltip--top"))) {
                 counter=y+i;
@@ -176,9 +185,11 @@ public class CommonActions extends PageObject {
             }
             if ((y == 10) & (getBookingCounter() > 10) &
                     (!isElementPresent("((//div[@class='content-wrapper'])["+y+"]//p)[4]")) &
-                    (isElementPresent("//span[contains(text(),'Next')]"))) {
+                    (isElementPresent("//span[contains(text(),'Next')]")) ||
+                    (counter>19) & (isElementPresent("//span[contains(text(),'Next')]"))) {
                 getDriver().findElement(By.xpath("//span[contains(text(),'Next')]")).click();
                 y = 1;
+                counter=0;
             }
         }
         }
