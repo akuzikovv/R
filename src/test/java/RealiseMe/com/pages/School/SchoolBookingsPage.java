@@ -84,6 +84,9 @@ public class SchoolBookingsPage extends PageObject {
 
     public void chooseFullDayInTheMonthOfAvailableCalendar(String arg0, String arg1) {
         WebElement xpath = getDriver().findElement(By.xpath("(//span[contains(.,'" + arg0 + "')])[" + arg1 + "]"));
+        if (!xpath.getAttribute("class").equals("datepicker-table-cal datepicker-day available full-day")){
+            getDriver().findElement(By.xpath("//div[@class='right']")).click();
+        }
         xpath.click();
     }
 
