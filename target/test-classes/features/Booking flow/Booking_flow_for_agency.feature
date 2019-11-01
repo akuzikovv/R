@@ -32,6 +32,8 @@ Feature:  Booking Creation
     When Click on the "SEND" button
     When Click on the "REVIEW INVITATIONS" button
     When Click on the "SEND" button
+    When Click on the "REVIEW INVITATIONS" button
+    When Click on the "SEND" button
     When Get names of teachers
     When Click on the "View all invites" button
 #    Then Appropriate teachers are displayed in the invites list
@@ -99,6 +101,20 @@ Feature:  Booking Creation
     Then The "162.27" rate is displayed
     When Decline appropriate booking
     When wait time
+
+  Scenario: Decline booking as agency
+    When Click on the "Login as an agency" button
+    When Enter login "newagencyuat18@yopmail.com"
+    When Enter password "Test123!"
+    When Click on the Log in button
+    When Click on the "bookings" button in the header
+    When Find invite with "Booking for agency" job title
+    When Click on the "decline" button of the appropriate booking
+    When Click on the "confirm" button
+    When wait time
+    When wait time
+    When wait time
+
 
 
 
