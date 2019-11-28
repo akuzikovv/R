@@ -52,10 +52,14 @@ public interface ILocators {
     String Teacher_checkbox_title = "//label[contains(.,'Teacher')]";
     String TA_checkbox_title = "//label[contains(.,'TA')]";
     String Dates_required = "//p[contains(.,'Date(s) required*')]";
-    String Full_Day_Start_time = "//input[contains(@id,'full-day-start-time')]";
+    String Full_Day_Start_time = "//input[@id='full-day-start-time']";
+    String Full_day_start_clear_button = "//input[@id='full-day-start-time']/../..//i[contains(.,'clear')]";
     String Full_Day_End_time = "//input[contains(@id,'full-day-end-time')]";
+    String Full_day_end_clear_button = "//input[@id='full-day-end-time']/../..//i[contains(.,'clear')]";
     String Half_Day_Start_time = "//input[contains(@id,'half-day-start-time')]";
+    String Half_Day_Start_clear_button = "//input[@id='half-day-start-time']/../..//i[contains(.,'clear')]";
     String Half_Day_End_time = "//input[contains(@id,'half-day-end-time')]";
+    String Half_Day_end_clear_button = "//input[@id='half-day-end-time']/../..//i[contains(.,'clear')]";
     String Rate_input = "//input[@id='rate-for-day']";
     String Note1  = "//span[contains(.,'Note: click on date to switch between full and half day. If the booking is less than half day, please contact us to proceed.')]";
     String Rate_title = "//label[contains(.,'Rate*')]";
@@ -202,6 +206,7 @@ public interface ILocators {
     String DontRememberPass = "(//a)[2]";
     String DontRememberPass_for_school = "(//a)[4]";
     String Log_In = "//button[@type='submit']";
+    String Sign_up = "//button[@type='submit']";
 
     ////////////////////  Home Page ////////////////////
 

@@ -7,6 +7,7 @@ import org.junit.runner.RunWith;
 @RunWith(CucumberWithSerenity.class)
 @CucumberOptions(features= {"" +
         "src/test/resources/features/Booking flow/Booking_flow_for_agency.feature"
+//        "src/test/resources/features/Booking flow/Booking_flow_for_CLEARED_teacher.feature"
 //        "src/test/resources/features/Unauthorised user flow/LandingPage.feature",
 //        "src/test/resources/features/LoginPage.feature",
 //        "src/test/resources/features/AuthorizationPage.feature",

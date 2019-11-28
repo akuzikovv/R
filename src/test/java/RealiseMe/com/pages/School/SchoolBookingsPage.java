@@ -97,24 +97,28 @@ public class SchoolBookingsPage extends PageObject {
     }
 
     public void chooseFullDayStartTime(String arg0) {
+        $(ILocators.Full_day_start_clear_button).click();
         $(ILocators.Full_Day_Start_time).click();
         WebElement xpath = getDriver().findElement(By.className("list")).findElement(By.xpath("//div[contains(@class,'__active')]//div[text()='"+arg0+"']"));
         xpath.click();
     }
 
     public void chooseFullDayEndTime(String arg0) {
+        $(ILocators.Full_day_end_clear_button).click();
         $(ILocators.Full_Day_End_time).click();
         WebElement xpath = getDriver().findElement(By.className("list")).findElement(By.xpath("//div[contains(@class,'__active')]//div[text()='"+arg0+"']"));
         xpath.click();
     }
 
     public void chooseHalfDayStartTime(String arg0) {
+        $(ILocators.Half_Day_Start_clear_button).click();
         $(ILocators.Half_Day_Start_time).click();
         WebElement xpath = getDriver().findElement(By.className("list")).findElement(By.xpath("//div[contains(@class,'__active')]//div[text()='"+arg0+"']"));
         xpath.click();
     }
 
     public void chooseHalfDayEndTime(String arg0) {
+        $(ILocators.Half_Day_end_clear_button).click();
         $(ILocators.Half_Day_End_time).click();
         WebElement xpath = getDriver().findElement(By.className("list")).findElement(By.xpath("//div[contains(@class,'__active')]//div[text()='"+arg0+"']"));
         xpath.click();
@@ -169,17 +173,33 @@ public class SchoolBookingsPage extends PageObject {
     }
 
     public void clickOnTheButtonAtTheTeacherWithName(String arg0) {
-        for (int i = 0 ; i <20 ;i++){
-            i=i+1;
-            if (getDriver().findElement(By.xpath("(//div[@class='table-info']//p)[" + i + "]")).getText().equals(arg0)){
-                getDriver().findElement(By.xpath("(//div[@class='invite-to-job'])[" + i + "]")).click();
-                break;
+        if (getDriver().findElement(By.xpath("//a[contains(.,'AGENCIES')]")).getAttribute("class").equals("results router-link-exact-active active")){
+            for (int i = 0 ; i <20 ;i++){
+                i=i+1;
+                if (getDriver().findElement(By.xpath("(//div[@class='table-info']//p)[" + i + "]")).getText().equals(arg0)){
+                    getDriver().findElement(By.xpath("(//div[@class='invite-to-job'])[" + i + "]")).click();
+                    break;
+                }
+                if ((i==19) & !getDriver().findElement(By.xpath("(//div[@class='table-status']//span)[" + i + "]")).getText().equals(arg0) & (commonActions.isElementPresent("//span[contains(text(),'Next')]"))) {
+                    getDriver().findElement(By.xpath("//span[contains(text(),'Next')]")).click();
+                    i=0;
+                }
             }
-            if ((i==19) & !getDriver().findElement(By.xpath("(//div[@class='table-status']//span)[" + i + "]")).getText().equals(arg0) & (commonActions.isElementPresent("//span[contains(text(),'Next')]"))) {
-                getDriver().findElement(By.xpath("//span[contains(text(),'Next')]")).click();
-                i=0;
+        }else{
+            for (int i = 0 ; i <20 ;i++){
+                i=i+1;
+                if (getDriver().findElement(By.xpath("(//p[@class='name'])[" + i + "]")).getText().toLowerCase().equals(arg0.toLowerCase())){
+                    getDriver().findElement(By.xpath("(//div[@class='invite-to-job'])[" + i + "]")).click();
+                    break;
+                }
+                if ((i==19) & !getDriver().findElement(By.xpath("(//div[@class='table-status']//span)[" + i + "]")).getText().equals(arg0) & (commonActions.isElementPresent("//span[contains(text(),'Next')]"))) {
+                    getDriver().findElement(By.xpath("//span[contains(text(),'Next')]")).click();
+                    i=0;
+                }
             }
+
         }
+
     }
 
     public void findAcceptedInviteWithJobTitle(String arg0) {
@@ -245,6 +265,17 @@ public class SchoolBookingsPage extends PageObject {
 
     public void declineAppropriateBooking() {
         getDriver().findElement(By.xpath("(//i[@class='icon-close icons'])["+ counter +"]")).click();
+    }
+
+    public ArrayList<String> popupWithTextIsAppeared(String arg0) {
+        ArrayList<String> results = new ArrayList<>();
+        results.add(0, "true");
+        if (!getDriver().findElement(By.xpath("//div[@class='card']//div[@slot='bodyModal']")).getText().equals(arg0)){
+            results.set(0, "false");
+            results.add("Expected: " + arg0 + "; but found: " +
+                    getDriver().findElement(By.xpath("//div[@class='card']//div[@slot='bodyModal']")).getText() + "\n");
+        }
+        return results;
     }
 }
 

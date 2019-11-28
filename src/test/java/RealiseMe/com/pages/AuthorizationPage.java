@@ -1,12 +1,15 @@
 package RealiseMe.com.pages;
 
 import RealiseMe.com.ILocators;
+import RealiseMe.com.pages.CommonActions.CommonActions;
 import net.serenitybdd.core.pages.PageObject;
+import org.openqa.selenium.By;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class AuthorizationPage extends PageObject {
+    CommonActions commonActions;
 
     public ArrayList<String> authorizationPageContainsNecessaryElements(List<String> list) {
         ArrayList<String> labels = new ArrayList<>();
@@ -52,5 +55,26 @@ public class AuthorizationPage extends PageObject {
 
     public void clickOnTheLogInButton() {
         $(ILocators.Log_In).click();
+    }
+
+    public void clickOnTheSIGNUPButton() {
+        $(ILocators.Sign_up).click();
+    }
+
+    public ArrayList<String> theMessageBeforeEmailVERIFICATIONIsDisplayed(String arg0) {
+        ArrayList<String> labels = new ArrayList<>();
+        ArrayList<String> results = new ArrayList<>();
+        results.add(0, "true");
+        if (!commonActions.isElementPresent("//span[@class='animated fadeInUp']//span")){
+            results.set(0, "false");
+            results.add("Text is absent" + "\n");
+        }else {
+            waitABit(500);
+                if (!getDriver().findElement(By.xpath("//span[@class='animated fadeInUp']//span")).getText().equals(arg0)) {
+                    results.set(0, "false");
+                    results.add("Expected: " + arg0 + "; but found: " + getDriver().findElement(By.xpath("//span[@class='animated fadeInUp']//span")).getText() + "\n");
+                }
+            }
+        return results;
     }
 }

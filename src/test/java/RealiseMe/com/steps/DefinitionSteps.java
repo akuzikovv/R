@@ -455,6 +455,56 @@ public class DefinitionSteps {
        steps.declineAppropriateBooking();
     }
 
+    @Then("^Popup with \"([^\"]*)\" text is appeared$")
+    public void popupWithTextIsAppeared(String arg0) throws Throwable {
+       steps.popupWithTextIsAppeared(arg0);
+    }
+
+    @When("^Enter login of new \"([^\"]*)\"$")
+    public void enterLoginOfNew(String arg0) throws Throwable {
+        steps.enterLoginOfNewUser(arg0);
+    }
+
+    @Then("^The \"([^\"]*)\" message after Sign Up is displayed$")
+    public void theMessageAfterSignUpIsDisplayed(String arg0) throws Throwable {
+       steps.theMessageAfterSignUpIsDisplayed(arg0);
+    }
+
+    @When("^Click on the SIGN UP button$")
+    public void clickOnTheSIGNUPButton() {
+        steps.clickOnTheSIGNUPButton();
+    }
+
+    @When("^refresh the page$")
+    public void refreshThePage() {
+        steps.refreshThePage();
+    }
+
+    @When("^Enter login of new created teacher$")
+    public void enterLoginOfNewCreatedTeacher() {
+        steps.enterLoginOfNewCreatedUser();
+    }
+
+    @When("^The \"([^\"]*)\" message before email VERIFICATION is displayed$")
+    public void theMessageBeforeEmailVERIFICATIONIsDisplayed(String arg0) throws Throwable {
+        steps.theMessageBeforeEmailVERIFICATIONIsDisplayed(arg0);
+    }
+
+    @When("^Open \"([^\"]*)\" in  the new tab$")
+    public void openInTheNewTab(String arg0) throws Throwable {
+       steps.openInTheNewTab(arg0);
+    }
+
+    @When("^Enter email of new user$")
+    public void enterEmailOfNewUser() {
+        steps.enterEmailOfNewUser();
+    }
+
+    @When("^Back to the first tab$")
+    public void backToTheFirstTab() {
+        steps.backToTheFirstTab();
+    }
+
 
     //    @When("^Open report$")
 //    public void openReport() throws Throwable {

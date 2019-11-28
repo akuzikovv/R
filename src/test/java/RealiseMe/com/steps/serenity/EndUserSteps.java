@@ -16,6 +16,7 @@ import RealiseMe.com.pages.Teacher.SupplyTeacherHomePage;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.steps.ScenarioSteps;
 import org.junit.Assert;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
@@ -98,6 +99,7 @@ public class EndUserSteps  extends ScenarioSteps {
     @Step
     public void enterPassword(String arg0) {
         authorizationPage.enterPassword(arg0);
+
     }
 
     @Step
@@ -403,7 +405,7 @@ public class EndUserSteps  extends ScenarioSteps {
 
     @Step
     public void waitTime() {
-        waitABit(2000);
+        waitABit(7000);
     }
     @Step
     public void getNamesOfTeachers() {
@@ -534,6 +536,60 @@ public class EndUserSteps  extends ScenarioSteps {
     @Step
     public void declineAppropriateBooking() {
         schoolBookingsPage.declineAppropriateBooking();
+    }
+
+    @Step
+    public void popupWithTextIsAppeared(String arg0) {
+        ArrayList<String> results = schoolBookingsPage.popupWithTextIsAppeared(arg0);
+        Assert.assertTrue(String.valueOf(results), "true".equals(results.get(0)));
+    }
+
+    @Step
+    public void enterLoginOfNewUser(String arg0) {
+        commonActions.enterLoginOfNewUser(arg0);
+    }
+
+    @Step
+    public void theMessageAfterSignUpIsDisplayed(String arg0) {
+        Assert.assertTrue(getDriver().findElement(By.xpath("//span[contains(.,'Thanks for signing up')]")).getText(), arg0.equals(getDriver().findElement(By.xpath("//span[contains(.,'Thanks for signing up')]")).getText()));
+    }
+
+    @Step
+    public void clickOnTheSIGNUPButton() {
+       authorizationPage.clickOnTheSIGNUPButton();
+
+    }
+
+    @Step
+    public void refreshThePage() {
+        commonActions.refreshThePage();
+    }
+
+    @Step
+    public void enterLoginOfNewCreatedUser() {
+        commonActions.enterLoginOfNewCreatedUser();
+    }
+
+    @Step
+    public void theMessageBeforeEmailVERIFICATIONIsDisplayed(String arg0) {
+        ArrayList<String> results = authorizationPage.theMessageBeforeEmailVERIFICATIONIsDisplayed(arg0);
+        Assert.assertTrue(String.valueOf(results), "true".equals(results.get(0)));
+//        Assert.assertTrue(getDriver().findElement(By.xpath("//span[@class='animated fadeInUp']//span")).getText(), arg0.equals(getDriver().findElement(By.xpath("//span[@class='animated fadeInUp']//span")).getText()));
+    }
+
+    @Step
+    public void openInTheNewTab(String arg0) {
+        commonActions.openInTheNewTab(arg0);
+    }
+
+    @Step
+    public void enterEmailOfNewUser() {
+        commonActions.enterEmailOfNewUser();
+    }
+
+    @Step
+    public void backToTheFirstTab() {
+        commonActions.backToTheFirstTab();
     }
 
 //    @Step
