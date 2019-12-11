@@ -22,6 +22,7 @@ Feature:  Teacher profile Creation
     When Back to the first tab
     When Click on the Log in button
     When wait time
+    Then Delete "Teacher" account
 
 
 
