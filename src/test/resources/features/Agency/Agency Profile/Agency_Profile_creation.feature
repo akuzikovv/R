@@ -20,6 +20,29 @@ Feature:  Agency profile Creation
     When Click on the "Confirm my account" button
     When Back to the first tab
     When Click on the Log in button
+    Then Agency account page contains necessary elements
+      |Agency details|
+      |Enter your agency name|
+      |Tell us more about your agency      |
+      |Contact name|
+      |Enter name                         |
+      |Email|
+      |Address |
+      |Enter your agency address|
+      |Website|
+      |Enter you agency website|
+      |Age group(s)|
+      |Select age group(s) covered |
+      |Landline                               |
+      |Enter your landline|
+      |Mobile|
+      |Enter contact mobile number|
+      |Areas covered|
+      |Enter areas covered    |
+      |SLA|
+      |Please confirm Service Level Agreement (SLA)|
+      |T&Cs|
+      |Please confirm our T&Cs|
     When wait time
     Then Delete "Agency" account
 

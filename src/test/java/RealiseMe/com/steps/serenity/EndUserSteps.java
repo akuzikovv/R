@@ -1,6 +1,7 @@
 package RealiseMe.com.steps.serenity;
 
 import RealiseMe.com.ILocators;
+import RealiseMe.com.pages.Agency.AgencyAccountPage;
 import RealiseMe.com.pages.Agency.AgencyBookingPage;
 import RealiseMe.com.pages.AuthorizationPage;
 import RealiseMe.com.pages.CommonActions.CommonActions;
@@ -8,18 +9,22 @@ import RealiseMe.com.pages.Header.Header;
 import RealiseMe.com.pages.HomePage;
 import RealiseMe.com.pages.LandingPage;
 import RealiseMe.com.pages.LoginPage;
+import RealiseMe.com.pages.School.SchoolAccountPage;
 import RealiseMe.com.pages.School.SchoolBookingsPage;
 import RealiseMe.com.pages.School.SchoolHomePage;
 import RealiseMe.com.pages.School.SchoolJobsPage;
 import RealiseMe.com.pages.Teacher.OtherTeacherHomePage;
 import RealiseMe.com.pages.Teacher.SupplyTeacherHomePage;
+import RealiseMe.com.pages.Teacher.TeacherProfilePage;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.steps.ScenarioSteps;
+import org.json.simple.parser.ParseException;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -37,7 +42,9 @@ public class EndUserSteps  extends ScenarioSteps {
     CommonActions commonActions;
     SchoolBookingsPage schoolBookingsPage;
     AgencyBookingPage agencyBookingPage;
-
+    SchoolAccountPage schoolAccountPage;
+    TeacherProfilePage teacherProfilePage;
+    AgencyAccountPage agencyAccountPage;
 
     @Step
     public void openLoginPage() {
@@ -590,6 +597,58 @@ public class EndUserSteps  extends ScenarioSteps {
     @Step
     public void backToTheFirstTab() {
         commonActions.backToTheFirstTab();
+    }
+
+    @Step
+    public void deleteAccount(String arg0) throws IOException, ParseException {
+        String results =  commonActions.deleteAccount(arg0);;
+        Assert.assertTrue(String.valueOf(results), "true".equals(results));
+
+    }
+
+    @Step
+    public void clickOnTheSignUpButton() {
+        commonActions.clickOnTheSignUpButton();
+    }
+
+    @Step
+    public void schoolAccountPageContainsNecessaryElements(List<String> list) {
+        ArrayList<String> results = schoolAccountPage.schoolAccountPageContainsNecessaryElements(list);
+        Assert.assertTrue("Account page is wrong"+ results, "true".equals(results.get(0)));
+    }
+
+    @Step
+    public void adminDetailsPageIsOpened(List<String> list) {
+        ArrayList<String> results = schoolAccountPage.adminDetailsPageIsOpened(list);
+        Assert.assertTrue("Account page is wrong"+ results, "true".equals(results.get(0)));
+    }
+
+    @Step
+    public void theButtonIsDisabled(String arg0) {
+        Assert.assertTrue("The \""+arg0+"\"Button isn't disabled", getDriver().findElement(By.xpath("//button[contains(.,'"+arg0+"')]")).getAttribute("disabled").equals("true"));
+    }
+
+    @Step
+    public void theProfilingQuestionsPageContainsNecessaryElements(List<String> list, String arg0) {
+        ArrayList<String> results = commonActions.theProfilingQuestionsPageContainsNecessaryElements(list, arg0);
+        Assert.assertTrue("Profiling Questions page is wrong"+ results, "true".equals(results.get(0)));
+    }
+
+    @Step
+    public void warningPopupIsOpenedWithNextText(String arg0) {
+        Assert.assertTrue("Popup is wrong", arg0.equals(getDriver().findElement(By.xpath("(//p[contains(.,'Please')])[3]")).getText()));
+    }
+
+    @Step
+    public void teacherAccountPageContainsNecessaryElements(List<String> list) {
+        ArrayList<String> results = teacherProfilePage.teacherAccountPageContainsNecessaryElements(list);
+        Assert.assertTrue("Profiling Questions page is wrong"+ results, "true".equals(results.get(0)));
+    }
+
+    @Step
+    public void agencyAccountPageContainsNecessaryElements(List<String> list) {
+        ArrayList<String> results = agencyAccountPage.agencyAccountPageContainsNecessaryElements(list);
+        Assert.assertTrue("Profiling Questions page is wrong"+ results, "true".equals(results.get(0)));
     }
 
 //    @Step

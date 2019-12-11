@@ -2,11 +2,23 @@ package RealiseMe.com.pages.CommonActions;
 
 import RealiseMe.com.ILocators;
 import net.serenitybdd.core.pages.PageObject;
-import org.openqa.selenium.*;
+import org.apache.commons.io.IOUtils;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import javax.net.ssl.HttpsURLConnection;
+import java.io.*;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Set;
 
 public class CommonActions extends PageObject {
@@ -18,6 +30,12 @@ public class CommonActions extends PageObject {
     public static int random;
     public String email_of_new_user;
     public String parentHandle;
+    private static JSONParser parser = new JSONParser();
+    private static URL urlObject;
+    private static StringBuffer response;
+    private String token;
+    public   String delete_request_result;
+//    public WebDriverWait wait = new WebDriverWait(getDriver(), 10);
 
 
     public void clickOnTheButton(String arg0) {
@@ -27,6 +45,14 @@ public class CommonActions extends PageObject {
         }catch (Exception e){ }
         try {
             WebElement xpath = getDriver().findElement(By.xpath("//button[contains(.,'" + arg0 + "')]"));
+            xpath.click();
+        }catch (Exception e){ }
+        try {
+            WebElement xpath = getDriver().findElement(By.xpath("(//button[contains(.,'" + arg0 + "')])[1]"));
+            xpath.click();
+        }catch (Exception e){ }
+        try {
+            WebElement xpath = getDriver().findElement(By.xpath("(//button[contains(.,'" + arg0 + "')])[2]"));
             xpath.click();
         }catch (Exception e){ }
         try {
@@ -50,7 +76,11 @@ public class CommonActions extends PageObject {
         }
         }catch (Exception e){}
         try {
-            WebElement xpath = getDriver().findElement(By.xpath("//a[contains(.,'" + arg0 + "')]"));
+            WebElement xpath = getDriver().findElement(By.xpath("(//a[contains(.,'" + arg0 + "')])[1]"));
+            xpath.click();
+        }catch (Exception e){}
+        try {
+            WebElement xpath = getDriver().findElement(By.xpath("(//a[contains(.,'" + arg0 + "')])[2]"));
             xpath.click();
         }catch (Exception e){}
     }
@@ -167,7 +197,7 @@ public class CommonActions extends PageObject {
 
     public void findInviteWithJobTitle(String arg0) {
         waitABit(5000);
-        wait  = new WebDriverWait(getDriver(), 15);
+//        wait  = new WebDriverWait(getDriver(), 15);
         int i = 0;
         counter =0;
         for (int y = 1; y < getBookingCounter()+1; y++) {
@@ -256,7 +286,7 @@ public class CommonActions extends PageObject {
     }
 
     public void enterLoginOfNewUser(String arg0) {
-        random = (int) (Math.random() * 200 + 111);
+        random = (int) (Math.random() * 400 + 111);
         email_of_new_user = arg0+random+ "@sharklasers.com";
         $(ILocators.Email_field).sendKeys(email_of_new_user);
     }
@@ -292,14 +322,107 @@ public class CommonActions extends PageObject {
         getDriver().findElement(By.xpath("//button[contains(.,'Set')]")).click();
         waitABit(20000);
         getDriver().findElement(By.xpath("//td[contains(.,'Please')]")).click();
-
-
-
-
     }
 
     public void backToTheFirstTab() {
         getDriver().switchTo().window(parentHandle);
     }
+
+//    @Test
+    public void getAccessTokenAuth0() throws IOException, ParseException {
+        JSONObject ReqBody = (JSONObject) parser.parse(new FileReader("src/test/resources/Files/ReqBody_school.json"));
+        String url = "https://realiseme-school-uat.eu.auth0.com/oauth/token";
+        urlObject = new URL(url);
+        String body = ReqBody.toJSONString();
+        HttpURLConnection connection = (HttpURLConnection) urlObject.openConnection();
+        connection.setRequestMethod("POST");
+        connection.setRequestProperty("content-type","application/json");
+        connection.setDoOutput(true);
+        try(OutputStream os = connection.getOutputStream()) {
+            byte[] input = body.getBytes("utf-8");
+            os.write(input, 0, input.length);
+        }
+        try(BufferedReader br = new BufferedReader(
+                new InputStreamReader(connection.getInputStream(), "utf-8"))) {
+            StringBuilder response = new StringBuilder();
+            String responseLine = null;
+            while ((responseLine = br.readLine()) != null) {
+                response.append(responseLine.trim());
+            }
+            JSONObject jsonObject = (JSONObject) parser.parse(response.toString());
+            token = jsonObject.get("access_token").toString();
+            System.out.println(token);
+        }
+    }
+
+//    @Test
+    public String deleteAccount(String arg0) throws IOException, ParseException {
+        getAccessTokenAuth0();
+        String body = "{\"query\":\"mutation {\\n  adminRemove"+arg0+"(admin_id: \\\"538e52d0-a7c0-4e89-9b48-80f0d0ec958d\\\", email: \\\""+ email_of_new_user +"\\\")}\",\"variables\":null}";
+        String url = "https://8nn63ifaff.execute-api.us-east-1.amazonaws.com/uat/graphql";
+        urlObject = new URL(url);
+        HttpsURLConnection connection = (HttpsURLConnection) urlObject.openConnection();
+        connection.setRequestMethod("POST");
+        connection.setRequestProperty("content-type","application/json");
+        connection.setRequestProperty("authorization",token);
+        connection.setDoOutput(true);
+        try(OutputStream os = connection.getOutputStream()) {
+            byte[] input = body.getBytes("utf-8");
+            os.write(input, 0, input.length);
+        }
+        try(BufferedReader br = new BufferedReader(
+                new InputStreamReader(connection.getInputStream(), "utf-8"))) {
+            StringBuilder response = new StringBuilder();
+            String encoding = connection.getContentEncoding();
+            String responseLine = null;
+            encoding = encoding == null ? "UTF-8" : encoding;
+            String respbody = IOUtils.toString(connection.getInputStream(), encoding);
+            while ((responseLine = br.readLine()) != null) {
+                response.append(responseLine.trim());
+            }
+            JSONObject jsonObject = (JSONObject) parser.parse(respbody);
+            JSONObject jsonObject2 = (JSONObject) parser.parse(jsonObject.get("data").toString());
+            delete_request_result = jsonObject2.get("adminRemove"+arg0+"").toString();
+            System.out.println(jsonObject2+" = "+email_of_new_user);
+            return delete_request_result;
+        }
+    }
+
+    public void clickOnTheSignUpButton() {
+        getDriver().findElement(By.xpath("(//span[contains(.,'sign up')])[2]")).click();
+    }
+
+    public ArrayList<String> theProfilingQuestionsPageContainsNecessaryElements(List<String> list, String arg0) {
+        ArrayList<String> labels = new ArrayList<>();
+        ArrayList<String> results = new ArrayList<>();
+        results.add(0, "true");
+        if (!getDriver().findElement(By.xpath("//div[@class='components-name']")).isDisplayed() ) {
+            results.set(0, "false");
+            results.add("Profiling Questions page isn't opened");
+        } else {
+            if (arg0.equals("School")) {
+                labels.add(getDriver().findElement(By.xpath("//div[@class='components-name']")).getText());
+                labels.add(getDriver().findElement(By.xpath("//p[contains(.,'1. Is your school driven more by?')]")).getText());
+                labels.add(getDriver().findElement(By.xpath("//p[contains(.,'2. How would you describe your school’s environment?')]")).getText());
+                labels.add(getDriver().findElement(By.xpath("//p[contains(.,'3. Is your school run on a tight methodical basis or a more adaptable, flexible one?')]")).getText());
+                labels.add(getDriver().findElement(By.xpath("//p[contains(.,'4. Is your school strict on discipline or more lenient and individual-based?')]")).getText());
+                labels.add(getDriver().findElement(By.xpath("//p[contains(.,'5. Does your school participate in collaboration with other schools or work independently?')]")).getText());
+            }
+            if (arg0.equals("Teacher")){
+                labels.add(getDriver().findElement(By.xpath("//div[@class='components-name']")).getText());
+                labels.add(getDriver().findElement(By.xpath("//p[contains(.,'1. How would you describe what drives you?')]")).getText());
+                labels.add(getDriver().findElement(By.xpath("//p[contains(.,'2. What do you look for in a school’s environment?')]")).getText());
+                labels.add(getDriver().findElement(By.xpath("//p[contains(.,'3. Do you work in a structured, methodical way or are you more flexible and adaptable?')]")).getText());
+                labels.add(getDriver().findElement(By.xpath("//p[contains(.,'4. How would you describe your behaviour management style?')]")).getText());
+                labels.add(getDriver().findElement(By.xpath("//p[contains(.,'5. Do you enjoy working in a collaborative environment or prefer working independently?')]")).getText());
+            }
+            for (int i = 0; i < list.size(); i++) {
+                if (!list.get(i).equals(labels.get(i))) {
+                    results.set(0, "false");
+                    results.add("Expected: " + list.get(i) + "; but found: " + labels.get(i) + "\n");
+                }
+            }
+        }
+        return results;
+    }
 }
-//html[@xmlns='http://www.w3.org/1999/xhtml']//body[@class='bodymail']//a[contains(.,'Confirm my account')]

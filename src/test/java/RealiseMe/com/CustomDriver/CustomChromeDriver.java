@@ -5,6 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.events.EventFiringWebDriver;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class CustomChromeDriver implements DriverSource {
 
@@ -22,6 +23,7 @@ public class CustomChromeDriver implements DriverSource {
         EventFiringWebDriver eventDriver = new EventFiringWebDriver(driver);
         EventHandler handler = new EventHandler();
         eventDriver.register(handler);
+        WebDriverWait wait = new WebDriverWait(driver, 10);
         return eventDriver;
     }
 

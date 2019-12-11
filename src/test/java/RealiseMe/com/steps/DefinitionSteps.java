@@ -480,8 +480,8 @@ public class DefinitionSteps {
         steps.refreshThePage();
     }
 
-    @When("^Enter login of new created teacher$")
-    public void enterLoginOfNewCreatedTeacher() {
+    @When("^Enter login of new created user$")
+    public void enterLoginOfNewCreatedUser() {
         steps.enterLoginOfNewCreatedUser();
     }
 
@@ -503,6 +503,52 @@ public class DefinitionSteps {
     @When("^Back to the first tab$")
     public void backToTheFirstTab() {
         steps.backToTheFirstTab();
+    }
+
+    @Then("^Delete \"([^\"]*)\" account$")
+    public void deleteAccount(String arg0) throws Throwable {
+        steps.deleteAccount(arg0);
+    }
+
+    @When("^Click on the Sign up button$")
+    public void clickOnTheSignUpButton() {
+        steps.clickOnTheSignUpButton();
+    }
+
+    @Then("^School account page contains necessary elements$")
+    public void schoolAccountPageContainsNecessaryElements(List<String>list) {
+        steps.schoolAccountPageContainsNecessaryElements(list);
+    }
+
+    @Then("^Admin Details page is opened$")
+    public void adminDetailsPageIsOpened(List<String>list) {
+        steps.adminDetailsPageIsOpened(list);
+    }
+
+    @Then("^The \"([^\"]*)\" button is disabled$")
+    public void theButtonIsDisabled(String arg0) throws Throwable {
+        steps.theButtonIsDisabled(arg0);
+    }
+
+
+    @Then("^The \"([^\"]*)\" Profiling Questions page contains necessary elements$")
+    public void theProfilingQuestionsPageContainsNecessaryElements(String arg0, List<String>list) {
+        steps.theProfilingQuestionsPageContainsNecessaryElements(list, arg0);
+    }
+
+    @Then("^Warning popup is opened with next text \"([^\"]*)\"$")
+    public void warningPopupIsOpenedWithNextText(String arg0) throws Throwable {
+        steps.warningPopupIsOpenedWithNextText(arg0);
+    }
+
+    @Then("^Teacher account page contains necessary elements$")
+    public void teacherAccountPageContainsNecessaryElements(List<String>list) {
+        steps.teacherAccountPageContainsNecessaryElements(list);
+    }
+
+    @Then("^Agency account page contains necessary elements$")
+    public void agencyAccountPageContainsNecessaryElements(List<String>list) {
+        steps.agencyAccountPageContainsNecessaryElements(list);
     }
 
 
