@@ -1,6 +1,7 @@
 package RealiseMe.com.pages.CommonActions;
 
 import RealiseMe.com.ILocators;
+import com.github.cliftonlabs.json_simple.Jsoner;
 import net.serenitybdd.core.pages.PageObject;
 import org.apache.commons.io.IOUtils;
 import org.json.simple.JSONObject;
@@ -16,6 +17,8 @@ import javax.net.ssl.HttpsURLConnection;
 import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -34,7 +37,7 @@ public class CommonActions extends PageObject {
     private static URL urlObject;
     private static StringBuffer response;
     private String token;
-    public   String delete_request_result;
+    public String delete_request_result;
 //    public WebDriverWait wait = new WebDriverWait(getDriver(), 10);
 
 
@@ -42,47 +45,56 @@ public class CommonActions extends PageObject {
         try {
             WebElement xpath = getDriver().findElement(By.xpath("//a[contains(.,'" + arg0 + "')]"));
             xpath.click();
-        }catch (Exception e){ }
+        } catch (Exception e) {
+        }
         try {
             WebElement xpath = getDriver().findElement(By.xpath("//button[contains(.,'" + arg0 + "')]"));
             xpath.click();
-        }catch (Exception e){ }
+        } catch (Exception e) {
+        }
         try {
             WebElement xpath = getDriver().findElement(By.xpath("(//button[contains(.,'" + arg0 + "')])[1]"));
             xpath.click();
-        }catch (Exception e){ }
+        } catch (Exception e) {
+        }
         try {
             WebElement xpath = getDriver().findElement(By.xpath("(//button[contains(.,'" + arg0 + "')])[2]"));
             xpath.click();
-        }catch (Exception e){ }
+        } catch (Exception e) {
+        }
         try {
             WebElement xpath = getDriver().findElement(By.xpath("//span[contains(.,'" + arg0 + "')]"));
             xpath.click();
-        }catch (Exception e){ }
+        } catch (Exception e) {
+        }
         try {
             WebElement xpath = getDriver().findElement(By.xpath("//p[contains(.,'" + arg0 + "')]"));
             xpath.click();
-        }catch (Exception e){ }
+        } catch (Exception e) {
+        }
     }
 
     public void clickOnTheTab(String arg0) {
         try {
-        if ($(ILocators.Jobs).getText().equals("Jobs")) {
-            WebElement xpath = getDriver().findElement(By.xpath("//a[@href='/school/job/" + arg0 + "']"));
-            xpath.click();
-        } else {
-            WebElement xpath = getDriver().findElement(By.xpath("//a[@href='/school/booking/" + arg0 + "']"));
-            xpath.click();
+            if ($(ILocators.Jobs).getText().equals("Jobs")) {
+                WebElement xpath = getDriver().findElement(By.xpath("//a[@href='/school/job/" + arg0 + "']"));
+                xpath.click();
+            } else {
+                WebElement xpath = getDriver().findElement(By.xpath("//a[@href='/school/booking/" + arg0 + "']"));
+                xpath.click();
+            }
+        } catch (Exception e) {
         }
-        }catch (Exception e){}
         try {
             WebElement xpath = getDriver().findElement(By.xpath("(//a[contains(.,'" + arg0 + "')])[1]"));
             xpath.click();
-        }catch (Exception e){}
+        } catch (Exception e) {
+        }
         try {
             WebElement xpath = getDriver().findElement(By.xpath("(//a[contains(.,'" + arg0 + "')])[2]"));
             xpath.click();
-        }catch (Exception e){}
+        } catch (Exception e) {
+        }
     }
 
     public boolean theFieldIsHighlightedRed(String arg0) {
@@ -96,14 +108,16 @@ public class CommonActions extends PageObject {
     }
 
     public void chooseCheckbox(String arg0) {
-       try {
+        try {
             WebElement xpath = getDriver().findElement(By.xpath("//label[contains(.,'" + arg0 + "')]"));
             xpath.click();
-        }catch (Exception e){ }
+        } catch (Exception e) {
+        }
         try {
             WebElement xpath = getDriver().findElement(By.xpath("//span[contains(.,'" + arg0 + "')]"));
             xpath.click();
-        }catch (Exception e){ }
+        } catch (Exception e) {
+        }
     }
 
     public void closePopup() {
@@ -111,10 +125,10 @@ public class CommonActions extends PageObject {
     }
 
     public ArrayList<String> getNamesOfTeachers() {
-        String counter = getDriver().findElement(By.xpath("//a[contains(.,'INVITES')]")).getText().substring(9,10);
+        String counter = getDriver().findElement(By.xpath("//a[contains(.,'INVITES')]")).getText().substring(9, 10);
         int max = Integer.parseInt(counter);
 
-        for (int i = 1; i < max+1; i++) {
+        for (int i = 1; i < max + 1; i++) {
             i++;
             names.add(getDriver().findElement(By.xpath("(//div[@class='table-info']//p[@class='name'])[" + i + "]")).getText());
         }
@@ -135,22 +149,24 @@ public class CommonActions extends PageObject {
         ArrayList<String> results = new ArrayList<>();
         results.add(0, "true");
 //        int max2 = Integer.parseInt(getBookingCounter());
-        if (getBookingCounter()<11){
+        if (getBookingCounter() < 11) {
             for (int i = 0; i < 10; i++) {
                 for (int y = 1; y < 11; y++) {
                     if (names.get(i).equals(getDriver().findElement(By.xpath("(//p[@class='name'])[" + y + "]")).getText())) {
                         results.set(0, "true");
-                        i=9;
+                        i = 9;
                         break;
                     } else {
                         results.set(0, "false");
                     }
-        }}}else {
+                }
+            }
+        } else {
             for (int i = 0; i < 10; i++) {
                 for (int y = 1; y < 11; y++) {
                     if (names.get(i).equals(getDriver().findElement(By.xpath("(//p[@class='name'])[" + y + "]")).getText())) {
                         results.set(0, "true");
-                        i=9;
+                        i = 9;
                         break;
                     } else {
                         results.set(0, "false");
@@ -164,33 +180,39 @@ public class CommonActions extends PageObject {
         }
         return results;
     }
-    
-    public int getBookingCounter(){
+
+    public int getBookingCounter() {
         int max2 = 0;
         try {
-           String counter = getDriver().findElement(By.xpath("//a[@href='/agency/booking/invite'][contains(.,'invites')]")).getText().substring(9,11);
-         return   max2 = Integer.parseInt(counter);
-        }catch (Exception e){}
+            String counter = getDriver().findElement(By.xpath("//a[@href='/agency/booking/invite'][contains(.,'invites')]")).getText().substring(9, 11);
+            return max2 = Integer.parseInt(counter);
+        } catch (Exception e) {
+        }
         try {
-         String counter = getDriver().findElement(By.xpath("//a[@href='/agency/booking/invite'][contains(.,'invites')]")).getText().substring(9,10);
-       return   max2 = Integer.parseInt(counter);
-        }catch (Exception e){}
+            String counter = getDriver().findElement(By.xpath("//a[@href='/agency/booking/invite'][contains(.,'invites')]")).getText().substring(9, 10);
+            return max2 = Integer.parseInt(counter);
+        } catch (Exception e) {
+        }
         try {
-            String counter = getDriver().findElement(By.xpath("//a[@href='/school/booking/invite'][contains(.,'invites')]")).getText().substring(9,11);
-            return   max2 = Integer.parseInt(counter);
-        }catch (Exception e){}
+            String counter = getDriver().findElement(By.xpath("//a[@href='/school/booking/invite'][contains(.,'invites')]")).getText().substring(9, 11);
+            return max2 = Integer.parseInt(counter);
+        } catch (Exception e) {
+        }
         try {
-            String counter = getDriver().findElement(By.xpath("//a[@href='/school/booking/invite'][contains(.,'invites')]")).getText().substring(9,10);
-            return   max2 = Integer.parseInt(counter);
-        }catch (Exception e){}
+            String counter = getDriver().findElement(By.xpath("//a[@href='/school/booking/invite'][contains(.,'invites')]")).getText().substring(9, 10);
+            return max2 = Integer.parseInt(counter);
+        } catch (Exception e) {
+        }
         try {
-            String counter = getDriver().findElement(By.xpath("//a[@href='/teacher_supply/booking/invite'][contains(.,'invites')]")).getText().substring(9,11);
-            return   max2 = Integer.parseInt(counter);
-        }catch (Exception e){}
+            String counter = getDriver().findElement(By.xpath("//a[@href='/teacher_supply/booking/invite'][contains(.,'invites')]")).getText().substring(9, 11);
+            return max2 = Integer.parseInt(counter);
+        } catch (Exception e) {
+        }
         try {
-            String counter = getDriver().findElement(By.xpath("//a[@href='/teacher_supply/booking/invite'][contains(.,'invites')]")).getText().substring(9,10);
-            return   max2 = Integer.parseInt(counter);
-        }catch (Exception e){}
+            String counter = getDriver().findElement(By.xpath("//a[@href='/teacher_supply/booking/invite'][contains(.,'invites')]")).getText().substring(9, 10);
+            return max2 = Integer.parseInt(counter);
+        } catch (Exception e) {
+        }
 
         return max2;
     }
@@ -199,29 +221,26 @@ public class CommonActions extends PageObject {
         waitABit(5000);
 //        wait  = new WebDriverWait(getDriver(), 15);
         int i = 0;
-        counter =0;
-        for (int y = 1; y < getBookingCounter()+1; y++) {
+        counter = 0;
+        for (int y = 1; y < getBookingCounter() + 1; y++) {
             getDriver().findElement(By.xpath("(//p[contains(.,'+')])[" + y + "]")).click();
-            if ( (getDriver().findElement(By.xpath("//div[@class='table-body-wrapper show']//span[contains(.,'accept')]")).getAttribute("class").equals("tooltip tooltip--top green-background"))||
+            if ((getDriver().findElement(By.xpath("//div[@class='table-body-wrapper show']//span[contains(.,'accept')]")).getAttribute("class").equals("tooltip tooltip--top green-background")) ||
                     (getDriver().findElement(By.xpath("//div[@class='table-body-wrapper show']//span[contains(.,'accept')]")).getAttribute("class").equals("tooltip green-background tooltip--top"))) {
                 y++;
                 getDriver().findElement(By.xpath("(//p[contains(.,'-')])[" + y + "]")).click();
                 y--;
                 continue;
             }
-            if (getDriver().findElement(By.xpath("((//div[@class='content-wrapper'])["+y+"]//p)[4]")).getText().substring(11).equals(arg0) ){
+            if (getDriver().findElement(By.xpath("((//div[@class='content-wrapper'])[" + y + "]//p)[4]")).getText().substring(11).equals(arg0)) {
 //                    &  (!getDriver().findElement(By.xpath("(//span[contains(.,'accept')])["+ counter +"]")).getAttribute("class").equals("tooltip green-background tooltip--top"))) {
 //                counter =y+i;
 //                waitABit(500);
                 break;
-            }
-            else {
+            } else {
                 y++;
                 getDriver().findElement(By.xpath("(//p[contains(.,'-')])[" + y + "]")).click();
                 y--;
             }
-
-
 
 
 //            counter =y+i;
@@ -263,22 +282,25 @@ public class CommonActions extends PageObject {
 //                counter =0;
 //            }
         }
-        }
+    }
 
-    public void clickOnTheButtonOfTheAppropriateBooking(String arg0) {
-            getDriver().findElement(By.xpath("//div[@class='table-body-wrapper show']//span[contains(.,'"+arg0+"')]")).click();
+    public void clickOnTheButtonOfTheAppropriateBooking(String arg0) throws IOException, ParseException {
+        JSONObject jsonObject = (JSONObject) parser.parse(new FileReader("/home/akuzikov/IdeaProjects/RealiseMecom/src/test/resources/Files/BookingID.json"));
+        String bookingID = jsonObject.get("BookingId").toString();
+        getDriver().findElement(By.xpath("//p[contains(.,'"+bookingID+"')]/../../../../../../..//span[contains(.,'"+ arg0 +"')]")).click();
+//        getDriver().findElement(By.xpath("//div[@class='table-body-wrapper show']//span[contains(.,'" + arg0 + "')]")).click();
     }
 
     public void uploadFile(String arg0) {
         WebElement uploadElement = getDriver().findElement(By.xpath("//input[@class='input-file']"));
-        uploadElement.sendKeys("/home/akuzikov/IdeaProjects/RealiseMecom/src/test/resources/Files/"+arg0);
+        uploadElement.sendKeys("/home/akuzikov/IdeaProjects/RealiseMecom/src/test/resources/Files/" + arg0);
     }
 
     public boolean isElementPresent(String selector) {
         boolean returnVal = true;
-        try{
+        try {
             getDriver().findElement(By.xpath(selector));
-        } catch (NoSuchElementException e){
+        } catch (NoSuchElementException e) {
             returnVal = false;
         } finally {
         }
@@ -287,9 +309,10 @@ public class CommonActions extends PageObject {
 
     public void enterLoginOfNewUser(String arg0) {
         random = (int) (Math.random() * 400 + 111);
-        email_of_new_user = arg0+random+ "@sharklasers.com";
+        email_of_new_user = arg0 + random + "@sharklasers.com";
         $(ILocators.Email_field).sendKeys(email_of_new_user);
     }
+
     public void refreshThePage() {
         getDriver().navigate().refresh();
     }
@@ -328,7 +351,7 @@ public class CommonActions extends PageObject {
         getDriver().switchTo().window(parentHandle);
     }
 
-//    @Test
+    //    @Test
     public void getAccessTokenAuth0() throws IOException, ParseException {
         JSONObject ReqBody = (JSONObject) parser.parse(new FileReader("src/test/resources/Files/ReqBody_school.json"));
         String url = "https://realiseme-school-uat.eu.auth0.com/oauth/token";
@@ -336,13 +359,13 @@ public class CommonActions extends PageObject {
         String body = ReqBody.toJSONString();
         HttpURLConnection connection = (HttpURLConnection) urlObject.openConnection();
         connection.setRequestMethod("POST");
-        connection.setRequestProperty("content-type","application/json");
+        connection.setRequestProperty("content-type", "application/json");
         connection.setDoOutput(true);
-        try(OutputStream os = connection.getOutputStream()) {
+        try (OutputStream os = connection.getOutputStream()) {
             byte[] input = body.getBytes("utf-8");
             os.write(input, 0, input.length);
         }
-        try(BufferedReader br = new BufferedReader(
+        try (BufferedReader br = new BufferedReader(
                 new InputStreamReader(connection.getInputStream(), "utf-8"))) {
             StringBuilder response = new StringBuilder();
             String responseLine = null;
@@ -351,26 +374,26 @@ public class CommonActions extends PageObject {
             }
             JSONObject jsonObject = (JSONObject) parser.parse(response.toString());
             token = jsonObject.get("access_token").toString();
-            System.out.println(token);
+//            System.out.println(token);
         }
     }
 
-//    @Test
+    //    @Test
     public String deleteAccount(String arg0) throws IOException, ParseException {
         getAccessTokenAuth0();
-        String body = "{\"query\":\"mutation {\\n  adminRemove"+arg0+"(admin_id: \\\"538e52d0-a7c0-4e89-9b48-80f0d0ec958d\\\", email: \\\""+ email_of_new_user +"\\\")}\",\"variables\":null}";
+        String body = "{\"query\":\"mutation {\\n  adminRemove" + arg0 + "(admin_id: \\\"538e52d0-a7c0-4e89-9b48-80f0d0ec958d\\\", email: \\\"" + email_of_new_user + "\\\")}\",\"variables\":null}";
         String url = "https://8nn63ifaff.execute-api.us-east-1.amazonaws.com/uat/graphql";
         urlObject = new URL(url);
         HttpsURLConnection connection = (HttpsURLConnection) urlObject.openConnection();
         connection.setRequestMethod("POST");
-        connection.setRequestProperty("content-type","application/json");
-        connection.setRequestProperty("authorization",token);
+        connection.setRequestProperty("content-type", "application/json");
+        connection.setRequestProperty("authorization", token);
         connection.setDoOutput(true);
-        try(OutputStream os = connection.getOutputStream()) {
+        try (OutputStream os = connection.getOutputStream()) {
             byte[] input = body.getBytes("utf-8");
             os.write(input, 0, input.length);
         }
-        try(BufferedReader br = new BufferedReader(
+        try (BufferedReader br = new BufferedReader(
                 new InputStreamReader(connection.getInputStream(), "utf-8"))) {
             StringBuilder response = new StringBuilder();
             String encoding = connection.getContentEncoding();
@@ -382,8 +405,8 @@ public class CommonActions extends PageObject {
             }
             JSONObject jsonObject = (JSONObject) parser.parse(respbody);
             JSONObject jsonObject2 = (JSONObject) parser.parse(jsonObject.get("data").toString());
-            delete_request_result = jsonObject2.get("adminRemove"+arg0+"").toString();
-            System.out.println(jsonObject2+" = "+email_of_new_user);
+            delete_request_result = jsonObject2.get("adminRemove" + arg0 + "").toString();
+            System.out.println(jsonObject2 + " = " + email_of_new_user);
             return delete_request_result;
         }
     }
@@ -396,7 +419,7 @@ public class CommonActions extends PageObject {
         ArrayList<String> labels = new ArrayList<>();
         ArrayList<String> results = new ArrayList<>();
         results.add(0, "true");
-        if (!getDriver().findElement(By.xpath("//div[@class='components-name']")).isDisplayed() ) {
+        if (!getDriver().findElement(By.xpath("//div[@class='components-name']")).isDisplayed()) {
             results.set(0, "false");
             results.add("Profiling Questions page isn't opened");
         } else {
@@ -408,7 +431,7 @@ public class CommonActions extends PageObject {
                 labels.add(getDriver().findElement(By.xpath("//p[contains(.,'4. Is your school strict on discipline or more lenient and individual-based?')]")).getText());
                 labels.add(getDriver().findElement(By.xpath("//p[contains(.,'5. Does your school participate in collaboration with other schools or work independently?')]")).getText());
             }
-            if (arg0.equals("Teacher")){
+            if (arg0.equals("Teacher")) {
                 labels.add(getDriver().findElement(By.xpath("//div[@class='components-name']")).getText());
                 labels.add(getDriver().findElement(By.xpath("//p[contains(.,'1. How would you describe what drives you?')]")).getText());
                 labels.add(getDriver().findElement(By.xpath("//p[contains(.,'2. What do you look for in a school’s environment?')]")).getText());
@@ -425,4 +448,19 @@ public class CommonActions extends PageObject {
         }
         return results;
     }
+
+    public void getBookingID() {
+        String bookingId = getDriver().findElement(By.xpath("(//div[@class='school-table-row']//div[@class='table-cell table-cell_id'])[1]")).getText();
+        try {
+            BufferedWriter writer = Files.newBufferedWriter(Paths.get("/home/akuzikov/IdeaProjects/RealiseMecom/src/test/resources/Files/BookingID.json"));
+            JSONObject bookingID = new JSONObject();
+            bookingID.put("BookingId", bookingId);
+            Jsoner.serialize(bookingID, writer);
+            writer.close();
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+    }
+
+
 }

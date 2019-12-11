@@ -6,7 +6,6 @@ Feature:  Booking Creation
     When click on the agree button at the banner
     When Click on the login button
 
-    
   Scenario: Create booking for CLEARED teacher
     When Click on the "Login as a school" button
     When Enter login "newuatschool28@yopmail.com"
@@ -30,14 +29,16 @@ Feature:  Booking Creation
     When Click on the "SHOW RESULTS" button
 #    When Click on the Invite to job button at the teacher with "cleared" status
     When Click on the Invite to job button at the teacher with "Jeffrey Lebowski2" name
-    When Click on the "Review Invitations" button
+    When Click on the "NEXT STEP" button
     When Click on the "SEND" button
-    When Click on the "REVIEW INVITATIONS" button
-    When Click on the "SEND" button
-    When Click on the "REVIEW INVITATIONS" button
-    When Click on the "SEND" button
+#    When Click on the "REVIEW INVITATIONS" button
+#    When Click on the "SEND" button
+#    When Click on the "REVIEW INVITATIONS" button
+#    When Click on the "SEND" button
     When Get names of teachers
     When Click on the "View all invites" button
+    When Get Booking ID
+    When Open booking section
     Then Appropriate teachers are displayed in the invites list
 
 
@@ -47,7 +48,7 @@ Feature:  Booking Creation
     When Enter password "Test123!"
     When Click on the Log in button
     When Click on the "bookings" button in the header
-    When Find invite with "Booking for cleared teacher" job title
+#    When Find invite with "Booking for cleared teacher" job title
     When Click on the "accept" button of the appropriate booking
     When Click on the "confirm" button
     When wait time
@@ -70,7 +71,7 @@ Feature:  Booking Creation
     When Enter password "Test123!"
     When Click on the Log in button
     When Click on the "bookings" button in the header
-    When Find invite with "Booking for cleared teacher" job title
+#    When Find invite with "Booking for cleared teacher" job title
     When Click on the "accept" button of the appropriate booking
     When Click on the "confirm" button
     When wait time
@@ -92,10 +93,7 @@ Feature:  Booking Creation
     When Enter password "Test123!"
     When Click on the Log in button
     When Click on the "bookings" button in the header
-    When Find invite with "Booking for cleared teacher" job title
+#    When Find invite with "Booking for cleared teacher" job title
     When Click on the "decline" button of the appropriate booking
-#    When Click on the "confirm" button
-#    When wait time
-#    When wait time
-#    When wait time
+    When Click on the "confirm" button
 

@@ -277,5 +277,10 @@ public class SchoolBookingsPage extends PageObject {
         }
         return results;
     }
+
+
+    public void openBookingSection() {
+        getDriver().findElement(By.xpath("(//button[contains(.,'+')])[1]")).click();
+    }
 }
 

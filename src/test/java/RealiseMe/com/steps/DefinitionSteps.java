@@ -6,7 +6,9 @@ import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import cucumber.runtime.model.CucumberScenario;
 import net.thucydides.core.annotations.Steps;
+import org.json.simple.parser.ParseException;
 
+import java.io.IOException;
 import java.util.List;
 
 public class DefinitionSteps {
@@ -550,6 +552,18 @@ public class DefinitionSteps {
     public void agencyAccountPageContainsNecessaryElements(List<String>list) {
         steps.agencyAccountPageContainsNecessaryElements(list);
     }
+
+    @When("^Get Booking ID$")
+    public void getBookingID() throws IOException, ParseException {
+        steps.getBookingID();
+    }
+
+    @When("^Open booking section$")
+    public void openBookingSection() {
+        steps.openBookingSection();
+    }
+
+
 
 
     //    @When("^Open report$")

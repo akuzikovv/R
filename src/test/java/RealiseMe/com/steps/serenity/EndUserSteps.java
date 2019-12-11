@@ -492,7 +492,7 @@ public class EndUserSteps  extends ScenarioSteps {
     }
 
     @Step
-    public void clickOnTheButtonOfTheAppropriateBooking(String arg0) {
+    public void clickOnTheButtonOfTheAppropriateBooking(String arg0) throws IOException, ParseException {
         commonActions.clickOnTheButtonOfTheAppropriateBooking(arg0);
     }
 
@@ -650,6 +650,18 @@ public class EndUserSteps  extends ScenarioSteps {
         ArrayList<String> results = agencyAccountPage.agencyAccountPageContainsNecessaryElements(list);
         Assert.assertTrue("Profiling Questions page is wrong"+ results, "true".equals(results.get(0)));
     }
+
+    @Step
+    public void getBookingID() throws IOException, ParseException {
+        commonActions.getBookingID();
+    }
+
+    @Step
+    public void openBookingSection() {
+        schoolBookingsPage.openBookingSection();
+    }
+
+
 
 //    @Step
 //    public void openReport() {
