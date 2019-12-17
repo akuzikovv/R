@@ -28,7 +28,7 @@ Feature:  Booking Creation
     When Click on the "SHOW RESULTS" button
     When Click on the "AGENCIES" button
     When Click on the Invite to job button at the teacher with "AGENCY 18" name
-    When Click on the "Review Invitations" button
+    When Click on the "NEXT STEP" button
     When Click on the "SEND" button
     When Click on the "REVIEW INVITATIONS" button
     When Click on the "SEND" button
@@ -36,7 +36,9 @@ Feature:  Booking Creation
     When Click on the "SEND" button
     When Get names of teachers
     When Click on the "View all invites" button
-#    Then Appropriate teachers are displayed in the invites list
+    When Get Booking ID
+    When Open booking section
+    Then Appropriate teachers are displayed in the invites list
 
 
   Scenario: Accept booking as agency
@@ -45,7 +47,6 @@ Feature:  Booking Creation
     When Enter password "Test123!"
     When Click on the Log in button
     When Click on the "bookings" button in the header
-    When Find invite with "Booking for agency" job title
     When Click on the "accept" button of the appropriate booking
     When Fill required fields
     |Supply staff name|
@@ -63,11 +64,13 @@ Feature:  Booking Creation
     When Enter password "Test123!"
     When Click on the Log in button
     When Click on the "bookings" button in the header
-    When Find accepted invite with "Booking for agency" job title
+    When Find accepted invite by booking ID with "Agency 18" name
     Then Entered "Supply staff name" teacher name is displayed
     Then Attached "Candidate Clearance Summary.pdf" file is displayed
     Then The "162.27" rate is displayed
-    When Approve appropriate booking
+    When Approve accepted invite with "Agency 18" name
+    Then Popup with "Thank you for approving this booking. When approving bookings, you are re-confirming our terms and conditions." text is appeared
+    When Close popup
     When wait time
 
   Scenario: Accept booking as agency and Decline booking as school
@@ -76,7 +79,6 @@ Feature:  Booking Creation
     When Enter password "Test123!"
     When Click on the Log in button
     When Click on the "bookings" button in the header
-    When Find invite with "Booking for agency" job title
     When Click on the "accept" button of the appropriate booking
     When Fill required fields
       |Supply staff name|
@@ -95,11 +97,11 @@ Feature:  Booking Creation
     When Enter password "Test123!"
     When Click on the Log in button
     When Click on the "bookings" button in the header
-    When Find accepted invite with "Booking for agency" job title
+    When Find accepted invite by booking ID with "Agency 18" name
     Then Entered "Supply staff name" teacher name is displayed
     Then Attached "Candidate Clearance Summary.pdf" file is displayed
     Then The "162.27" rate is displayed
-    When Decline appropriate booking
+    When Click on the "decline" button of the appropriate booking
     When wait time
 
   Scenario: Decline booking as agency
@@ -108,7 +110,7 @@ Feature:  Booking Creation
     When Enter password "Test123!"
     When Click on the Log in button
     When Click on the "bookings" button in the header
-    When Find invite with "Booking for agency" job title
+#    When Find invite with "Booking for agency" job title
     When Click on the "decline" button of the appropriate booking
     When Click on the "confirm" button
     When wait time

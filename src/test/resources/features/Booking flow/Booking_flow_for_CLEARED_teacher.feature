@@ -1,4 +1,3 @@
-
 Feature:  Booking Creation
 
   Background:
@@ -31,10 +30,10 @@ Feature:  Booking Creation
     When Click on the Invite to job button at the teacher with "Jeffrey Lebowski2" name
     When Click on the "NEXT STEP" button
     When Click on the "SEND" button
-#    When Click on the "REVIEW INVITATIONS" button
-#    When Click on the "SEND" button
-#    When Click on the "REVIEW INVITATIONS" button
-#    When Click on the "SEND" button
+    When Click on the "REVIEW INVITATIONS" button
+    When Click on the "SEND" button
+    When Click on the "REVIEW INVITATIONS" button
+    When Click on the "SEND" button
     When Get names of teachers
     When Click on the "View all invites" button
     When Get Booking ID
@@ -59,8 +58,8 @@ Feature:  Booking Creation
     When Enter password "Test123!"
     When Click on the Log in button
     When Click on the "bookings" button in the header
-    When Find accepted invite with "Booking for cleared teacher" job title
-    When Approve appropriate booking
+    When Approve accepted invite with "Jeffrey Lebowski2" name
+#    When Approve appropriate booking
     Then Popup with "Thank you for approving this booking. When approving bookings, you are re-confirming our terms and conditions." text is appeared
     When Close popup
     When wait time
@@ -83,8 +82,9 @@ Feature:  Booking Creation
     When Enter password "Test123!"
     When Click on the Log in button
     When Click on the "bookings" button in the header
-    When Find accepted invite with "Booking for cleared teacher" job title
-    When Decline appropriate booking
+#    When Find accepted invite with "Booking for cleared teacher" job title
+#    When Decline appropriate booking
+    When Decline accepted invite with "Jeffrey Lebowski2" name
     When wait time
 
   Scenario: Decline booking as CLEARED teacher

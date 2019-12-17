@@ -512,8 +512,8 @@ public class EndUserSteps  extends ScenarioSteps {
     }
 
     @Step
-    public void findAcceptedInviteWithJobTitle(String arg0) {
-        schoolBookingsPage.findAcceptedInviteWithJobTitle(arg0);
+    public void approveAcceptedInviteWithName(String arg0) throws IOException, ParseException {
+        schoolBookingsPage.approveAcceptedInviteWithName(arg0);
     }
 
     @Step
@@ -661,6 +661,15 @@ public class EndUserSteps  extends ScenarioSteps {
         schoolBookingsPage.openBookingSection();
     }
 
+    @Step
+    public void declineAcceptedInviteWithName(String arg0) throws IOException, ParseException {
+        schoolBookingsPage.declineAcceptedInviteWithName(arg0);
+    }
+
+    @Step
+    public void findAcceptedInviteByBookingID(String arg0) throws IOException, ParseException {
+        schoolBookingsPage.findAcceptedInviteByBookingID(arg0);
+    }
 
 
 //    @Step

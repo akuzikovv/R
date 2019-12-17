@@ -37,8 +37,20 @@ public class CommonActions extends PageObject {
     private static URL urlObject;
     private static StringBuffer response;
     private String token;
+    private String bookingID1;
+    private String bookingID2;
+    private String bookingID3;
     public String delete_request_result;
-//    public WebDriverWait wait = new WebDriverWait(getDriver(), 10);
+    private String ci = "client_id";
+    private String cs = "client_secret";
+    private String au = "audience";
+    private String gt = "grant_type";
+    private String school1 = "ZQ0ZbBhkvOv3f7rxEKPxq557nxygPeRn";
+    private String school2 = "Id3A2TLE8mk_dcIbCj15M5oMvk5yA4Qn_8tCVGsNGj3fxvN1Q_6LKe3C0o2QBAZO";
+    private String school3 = "https://realiseme-school-uat.eu.auth0.com/api/v2/";
+    private String school4 = "client_credentials";
+    private String admid = "538e52d0-a7c0-4e89-9b48-80f0d0ec958d";
+    //    public WebDriverWait wait = new WebDriverWait(getDriver(), 10);
 
 
     public void clickOnTheButton(String arg0) {
@@ -241,8 +253,6 @@ public class CommonActions extends PageObject {
                 getDriver().findElement(By.xpath("(//p[contains(.,'-')])[" + y + "]")).click();
                 y--;
             }
-
-
 //            counter =y+i;
 ////            waitABit(1000);
 //            if ((!isElementPresent("(//span[contains(.,'accept')])["+ counter +"]") &
@@ -284,12 +294,6 @@ public class CommonActions extends PageObject {
         }
     }
 
-    public void clickOnTheButtonOfTheAppropriateBooking(String arg0) throws IOException, ParseException {
-        JSONObject jsonObject = (JSONObject) parser.parse(new FileReader("/home/akuzikov/IdeaProjects/RealiseMecom/src/test/resources/Files/BookingID.json"));
-        String bookingID = jsonObject.get("BookingId").toString();
-        getDriver().findElement(By.xpath("//p[contains(.,'"+bookingID+"')]/../../../../../../..//span[contains(.,'"+ arg0 +"')]")).click();
-//        getDriver().findElement(By.xpath("//div[@class='table-body-wrapper show']//span[contains(.,'" + arg0 + "')]")).click();
-    }
 
     public void uploadFile(String arg0) {
         WebElement uploadElement = getDriver().findElement(By.xpath("//input[@class='input-file']"));
@@ -333,8 +337,6 @@ public class CommonActions extends PageObject {
         }
         getDriver().switchTo().window(subWindowHandler);
         getDriver().get(arg0);
-//        getDriver().switchTo().window(parentHandle);
-//        waitABit(10000);
     }
 
     public void enterEmailOfNewUser() {
@@ -351,12 +353,18 @@ public class CommonActions extends PageObject {
         getDriver().switchTo().window(parentHandle);
     }
 
-    //    @Test
+//        @Test
     public void getAccessTokenAuth0() throws IOException, ParseException {
-        JSONObject ReqBody = (JSONObject) parser.parse(new FileReader("src/test/resources/Files/ReqBody_school.json"));
+//        JSONObject ReqBody = (JSONObject) parser.parse(new FileReader("src/test/resources/Files/ReqBody_school.json"));
         String url = "https://realiseme-school-uat.eu.auth0.com/oauth/token";
         urlObject = new URL(url);
-        String body = ReqBody.toJSONString();
+//        String body = ReqBody.toJSONString();
+        String body = "{\n \"" + ci + "\":\"" + school1 + "\",\n" +
+                "            \"" + cs + "\":\"" + school2 + "\",\n" +
+                "            \"" + au + "\":\"" + school3 + "\",\n" +
+                "            \"" + gt + "\":\"" + school4 + "\"\n" +
+                "    }";
+
         HttpURLConnection connection = (HttpURLConnection) urlObject.openConnection();
         connection.setRequestMethod("POST");
         connection.setRequestProperty("content-type", "application/json");
@@ -378,10 +386,10 @@ public class CommonActions extends PageObject {
         }
     }
 
-    //    @Test
+//        @Test
     public String deleteAccount(String arg0) throws IOException, ParseException {
         getAccessTokenAuth0();
-        String body = "{\"query\":\"mutation {\\n  adminRemove" + arg0 + "(admin_id: \\\"538e52d0-a7c0-4e89-9b48-80f0d0ec958d\\\", email: \\\"" + email_of_new_user + "\\\")}\",\"variables\":null}";
+        String body = "{\"query\":\"mutation {\\n  adminRemove" + arg0 + "(admin_id: \\\""+admid+"\\\", email: \\\"" + email_of_new_user + "\\\")}\",\"variables\":null}";
         String url = "https://8nn63ifaff.execute-api.us-east-1.amazonaws.com/uat/graphql";
         urlObject = new URL(url);
         HttpsURLConnection connection = (HttpsURLConnection) urlObject.openConnection();
@@ -450,15 +458,68 @@ public class CommonActions extends PageObject {
     }
 
     public void getBookingID() {
-        String bookingId = getDriver().findElement(By.xpath("(//div[@class='school-table-row']//div[@class='table-cell table-cell_id'])[1]")).getText();
+        String bookingId1 = getDriver().findElement(By.xpath("(//div[@class='school-table-row']//div[@class='table-cell table-cell_id'])[1]")).getText();
+        String bookingId2 = getDriver().findElement(By.xpath("(//div[@class='school-table-row']//div[@class='table-cell table-cell_id'])[2]")).getText();
+        String bookingId3 = getDriver().findElement(By.xpath("(//div[@class='school-table-row']//div[@class='table-cell table-cell_id'])[3]")).getText();
         try {
             BufferedWriter writer = Files.newBufferedWriter(Paths.get("/home/akuzikov/IdeaProjects/RealiseMecom/src/test/resources/Files/BookingID.json"));
-            JSONObject bookingID = new JSONObject();
-            bookingID.put("BookingId", bookingId);
-            Jsoner.serialize(bookingID, writer);
+            JSONObject bookingIDObject = new JSONObject();
+            bookingIDObject.put("BookingId1", bookingId1);
+            bookingIDObject.put("BookingId2", bookingId2);
+            bookingIDObject.put("BookingId3", bookingId3);
+            Jsoner.serialize(bookingIDObject, writer);
             writer.close();
         } catch (IOException ex) {
             ex.printStackTrace();
+        }
+    }
+
+    public ArrayList<String> getBookingIDFromJson() throws IOException, ParseException {
+        JSONObject jsonObject = (JSONObject) parser.parse(new FileReader("/home/akuzikov/IdeaProjects/RealiseMecom/src/test/resources/Files/BookingID.json"));
+        bookingID1 = jsonObject.get("BookingId1").toString();
+        bookingID2 = jsonObject.get("BookingId2").toString();
+        bookingID3 = jsonObject.get("BookingId3").toString();
+        ArrayList<String> bookingsIDList = new ArrayList<>();
+        bookingsIDList.add(bookingID1);
+        bookingsIDList.add(bookingID2);
+        bookingsIDList.add(bookingID3);
+        return bookingsIDList;
+    }
+
+    public void clickOnTheButtonOfTheAppropriateBooking(String arg0) throws IOException, ParseException {
+        if ((!isElementPresent("//p[contains(.,'" + getBookingIDFromJson().get(0) + "')]/../../../../../../..//span[contains(.,'" + arg0 + "')]")) &
+                (!isElementPresent("//p[contains(.,'" + getBookingIDFromJson().get(1) + "')]/../../../../../../..//span[contains(.,'" + arg0 + "')]")) &
+                (!isElementPresent("//p[contains(.,'" + getBookingIDFromJson().get(2) + "')]/../../../../../../..//span[contains(.,'" + arg0 + "')]"))) {
+            getDriver().findElement(By.xpath("//span[contains(text(),'Next')]")).click();
+//            clickOnTheButtonOfTheAppropriateBooking(arg0);
+        }
+        if (isElementPresent("//p[contains(.,'" + getBookingIDFromJson().get(0) + "')]/../../../../../../..//span[contains(.,'" + arg0 + "')]")) {
+            try {
+                getDriver().findElement(By.xpath("(//p[contains(.,'" + getBookingIDFromJson().get(0) + "')]/../../../../../../..//span[contains(.,'" + arg0 + "')])[1]")).click();
+            } catch (Exception e) {
+            }
+            try {
+                getDriver().findElement(By.xpath("(//p[contains(.,'" + getBookingIDFromJson().get(0) + "')]/../../../../../../..//span[contains(.,'" + arg0 + "')])[2]")).click();
+            } catch (Exception e) {
+            }
+        } else if (isElementPresent("//p[contains(.,'" + getBookingIDFromJson().get(1) + "')]/../../../../../../..//span[contains(.,'" + arg0 + "')]")) {
+            try {
+                getDriver().findElement(By.xpath("(//p[contains(.,'" + getBookingIDFromJson().get(1) + "')]/../../../../../../..//span[contains(.,'" + arg0 + "')])[1]")).click();
+            } catch (Exception e) {
+            }
+            try {
+                getDriver().findElement(By.xpath("(//p[contains(.,'" + getBookingIDFromJson().get(1) + "')]/../../../../../../..//span[contains(.,'" + arg0 + "')])[2]")).click();
+            } catch (Exception e) {
+            }
+        } else if (isElementPresent("//p[contains(.,'" + getBookingIDFromJson().get(2) + "')]/../../../../../../..//span[contains(.,'" + arg0 + "')]")) {
+            try {
+                getDriver().findElement(By.xpath("(//p[contains(.,'" + getBookingIDFromJson().get(2) + "')]/../../../../../../..//span[contains(.,'" + arg0 + "')])[1]")).click();
+            } catch (Exception e) {
+            }
+            try {
+                getDriver().findElement(By.xpath("(//p[contains(.,'" + getBookingIDFromJson().get(2) + "')]/../../../../../../..//span[contains(.,'" + arg0 + "')])[2]")).click();
+            } catch (Exception e) {
+            }
         }
     }
 

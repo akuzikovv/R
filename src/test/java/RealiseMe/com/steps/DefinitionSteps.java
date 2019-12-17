@@ -429,7 +429,7 @@ public class DefinitionSteps {
 
     @When("^Find accepted invite with \"([^\"]*)\" job title$")
     public void findAcceptedInviteWithJobTitle(String arg0) throws Throwable {
-        steps.findAcceptedInviteWithJobTitle(arg0);
+        steps.approveAcceptedInviteWithName(arg0);
     }
 
     @When("^Approve appropriate booking$")
@@ -561,6 +561,21 @@ public class DefinitionSteps {
     @When("^Open booking section$")
     public void openBookingSection() {
         steps.openBookingSection();
+    }
+
+    @When("^Approve accepted invite with \"([^\"]*)\" name$")
+    public void approveAcceptedInviteWithName(String arg0) throws Throwable {
+        steps.approveAcceptedInviteWithName(arg0);
+    }
+
+    @When("^Decline accepted invite with \"([^\"]*)\" name$")
+    public void declineAcceptedInviteWithName(String arg0) throws Throwable {
+       steps.declineAcceptedInviteWithName(arg0);
+    }
+
+    @When("^Find accepted invite by booking ID with \"([^\"]*)\" name$")
+    public void findAcceptedInviteByBookingID(String arg0) throws IOException, ParseException {
+        steps.findAcceptedInviteByBookingID(arg0);
     }
 
 
