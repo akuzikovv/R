@@ -34,6 +34,8 @@ Feature:  Booking Creation
     When Click on the "SEND" button
     When Click on the "REVIEW INVITATIONS" button
     When Click on the "SEND" button
+    When Click on the "REVIEW INVITATIONS" button
+    When Click on the "SEND" button
     When Get names of teachers
     When Click on the "View all invites" button
     When Get Booking ID
@@ -71,7 +73,6 @@ Feature:  Booking Creation
     When Approve accepted invite with "Agency 18" name
     Then Popup with "Thank you for approving this booking. When approving bookings, you are re-confirming our terms and conditions." text is appeared
     When Close popup
-    When wait time
 
   Scenario: Accept booking as agency and Decline booking as school
     When Click on the "Login as an agency" button
@@ -101,8 +102,7 @@ Feature:  Booking Creation
     Then Entered "Supply staff name" teacher name is displayed
     Then Attached "Candidate Clearance Summary.pdf" file is displayed
     Then The "162.27" rate is displayed
-    When Click on the "decline" button of the appropriate booking
-    When wait time
+    When Decline accepted invite with "Agency 18" name
 
   Scenario: Decline booking as agency
     When Click on the "Login as an agency" button
@@ -113,9 +113,6 @@ Feature:  Booking Creation
 #    When Find invite with "Booking for agency" job title
     When Click on the "decline" button of the appropriate booking
     When Click on the "confirm" button
-    When wait time
-    When wait time
-    When wait time
 
 
 

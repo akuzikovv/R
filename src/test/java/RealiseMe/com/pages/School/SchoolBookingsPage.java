@@ -206,7 +206,7 @@ public class SchoolBookingsPage extends PageObject {
     }
 
     public void approveAcceptedInviteWithName(String arg0) throws IOException, ParseException {
-        if (commonActions.isElementPresent("//div[@class='table-row red-background']//p[contains(.,'" + arg0 +"')]/..//../..//i[@class='icon-check icons']")) {
+        if (getDriver().findElement(By.xpath("//div[@class='table-row red-background']//p[contains(.,'" + arg0 +"')]/..//../..//i[@class='icon-check icons']")).isDisplayed()) {
             getDriver().findElement(By.xpath("//div[@class='table-row red-background']//p[contains(.,'" + arg0 + "')]/..//../..//i[@class='icon-check icons']")).click();
             waitABit(2000);
             return;
@@ -322,12 +322,17 @@ public class SchoolBookingsPage extends PageObject {
     }
 
     public void declineAcceptedInviteWithName(String arg0) throws IOException, ParseException {
+        if (getDriver().findElement(By.xpath("//div[@class='table-row red-background']//p[contains(.,'" + arg0 +"')]/..//../..//i[@class='icon-close icons']")).isDisplayed()) {
+            getDriver().findElement(By.xpath("//div[@class='table-row red-background']//p[contains(.,'" + arg0 + "')]/..//../..//i[@class='icon-close icons']")).click();
+            waitABit(2000);
+            return;
+        }
         if ((!commonActions.isElementPresent("//div[@class='table-cell table-cell_id' and contains(.,'" + commonActions.getBookingIDFromJson().get(0) + "')]")) &
                 (!commonActions.isElementPresent("//div[@class='table-cell table-cell_id' and contains(.,'" + commonActions.getBookingIDFromJson().get(1) + "')]")) &
                 (!commonActions.isElementPresent("//div[@class='table-cell table-cell_id' and contains(.,'" + commonActions.getBookingIDFromJson().get(2) + "')]"))
         ) {
             getDriver().findElement(By.xpath("//span[contains(text(),'Next')]")).click();
-            declineAcceptedInviteWithName(arg0);
+//            declineAcceptedInviteWithName(arg0);
         } else {
             if (commonActions.isElementPresent("//div[@class='table-cell table-cell_id' and contains(.,'" + commonActions.getBookingIDFromJson().get(0) + "')]")) {
                 getDriver().findElement(By.xpath("//div[@class='table-cell table-cell_id' and contains(.,'" + commonActions.getBookingIDFromJson().get(0) + "')]/..//button")).click();
