@@ -223,6 +223,8 @@ public class SchoolBookingsPage extends PageObject {
                 waitABit(2000);
                 if (getDriver().findElement(By.xpath("//div[@class='table-row red-background']//p[contains(.,'" + arg0 + "')]/..//../..//i[@class='icon-check icons']")).isDisplayed()) {
                     getDriver().findElement(By.xpath("//div[@class='table-row red-background']//p[contains(.,'" + arg0 + "')]/..//../..//i[@class='icon-check icons']")).click();
+                    commonActions.wait =  new WebDriverWait(getDriver(),20);
+                    commonActions.wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='card']//div[@slot='bodyModal']")));
                     waitABit(2000);
                     return;
                 }
@@ -232,6 +234,8 @@ public class SchoolBookingsPage extends PageObject {
                 waitABit(2000);
                 if (getDriver().findElement(By.xpath("//div[@class='table-row red-background']//p[contains(.,'" + arg0 + "')]/..//../..//i[@class='icon-check icons']")).isDisplayed()) {
                     getDriver().findElement(By.xpath("//div[@class='table-row red-background']//p[contains(.,'" + arg0 + "')]/..//../..//i[@class='icon-check icons']")).click();
+                    commonActions.wait =  new WebDriverWait(getDriver(),20);
+                    commonActions.wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='card']//div[@slot='bodyModal']")));
                     waitABit(2000);
                     return;
                 }
@@ -241,6 +245,8 @@ public class SchoolBookingsPage extends PageObject {
                 waitABit(2000);
                 if (getDriver().findElement(By.xpath("//div[@class='table-row red-background']//p[contains(.,'" + arg0 + "')]/..//../..//i[@class='icon-check icons']")).isDisplayed()) {
                     getDriver().findElement(By.xpath("//div[@class='table-row red-background']//p[contains(.,'" + arg0 + "')]/..//../..//i[@class='icon-check icons']")).click();
+                    commonActions.wait =  new WebDriverWait(getDriver(),20);
+                    commonActions.wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='card']//div[@slot='bodyModal']")));
                     waitABit(2000);
                 }
             }
