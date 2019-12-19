@@ -483,13 +483,13 @@ public class CommonActions extends PageObject {
 
 
     public ArrayList<String> getBookingIDFromJson() throws IOException, ParseException {
-        JSONObject jsonObject = (JSONObject) parser.parse(new FileReader("src/test/resources/Files/BookingID.json"));
-        bookingID1 = jsonObject.get("BookingId1").toString();
-        bookingID2 = jsonObject.get("BookingId2").toString();
-        bookingID3 = jsonObject.get("BookingId3").toString();
-//        bookingID1 =  Serenity.getCurrentSession().getMetaData().get("BookingId1");
-//        bookingID2 =  Serenity.getCurrentSession().getMetaData().get("BookingId2");
-//        bookingID3 =  Serenity.getCurrentSession().getMetaData().get("BookingId3");
+//        JSONObject jsonObject = (JSONObject) parser.parse(new FileReader("src/test/resources/Files/BookingID.json"));
+//        bookingID1 = jsonObject.get("BookingId1").toString();
+//        bookingID2 = jsonObject.get("BookingId2").toString();
+//        bookingID3 = jsonObject.get("BookingId3").toString();
+        bookingID1 =  Serenity.getCurrentSession().getMetaData().get("BookingId1");
+        bookingID2 =  Serenity.getCurrentSession().getMetaData().get("BookingId2");
+        bookingID3 =  Serenity.getCurrentSession().getMetaData().get("BookingId3");
 
         ArrayList<String> bookingsIDList = new ArrayList<>();
         bookingsIDList.add(bookingID1);
