@@ -102,11 +102,15 @@ public class CommonActions extends PageObject {
         try {
             WebElement xpath = getDriver().findElement(By.xpath("(//a[contains(.,'" + arg0 + "')])[1]"));
             xpath.click();
+            wait =new WebDriverWait(getDriver(),20);
+            wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//p[contains(.,'Please')])[3]")));
         } catch (Exception e) {
         }
         try {
             WebElement xpath = getDriver().findElement(By.xpath("(//a[contains(.,'" + arg0 + "')])[2]"));
             xpath.click();
+            wait =new WebDriverWait(getDriver(),20);
+            wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//p[contains(.,'Please')])[3]")));
         } catch (Exception e) {
         }
     }
