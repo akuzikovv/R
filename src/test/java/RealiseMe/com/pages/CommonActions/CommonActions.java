@@ -343,7 +343,7 @@ public class CommonActions extends PageObject {
         getDriver().findElement(By.xpath("(//input[@type='text'])[2]")).sendKeys(email_of_new_user);
 //        waitABit(2000);
         getDriver().findElement(By.xpath("//button[contains(.,'Set')]")).click();
-        waitABit(20000);
+        waitABit(30000);
         getDriver().findElement(By.xpath("//td[contains(.,'Please')]")).click();
     }
 
