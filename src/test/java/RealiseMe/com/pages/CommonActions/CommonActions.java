@@ -296,10 +296,7 @@ public class CommonActions extends PageObject {
     }
 
 
-    public void uploadFile(String arg0) {
-        WebElement uploadElement = getDriver().findElement(By.xpath("//input[@class='input-file']"));
-        uploadElement.sendKeys("/src/test/resources/Files/" + arg0);
-    }
+
 
     public boolean isElementPresent(String selector) {
         boolean returnVal = true;
@@ -458,6 +455,11 @@ public class CommonActions extends PageObject {
         return results;
     }
 
+    public void uploadFile(String arg0) {
+        WebElement uploadElement = getDriver().findElement(By.xpath("//input[@class='input-file']"));
+        uploadElement.sendKeys("/home/akuzikov/IdeaProjects/RealiseMecom/src/test/resources/Files/" + arg0);
+    }
+
     public void getBookingID() {
         String bookingId1 = getDriver().findElement(By.xpath("(//div[@class='school-table-row']//div[@class='table-cell table-cell_id'])[1]")).getText();
         String bookingId2 = getDriver().findElement(By.xpath("(//div[@class='school-table-row']//div[@class='table-cell table-cell_id'])[2]")).getText();
@@ -467,7 +469,7 @@ public class CommonActions extends PageObject {
         Serenity.getCurrentSession().addMetaData("BookingId2", bookingId2);
         Serenity.getCurrentSession().addMetaData("BookingId3",bookingId3);
         try {
-            BufferedWriter writer = Files.newBufferedWriter(Paths.get("/src/test/resources/Files/BookingID.json"));
+            BufferedWriter writer = Files.newBufferedWriter(Paths.get("src/test/resources/Files/BookingID.json"));
             JSONObject bookingIDObject = new JSONObject();
             bookingIDObject.put("BookingId1", bookingId1);
             bookingIDObject.put("BookingId2", bookingId2);
@@ -481,13 +483,13 @@ public class CommonActions extends PageObject {
 
 
     public ArrayList<String> getBookingIDFromJson() throws IOException, ParseException {
-//        JSONObject jsonObject = (JSONObject) parser.parse(new FileReader("/src/test/resources/Files/BookingID.json"));
-//        bookingID1 = jsonObject.get("BookingId1").toString();
-//        bookingID2 = jsonObject.get("BookingId2").toString();
-//        bookingID3 = jsonObject.get("BookingId3").toString();
-        bookingID1 =  Serenity.getCurrentSession().getMetaData().get("BookingId1");
-        bookingID2 =  Serenity.getCurrentSession().getMetaData().get("BookingId2");
-        bookingID3 =  Serenity.getCurrentSession().getMetaData().get("BookingId3");
+        JSONObject jsonObject = (JSONObject) parser.parse(new FileReader("src/test/resources/Files/BookingID.json"));
+        bookingID1 = jsonObject.get("BookingId1").toString();
+        bookingID2 = jsonObject.get("BookingId2").toString();
+        bookingID3 = jsonObject.get("BookingId3").toString();
+//        bookingID1 =  Serenity.getCurrentSession().getMetaData().get("BookingId1");
+//        bookingID2 =  Serenity.getCurrentSession().getMetaData().get("BookingId2");
+//        bookingID3 =  Serenity.getCurrentSession().getMetaData().get("BookingId3");
 
         ArrayList<String> bookingsIDList = new ArrayList<>();
         bookingsIDList.add(bookingID1);

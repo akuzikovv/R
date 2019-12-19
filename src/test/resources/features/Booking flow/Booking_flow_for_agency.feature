@@ -54,7 +54,7 @@ Feature:  Booking Creation
     |Supply staff name|
     |123.21|
     |Subject                         |
-    When Upload "Candidate Clearance Summary.pdf" file
+    When Upload "Candidate_Clearance_Summary.pdf" file
     When Choose "I confirm that this teacher is fully cleared with DBS." checkbox
     When Choose "I agree to RealiseMe" policy checkbox
     When Click on the "CONFIRM JOB" button
