@@ -12,6 +12,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import javax.net.ssl.HttpsURLConnection;
@@ -344,6 +345,7 @@ public class CommonActions extends PageObject {
 //        waitABit(2000);
         getDriver().findElement(By.xpath("//button[contains(.,'Set')]")).click();
         waitABit(30000);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//td[contains(.,'Please')]")));
         getDriver().findElement(By.xpath("//td[contains(.,'Please')]")).click();
     }
 
