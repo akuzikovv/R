@@ -489,7 +489,8 @@ public class CommonActions extends PageObject {
     public void clickOnTheButtonOfTheAppropriateBooking(String arg0) throws IOException, ParseException {
         if ((!isElementPresent("//p[contains(.,'" + getBookingIDFromJson().get(0) + "')]/../../../../../../..//span[contains(.,'" + arg0 + "')]")) &
                 (!isElementPresent("//p[contains(.,'" + getBookingIDFromJson().get(1) + "')]/../../../../../../..//span[contains(.,'" + arg0 + "')]")) &
-                (!isElementPresent("//p[contains(.,'" + getBookingIDFromJson().get(2) + "')]/../../../../../../..//span[contains(.,'" + arg0 + "')]"))) {
+                (!isElementPresent("//p[contains(.,'" + getBookingIDFromJson().get(2) + "')]/../../../../../../..//span[contains(.,'" + arg0 + "')]")) &
+        isElementPresent("//span[contains(text(),'Next')]")){
             getDriver().findElement(By.xpath("//span[contains(text(),'Next')]")).click();
 //            clickOnTheButtonOfTheAppropriateBooking(arg0);
         }
