@@ -297,7 +297,7 @@ public class CommonActions extends PageObject {
 
     public void uploadFile(String arg0) {
         WebElement uploadElement = getDriver().findElement(By.xpath("//input[@class='input-file']"));
-        uploadElement.sendKeys("src/test/resources/Files/" + arg0);
+        uploadElement.sendKeys("/src/test/resources/Files/" + arg0);
     }
 
     public boolean isElementPresent(String selector) {
@@ -462,7 +462,7 @@ public class CommonActions extends PageObject {
         String bookingId2 = getDriver().findElement(By.xpath("(//div[@class='school-table-row']//div[@class='table-cell table-cell_id'])[2]")).getText();
         String bookingId3 = getDriver().findElement(By.xpath("(//div[@class='school-table-row']//div[@class='table-cell table-cell_id'])[3]")).getText();
         try {
-            BufferedWriter writer = Files.newBufferedWriter(Paths.get("src/test/resources/Files/BookingID.json"));
+            BufferedWriter writer = Files.newBufferedWriter(Paths.get("/src/test/resources/Files/BookingID.json"));
             JSONObject bookingIDObject = new JSONObject();
             bookingIDObject.put("BookingId1", bookingId1);
             bookingIDObject.put("BookingId2", bookingId2);
@@ -475,7 +475,7 @@ public class CommonActions extends PageObject {
     }
 
     public ArrayList<String> getBookingIDFromJson() throws IOException, ParseException {
-        JSONObject jsonObject = (JSONObject) parser.parse(new FileReader("src/test/resources/Files/BookingID.json"));
+        JSONObject jsonObject = (JSONObject) parser.parse(new FileReader("/src/test/resources/Files/BookingID.json"));
         bookingID1 = jsonObject.get("BookingId1").toString();
         bookingID2 = jsonObject.get("BookingId2").toString();
         bookingID3 = jsonObject.get("BookingId3").toString();
