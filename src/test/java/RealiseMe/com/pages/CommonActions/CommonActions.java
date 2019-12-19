@@ -2,6 +2,7 @@ package RealiseMe.com.pages.CommonActions;
 
 import RealiseMe.com.ILocators;
 import com.github.cliftonlabs.json_simple.Jsoner;
+import net.serenitybdd.core.Serenity;
 import net.serenitybdd.core.pages.PageObject;
 import org.apache.commons.io.IOUtils;
 import org.json.simple.JSONObject;
@@ -461,6 +462,10 @@ public class CommonActions extends PageObject {
         String bookingId1 = getDriver().findElement(By.xpath("(//div[@class='school-table-row']//div[@class='table-cell table-cell_id'])[1]")).getText();
         String bookingId2 = getDriver().findElement(By.xpath("(//div[@class='school-table-row']//div[@class='table-cell table-cell_id'])[2]")).getText();
         String bookingId3 = getDriver().findElement(By.xpath("(//div[@class='school-table-row']//div[@class='table-cell table-cell_id'])[3]")).getText();
+
+        Serenity.getCurrentSession().addMetaData("BookingId1",bookingId1);
+        Serenity.getCurrentSession().addMetaData("BookingId2", bookingId2);
+        Serenity.getCurrentSession().addMetaData("BookingId3",bookingId3);
         try {
             BufferedWriter writer = Files.newBufferedWriter(Paths.get("/src/test/resources/Files/BookingID.json"));
             JSONObject bookingIDObject = new JSONObject();
@@ -474,15 +479,22 @@ public class CommonActions extends PageObject {
         }
     }
 
+
     public ArrayList<String> getBookingIDFromJson() throws IOException, ParseException {
-        JSONObject jsonObject = (JSONObject) parser.parse(new FileReader("/src/test/resources/Files/BookingID.json"));
-        bookingID1 = jsonObject.get("BookingId1").toString();
-        bookingID2 = jsonObject.get("BookingId2").toString();
-        bookingID3 = jsonObject.get("BookingId3").toString();
+//        JSONObject jsonObject = (JSONObject) parser.parse(new FileReader("/src/test/resources/Files/BookingID.json"));
+//        bookingID1 = jsonObject.get("BookingId1").toString();
+//        bookingID2 = jsonObject.get("BookingId2").toString();
+//        bookingID3 = jsonObject.get("BookingId3").toString();
+        bookingID1 =  Serenity.getCurrentSession().getMetaData().get("BookingId1");
+        bookingID2 =  Serenity.getCurrentSession().getMetaData().get("BookingId2");
+        bookingID3 =  Serenity.getCurrentSession().getMetaData().get("BookingId3");
+
         ArrayList<String> bookingsIDList = new ArrayList<>();
         bookingsIDList.add(bookingID1);
         bookingsIDList.add(bookingID2);
         bookingsIDList.add(bookingID3);
+
+
         return bookingsIDList;
     }
 

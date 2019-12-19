@@ -41,56 +41,56 @@ Feature:  Booking Creation
     Then Appropriate teachers are displayed in the invites list
 
 
-#  Scenario: Accept booking as CLEARED teacher
-#    When Click on the "Login as a teacher" button
-#    When Enter login "a.kuzikov@aimprosoft.com"
-#    When Enter password "Test123!"
-#    When Click on the Log in button
-#    When Click on the "bookings" button in the header
-##    When Find invite with "Booking for cleared teacher" job title
-#    When Click on the "accept" button of the appropriate booking
-#    When Click on the "confirm" button
-#
-#  Scenario: Approve booking as school
-#    When Click on the "Login as a school" button
-#    When Enter login "newuatschool28@yopmail.com"
-#    When Enter password "Test123!"
-#    When Click on the Log in button
-#    When Click on the "bookings" button in the header
-#    When Approve accepted invite with "Jeffrey Lebowski2" name
-##    When Approve appropriate booking
-#    Then Popup with "Thank you for approving this booking. When approving bookings, you are re-confirming our terms and conditions." text is appeared
-#    When Close popup
-#
-#  Scenario: Accept booking as CLEARED teacher and Decline booking as school
-#    When Click on the "Login as a teacher" button
-#    When Enter login "a.kuzikov@aimprosoft.com"
-#    When Enter password "Test123!"
-#    When Click on the Log in button
-#    When Click on the "bookings" button in the header
-##    When Find invite with "Booking for cleared teacher" job title
-#    When Click on the "accept" button of the appropriate booking
-#    When Click on the "confirm" button
-#    When wait time
-#    When Click on the arrow down button
-#    When Click on the LOGOUT button
-#    When Click on the login button
-#    When Click on the "Login as a school" button
-#    When Enter login "newuatschool28@yopmail.com"
-#    When Enter password "Test123!"
-#    When Click on the Log in button
-#    When Click on the "bookings" button in the header
-##    When Find accepted invite with "Booking for cleared teacher" job title
-##    When Decline appropriate booking
-#    When Decline accepted invite with "Jeffrey Lebowski2" name
-#
-#  Scenario: Decline booking as CLEARED teacher
-#    When Click on the "Login as a teacher" button
-#    When Enter login "a.kuzikov@aimprosoft.com"
-#    When Enter password "Test123!"
-#    When Click on the Log in button
-#    When Click on the "bookings" button in the header
-##    When Find invite with "Booking for cleared teacher" job title
-#    When Click on the "decline" button of the appropriate booking
-#    When Click on the "confirm" button
-#
+  Scenario: Accept booking as CLEARED teacher
+    When Click on the "Login as a teacher" button
+    When Enter login "a.kuzikov@aimprosoft.com"
+    When Enter password "Test123!"
+    When Click on the Log in button
+    When Click on the "bookings" button in the header
+#    When Find invite with "Booking for cleared teacher" job title
+    When Click on the "accept" button of the appropriate booking
+    When Click on the "confirm" button
+
+  Scenario: Approve booking as school
+    When Click on the "Login as a school" button
+    When Enter login "newuatschool28@yopmail.com"
+    When Enter password "Test123!"
+    When Click on the Log in button
+    When Click on the "bookings" button in the header
+    When Approve accepted invite with "Jeffrey Lebowski2" name
+#    When Approve appropriate booking
+    Then Popup with "Thank you for approving this booking. When approving bookings, you are re-confirming our terms and conditions." text is appeared
+    When Close popup
+
+  Scenario: Accept booking as CLEARED teacher and Decline booking as school
+    When Click on the "Login as a teacher" button
+    When Enter login "a.kuzikov@aimprosoft.com"
+    When Enter password "Test123!"
+    When Click on the Log in button
+    When Click on the "bookings" button in the header
+#    When Find invite with "Booking for cleared teacher" job title
+    When Click on the "accept" button of the appropriate booking
+    When Click on the "confirm" button
+    When wait time
+    When Click on the arrow down button
+    When Click on the LOGOUT button
+    When Click on the login button
+    When Click on the "Login as a school" button
+    When Enter login "newuatschool28@yopmail.com"
+    When Enter password "Test123!"
+    When Click on the Log in button
+    When Click on the "bookings" button in the header
+#    When Find accepted invite with "Booking for cleared teacher" job title
+#    When Decline appropriate booking
+    When Decline accepted invite with "Jeffrey Lebowski2" name
+
+  Scenario: Decline booking as CLEARED teacher
+    When Click on the "Login as a teacher" button
+    When Enter login "a.kuzikov@aimprosoft.com"
+    When Enter password "Test123!"
+    When Click on the Log in button
+    When Click on the "bookings" button in the header
+#    When Find invite with "Booking for cleared teacher" job title
+    When Click on the "decline" button of the appropriate booking
+    When Click on the "confirm" button
+
