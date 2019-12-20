@@ -549,4 +549,50 @@ public class CommonActions extends PageObject {
     }
 
 
+//    @Test
+    public void createBookingUsingRequestAPI(List<String> list) throws IOException, ParseException {
+        getAccessTokenAuth0();
+        String body = "{\"operationName\":\"createBooking\",\"variables\":{\"input\":{" +
+                list.get(0)+"," +
+                list.get(1) + "," +
+                list.get(2) + "," +
+                list.get(3) + "," +
+                list.get(4) + "," +
+                list.get(5) + "," +
+                list.get(6) + "," +
+                list.get(7) + "," +
+                list.get(8) + "," +
+                list.get(9) + "," +
+                list.get(10) + "," +
+                list.get(11) + "," +
+                list.get(12) + "}}," +
+                "\"query\":\"mutation createBooking($input: CreateBookingPayload!) {\\n  createBooking(input: $input) {\\n    id\\n    short_id\\n    name\\n    description\\n    __typename\\n  }\\n}\\n\"}";
+        String url = "https://29cwhlvcb3.execute-api.us-east-1.amazonaws.com/uat/graphql";
+        urlObject = new URL(url);
+        HttpsURLConnection connection = (HttpsURLConnection) urlObject.openConnection();
+        connection.setRequestMethod("POST");
+        connection.setRequestProperty("content-type", "application/json");
+        connection.setRequestProperty("authorization", token);
+        connection.setDoOutput(true);
+        try (OutputStream os = connection.getOutputStream()) {
+            byte[] input = body.getBytes("utf-8");
+            os.write(input, 0, input.length);
+        }
+        try (BufferedReader br = new BufferedReader(
+                new InputStreamReader(connection.getInputStream(), "utf-8"))) {
+            StringBuilder response = new StringBuilder();
+            String encoding = connection.getContentEncoding();
+            String responseLine = null;
+            encoding = encoding == null ? "UTF-8" : encoding;
+            String respbody = IOUtils.toString(connection.getInputStream(), encoding);
+            while ((responseLine = br.readLine()) != null) {
+                response.append(responseLine.trim());
+            }
+            JSONObject jsonObject = (JSONObject) parser.parse(respbody);
+//            JSONObject jsonObject2 = (JSONObject) parser.parse(jsonObject.get("data").toString());
+//            delete_request_result = jsonObject2.get("").toString();
+            System.out.println(jsonObject.toString());
+//            return delete_request_result;
+        }
+    }
 }

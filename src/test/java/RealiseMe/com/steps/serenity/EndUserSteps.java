@@ -671,6 +671,11 @@ public class EndUserSteps  extends ScenarioSteps {
         schoolBookingsPage.findAcceptedInviteByBookingID(arg0);
     }
 
+    @Step
+    public void createBookingUsingRequestAPI(List<String> list) throws IOException, ParseException {
+        commonActions.createBookingUsingRequestAPI(list);
+    }
+
 
 //    @Step
 //    public void openReport() {

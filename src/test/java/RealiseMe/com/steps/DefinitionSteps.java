@@ -578,7 +578,10 @@ public class DefinitionSteps {
         steps.findAcceptedInviteByBookingID(arg0);
     }
 
-
+    @When("^Create Booking using request API$")
+    public void createBookingUsingRequestAPI(List<String>list) throws IOException, ParseException {
+        steps.createBookingUsingRequestAPI(list);
+    }
 
 
     //    @When("^Open report$")
