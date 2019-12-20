@@ -349,7 +349,7 @@ public class CommonActions extends PageObject {
 //        waitABit(2000);
         getDriver().findElement(By.xpath("//button[contains(.,'Set')]")).click();
         waitABit(30000);
-        wait = new WebDriverWait(getDriver(),20);
+        wait = new WebDriverWait(getDriver(),100);
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//td[contains(.,'Please')]")));
         getDriver().findElement(By.xpath("//td[contains(.,'Please')]")).click();
     }
