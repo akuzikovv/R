@@ -583,6 +583,16 @@ public class DefinitionSteps {
         steps.createBookingUsingRequestAPI(list);
     }
 
+    @When("^Accept booking as cleared teacher using request API$")
+    public void acceptBookingAsClearedTeacherUsingRequestAPI(List<String>list) throws IOException, ParseException {
+        steps.acceptBookingAsClearedTeacherUsingRequestAPI(list);
+    }
+
+    @When("^Approve booking as school using request API$")
+    public void approveBookingAsSchoolUsingRequestAPI(List<String>list) throws IOException, ParseException {
+        steps.approveBookingAsSchoolUsingRequestAPI(list);
+    }
+
 
     //    @When("^Open report$")
 //    public void openReport() throws Throwable {

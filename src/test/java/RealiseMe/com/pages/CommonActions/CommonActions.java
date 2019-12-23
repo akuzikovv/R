@@ -52,6 +52,8 @@ public class CommonActions extends PageObject {
     private String school3 = "https://realiseme-school-uat.eu.auth0.com/api/v2/";
     private String school4 = "client_credentials";
     private String admid = "538e52d0-a7c0-4e89-9b48-80f0d0ec958d";
+    private  String bookingLongId;
+    private String bookingShortID;
     //    public WebDriverWait wait = new WebDriverWait(getDriver(), 10);
 
 
@@ -589,10 +591,81 @@ public class CommonActions extends PageObject {
                 response.append(responseLine.trim());
             }
             JSONObject jsonObject = (JSONObject) parser.parse(respbody);
-//            JSONObject jsonObject2 = (JSONObject) parser.parse(jsonObject.get("data").toString());
-//            delete_request_result = jsonObject2.get("").toString();
+            JSONObject jsonObject2 = (JSONObject) parser.parse(jsonObject.get("data").toString());
+            JSONObject jsonObject3 = (JSONObject) parser.parse(jsonObject2.get("createBooking").toString());
+            bookingLongId = jsonObject3.get("id").toString();
+            bookingShortID = jsonObject3.get("short_id").toString();
+            Serenity.getCurrentSession().addMetaData("bookingLongId",bookingLongId);
+            Serenity.getCurrentSession().addMetaData("bookingShortID",bookingShortID);
+            System.out.println("bookingLongId = "+bookingLongId);
+            System.out.println("bookingShortID = "+bookingShortID);
+        }
+    }
+
+    public void acceptBookingAsClearedTeacherUsingRequestAPI(List<String> list) throws IOException, ParseException {
+        getAccessTokenAuth0();
+        String body = "{\"operationName\":\"acceptingBookingTeacher\",\"variables\":\n"+
+        "            {\"payload\":{" +
+                list.get(0)+"," + "\"bookingId\":\""+
+                Serenity.getCurrentSession().getMetaData().get("bookingLongId")  + "\"," +
+                list.get(1) + "}},"+
+                " \"query\":\"mutation acceptingBookingTeacher($payload: BookingPayload!) {\\n  userAcceptedBooking(input: $payload)\\n}\\n\"}";
+        String url = "https://29cwhlvcb3.execute-api.us-east-1.amazonaws.com/uat/graphql";
+        urlObject = new URL(url);
+        HttpsURLConnection connection = (HttpsURLConnection) urlObject.openConnection();
+        connection.setRequestMethod("POST");
+        connection.setRequestProperty("content-type", "application/json");
+        connection.setRequestProperty("authorization", token);
+        connection.setDoOutput(true);
+        try (OutputStream os = connection.getOutputStream()) {
+            byte[] input = body.getBytes("utf-8");
+            os.write(input, 0, input.length);
+        }
+        try (BufferedReader br = new BufferedReader(
+                new InputStreamReader(connection.getInputStream(), "utf-8"))) {
+            StringBuilder response = new StringBuilder();
+            String encoding = connection.getContentEncoding();
+            String responseLine = null;
+            encoding = encoding == null ? "UTF-8" : encoding;
+            String respbody = IOUtils.toString(connection.getInputStream(), encoding);
+            while ((responseLine = br.readLine()) != null) {
+                response.append(responseLine.trim());
+            }
+            JSONObject jsonObject = (JSONObject) parser.parse(respbody);
             System.out.println(jsonObject.toString());
-//            return delete_request_result;
+        }
+    }
+
+    public void approveBookingAsSchoolUsingRequestAPI(List<String> list) throws IOException, ParseException {
+        getAccessTokenAuth0();
+        String body = "{\"operationName\":\"schoolAcceptTeacher\",\"variables\":{"+
+            list.get(0)+"," + "\"bookingId\":\""+
+            Serenity.getCurrentSession().getMetaData().get("bookingLongId")  + "\"," +
+            list.get(1) + "},\n"+
+        "\"query\":\"mutation schoolAcceptTeacher($userId: String!, $bookingId: String!, $schoolId: String!){schoolAcceptTeacher(userId: $userId, bookingId: $bookingId, schoolId: $schoolId)}\"}";
+        String url = "https://29cwhlvcb3.execute-api.us-east-1.amazonaws.com/uat/graphql";
+        urlObject = new URL(url);
+        HttpsURLConnection connection = (HttpsURLConnection) urlObject.openConnection();
+        connection.setRequestMethod("POST");
+        connection.setRequestProperty("content-type", "application/json");
+        connection.setRequestProperty("authorization", token);
+        connection.setDoOutput(true);
+        try (OutputStream os = connection.getOutputStream()) {
+            byte[] input = body.getBytes("utf-8");
+            os.write(input, 0, input.length);
+        }
+        try (BufferedReader br = new BufferedReader(
+                new InputStreamReader(connection.getInputStream(), "utf-8"))) {
+            StringBuilder response = new StringBuilder();
+            String encoding = connection.getContentEncoding();
+            String responseLine = null;
+            encoding = encoding == null ? "UTF-8" : encoding;
+            String respbody = IOUtils.toString(connection.getInputStream(), encoding);
+            while ((responseLine = br.readLine()) != null) {
+                response.append(responseLine.trim());
+            }
+            JSONObject jsonObject = (JSONObject) parser.parse(respbody);
+            System.out.println(jsonObject.toString());
         }
     }
 }

@@ -676,6 +676,16 @@ public class EndUserSteps  extends ScenarioSteps {
         commonActions.createBookingUsingRequestAPI(list);
     }
 
+    @Step
+    public void acceptBookingAsClearedTeacherUsingRequestAPI(List<String> list) throws IOException, ParseException {
+        commonActions.acceptBookingAsClearedTeacherUsingRequestAPI(list);
+    }
+
+    @Step
+    public void approveBookingAsSchoolUsingRequestAPI(List<String> list) throws IOException, ParseException {
+        commonActions.approveBookingAsSchoolUsingRequestAPI(list);
+    }
+
 
 //    @Step
 //    public void openReport() {
