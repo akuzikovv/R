@@ -52,7 +52,7 @@ public class CommonActions extends PageObject {
     private String school3 = "https://realiseme-school-uat.eu.auth0.com/api/v2/";
     private String school4 = "client_credentials";
     private String admid = "538e52d0-a7c0-4e89-9b48-80f0d0ec958d";
-    private  String bookingLongId;
+    private String bookingLongId;
     private String bookingShortID;
     //    public WebDriverWait wait = new WebDriverWait(getDriver(), 10);
 
@@ -104,14 +104,14 @@ public class CommonActions extends PageObject {
         try {
             WebElement xpath = getDriver().findElement(By.xpath("(//a[contains(.,'" + arg0 + "')])[1]"));
             xpath.click();
-            wait =new WebDriverWait(getDriver(),20);
+            wait = new WebDriverWait(getDriver(), 20);
             wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//p[contains(.,'Please')])[3]")));
         } catch (Exception e) {
         }
         try {
             WebElement xpath = getDriver().findElement(By.xpath("(//a[contains(.,'" + arg0 + "')])[2]"));
             xpath.click();
-            wait =new WebDriverWait(getDriver(),20);
+            wait = new WebDriverWait(getDriver(), 20);
             wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//p[contains(.,'Please')])[3]")));
         } catch (Exception e) {
         }
@@ -279,7 +279,6 @@ public class CommonActions extends PageObject {
 //                getDriver().findElement(By.xpath("(//p[contains(.,'+')])[" + y + "]")).click();
 //                            wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("((//div[@class='content-wrapper'])["+y+"]//p)[4]")));
 //            }
-//
 //            if (getDriver().findElement(By.xpath("((//div[@class='content-wrapper'])["+y+"]//p)[4]")).getText().substring(11).equals(arg0) ){
 ////                    &  (!getDriver().findElement(By.xpath("(//span[contains(.,'accept')])["+ counter +"]")).getAttribute("class").equals("tooltip green-background tooltip--top"))) {
 ////                counter =y+i;
@@ -301,9 +300,6 @@ public class CommonActions extends PageObject {
 //            }
         }
     }
-
-
-
 
     public boolean isElementPresent(String selector) {
         boolean returnVal = true;
@@ -334,7 +330,6 @@ public class CommonActions extends PageObject {
         parentHandle = getDriver().getWindowHandle();
         ((JavascriptExecutor) getDriver()).executeScript("window.open('about:blank','_blank');");
         String subWindowHandler = null;
-
         Set<String> handles = getDriver().getWindowHandles();
         Iterator<String> iterator = handles.iterator();
         while (iterator.hasNext()) {
@@ -346,12 +341,10 @@ public class CommonActions extends PageObject {
 
     public void enterEmailOfNewUser() {
         getDriver().findElement(By.xpath("//span[@title='Click to Edit']")).click();
-//        getDriver().findElement(By.xpath("//a[@id='forget_button']")).click();
         getDriver().findElement(By.xpath("(//input[@type='text'])[2]")).sendKeys(email_of_new_user);
-//        waitABit(2000);
         getDriver().findElement(By.xpath("//button[contains(.,'Set')]")).click();
         waitABit(30000);
-        wait = new WebDriverWait(getDriver(),100);
+        wait = new WebDriverWait(getDriver(), 100);
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//td[contains(.,'Please')]")));
         getDriver().findElement(By.xpath("//td[contains(.,'Please')]")).click();
     }
@@ -360,7 +353,7 @@ public class CommonActions extends PageObject {
         getDriver().switchTo().window(parentHandle);
     }
 
-//        @Test
+    //        @Test
     public void getAccessTokenAuth0() throws IOException, ParseException {
 //        JSONObject ReqBody = (JSONObject) parser.parse(new FileReader("src/test/resources/Files/ReqBody_school.json"));
         String url = "https://realiseme-school-uat.eu.auth0.com/oauth/token";
@@ -371,7 +364,6 @@ public class CommonActions extends PageObject {
                 "            \"" + au + "\":\"" + school3 + "\",\n" +
                 "            \"" + gt + "\":\"" + school4 + "\"\n" +
                 "    }";
-
         HttpURLConnection connection = (HttpURLConnection) urlObject.openConnection();
         connection.setRequestMethod("POST");
         connection.setRequestProperty("content-type", "application/json");
@@ -393,10 +385,10 @@ public class CommonActions extends PageObject {
         }
     }
 
-//        @Test
+    //        @Test
     public String deleteAccount(String arg0) throws IOException, ParseException {
         getAccessTokenAuth0();
-        String body = "{\"query\":\"mutation {\\n  adminRemove" + arg0 + "(admin_id: \\\""+admid+"\\\", email: \\\"" + email_of_new_user + "\\\")}\",\"variables\":null}";
+        String body = "{\"query\":\"mutation {\\n  adminRemove" + arg0 + "(admin_id: \\\"" + admid + "\\\", email: \\\"" + email_of_new_user + "\\\")}\",\"variables\":null}";
         String url = "https://8nn63ifaff.execute-api.us-east-1.amazonaws.com/uat/graphql";
         urlObject = new URL(url);
         HttpsURLConnection connection = (HttpsURLConnection) urlObject.openConnection();
@@ -473,10 +465,9 @@ public class CommonActions extends PageObject {
         String bookingId1 = getDriver().findElement(By.xpath("(//div[@class='school-table-row']//div[@class='table-cell table-cell_id'])[1]")).getText();
         String bookingId2 = getDriver().findElement(By.xpath("(//div[@class='school-table-row']//div[@class='table-cell table-cell_id'])[2]")).getText();
         String bookingId3 = getDriver().findElement(By.xpath("(//div[@class='school-table-row']//div[@class='table-cell table-cell_id'])[3]")).getText();
-
-        Serenity.getCurrentSession().addMetaData("BookingId1",bookingId1);
+        Serenity.getCurrentSession().addMetaData("BookingId1", bookingId1);
         Serenity.getCurrentSession().addMetaData("BookingId2", bookingId2);
-        Serenity.getCurrentSession().addMetaData("BookingId3",bookingId3);
+        Serenity.getCurrentSession().addMetaData("BookingId3", bookingId3);
         try {
             BufferedWriter writer = Files.newBufferedWriter(Paths.get("src/test/resources/Files/BookingID.json"));
             JSONObject bookingIDObject = new JSONObject();
@@ -490,22 +481,18 @@ public class CommonActions extends PageObject {
         }
     }
 
-
     public ArrayList<String> getBookingIDFromJson() throws IOException, ParseException {
 //        JSONObject jsonObject = (JSONObject) parser.parse(new FileReader("src/test/resources/Files/BookingID.json"));
 //        bookingID1 = jsonObject.get("BookingId1").toString();
 //        bookingID2 = jsonObject.get("BookingId2").toString();
 //        bookingID3 = jsonObject.get("BookingId3").toString();
-        bookingID1 =  Serenity.getCurrentSession().getMetaData().get("BookingId1");
-        bookingID2 =  Serenity.getCurrentSession().getMetaData().get("BookingId2");
-        bookingID3 =  Serenity.getCurrentSession().getMetaData().get("BookingId3");
-
+        bookingID1 = Serenity.getCurrentSession().getMetaData().get("BookingId1");
+        bookingID2 = Serenity.getCurrentSession().getMetaData().get("BookingId2");
+        bookingID3 = Serenity.getCurrentSession().getMetaData().get("BookingId3");
         ArrayList<String> bookingsIDList = new ArrayList<>();
         bookingsIDList.add(bookingID1);
         bookingsIDList.add(bookingID2);
         bookingsIDList.add(bookingID3);
-
-
         return bookingsIDList;
     }
 
@@ -513,9 +500,10 @@ public class CommonActions extends PageObject {
         if ((!isElementPresent("//p[contains(.,'" + getBookingIDFromJson().get(0) + "')]/../../../../../../..//span[contains(.,'" + arg0 + "')]")) &
                 (!isElementPresent("//p[contains(.,'" + getBookingIDFromJson().get(1) + "')]/../../../../../../..//span[contains(.,'" + arg0 + "')]")) &
                 (!isElementPresent("//p[contains(.,'" + getBookingIDFromJson().get(2) + "')]/../../../../../../..//span[contains(.,'" + arg0 + "')]")) &
-        isElementPresent("//span[contains(text(),'Next')]")){
+                (!isElementPresent("//p[contains(.,'" + Serenity.getCurrentSession().getMetaData().get("bookingShortID") + "')]/../../../../../../..//a[contains(.,'" + arg0 + "')]")) &
+                isElementPresent("//span[contains(text(),'Next')]")) {
             getDriver().findElement(By.xpath("//span[contains(text(),'Next')]")).click();
-//            clickOnTheButtonOfTheAppropriateBooking(arg0);
+            clickOnTheButtonOfTheAppropriateBooking(arg0);
         }
         if (isElementPresent("//p[contains(.,'" + getBookingIDFromJson().get(0) + "')]/../../../../../../..//span[contains(.,'" + arg0 + "')]")) {
             try {
@@ -547,15 +535,18 @@ public class CommonActions extends PageObject {
             } catch (Exception e) {
             }
             return;
+        } else if (isElementPresent("//p[contains(.,'" + Serenity.getCurrentSession().getMetaData().get("bookingShortID") + "')]/../../../../../../..//a[contains(.,'" + arg0 + "')]")) {
+            getDriver().findElement(By.xpath("//p[contains(.,'" + Serenity.getCurrentSession().getMetaData().get("bookingShortID") + "')]/../../../../../../..//a[contains(.,'" + arg0 + "')]")).click();
+            return;
         }
     }
 
 
-//    @Test
+    //    @Test
     public void createBookingUsingRequestAPI(List<String> list) throws IOException, ParseException {
         getAccessTokenAuth0();
         String body = "{\"operationName\":\"createBooking\",\"variables\":{\"input\":{" +
-                list.get(0)+"," +
+                list.get(0) + "," +
                 list.get(1) + "," +
                 list.get(2) + "," +
                 list.get(3) + "," +
@@ -595,20 +586,20 @@ public class CommonActions extends PageObject {
             JSONObject jsonObject3 = (JSONObject) parser.parse(jsonObject2.get("createBooking").toString());
             bookingLongId = jsonObject3.get("id").toString();
             bookingShortID = jsonObject3.get("short_id").toString();
-            Serenity.getCurrentSession().addMetaData("bookingLongId",bookingLongId);
-            Serenity.getCurrentSession().addMetaData("bookingShortID",bookingShortID);
-            System.out.println("bookingLongId = "+bookingLongId);
-            System.out.println("bookingShortID = "+bookingShortID);
+            Serenity.getCurrentSession().addMetaData("bookingLongId", bookingLongId);
+            Serenity.getCurrentSession().addMetaData("bookingShortID", bookingShortID);
+            System.out.println("bookingLongId = " + bookingLongId);
+            System.out.println("bookingShortID = " + bookingShortID);
         }
     }
 
     public void acceptBookingAsClearedTeacherUsingRequestAPI(List<String> list) throws IOException, ParseException {
         getAccessTokenAuth0();
-        String body = "{\"operationName\":\"acceptingBookingTeacher\",\"variables\":\n"+
-        "            {\"payload\":{" +
-                list.get(0)+"," + "\"bookingId\":\""+
-                Serenity.getCurrentSession().getMetaData().get("bookingLongId")  + "\"," +
-                list.get(1) + "}},"+
+        String body = "{\"operationName\":\"acceptingBookingTeacher\",\"variables\":\n" +
+                "            {\"payload\":{" +
+                list.get(0) + "," + "\"bookingId\":\"" +
+                Serenity.getCurrentSession().getMetaData().get("bookingLongId") + "\"," +
+                list.get(1) + "}}," +
                 " \"query\":\"mutation acceptingBookingTeacher($payload: BookingPayload!) {\\n  userAcceptedBooking(input: $payload)\\n}\\n\"}";
         String url = "https://29cwhlvcb3.execute-api.us-east-1.amazonaws.com/uat/graphql";
         urlObject = new URL(url);
@@ -638,11 +629,11 @@ public class CommonActions extends PageObject {
 
     public void approveBookingAsSchoolUsingRequestAPI(List<String> list) throws IOException, ParseException {
         getAccessTokenAuth0();
-        String body = "{\"operationName\":\"schoolAcceptTeacher\",\"variables\":{"+
-            list.get(0)+"," + "\"bookingId\":\""+
-            Serenity.getCurrentSession().getMetaData().get("bookingLongId")  + "\"," +
-            list.get(1) + "},\n"+
-        "\"query\":\"mutation schoolAcceptTeacher($userId: String!, $bookingId: String!, $schoolId: String!){schoolAcceptTeacher(userId: $userId, bookingId: $bookingId, schoolId: $schoolId)}\"}";
+        String body = "{\"operationName\":\"schoolAcceptTeacher\",\"variables\":{" +
+                list.get(0) + "," + "\"bookingId\":\"" +
+                Serenity.getCurrentSession().getMetaData().get("bookingLongId") + "\"," +
+                list.get(1) + "},\n" +
+                "\"query\":\"mutation schoolAcceptTeacher($userId: String!, $bookingId: String!, $schoolId: String!){schoolAcceptTeacher(userId: $userId, bookingId: $bookingId, schoolId: $schoolId)}\"}";
         String url = "https://29cwhlvcb3.execute-api.us-east-1.amazonaws.com/uat/graphql";
         urlObject = new URL(url);
         HttpsURLConnection connection = (HttpsURLConnection) urlObject.openConnection();

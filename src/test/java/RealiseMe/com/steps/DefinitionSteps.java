@@ -593,6 +593,31 @@ public class DefinitionSteps {
         steps.approveBookingAsSchoolUsingRequestAPI(list);
     }
 
+    @Then("^Appropriate booking id is displayed$")
+    public void appropriateBookingIdIsDisplayed() {
+        steps.appropriateBookingIdIsDisplayed();
+    }
+
+    @Then("^The \"([^\"]*)\" rate is displayed at the timesheet page$")
+    public void theRateIsDisplayedAtTheTimesheetPage(String arg0) throws Throwable {
+        steps.theRateIsDisplayedAtTheTimesheetPage(arg0);
+    }
+
+    @Then("^Total rate is right calculated$")
+    public void totalRateIsRightCalculated() {
+        steps.totalRateIsRightCalculated();
+    }
+
+    @When("^Accept timesheet$")
+    public void acceptTimesheet() {
+        steps.acceptTimesheet();
+    }
+
+    @Then("^Current submission date is appeared$")
+    public void currentSubmissionDateIsAppeared() {
+        steps.currentSubmissionDateIsAppeared();
+    }
+
 
     //    @When("^Open report$")
 //    public void openReport() throws Throwable {

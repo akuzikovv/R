@@ -16,6 +16,7 @@ import RealiseMe.com.pages.School.SchoolJobsPage;
 import RealiseMe.com.pages.Teacher.OtherTeacherHomePage;
 import RealiseMe.com.pages.Teacher.SupplyTeacherHomePage;
 import RealiseMe.com.pages.Teacher.TeacherProfilePage;
+import RealiseMe.com.pages.Teacher.TeacherTimesheetsPage;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.steps.ScenarioSteps;
 import org.json.simple.parser.ParseException;
@@ -45,6 +46,7 @@ public class EndUserSteps  extends ScenarioSteps {
     SchoolAccountPage schoolAccountPage;
     TeacherProfilePage teacherProfilePage;
     AgencyAccountPage agencyAccountPage;
+    TeacherTimesheetsPage teacherTimesheetsPage;
 
     @Step
     public void openLoginPage() {
@@ -684,6 +686,36 @@ public class EndUserSteps  extends ScenarioSteps {
     @Step
     public void approveBookingAsSchoolUsingRequestAPI(List<String> list) throws IOException, ParseException {
         commonActions.approveBookingAsSchoolUsingRequestAPI(list);
+    }
+
+    @Step
+    public void appropriateBookingIdIsDisplayed() {
+        ArrayList<String> results =  teacherTimesheetsPage.appropriateBookingIdIsDisplayed();
+        Assert.assertTrue("Booking id is wrong"+ results, "true".equals(results.get(0)));
+
+    }
+
+    @Step
+    public void theRateIsDisplayedAtTheTimesheetPage(String arg0) {
+        ArrayList<String> results =  teacherTimesheetsPage.theRateIsDisplayedAtTheTimesheetPage(arg0);
+        Assert.assertTrue("Rate is wrong"+ results, "true".equals(results.get(0)));
+    }
+
+    @Step
+    public void totalRateIsRightCalculated() {
+        ArrayList<String> results =  teacherTimesheetsPage.totalRateIsRightCalculated();
+        Assert.assertTrue("Total rate is wrong"+ results, "true".equals(results.get(0)));
+    }
+
+    @Step
+    public void acceptTimesheet() {
+        teacherTimesheetsPage.acceptTimesheet();
+    }
+
+    @Step
+    public void currentSubmissionDateIsAppeared() {
+        ArrayList<String> results =  teacherTimesheetsPage.currentSubmissionDateIsAppeared();
+        Assert.assertTrue("Total rate is wrong"+ results, "true".equals(results.get(0)));
     }
 
 
