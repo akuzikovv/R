@@ -603,9 +603,9 @@ public class DefinitionSteps {
         steps.theRateIsDisplayedAtTheTimesheetPage(arg0);
     }
 
-    @Then("^Total rate is right calculated$")
-    public void totalRateIsRightCalculated() {
-        steps.totalRateIsRightCalculated();
+    @Then("^Total rate for teacher is right calculated$")
+    public void totalRateForTeacherIsRightCalculated() {
+        steps.totalRateForTeacherIsRightCalculated();
     }
 
     @When("^Accept timesheet$")
@@ -616,6 +616,21 @@ public class DefinitionSteps {
     @Then("^Current submission date is appeared$")
     public void currentSubmissionDateIsAppeared() {
         steps.currentSubmissionDateIsAppeared();
+    }
+
+    @Then("^Total rate for school is right calculated$")
+    public void totalRateForSchoolIsRightCalculated() {
+        steps.totalRateForSchoolIsRightCalculated();
+    }
+
+    @Then("^Teacher rate for school is right calculated$")
+    public void teacherRateForSchoolIsRightCalculated() {
+        steps.teacherRateForSchoolIsRightCalculated();
+    }
+
+    @Then("^Approve/Decline buttons are disabled$")
+    public void approveDeclineButtonsAreDisabled() {
+        steps.approveButtonIsDisabled();
     }
 
 

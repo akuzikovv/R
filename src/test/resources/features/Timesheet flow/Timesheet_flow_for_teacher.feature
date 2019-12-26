@@ -35,6 +35,22 @@ Feature:  Booking Creation
     When Click on the "timesheet" button of the appropriate booking
     Then Appropriate booking id is displayed
     Then The "12" rate is displayed at the timesheet page
-    Then Total rate is right calculated
+    Then Total rate for teacher is right calculated
     When Accept timesheet
     Then Current submission date is appeared
+    When Click on the arrow down button
+    When Click on the LOGOUT button
+    When Click on the login button
+    When Click on the "Login as a school" button
+    When Enter login "newuatschool28@yopmail.com"
+    When Enter password "Test123!"
+    When Click on the Log in button
+    When Click on the "bookings" button in the header
+    When Click on the "active" tab
+    Then Teacher rate for school is right calculated
+    When Click on the "Booking for cleared teacher" button of the appropriate booking
+    Then Total rate for school is right calculated
+    When Accept timesheet
+    Then Popup with "Thank you for confirming this timesheet. When confirming timesheets, you are re-confirming our terms and conditions." text is appeared
+    When Close popup
+    Then Approve/Decline buttons are disabled

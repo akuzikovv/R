@@ -538,6 +538,9 @@ public class CommonActions extends PageObject {
         } else if (isElementPresent("//p[contains(.,'" + Serenity.getCurrentSession().getMetaData().get("bookingShortID") + "')]/../../../../../../..//a[contains(.,'" + arg0 + "')]")) {
             getDriver().findElement(By.xpath("//p[contains(.,'" + Serenity.getCurrentSession().getMetaData().get("bookingShortID") + "')]/../../../../../../..//a[contains(.,'" + arg0 + "')]")).click();
             return;
+        }else  if (isElementPresent("//p[contains(.,'" + Serenity.getCurrentSession().getMetaData().get("bookingShortID") + "')]/..//a")) {
+            getDriver().findElement(By.xpath("//p[contains(.,'" + Serenity.getCurrentSession().getMetaData().get("bookingShortID") + "')]/..//a")).click();
+            return;
         }
     }
 

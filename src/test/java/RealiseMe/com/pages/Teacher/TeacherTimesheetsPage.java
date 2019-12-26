@@ -1,8 +1,11 @@
 package RealiseMe.com.pages.Teacher;
 
+import RealiseMe.com.pages.CommonActions.CommonActions;
 import net.serenitybdd.core.Serenity;
 import net.serenitybdd.core.pages.PageObject;
 import org.openqa.selenium.By;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.ArrayList;
 
@@ -13,6 +16,7 @@ public class TeacherTimesheetsPage extends PageObject {
     private float submitted_days_half_days;
     private String short_bookingId;
     private String current_date;
+    CommonActions commonActions;
 
     public ArrayList<String> appropriateBookingIdIsDisplayed() {
         waitABit(1000);
@@ -48,7 +52,7 @@ public class TeacherTimesheetsPage extends PageObject {
         return results;
     }
 
-    public ArrayList<String> totalRateIsRightCalculated() {
+    public ArrayList<String> totalRateForTeacherIsRightCalculated() {
          total_rate = Float.parseFloat(getDriver().findElement(By.xpath("(//p[@class='total'])[2]")).getText().substring(1));
          submitted_days_full_days = Integer.parseInt(getDriver().findElement(By.xpath("(//p[@class='days'])[2]")).getText().substring(0,1));
          submitted_days_half_days = Float.parseFloat(getDriver().findElement(By.xpath("(//p[@class='days'])[2]")).getText().substring(2,3));
@@ -71,7 +75,15 @@ public class TeacherTimesheetsPage extends PageObject {
     }
 
     public void acceptTimesheet() {
-        getDriver().findElement(By.xpath("//span[@class='timesheet-icon']")).click();
+        try {
+            getDriver().findElement(By.xpath("//span[@class='timesheet-icon']")).click();
+        }catch (Exception e){}
+        try {
+            getDriver().findElement(By.xpath("//i[@class='icon-check icons']")).click();
+            commonActions.wait =  new WebDriverWait(getDriver(),100);
+            commonActions.wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='card']//div[@slot='bodyModal']")));
+        }catch (Exception e){}
+
     }
 
     public String getDate(){

@@ -9,10 +9,7 @@ import RealiseMe.com.pages.Header.Header;
 import RealiseMe.com.pages.HomePage;
 import RealiseMe.com.pages.LandingPage;
 import RealiseMe.com.pages.LoginPage;
-import RealiseMe.com.pages.School.SchoolAccountPage;
-import RealiseMe.com.pages.School.SchoolBookingsPage;
-import RealiseMe.com.pages.School.SchoolHomePage;
-import RealiseMe.com.pages.School.SchoolJobsPage;
+import RealiseMe.com.pages.School.*;
 import RealiseMe.com.pages.Teacher.OtherTeacherHomePage;
 import RealiseMe.com.pages.Teacher.SupplyTeacherHomePage;
 import RealiseMe.com.pages.Teacher.TeacherProfilePage;
@@ -47,6 +44,7 @@ public class EndUserSteps  extends ScenarioSteps {
     TeacherProfilePage teacherProfilePage;
     AgencyAccountPage agencyAccountPage;
     TeacherTimesheetsPage teacherTimesheetsPage;
+    SchoolTimesheetPage schoolTimesheetPage;
 
     @Step
     public void openLoginPage() {
@@ -702,8 +700,8 @@ public class EndUserSteps  extends ScenarioSteps {
     }
 
     @Step
-    public void totalRateIsRightCalculated() {
-        ArrayList<String> results =  teacherTimesheetsPage.totalRateIsRightCalculated();
+    public void totalRateForTeacherIsRightCalculated() {
+        ArrayList<String> results =  teacherTimesheetsPage.totalRateForTeacherIsRightCalculated();
         Assert.assertTrue("Total rate is wrong"+ results, "true".equals(results.get(0)));
     }
 
@@ -716,6 +714,23 @@ public class EndUserSteps  extends ScenarioSteps {
     public void currentSubmissionDateIsAppeared() {
         ArrayList<String> results =  teacherTimesheetsPage.currentSubmissionDateIsAppeared();
         Assert.assertTrue("Total rate is wrong"+ results, "true".equals(results.get(0)));
+    }
+
+    @Step
+    public void totalRateForSchoolIsRightCalculated() {
+        ArrayList<String> results =  schoolTimesheetPage.totalRateForSchoolIsRightCalculated();
+        Assert.assertTrue("Total rate is wrong"+ results, "true".equals(results.get(0)));
+    }
+
+    @Step
+    public void teacherRateForSchoolIsRightCalculated() {
+        ArrayList<String> results =  schoolTimesheetPage.teacherRateForSchoolIsRightCalculated();
+        Assert.assertTrue("Total rate is wrong"+ results, "true".equals(results.get(0)));
+    }
+
+    @Step
+    public void approveButtonIsDisabled() {
+        Assert.assertTrue("Approve button isn't disabled", getDriver().findElement(By.xpath("//i[@class='icon-check icons disable']")).isDisplayed());
     }
 
 
