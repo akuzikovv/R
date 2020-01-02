@@ -20,6 +20,8 @@ public class TeacherTimesheetsPage extends PageObject {
 
     public ArrayList<String> appropriateBookingIdIsDisplayed() {
         waitABit(1000);
+        commonActions.wait =  new WebDriverWait(getDriver(),10);
+        commonActions.wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//p[@class='id']")));
         short_bookingId = getDriver().findElement(By.xpath("//p[@class='id']")).getText().substring(12);
         ArrayList<String> results = new ArrayList<>();
         results.add(0, "true");
@@ -80,7 +82,7 @@ public class TeacherTimesheetsPage extends PageObject {
         }catch (Exception e){}
         try {
             getDriver().findElement(By.xpath("//i[@class='icon-check icons']")).click();
-            commonActions.wait =  new WebDriverWait(getDriver(),100);
+            commonActions.wait =  new WebDriverWait(getDriver(),10);
             commonActions.wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='card']//div[@slot='bodyModal']")));
         }catch (Exception e){}
 
@@ -105,7 +107,25 @@ public class TeacherTimesheetsPage extends PageObject {
                 results.set(0, "false");
                 results.add("Expected: " + getDate() + "; but found: " + getDriver().findElement(By.xpath("//p[@class='submission-date']//span")).getText() + "\n");
             }
+            if ((getDate().substring(0,1).equals("0")) & (getDate().substring(1).equals(getDriver().findElement(By.xpath("//p[@class='submission-date']//span")).getText()))) {
+                results.set(0, "true");
+            }
         }
         return results;
+    }
+
+    public void declineTimesheet() {
+        try {
+            getDriver().findElement(By.xpath("//span[@class='timesheet-icon close']")).click();
+        }catch (Exception e){}
+        try {
+            getDriver().findElement(By.xpath("//i[@class='icon-close icons']")).click();
+            commonActions.wait =  new WebDriverWait(getDriver(),10);
+            commonActions.wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='card']")));
+        }catch (Exception e){}
+    }
+
+    public void enterToTheTextFieldInThePopup(String arg0) {
+        getDriver().findElement(By.xpath("//textarea")).sendKeys(arg0);
     }
 }

@@ -633,6 +633,27 @@ public class DefinitionSteps {
         steps.approveButtonIsDisabled();
     }
 
+    @When("^Decline timesheet$")
+    public void declineTimesheet() {
+        steps.declineTimesheet();
+
+    }
+
+    @When("^Enter \"([^\"]*)\" to the text field in the popup$")
+    public void enterToTheTextFieldInThePopup(String arg0) throws Throwable {
+        steps.enterToTheTextFieldInThePopup(arg0);
+    }
+
+    @Then("^The \"([^\"]*)\" status is displayed$")
+    public void theStatusIsDisplayed(String arg0) throws Throwable {
+        steps.theStatusIsDisplayed(arg0);
+    }
+
+    @When("^Change booking status to completed$")
+    public void changeBookingStatusToCompleted(List<String>list) throws IOException, ParseException {
+        steps.changeBookingStatusToCompleted(list);
+    }
+
 
     //    @When("^Open report$")
 //    public void openReport() throws Throwable {

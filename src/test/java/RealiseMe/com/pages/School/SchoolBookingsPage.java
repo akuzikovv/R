@@ -312,6 +312,8 @@ public class SchoolBookingsPage extends PageObject {
     }
 
     public ArrayList<String> popupWithTextIsAppeared(String arg0) {
+        commonActions.wait =  new WebDriverWait(getDriver(),20);
+        commonActions.wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='card']//div[@slot='bodyModal']")));
         ArrayList<String> results = new ArrayList<>();
         results.add(0, "true");
         if (!getDriver().findElement(By.xpath("//div[@class='card']//div[@slot='bodyModal']")).getText().equals(arg0)) {

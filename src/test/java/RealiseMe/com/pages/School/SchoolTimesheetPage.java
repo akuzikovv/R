@@ -18,11 +18,11 @@ public class SchoolTimesheetPage extends PageObject {
     public ArrayList<String> totalRateForSchoolIsRightCalculated() {
         teacher_rate = Serenity.getCurrentSession().getMetaData().get("Teacher_rate");
         commonActions.wait =  new WebDriverWait(getDriver(),100);
-        commonActions.wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("(//span[contains(.,'£')])[2]")));
+        commonActions.wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("(//div[@class='item-body']//p)[3]")));
         waitABit(2000);
-        total_rate = Float.parseFloat(getDriver().findElement(By.xpath("(//span[contains(.,'£')])[2]")).getText().substring(1));
-        submitted_days_full_days = Integer.parseInt(getDriver().findElement(By.xpath("(//span[contains(.,'£')]/..//..//span)[1]")).getText().substring(0,1));
-        submitted_days_half_days = Float.parseFloat(getDriver().findElement(By.xpath("(//span[contains(.,'£')]/..//..//span)[1]")).getText().substring(2,3));
+        total_rate = Float.parseFloat(getDriver().findElement(By.xpath("(//div[@class='item-body']//p)[3]")).getText().substring(1));
+        submitted_days_full_days = Integer.parseInt(getDriver().findElement(By.xpath("//p[contains(.,'Total worked days')]/..//p[@class='block-status']")).getText().substring(0,1));
+        submitted_days_half_days = Float.parseFloat(getDriver().findElement(By.xpath("//p[contains(.,'Total worked days')]/..//p[@class='block-status']")).getText().substring(2,3));
         if (submitted_days_half_days==5){
             submitted_days_half_days = (float) (1*0.67);
         }

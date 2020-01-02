@@ -733,6 +733,26 @@ public class EndUserSteps  extends ScenarioSteps {
         Assert.assertTrue("Approve button isn't disabled", getDriver().findElement(By.xpath("//i[@class='icon-check icons disable']")).isDisplayed());
     }
 
+    @Step
+    public void declineTimesheet() {
+        teacherTimesheetsPage.declineTimesheet();
+    }
+
+    @Step
+    public void enterToTheTextFieldInThePopup(String arg0) {
+        teacherTimesheetsPage.enterToTheTextFieldInThePopup(arg0);
+    }
+
+    @Step
+    public void theStatusIsDisplayed(String arg0) {
+        Assert.assertTrue("Incorrect status is displayed: "+ getDriver().findElement(By.xpath("(//p[@class='status'])[2]")).getText(), arg0.equals(getDriver().findElement(By.xpath("(//p[@class='status'])[2]")).getText()));
+    }
+
+    @Step
+    public void changeBookingStatusToCompleted(List<String> list) throws IOException, ParseException {
+        commonActions.changeBookingStatusToCompleted(list);
+    }
+
 
 //    @Step
 //    public void openReport() {

@@ -1,14 +1,19 @@
 package RealiseMe.com.pages;
 
 import RealiseMe.com.ILocators;
+import RealiseMe.com.pages.CommonActions.CommonActions;
 import net.serenitybdd.core.pages.PageObject;
 import net.thucydides.core.annotations.DefaultUrl;
+import org.openqa.selenium.By;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @DefaultUrl("http://uat.realiseme.com.s3-website-us-east-1.amazonaws.com")
 public class LandingPage extends PageObject {
+    CommonActions commonActions;
 
     public void enterToTheSearchField(String arg0) {
         $(ILocators.keyword_search).type(arg0);
@@ -123,6 +128,8 @@ public class LandingPage extends PageObject {
     }
 
     public void clickOnTheAgreeButtonAtTheBanner() {
+        commonActions.wait =  new WebDriverWait(getDriver(),20);
+        commonActions.wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(ILocators.cookies_button)));
         $(ILocators.cookies_button).click();
     }
 }

@@ -662,4 +662,35 @@ public class CommonActions extends PageObject {
             System.out.println(jsonObject.toString());
         }
     }
+
+
+    public void changeBookingStatusToCompleted(List<String> list) throws IOException, ParseException {
+        getAccessTokenAuth0();
+        String body = "{\"query\": \"mutation { adminCompleteBooking("+list.get(0)+", booking_id: \\\""+Serenity.getCurrentSession().getMetaData().get("bookingLongId")+"\\\")}\", \"variables\":null}";
+        String url = "https://29cwhlvcb3.execute-api.us-east-1.amazonaws.com/uat/graphql";
+        urlObject = new URL(url);
+//        System.out.println(body);
+        HttpsURLConnection connection = (HttpsURLConnection) urlObject.openConnection();
+        connection.setRequestMethod("POST");
+        connection.setRequestProperty("content-type", "application/json");
+        connection.setRequestProperty("authorization", token);
+        connection.setDoOutput(true);
+        try (OutputStream os = connection.getOutputStream()) {
+            byte[] input = body.getBytes("utf-8");
+            os.write(input, 0, input.length);
+        }
+        try (BufferedReader br = new BufferedReader(
+                new InputStreamReader(connection.getInputStream(), "utf-8"))) {
+            StringBuilder response = new StringBuilder();
+            String encoding = connection.getContentEncoding();
+            String responseLine = null;
+            encoding = encoding == null ? "UTF-8" : encoding;
+            String respbody = IOUtils.toString(connection.getInputStream(), encoding);
+            while ((responseLine = br.readLine()) != null) {
+                response.append(responseLine.trim());
+            }
+            JSONObject jsonObject = (JSONObject) parser.parse(respbody);
+            System.out.println(jsonObject.toString());
+        }
+    }
 }
