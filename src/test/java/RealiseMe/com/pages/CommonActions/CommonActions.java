@@ -693,4 +693,24 @@ public class CommonActions extends PageObject {
             System.out.println(jsonObject.toString());
         }
     }
+
+    public void enterEmailOfAppropriateTeacher(String arg0) {
+        getDriver().findElement(By.xpath("//span[@title='Click to Edit']")).click();
+        getDriver().findElement(By.xpath("(//input[@type='text'])[2]")).sendKeys(arg0);
+        getDriver().findElement(By.xpath("//button[contains(.,'Set')]")).click();
+        waitABit(30000);
+
+    }
+
+    public void chooseAppropriateEmailMessage(String arg0) {
+        wait = new WebDriverWait(getDriver(), 100);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//td[contains(.,'"+arg0+"')]")));
+        getDriver().findElement(By.xpath("//td[contains(.,'"+arg0+"')]")).click();
+        String message = getDriver().findElement(By.xpath("(//tbody)[6]")).getText().substring(53).trim().trim().trim();
+        System.out.println(message);
+        waitABit(2000);
+
+    }
+
+
 }

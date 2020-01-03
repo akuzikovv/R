@@ -753,6 +753,22 @@ public class EndUserSteps  extends ScenarioSteps {
         commonActions.changeBookingStatusToCompleted(list);
     }
 
+    @Step
+    public void enterEmailOfAppropriateTeacher(String arg0) {
+        commonActions.enterEmailOfAppropriateTeacher(arg0);
+    }
+
+    @Step
+    public void chooseAppropriateEmailMessage(String arg0) {
+        commonActions.chooseAppropriateEmailMessage(arg0);
+    }
+
+    @Step
+    public void emailBodyContainsNecessaryText(String arg0) {
+        String message = getDriver().findElement(By.xpath("((//tbody)[6]//tr)[4]")).getText()+getDriver().findElement(By.xpath("((//tbody)[6]//tr)[5]")).getText();
+        Assert.assertTrue("Incorrect text is displayed. Expected: "+arg0+" But found:  "+ message,arg0.equals(message));
+    }
+
 
 //    @Step
 //    public void openReport() {

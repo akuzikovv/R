@@ -654,6 +654,21 @@ public class DefinitionSteps {
         steps.changeBookingStatusToCompleted(list);
     }
 
+    @When("^Enter \"([^\"]*)\" email of appropriate teacher$")
+    public void enterEmailOfAppropriateTeacher(String arg0) throws Throwable {
+        steps.enterEmailOfAppropriateTeacher(arg0);
+    }
+
+    @When("^Choose appropriate email message \"([^\"]*)\"$")
+    public void chooseAppropriateEmailMessage(String arg0) throws Throwable {
+        steps.chooseAppropriateEmailMessage(arg0);
+    }
+
+    @Then("^Email body contains necessary text \"([^\"]*)\"$")
+    public void emailBodyContainsNecessaryText(String arg0) throws Throwable {
+        steps.emailBodyContainsNecessaryText(arg0);
+    }
+
 
     //    @When("^Open report$")
 //    public void openReport() throws Throwable {
