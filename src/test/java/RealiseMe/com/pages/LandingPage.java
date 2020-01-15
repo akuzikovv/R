@@ -128,8 +128,12 @@ public class LandingPage extends PageObject {
     }
 
     public void clickOnTheAgreeButtonAtTheBanner() {
+        try {
+
+
         commonActions.wait =  new WebDriverWait(getDriver(),20);
         commonActions.wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(ILocators.cookies_button)));
         $(ILocators.cookies_button).click();
+        }catch (Exception e){}
     }
 }

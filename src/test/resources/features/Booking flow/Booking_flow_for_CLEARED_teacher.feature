@@ -39,6 +39,8 @@ Feature:  Booking Creation
     When Get Booking ID
     When Open booking section
     Then Appropriate teachers are displayed in the invites list
+    When Click on the arrow down button
+    When Click on the LOGOUT button
 
 
   Scenario: Accept booking as CLEARED teacher
@@ -50,6 +52,8 @@ Feature:  Booking Creation
 #    When Find invite with "Booking for cleared teacher" job title
     When Click on the "accept" button of the appropriate booking
     When Click on the "confirm" button
+    When Click on the arrow down button
+    When Click on the LOGOUT button
 
   Scenario: Approve booking as school
     When Click on the "Login as a school" button
@@ -61,6 +65,8 @@ Feature:  Booking Creation
 #    When Approve appropriate booking
     Then Popup with "Thank you for approving this booking. When approving bookings, you are re-confirming our terms and conditions." text is appeared
     When Close popup
+    When Click on the arrow down button
+    When Click on the LOGOUT button
 
   Scenario: Accept booking as CLEARED teacher and Decline booking as school
     When Click on the "Login as a teacher" button
@@ -83,6 +89,8 @@ Feature:  Booking Creation
 #    When Find accepted invite with "Booking for cleared teacher" job title
 #    When Decline appropriate booking
     When Decline accepted invite with "Jeffrey Lebowski2" name
+    When Click on the arrow down button
+    When Click on the LOGOUT button
 
   Scenario: Decline booking as CLEARED teacher
     When Click on the "Login as a teacher" button

@@ -168,7 +168,7 @@ Feature:  Timesheet flow for completed booking
     When Back to the first tab
 
 
-  Scenario: Remove all user bookings
-    When Remove all user bookings using request API
-      | admin_id:\"538e52d0-a7c0-4e89-9b48-80f0d0ec958d\"|
-      |user_id:\"827fc573-d555-4cf8-9e6d-4d85e7d0e554\"    |
+#  Scenario: Remove all user bookings
+#    When Remove all user bookings using request API
+#      | admin_id:\"538e52d0-a7c0-4e89-9b48-80f0d0ec958d\"|
+#      |user_id:\"827fc573-d555-4cf8-9e6d-4d85e7d0e554\"    |
