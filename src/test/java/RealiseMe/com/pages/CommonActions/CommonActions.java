@@ -457,8 +457,14 @@ public class CommonActions extends PageObject {
     }
 
     public void uploadFile(String arg0) {
-        WebElement uploadElement = getDriver().findElement(By.xpath("//input[@class='input-file']"));
-        uploadElement.sendKeys("/home/akuzikov/IdeaProjects/RealiseMecom/src/test/resources/Files/" + arg0);
+        try {
+            WebElement uploadElement = getDriver().findElement(By.xpath("(//input[@class='input-file'])[1]"));
+            uploadElement.sendKeys("/home/akuzikov/IdeaProjects/RealiseMecom/src/test/resources/Files/" + arg0);
+        }catch (Exception e){}
+        try {
+            WebElement uploadElement = getDriver().findElement(By.xpath("(//input[@class='input-file'])[2]"));
+            uploadElement.sendKeys("/home/akuzikov/IdeaProjects/RealiseMecom/src/test/resources/Files/" + arg0);
+        }catch (Exception e){}
     }
 
     public void getBookingID() {
@@ -743,5 +749,9 @@ public class CommonActions extends PageObject {
             System.out.println(jsonObject.toString());
         }
 
+    }
+
+    public void chooseRadiobutton(String arg0) {
+        getDriver().findElement(By.xpath("//div[contains(.,'"+arg0+"') and @class='radio-button']")).click();
     }
 }

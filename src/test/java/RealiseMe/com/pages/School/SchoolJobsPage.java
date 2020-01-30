@@ -3,7 +3,6 @@ package RealiseMe.com.pages.School;
 import RealiseMe.com.ILocators;
 import net.serenitybdd.core.pages.PageObject;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -280,11 +279,11 @@ public class SchoolJobsPage extends PageObject {
         results.add(0, "true");
 //        waitFor(String.valueOf($(ILocators.warning_contactTerm).isVisible()));
         labels.add($(ILocators.warning_name).getText().trim());
-        labels.add($(ILocators.warning_description).getText().trim().substring(0, 4));
-        labels.add($(ILocators.warning_salary).getText().trim().substring(0, 8));
-        labels.add($(ILocators.warning_contactTerm).getText().trim().substring(0, 5));
-        labels.add($(ILocators.warning_contactType).getText().trim());
-        labels.add($(ILocators.warning_closingDate).getText().trim());
+        labels.add($(ILocators.warning_description).getText());
+        labels.add($(ILocators.warning_salary).getText());
+        labels.add($(ILocators.warning_contactTerm).getText());
+        labels.add($(ILocators.warning_contactType).getText());
+        labels.add($(ILocators.warning_closingDate).getText());
         for (int i = 0; i < list.size(); i++) {
             if (!list.get(i).equals(labels.get(i))) {
                 results.set(0, "false");
@@ -292,5 +291,15 @@ public class SchoolJobsPage extends PageObject {
             }
         }
         return results;
+    }
+
+    public void fillAllNecessaryFields(List<String> list) {
+        getDriver().findElement(By.xpath("//input[@name='jobname']")).sendKeys(list.get(0));
+        getDriver().findElement(By.xpath("//textarea[@name='jobdescription']")).sendKeys(list.get(1));
+        getDriver().findElement(By.xpath("//input[@name='jobsalary']")).sendKeys(list.get(1));
+    }
+
+    public void enterTheClosingDate(String arg0) {
+        getDriver().findElement(By.xpath("//input[@placeholder='MM/DD/YYYY']")).sendKeys(arg0);
     }
 }
