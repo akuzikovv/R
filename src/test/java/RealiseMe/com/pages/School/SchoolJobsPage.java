@@ -324,6 +324,5 @@ public class SchoolJobsPage extends PageObject {
 //            }
         }
         return results;
-
     }
 }
