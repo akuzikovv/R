@@ -72,4 +72,7 @@ Feature:  Job Creation
     When Enter the "03/12/2020" closing date
     When Choose "SAAID" radiobutton
     When Click on the Post Job button
-    When Click on the "SUBMIT" button
+    Then The job name is right displayed
+    Then the job description is right displayed
+    Then Current posted date is displayed
+    When Click on the "submit" button

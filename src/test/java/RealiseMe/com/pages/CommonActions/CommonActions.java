@@ -54,6 +54,7 @@ public class CommonActions extends PageObject {
     private String admid = "538e52d0-a7c0-4e89-9b48-80f0d0ec958d";
     private String bookingLongId;
     private String bookingShortID;
+    private String current_date;
     //    public WebDriverWait wait = new WebDriverWait(getDriver(), 10);
 
 
@@ -753,5 +754,14 @@ public class CommonActions extends PageObject {
 
     public void chooseRadiobutton(String arg0) {
         getDriver().findElement(By.xpath("//div[contains(.,'"+arg0+"') and @class='radio-button']")).click();
+    }
+
+    public String getDate(){
+        String date = java.time.LocalDate.now().toString().substring(8,10);
+        String month = java.time.LocalDate.now().toString().substring(5,7);
+        String year = java.time.LocalDate.now().toString().substring(0,4);
+        current_date = date +", "+year;
+//        System.out.println(current_date);
+        return current_date;
     }
 }
