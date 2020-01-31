@@ -71,8 +71,12 @@ Feature:  Job Creation
     When Upload "Candidate_Clearance_Summary.pdf" file
     When Enter the "03/12/2020" closing date
     When Choose "SAAID" radiobutton
+    When Choose skills
+    |maths|
+    |write|
     When Click on the Post Job button
     Then The job name is right displayed
     Then the job description is right displayed
     Then Current posted date is displayed
+
     When Click on the "submit" button

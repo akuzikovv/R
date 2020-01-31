@@ -5,6 +5,7 @@ import RealiseMe.com.pages.CommonActions.CommonActions;
 import net.serenitybdd.core.Serenity;
 import net.serenitybdd.core.pages.PageObject;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -319,10 +320,16 @@ public class SchoolJobsPage extends PageObject {
                 results.set(0, "false");
                 results.add("Expected: " + commonActions.getDate() + "; but found: " + getDriver().findElement(By.xpath("//p[@class='posted']")).getText().substring(12) + "\n");
             }
-//            if ((commonActions.getDate().substring(0,1).equals("0")) & (commonActions.getDate().substring(1).equals(getDriver().findElement(By.xpath("//p[@class='submission-date']//span")).getText()))) {
-//                results.set(0, "true");
-//            }
         }
         return results;
+    }
+
+    public void chooseSkills(List<String> list) {
+        getDriver().findElement(By.xpath("(//div[@class='input-group__selections'])[2]")).click();
+        JavascriptExecutor je = (JavascriptExecutor) getDriver();
+        je.executeScript("arguments[0].scrollIntoView();",getDriver().findElement(By.xpath("//div[@class='list']//div")));
+        for (int i = 0;i<list.size();i++){
+            getDriver().findElement(By.xpath("//a//div[contains(.,'"+list.get(i)+"')]")).click();
+        }
     }
 }
