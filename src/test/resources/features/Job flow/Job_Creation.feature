@@ -78,5 +78,6 @@ Feature:  Job Creation
     Then The job name is right displayed
     Then the job description is right displayed
     Then Current posted date is displayed
+    When Chosen skills are displayed
 
     When Click on the "submit" button

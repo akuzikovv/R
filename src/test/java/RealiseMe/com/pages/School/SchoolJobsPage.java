@@ -330,6 +330,22 @@ public class SchoolJobsPage extends PageObject {
         je.executeScript("arguments[0].scrollIntoView();",getDriver().findElement(By.xpath("//div[@class='list']//div")));
         for (int i = 0;i<list.size();i++){
             getDriver().findElement(By.xpath("//a//div[contains(.,'"+list.get(i)+"')]")).click();
+            Serenity.getCurrentSession().addMetaData("skill",list.get(i));
         }
+    }
+
+    public ArrayList<String> chosenSkillsAreDisplayed() {
+        ArrayList<String> results = new ArrayList<>();
+        results.add(0, "true");
+        if (!getDriver().findElement(By.xpath("//p[contains(.,'"+Serenity.getCurrentSession().getMetaData().get("skill")+"')]")).isDisplayed() ) {
+            results.set(0, "false");
+            results.add("Skill isn't displayed");
+        } else {
+            if ((!Serenity.getCurrentSession().getMetaData().get("skill").equals(getDriver().findElement(By.xpath("//p[contains(.,'"+Serenity.getCurrentSession().getMetaData().get("skill")+"')]")).getText()))) {
+                results.set(0, "false");
+                results.add("Expected: " + Serenity.getCurrentSession().getMetaData().get("skill") + "; but found: " + getDriver().findElement(By.xpath("//p[contains(.,'"+Serenity.getCurrentSession().getMetaData().get("skill")+"')]")).getText().trim() + "\n");
+            }
+        }
+        return results;
     }
 }
