@@ -1,7 +1,7 @@
 package RealiseMe.com.pages.CommonActions;
 
 import RealiseMe.com.ILocators;
-import com.github.cliftonlabs.json_simple.Jsoner;
+//import com.github.cliftonlabs.json_simple.Jsoner;
 import net.serenitybdd.core.Serenity;
 import net.serenitybdd.core.pages.PageObject;
 import org.apache.commons.io.IOUtils;
@@ -475,7 +475,7 @@ public class CommonActions extends PageObject {
         Serenity.getCurrentSession().addMetaData("BookingId1", bookingId1);
         Serenity.getCurrentSession().addMetaData("BookingId2", bookingId2);
         Serenity.getCurrentSession().addMetaData("BookingId3", bookingId3);
-        try {
+       /* try {
             BufferedWriter writer = Files.newBufferedWriter(Paths.get("src/test/resources/Files/BookingID.json"));
             JSONObject bookingIDObject = new JSONObject();
             bookingIDObject.put("BookingId1", bookingId1);
@@ -486,6 +486,8 @@ public class CommonActions extends PageObject {
         } catch (IOException ex) {
             ex.printStackTrace();
         }
+
+        */
     }
 
     public ArrayList<String> getBookingIDFromJson() throws IOException, ParseException {
