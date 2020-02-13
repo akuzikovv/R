@@ -259,7 +259,7 @@ public interface ILocators {
 
     /////////////////////////  AGENCY /////////////////////////
     String Supply_staff_name = "//div[contains(.,'Supply staff name')]/input";
-    String Total_daily_charge_excluding_VAT = "//div[contains(.,'Total daily charge excluding VAT')]/input";
+    String Gross_Daily_Charge = "//div[contains(.,'Gross Daily Charge')]/input";
     String Subject = "//div[contains(.,'Subject')]/input";
     String drag_drop = "//div[contains(.,'Profile / Confirmation of checks')]//input[@type='file']";
 
