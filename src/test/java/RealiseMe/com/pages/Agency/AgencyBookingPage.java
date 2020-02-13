@@ -11,7 +11,7 @@ public class AgencyBookingPage extends PageObject {
 
     public void fillRequiredFields(List<String> list) {
         $(ILocators.Supply_staff_name).type(list.get(0));
-        $(ILocators.Total_daily_charge_excluding_VAT).type(list.get(1));
+        $(ILocators.Gross_Daily_Charge).type(list.get(1));
         $(ILocators.Subject).type(list.get(2));
     }
 
