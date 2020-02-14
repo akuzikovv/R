@@ -1,5 +1,5 @@
 
-Feature:  Booking Creation
+Feature:  Booking flow for agency
 
   Background:
     Given open landing page

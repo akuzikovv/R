@@ -201,7 +201,7 @@ public interface ILocators {
     String Google = "//button[@data-provider='google-oauth2']";
     String Twitter = "//button[@data-provider='twitter']";
     String OR_Image = "//div[@class='auth0-lock-pane-separator']";
-    String Email_field = "//input[@placeholder='yours@example.com']";
+    String Email_field = "//input[@type='email']";
     String Password_field = "//input[@placeholder='your password']";
     String DontRememberPass = "(//a)[2]";
     String DontRememberPass_for_school = "(//a)[4]";
