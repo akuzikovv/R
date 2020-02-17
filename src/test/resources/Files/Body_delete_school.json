@@ -1,0 +1,5 @@
+{
+  "query": "mutation {\n  adminRemoveSchool(admin_id: \"538e52d0-a7c0-4e89-9b48-80f0d0ec958d\", email: \"newadminschool77712@yopmail.com\")}",
+
+  "variables": null
+}

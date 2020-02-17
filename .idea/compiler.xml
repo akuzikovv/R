@@ -10,7 +10,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="RealiseMecom" target="1.7" />
+      <module name="RealiseMecom" target="8" />
     </bytecodeTargetLevel>
   </component>
 </project>

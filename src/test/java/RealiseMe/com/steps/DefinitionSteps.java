@@ -669,6 +669,51 @@ public class DefinitionSteps {
         steps.emailBodyContainsNecessaryText(arg0);
     }
 
+    @When("^Remove all user bookings using request API$")
+    public void removeAllUserBookingsUsingRequestAPI(List<String>list) throws IOException, ParseException {
+        steps.removeAllUserBookingsUsingRequestAPI(list);
+    }
+
+    @When("^Fill all necessary fields$")
+    public void fillAllNecessaryFields(List<String>list) {
+        steps.fillAllNecessaryFields(list);
+    }
+
+    @When("^Enter the \"([^\"]*)\" closing date$")
+    public void enterTheClosingDate(String arg0) throws Throwable {
+        steps.enterTheClosingDate(arg0);
+    }
+
+    @When("^Choose \"([^\"]*)\" radiobutton$")
+    public void chooseRadiobutton(String arg0) throws Throwable {
+      steps.chooseRadiobutton(arg0);
+    }
+
+    @Then("^The job name is right displayed$")
+    public void theJobNameIsRightDisplayed() {
+        steps.theJobNameIsRightDisplayed();
+    }
+
+    @Then("^the job description is right displayed$")
+    public void theJobDescriptionIsRightDisplayed() {
+        steps.theJobDescriptionIsRightDisplayed();
+    }
+
+    @Then("^Current posted date is displayed$")
+    public void currentPostedDateIsDisplayed() {
+        steps.currentPostedDateIsDisplayed();
+    }
+
+    @When("^Choose skills$")
+    public void chooseSkills(List<String>list) {
+        steps.chooseSkills(list);
+    }
+
+    @When("^Chosen skills are displayed$")
+    public void chosenSkillsAreDisplayed() {
+        steps.chosenSkillsAreDisplayed();
+    }
+
 
     //    @When("^Open report$")
 //    public void openReport() throws Throwable {

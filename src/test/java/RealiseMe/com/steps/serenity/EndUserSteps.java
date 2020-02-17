@@ -14,6 +14,7 @@ import RealiseMe.com.pages.Teacher.OtherTeacherHomePage;
 import RealiseMe.com.pages.Teacher.SupplyTeacherHomePage;
 import RealiseMe.com.pages.Teacher.TeacherProfilePage;
 import RealiseMe.com.pages.Teacher.TeacherTimesheetsPage;
+import net.serenitybdd.core.Serenity;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.steps.ScenarioSteps;
 import org.json.simple.parser.ParseException;
@@ -767,6 +768,58 @@ public class EndUserSteps  extends ScenarioSteps {
     public void emailBodyContainsNecessaryText(String arg0) {
         String message = getDriver().findElement(By.xpath("((//tbody)[6]//tr)[4]")).getText()+getDriver().findElement(By.xpath("((//tbody)[6]//tr)[5]")).getText();
         Assert.assertTrue("Incorrect text is displayed. Expected: "+arg0+" But found:  "+ message,arg0.equals(message));
+    }
+
+
+    @Step
+    public void removeAllUserBookingsUsingRequestAPI(List<String> list) throws IOException, ParseException {
+        commonActions.removeAllUserBookingsUsingRequestAPI(list);
+    }
+
+    @Step
+    public void fillAllNecessaryFields(List<String> list) {
+        schoolJobsPage.fillAllNecessaryFields(list);
+    }
+
+    @Step
+    public void enterTheClosingDate(String arg0) {
+        schoolJobsPage.enterTheClosingDate(arg0);
+    }
+
+    @Step
+    public void chooseRadiobutton(String arg0) {
+        commonActions.chooseRadiobutton(arg0);
+    }
+
+    @Step
+    public void theJobNameIsRightDisplayed() {
+
+        Assert.assertTrue("Incorrect job name is displayed. Expected: "+Serenity.getCurrentSession().getMetaData().get("job name")+" But found:  " +getDriver().findElement(By.xpath("//p[@class='specialty']")).getText(),getDriver().findElement(By.xpath("//p[@class='specialty']")).getText().equals(Serenity.getCurrentSession().getMetaData().get("job name")));
+    }
+
+    @Step
+    public void theJobDescriptionIsRightDisplayed() {
+        String job_description = getDriver().findElement(By.xpath("//div[@class='all-description']//p")).getText();
+        Assert.assertTrue("Incorrect job description is displayed. Expected: "+Serenity.getCurrentSession().getMetaData().get("job description")+" But found:  " +job_description,job_description.equals(Serenity.getCurrentSession().getMetaData().get("job description")));
+
+    }
+
+    @Step
+    public void currentPostedDateIsDisplayed() {
+        ArrayList<String> results =  schoolJobsPage.currentPostedDateIsDisplayed();
+        Assert.assertTrue("Posted date is wrong"+ results, "true".equals(results.get(0)));
+    }
+
+    @Step
+    public void chooseSkills(List<String> list) {
+        schoolJobsPage.chooseSkills(list);
+    }
+
+    @Step
+    public void chosenSkillsAreDisplayed() {
+        ArrayList<String> results =  schoolJobsPage.chosenSkillsAreDisplayed();
+        Assert.assertTrue("Chosen Skills Aren't Displayed"+ results, "true".equals(results.get(0)));
+
     }
 
 
