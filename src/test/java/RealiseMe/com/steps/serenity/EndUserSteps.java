@@ -822,6 +822,27 @@ public class EndUserSteps  extends ScenarioSteps {
 
     }
 
+    @Step
+    public void chosenClosedDateIsDisplayed() {
+        Assert.assertTrue("Chosen closed date isn't displayed", getDriver().findElement(By.xpath("//p[@class='apply-by' and contains(.,'"+Serenity.getCurrentSession().getMetaData().get("Closed date")+"')]")).isDisplayed());
+    }
+
+
+    @Step
+    public void contractTypeIsRightDisplayed(List<String> list) {
+        Assert.assertTrue("Chosen Contract Type isn't displayed", list.get(0).equals(getDriver().findElement(By.xpath("(//p[contains(.,'Contract Type')]/..//p)[1]")).getText()));
+    }
+
+    @Step
+    public void contractTermIsRightDisplayd(String arg0) {
+        Assert.assertTrue("Chosen Contract Term isn't displayed", arg0.equals(getDriver().findElement(By.xpath("(//p[contains(.,'Contract Term')]/..//p)[7]")).getText()));
+    }
+
+    @Step
+    public void salaryIsRightDisplayed() {
+        Assert.assertTrue("Chosen Salary isn't displayed", Serenity.getCurrentSession().getMetaData().get("Salary").equals(getDriver().findElement(By.xpath("(//p[contains(.,'Salary')]/..//p)[1]")).getText()));
+    }
+
 
 //    @Step
 //    public void openReport() {

@@ -714,6 +714,26 @@ public class DefinitionSteps {
         steps.chosenSkillsAreDisplayed();
     }
 
+    @Then("^Chosen closed date is displayed$")
+    public void chosenClosedDateIsDisplayed() {
+        steps.chosenClosedDateIsDisplayed();
+    }
+
+    @Then("^Contract type is right displayed$")
+    public void contractTypeIsRightDisplayed(List<String>list) {
+        steps.contractTypeIsRightDisplayed(list);
+    }
+
+    @Then("^Contract term \"([^\"]*)\" is right displayd$")
+    public void contractTermIsRightDisplayd(String arg0) throws Throwable {
+        steps.contractTermIsRightDisplayd(arg0);
+    }
+
+    @Then("^Salary is right displayed$")
+    public void salaryIsRightDisplayed() {
+        steps.salaryIsRightDisplayed();
+    }
+
 
     //    @When("^Open report$")
 //    public void openReport() throws Throwable {

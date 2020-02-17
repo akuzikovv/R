@@ -69,7 +69,7 @@ Feature:  Job Creation
     When Choose "Full-time" checkbox
     When Choose "Please tick if you want to request video prescreening questions to be answered for enhanced applications." checkbox
     When Upload "Candidate_Clearance_Summary.pdf" file
-    When Enter the "03/12/2020" closing date
+    When Enter the "05/12/2020" closing date
     When Choose "SAAID" radiobutton
     When Choose skills
     |maths|
@@ -78,6 +78,11 @@ Feature:  Job Creation
     Then The job name is right displayed
     Then the job description is right displayed
     Then Current posted date is displayed
-    When Chosen skills are displayed
+    Then Chosen skills are displayed
+    Then Chosen closed date is displayed
+    Then Contract type is right displayed
+    |Full-time|
+    Then Contract term "Interim" is right displayd
+    Then Salary is right displayed
 
     When Click on the "submit" button

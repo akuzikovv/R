@@ -303,9 +303,11 @@ public class SchoolJobsPage extends PageObject {
         getDriver().findElement(By.xpath("//textarea[@name='jobdescription']")).sendKeys(list.get(1));
         Serenity.getCurrentSession().addMetaData("job description",list.get(1));
         getDriver().findElement(By.xpath("//input[@name='jobsalary']")).sendKeys(list.get(2));
+        Serenity.getCurrentSession().addMetaData("Salary",list.get(2));
     }
 
     public void enterTheClosingDate(String arg0) {
+        Serenity.getCurrentSession().addMetaData("Closed date",arg0.substring(3,5));
         getDriver().findElement(By.xpath("//input[@placeholder='MM/DD/YYYY']")).sendKeys(arg0);
     }
 
@@ -348,4 +350,6 @@ public class SchoolJobsPage extends PageObject {
         }
         return results;
     }
+
+
 }
