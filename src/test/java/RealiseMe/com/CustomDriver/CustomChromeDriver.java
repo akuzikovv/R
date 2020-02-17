@@ -18,6 +18,13 @@ public class CustomChromeDriver implements DriverSource {
 //        ignoreAlert.setCapability(CapabilityType.UNEXPECTED_ALERT_BEHAVIOUR, UnexpectedAlertBehaviour.ACCEPT);
         ChromeOptions chromeOptions = new ChromeOptions();
         chromeOptions.addArguments("--whitelist-ip *");
+        chromeOptions.addArguments("headless");
+        chromeOptions.addArguments("window-size=1280x800");
+        chromeOptions.addArguments("no-sandbox");
+        chromeOptions.addArguments("–disable-dev-shm-usage");
+        chromeOptions.addArguments("start-maximized");
+        chromeOptions.addArguments("--disable-gpu");
+        chromeOptions.addArguments("--disable-setuid-sandbox");
         ChromeDriver driver = new ChromeDriver();
         driver.manage().deleteAllCookies();
         EventFiringWebDriver eventDriver = new EventFiringWebDriver(driver);

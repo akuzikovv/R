@@ -1,5 +1,5 @@
 
-Feature:  Booking Creation
+Feature:  Booking flow for agency
 
   Background:
     Given open landing page
@@ -69,7 +69,7 @@ Feature:  Booking Creation
     When Find accepted invite by booking ID with "Agency 18" name
     Then Entered "Supply staff name" teacher name is displayed
     Then Attached "Candidate_Clearance_Summary.pdf" file is displayed
-    Then The "162.27" rate is displayed
+    Then The "123.21" rate is displayed
     When Approve accepted invite with "Agency 18" name
     Then Popup with "Thank you for approving this booking. When approving bookings, you are re-confirming our terms and conditions." text is appeared
     When Close popup
@@ -101,7 +101,7 @@ Feature:  Booking Creation
     When Find accepted invite by booking ID with "Agency 18" name
     Then Entered "Supply staff name" teacher name is displayed
     Then Attached "Candidate_Clearance_Summary.pdf" file is displayed
-    Then The "162.27" rate is displayed
+    Then The "123.21" rate is displayed
     When Decline accepted invite with "Agency 18" name
 
   Scenario: Decline booking as agency
