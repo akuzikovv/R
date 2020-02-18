@@ -843,6 +843,21 @@ public class EndUserSteps  extends ScenarioSteps {
         Assert.assertTrue("Chosen Salary isn't displayed", Serenity.getCurrentSession().getMetaData().get("Salary").equals(getDriver().findElement(By.xpath("(//p[contains(.,'Salary')]/..//p)[1]")).getText()));
     }
 
+    @Step
+    public void theTextIsDisplayedAtTheVideoPrescreeningField(String arg0) {
+        Assert.assertTrue("\""+arg0+"\" text isn't displayed", arg0.equals(getDriver().findElement(By.xpath("(//p[@class='essential-title'])[3]/..//p[@class='sub-title']")).getText()));
+    }
+
+    @Step
+    public void enterJobTitleToTheSearchField() {
+        landingPage.enterJobTitleToTheSearchField();
+    }
+
+    @Step
+    public void appropriateJobIsDisplayedInTheSearchResult() {
+        Assert.assertTrue("\""+Serenity.getCurrentSession().getMetaData().get("Job name")+"\" job isn't displayed in the search result", getDriver().findElement(By.xpath("//div[@class='job-details']//p[@class='job-details-title']//a[contains(.,'"+Serenity.getCurrentSession().getMetaData().get("Job name")+"')]")).isDisplayed());
+    }
+
 
 //    @Step
 //    public void openReport() {

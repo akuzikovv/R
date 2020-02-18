@@ -298,8 +298,9 @@ public class SchoolJobsPage extends PageObject {
     }
 
     public void fillAllNecessaryFields(List<String> list) {
-        getDriver().findElement(By.xpath("//input[@name='jobname']")).sendKeys(list.get(0));
-        Serenity.getCurrentSession().addMetaData("job name",list.get(0));
+        int random = (int) (Math.random() * 400 + 111);
+        getDriver().findElement(By.xpath("//input[@name='jobname']")).sendKeys(list.get(0)+random);
+        Serenity.getCurrentSession().addMetaData("job name",list.get(0)+random);
         getDriver().findElement(By.xpath("//textarea[@name='jobdescription']")).sendKeys(list.get(1));
         Serenity.getCurrentSession().addMetaData("job description",list.get(1));
         getDriver().findElement(By.xpath("//input[@name='jobsalary']")).sendKeys(list.get(2));

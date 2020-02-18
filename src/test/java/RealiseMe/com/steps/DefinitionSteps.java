@@ -734,6 +734,21 @@ public class DefinitionSteps {
         steps.salaryIsRightDisplayed();
     }
 
+    @Then("^The \"([^\"]*)\" text is displayed at the Video prescreening field$")
+    public void theTextIsDisplayedAtTheVideoPrescreeningField(String arg0) throws Throwable {
+        steps.theTextIsDisplayedAtTheVideoPrescreeningField(arg0);
+    }
+
+    @When("^Enter job title to the search field$")
+    public void enterJobTitleToTheSearchField() {
+        steps.enterJobTitleToTheSearchField();
+    }
+
+    @Then("^Appropriate job is displayed in the search result$")
+    public void appropriateJobIsDisplayedInTheSearchResult() {
+        steps.appropriateJobIsDisplayedInTheSearchResult();
+    }
+
 
     //    @When("^Open report$")
 //    public void openReport() throws Throwable {

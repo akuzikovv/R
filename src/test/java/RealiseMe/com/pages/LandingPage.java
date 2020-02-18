@@ -2,6 +2,7 @@ package RealiseMe.com.pages;
 
 import RealiseMe.com.ILocators;
 import RealiseMe.com.pages.CommonActions.CommonActions;
+import net.serenitybdd.core.Serenity;
 import net.serenitybdd.core.pages.PageObject;
 import net.thucydides.core.annotations.DefaultUrl;
 import org.openqa.selenium.By;
@@ -135,5 +136,9 @@ public class LandingPage extends PageObject {
         commonActions.wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(ILocators.cookies_button)));
         $(ILocators.cookies_button).click();
         }catch (Exception e){}
+    }
+
+    public void enterJobTitleToTheSearchField() {
+        getDriver().findElement(By.xpath("(//input[@placeholder='keyword search'])[1]")).sendKeys(Serenity.getCurrentSession().getMetaData().get("Job name"));
     }
 }
