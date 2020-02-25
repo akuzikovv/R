@@ -4,6 +4,8 @@ import RealiseMe.com.ILocators;
 import RealiseMe.com.pages.CommonActions.CommonActions;
 import net.serenitybdd.core.pages.PageObject;
 import org.openqa.selenium.By;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -46,6 +48,8 @@ public class AuthorizationPage extends PageObject {
     }
 
     public void enterLogin(String arg0) {
+        commonActions.wait = new WebDriverWait(getDriver(), 20);
+        commonActions.wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(ILocators.Email_field)));
         $(ILocators.Email_field).type(arg0);
     }
 
