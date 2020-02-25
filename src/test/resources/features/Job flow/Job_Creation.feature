@@ -11,53 +11,53 @@ Feature:  Job Creation
     When Click on the "jobs" button in the header
     When Click on the "POST A NEW JOB" button
 
-  Scenario: "Post a new job" page contains necessary elements
-    Then  Post a Job page contains all necessary elements:
-      | Post a Job Vacancy                                                                                                                                                          |
-      | Choose from draft                                                                                                                                                   |
-      | Job Details                                                                                                                                                         |
-      | Job title*                                                                                                                                            |
-#    |EXAMPLE: Maths teacher in Essex|
-      | Job description*                                                                                                                                      |
-      | Upload application form and other relevant documents                                                                                                                                             |
-      | You may attach up to 5 files under 100 Mb.                                                                                                                          |
-      | Salary*                                                                                                                                                             |
-      | Contract term*                                                                                                                                                      |
-      | Flexi/ Job share                                                                                                                                                    |
-      | Permanent                                                                                                                                                           |
-      | Contract type*                                                                                                                                                      |
-      | Part-time                                                                                                                                                           |
-      | Full-time                                                                                                                                                           |
-      | Closing date*                                                                                                                                                       |
-#    |DD/MM/YYYY                                 |
-      | Enter skills needed                                                                                                                                                 |
-      | Additional Details                                                                                                                                                  |
-      | Video prescreening questions                                                                                                                                        |
-      | Please tick if you want to request video prescreening questions to be answered for enhanced applications.                                                                         |
-      | Video interview                                                                                                                                                     |
-      | Please tick if you want to request first stage interview with the candidates.                                                                                       |
-      | Please contact us to arrange the interview.                                                                                                                         |
-      | Anonymisation                                                                                                                                                       |
-      | You have anonymisation turned OFF, if you wish to remove any bias in screening procress, please click to turn ON. You can always change it in your account setting. |
-      | Boost your job's visibility by enhancing your advert                                                                                                                |
-      | SASAD- Social Augmentation with Sentiment Assimilation and Direct Targeting  |
-      | SAAID - Social Augmentation with AI Direct Targeting  |
-      | SA- Social Augmentation|
-#    |Invite a coworker to help you hire                                                                                                                                  |
-#    |You can easily add any coworkers as an admin in your account setting.                                                                                               |
-      | POST JOB                                                                                                                                                            |
-      | SAVE DRAFT                                                                                                                                                          |
-
-
-  Scenario: Validation of required fields after clicking on the Post button
-    When Click on the Post Job button
-    Then Warning messages are appeared:
-      | The job name field is required.        |
-      | The job description field is required. |
-      | The job salary field is required.      |
-      | The contract term field is required.   |
-      | The contract types field is required.  |
-      | The closing date field is required.    |
+#  Scenario: "Post a new job" page contains necessary elements
+#    Then  Post a Job page contains all necessary elements:
+#      | Post a Job Vacancy                                                                                                                                                          |
+#      | Choose from draft                                                                                                                                                   |
+#      | Job Details                                                                                                                                                         |
+#      | Job title*                                                                                                                                            |
+##    |EXAMPLE: Maths teacher in Essex|
+#      | Job description*                                                                                                                                      |
+#      | Upload application form and other relevant documents                                                                                                                                             |
+#      | You may attach up to 5 files under 100 Mb.                                                                                                                          |
+#      | Salary*                                                                                                                                                             |
+#      | Contract term*                                                                                                                                                      |
+#      | Flexi/ Job share                                                                                                                                                    |
+#      | Permanent                                                                                                                                                           |
+#      | Contract type*                                                                                                                                                      |
+#      | Part-time                                                                                                                                                           |
+#      | Full-time                                                                                                                                                           |
+#      | Closing date*                                                                                                                                                       |
+##    |DD/MM/YYYY                                 |
+#      | Enter skills needed                                                                                                                                                 |
+#      | Additional Details                                                                                                                                                  |
+#      | Video prescreening questions                                                                                                                                        |
+#      | Please tick if you want to request video prescreening questions to be answered for enhanced applications.                                                                         |
+#      | Video interview                                                                                                                                                     |
+#      | Please tick if you want to request first stage interview with the candidates.                                                                                       |
+#      | Please contact us to arrange the interview.                                                                                                                         |
+#      | Anonymisation                                                                                                                                                       |
+#      | You have anonymisation turned OFF, if you wish to remove any bias in screening procress, please click to turn ON. You can always change it in your account setting. |
+#      | Boost your job's visibility by enhancing your advert                                                                                                                |
+#      | SASAD- Social Augmentation with Sentiment Assimilation and Direct Targeting  |
+#      | SAAID - Social Augmentation with AI Direct Targeting  |
+#      | SA- Social Augmentation|
+##    |Invite a coworker to help you hire                                                                                                                                  |
+##    |You can easily add any coworkers as an admin in your account setting.                                                                                               |
+#      | POST JOB                                                                                                                                                            |
+#      | SAVE DRAFT                                                                                                                                                          |
+#
+#
+#  Scenario: Validation of required fields after clicking on the Post button
+#    When Click on the Post Job button
+#    Then Warning messages are appeared:
+#      | The job name field is required.        |
+#      | The job description field is required. |
+#      | The job salary field is required.      |
+#      | The contract term field is required.   |
+#      | The contract types field is required.  |
+#      | The closing date field is required.    |
 
   Scenario: Job creation
     When Fill all necessary fields

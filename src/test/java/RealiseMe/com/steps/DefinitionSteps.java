@@ -749,6 +749,11 @@ public class DefinitionSteps {
         steps.appropriateJobIsDisplayedInTheSearchResult();
     }
 
+    @When("^Click on the appropriate job title$")
+    public void clickOnTheAppropriateJobTitle() {
+        steps.clickOnTheAppropriateJobTitle();
+    }
+
 
     //    @When("^Open report$")
 //    public void openReport() throws Throwable {

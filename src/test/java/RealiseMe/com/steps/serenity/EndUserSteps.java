@@ -835,7 +835,7 @@ public class EndUserSteps  extends ScenarioSteps {
 
     @Step
     public void contractTermIsRightDisplayd(String arg0) {
-        Assert.assertTrue("Chosen Contract Term isn't displayed", arg0.equals(getDriver().findElement(By.xpath("(//p[contains(.,'Contract Term')]/..//p)[7]")).getText()));
+            Assert.assertTrue("Chosen Contract Term isn't displayed", arg0.equals(getDriver().findElement(By.xpath("(//p[contains(.,'Contract Term')]/..//p)[7]")).getText()));
     }
 
     @Step
@@ -855,7 +855,12 @@ public class EndUserSteps  extends ScenarioSteps {
 
     @Step
     public void appropriateJobIsDisplayedInTheSearchResult() {
-        Assert.assertTrue("\""+Serenity.getCurrentSession().getMetaData().get("Job name")+"\" job isn't displayed in the search result", getDriver().findElement(By.xpath("//div[@class='job-details']//p[@class='job-details-title']//a[contains(.,'"+Serenity.getCurrentSession().getMetaData().get("Job name")+"')]")).isDisplayed());
+        Assert.assertTrue("\""+Serenity.getCurrentSession().getMetaData().get("job name")+"\" job isn't displayed in the search result", getDriver().findElement(By.xpath("//div[@class='job-table__item desktop']//a[@class='job-header__title' and contains(.,'"+Serenity.getCurrentSession().getMetaData().get("job name")+"')]")).isDisplayed());
+    }
+
+    @Step
+    public void clickOnTheAppropriateJobTitle() {
+        landingPage.clickOnTheAppropriateJobTitle();
     }
 
 
