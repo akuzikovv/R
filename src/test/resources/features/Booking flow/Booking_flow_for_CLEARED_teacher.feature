@@ -89,6 +89,7 @@ Feature:  Booking Creation
 #    When Find accepted invite with "Booking for cleared teacher" job title
 #    When Decline appropriate booking
     When Decline accepted invite with "Jeffrey Lebowski2" name
+    When Click on the "Confirm cancellation" button
     When Click on the arrow down button
     When Click on the LOGOUT button
 
