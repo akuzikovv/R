@@ -1,6 +1,7 @@
 package RealiseMe.com.steps;
 
 import RealiseMe.com.steps.serenity.EndUserSteps;
+import cucumber.api.PendingException;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -752,6 +753,18 @@ public class DefinitionSteps {
     @When("^Click on the appropriate job title$")
     public void clickOnTheAppropriateJobTitle() {
         steps.clickOnTheAppropriateJobTitle();
+    }
+
+    @When("^Enter \"([^\"]*)\" to the postcode field$")
+    public void enterToThePostcodeField(String arg0) throws Throwable {
+        steps.enterToThePostcodeField(arg0);
+        throw new PendingException();
+    }
+
+    @When("^Choose \"([^\"]*)\" distance$")
+    public void chooseDistance(String arg0) throws Throwable {
+        steps.chooseDistance(arg0);
+        throw new PendingException();
     }
 
 

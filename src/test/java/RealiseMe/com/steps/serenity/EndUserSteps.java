@@ -10,10 +10,7 @@ import RealiseMe.com.pages.HomePage;
 import RealiseMe.com.pages.LandingPage;
 import RealiseMe.com.pages.LoginPage;
 import RealiseMe.com.pages.School.*;
-import RealiseMe.com.pages.Teacher.OtherTeacherHomePage;
-import RealiseMe.com.pages.Teacher.SupplyTeacherHomePage;
-import RealiseMe.com.pages.Teacher.TeacherProfilePage;
-import RealiseMe.com.pages.Teacher.TeacherTimesheetsPage;
+import RealiseMe.com.pages.Teacher.*;
 import net.serenitybdd.core.Serenity;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.steps.ScenarioSteps;
@@ -46,6 +43,7 @@ public class EndUserSteps  extends ScenarioSteps {
     AgencyAccountPage agencyAccountPage;
     TeacherTimesheetsPage teacherTimesheetsPage;
     SchoolTimesheetPage schoolTimesheetPage;
+    TeacherJobsPage teacherJobsPage;
 
     @Step
     public void openLoginPage() {
@@ -861,6 +859,16 @@ public class EndUserSteps  extends ScenarioSteps {
     @Step
     public void clickOnTheAppropriateJobTitle() {
         landingPage.clickOnTheAppropriateJobTitle();
+    }
+
+    @Step
+    public void enterToThePostcodeField(String arg0) {
+        teacherJobsPage.enterToThePostcodeField(arg0);
+    }
+
+    @Step
+    public void chooseDistance(String arg0) {
+        teacherJobsPage.chooseDistance(arg0);
     }
 
 
