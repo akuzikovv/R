@@ -88,9 +88,9 @@ public class SchoolBookingsPage extends PageObject {
 
     public void chooseFullDayInTheMonthOfAvailableCalendar(String arg0, String arg1) {
         WebElement xpath = getDriver().findElement(By.xpath("(//span[contains(.,'" + arg0 + "')])[" + arg1 + "]"));
-        if (!xpath.getAttribute("class").equals("datepicker-table-cal datepicker-day available full-day")) {
-            getDriver().findElement(By.xpath("//div[@class='right']")).click();
-        }
+//        if (!xpath.getAttribute("class").equals("datepicker-table-cal datepicker-day available full-day")) {
+//            getDriver().findElement(By.xpath("//div[@class='right']")).click();
+//        }
         xpath.click();
     }
 
@@ -197,7 +197,7 @@ public class SchoolBookingsPage extends PageObject {
                 }
                 if ((i == 19) & !getDriver().findElement(By.xpath("(//div[@class='table-status']//span)[" + i + "]")).getText().equals(arg0) & (commonActions.isElementPresent("//span[contains(text(),'Next')]"))) {
                     getDriver().findElement(By.xpath("//span[contains(text(),'Next')]")).click();
-                    i = 0;
+                    i = -1;
                 }
             }
 

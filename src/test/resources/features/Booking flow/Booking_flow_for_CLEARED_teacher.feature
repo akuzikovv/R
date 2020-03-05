@@ -18,8 +18,8 @@ Feature:  Booking Creation
     When Choose "TA" checkbox
 #    When Choose "I want to save this search for future use" checkbox
     When Choose "Select day(s) and half day(s)" checkbox
-    When Choose full day "24" in the "2" month of available calendar
-    When Choose half day "25" in the "2" month of available calendar
+    When Choose full day "26" in the "2" month of available calendar
+    When Choose half day "28" in the "2" month of available calendar
     When Choose full day start time "8:00"
     When Choose full day end time "17:00"
     When Choose half day start time "11:00"
