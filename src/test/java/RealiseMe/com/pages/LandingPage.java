@@ -141,12 +141,28 @@ public class LandingPage extends PageObject {
     public void enterJobTitleToTheSearchField() {
 //        System.out.println("SOUT="+Serenity.getCurrentSession().getMetaData().get("job name").toString());
         getDriver().findElement(By.xpath("//input[@placeholder='enter keyword']")).sendKeys(Serenity.getCurrentSession().getMetaData().get("job name"));
-//                Serenity.getCurrentSession().getMetaData().get("job name").toString());
+
     }
 
     public void clickOnTheAppropriateJobTitle() {
-        getDriver().findElement(By.xpath("//div[@class='job-table__item desktop']//a[@class='job-header__title' and contains(.,'"+ Serenity.getCurrentSession().getMetaData().get("job name")+"')]")).click();
-//
+        try {
+            getDriver().findElement(By.xpath("//div[@class='job-table__item desktop']//a[@class='job-header__title' and contains(.,'" + Serenity.getCurrentSession().getMetaData().get("job name") + "')]")).click();
+        }catch (Exception e){}
+        try {
+            getDriver().findElement(By.xpath("//a[contains(.,'"+Serenity.getCurrentSession().getMetaData().get("job name")+"')]")).click();
+            }catch (Exception e){}
 
+    }
+
+    public void clickOnTheButtonAtTheAppropriateJob(String arg0) {
+        try {
+            getDriver().findElement(By.xpath("//div[@class='job-table__item desktop']//a[@class='job-header__title' and contains(.,'" + Serenity.getCurrentSession().getMetaData().get("job name") + "')]//./../..//button[contains(.,'" + arg0 + "')]")).click();
+        }catch (Exception e){}
+        try {
+            getDriver().findElement(By.xpath("//div[@class='job-table__item desktop']//a[@class='job-header__title' and contains(.,'" + Serenity.getCurrentSession().getMetaData().get("job name") + "')]//./../..//a[contains(.,'" + arg0 + "')]")).click();
+        }catch (Exception e){}
+        try {
+            getDriver().findElement(By.xpath(" //a[contains(.,'"+ Serenity.getCurrentSession().getMetaData().get("job name") +"')]/../../..//div[contains(.,'"+arg0+"')]")).click();
+        }catch (Exception e){}
     }
 }

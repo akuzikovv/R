@@ -871,6 +871,132 @@ public class EndUserSteps  extends ScenarioSteps {
         teacherJobsPage.chooseDistance(arg0);
     }
 
+    @Step
+    public void theJobIsDisplayedInTheSearchResult(String arg0) {
+        Assert.assertTrue("\""+arg0+"\" job isn't displayed in the search result", getDriver().findElement(By.xpath("//div[@class='job-table__item desktop']//a[@class='job-header__title' and contains(.,'"+arg0+"')]")).isDisplayed());
+    }
+
+    @Step
+    public void clickOnTheButtonAtTheAppropriateJob(String arg0) {
+        landingPage.clickOnTheButtonAtTheAppropriateJob(arg0);
+    }
+
+    @Step
+    public void theSaveButtonIsHighlightedRedAtTheAppropriateJob(String arg0) {
+        Assert.assertTrue("\""+Serenity.getCurrentSession().getMetaData().get("job name")+"\" job isn't displayed as saved",  getDriver().findElement(By.xpath("//div[@class='job-table__item desktop']//a[@class='job-header__title' and contains(.,'"+ Serenity.getCurrentSession().getMetaData().get("job name")+"')]//./../..//button[contains(.,'"+arg0+"')]")).isDisplayed());
+    }
+
+
+    @Step
+    public void theButtonDisplayedAsSaved(String arg0) {
+        System.out.println(getDriver().findElement(By.xpath("(//button[contains(.,'"+arg0+"')])[1]")).getAttribute("class"));
+        Assert.assertTrue("\""+Serenity.getCurrentSession().getMetaData().get("job name")+"\" job isn't displayed as saved", getDriver().findElement(By.xpath("(//button[contains(.,'"+arg0+"')])[1]")).getAttribute("class").equals("save unsave"));
+    }
+
+    @Step
+    public void enterTextToTheTextField(String arg0) {
+        commonActions.enterTextToTheTextField(arg0);
+    }
+
+    @Step
+    public void appliedJobIsDisplayedInTheTab(String arg0) {
+        Assert.assertTrue("\""+Serenity.getCurrentSession().getMetaData().get("job name")+"\" job isn't displayed as applied",  getDriver().findElement(By.xpath("//a[contains(.,'"+Serenity.getCurrentSession().getMetaData().get("job name")+"')]")).isDisplayed());
+    }
+
+    @Step
+    public void clickOnTheButtonAtTheAppropriateJobTitle(String arg0) {
+        schoolJobsPage.clickOnTheButtonAtTheAppropriateJobTitle(arg0);
+    }
+
+    @Step
+    public void clickOnTheButtonAtTheJobPreviewPage(String arg0) {
+        teacherJobsPage.clickOnTheButtonAtTheJobPreviewPage(arg0);
+    }
+
+    @Step
+    public void theJobNameIsDisplayedAtTheApplicantsPage() {
+        waitABit(2000);
+        Assert.assertTrue("Expected name : \""+Serenity.getCurrentSession().getMetaData().get("job name")+"\" but found: \""+getDriver().findElement(By.xpath("//div[@class='app-header']//a")).getText()+"\"",  Serenity.getCurrentSession().getMetaData().get("job name").equals(getDriver().findElement(By.xpath("//div[@class='app-header']//a")).getText()));
+    }
+
+
+    @Step
+    public void theNameOfFirstApplicantIsDisplayed(String arg0) {
+        Assert.assertTrue("Expected name : \""+arg0+"\" but found: "+getDriver().findElement(By.xpath("(//div[@class='table-body']//p[@class='applicant'])[1]")).getText(),  arg0.equals(getDriver().findElement(By.xpath("(//div[@class='table-body']//p[@class='applicant'])[1]")).getText()));
+    }
+
+    @Step
+    public void theNameOfSecondApplicantIsDisplayed(String arg0) {
+        Assert.assertTrue("Expected name : \""+arg0+"\" but found: "+getDriver().findElement(By.xpath("(//div[@class='table-body']//p[@class='applicant'])[2]")).getText(),  arg0.equals(getDriver().findElement(By.xpath("(//div[@class='table-body']//p[@class='applicant'])[2]")).getText()));
+    }
+
+    @Step
+    public void theCurrentReceivedDateIsDisplayed() {
+        ArrayList<String> results =  schoolJobsPage.theCurrentReceivedDateIsDisplayed();
+        Assert.assertTrue("Received date is wrong"+ results, "true".equals(results.get(0)));
+    }
+
+    @Step
+    public void theMessageLinkOfFirstApplicantHasRightEmailAddress(String arg0) {
+        ArrayList<String> results =  commonActions.theMessageLinkOfFirstApplicantHasRightEmailAddress(arg0);
+        Assert.assertTrue("Email in the message link is wrong"+ results, "true".equals(results.get(0)));
+    }
+
+    @Step
+    public void openProfileDetailsPopupOfTheFirstApplicant() {
+        schoolJobsPage.openProfileDetailsPopupOfTheFirstApplicant();
+    }
+
+    @Step
+    public void theTeacherNameIsDisplayed(String arg0) {
+        Assert.assertTrue("Expected name : \""+arg0+"\" but found: "+getDriver().findElement(By.xpath("//p[@class='teacher-name']")).getText(),  arg0.equals(getDriver().findElement(By.xpath("//p[@class='teacher-name']")).getText()));
+
+    }
+
+    @Step
+    public void theSectionIsDisplayed(String arg0) {
+        Assert.assertTrue("The \""+arg0+"\" section isn't displayed",  getDriver().findElement(By.xpath("//p[contains(.,'"+arg0+"')]")).isDisplayed());
+
+    }
+
+    @Step
+    public void theTeacherNameIsDisplayedAtTheAccordionSection(String arg0) {
+        Assert.assertTrue("Expected name : \""+arg0+"\" but found: "+getDriver().findElement(By.xpath("//span[@class='app-name']")).getText(),  arg0.equals(getDriver().findElement(By.xpath("//span[@class='app-name']")).getText()));
+
+    }
+
+    @Step
+    public void theFieldContainsTheAttachedDocument(String arg0, String arg1) {
+        Assert.assertTrue("The \""+arg1+"\" document isn't displayed at the "+arg0+" field",  getDriver().findElement(By.xpath("//div[@class='accordion-wrapper']//div[contains(.,'"+arg0+"')]//a[contains(.,'"+arg1+"')]")).isDisplayed());
+    }
+
+    @Step
+    public void theCoveringMessageIsDisplayed() {
+        Assert.assertTrue("Expected message : \""+Serenity.getCurrentSession().getMetaData().get("covering message")+"\" but found: "+getDriver().findElement(By.xpath("//p[@class='app-message']")).getText(), Serenity.getCurrentSession().getMetaData().get("covering message").equals(getDriver().findElement(By.xpath("//p[@class='app-message']")).getText()));
+
+    }
+
+    @Step
+    public void theOdroSiteIsOpenedInTheNewTabAfterClickingOnThePrescreeningQuestionsLink(List<String> list) {
+        Assert.assertTrue("Expected urk : \""+list.get(0)+"\" but found: "+getDriver().getCurrentUrl(),  list.get(0).equals(getDriver().getCurrentUrl()));
+    }
+
+    @Step
+    public void clickOnTheLinkAtTheVideoPrescreeningQuestionsField() {
+        schoolJobsPage.clickOnTheLinkAtTheVideoPrescreeningQuestionsField();
+    }
+
+    @Step
+    public void appliedJobIsnTDisplayedInTheTab(String arg0) {
+        Assert.assertTrue("\""+Serenity.getCurrentSession().getMetaData().get("job name")+"\" job still displayed as applied", !commonActions.isElementPresent("//a[contains(.,'"+Serenity.getCurrentSession().getMetaData().get("job name")+"')]"));
+
+    }
+
+    @Step
+    public void clickOnTheAppropriateJobTitleAtTheTab(String arg0) {
+        teacherJobsPage.clickOnTheAppropriateJobTitleAtTheTab(arg0);
+    }
+
 
 //    @Step
 //    public void openReport() {

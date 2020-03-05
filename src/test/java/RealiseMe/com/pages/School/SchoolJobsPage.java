@@ -8,10 +8,13 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 
 public class SchoolJobsPage extends PageObject {
     CommonActions commonActions;
+    public String parentHandle;
 
     public ArrayList<String> jobsPageContainsAllNecessaryElements(List<String> list) {
         ArrayList<String> labels = new ArrayList<>();
@@ -298,7 +301,7 @@ public class SchoolJobsPage extends PageObject {
     }
 
     public void fillAllNecessaryFields(List<String> list) {
-        int random = (int) (Math.random() * 400 + 111);
+        int random = (int) (Math.random() * 800 + 111);
         getDriver().findElement(By.xpath("//input[@name='jobname']")).sendKeys(list.get(0)+random);
         Serenity.getCurrentSession().addMetaData("job name",list.get(0)+random);
         System.out.println( Serenity.getCurrentSession().getMetaData().get("job name"));
@@ -330,6 +333,7 @@ public class SchoolJobsPage extends PageObject {
 
     public void chooseSkills(List<String> list) {
         getDriver().findElement(By.xpath("(//div[@class='input-group__selections'])[2]")).click();
+        waitABit(2000);
         JavascriptExecutor je = (JavascriptExecutor) getDriver();
         je.executeScript("arguments[0].scrollIntoView();",getDriver().findElement(By.xpath("//div[@class='list']//div")));
         for (int i = 0;i<list.size();i++){
@@ -354,4 +358,54 @@ public class SchoolJobsPage extends PageObject {
     }
 
 
+    public void clickOnTheButtonAtTheAppropriateJobTitle(String arg0) {
+        if ((!commonActions.isElementPresent("//span[contains(.,'"+Serenity.getCurrentSession().getMetaData().get("job name")+"')]//../../..//span[contains(.,'"+arg0+"')]")) &
+                commonActions.isElementPresent("//span[contains(text(),'Next')]")) {
+            getDriver().findElement(By.xpath("//span[contains(text(),'Next')]")).click();
+            clickOnTheButtonAtTheAppropriateJobTitle(arg0);
+        }
+        if (commonActions.isElementPresent("//span[contains(.,'"+Serenity.getCurrentSession().getMetaData().get("job name")+"')]//../../..//span[contains(.,'"+arg0+"')]")) {
+                getDriver().findElement(By.xpath("//span[contains(.,'"+Serenity.getCurrentSession().getMetaData().get("job name")+"')]//../../..//span[contains(.,'"+arg0+"')]")).click();
+        }
+    }
+
+    public ArrayList<String> theCurrentReceivedDateIsDisplayed() {
+        ArrayList<String> results = new ArrayList<>();
+        results.add(0, "true");
+        String date;
+        if (!getDriver().findElement(By.xpath("(//div[@class='table-body']//p[@class='received'])[1]")).isDisplayed() ) {
+            results.set(0, "false");
+            results.add("Received date isn't displayed");
+        } else {
+            if (commonActions.getDate().substring(0,1).equals("0")){
+                date = commonActions.getDate().substring(1,2);
+            }
+            else date = commonActions.getDate().substring(0,2);
+            if ((!date.equals(getDriver().findElement(By.xpath("(//div[@class='table-body']//p[@class='received'])[1]")).getText().substring(0,1)))&
+                    (!date.equals(getDriver().findElement(By.xpath("(//div[@class='table-body']//p[@class='received'])[1]")).getText().substring(0,2)))) {
+                results.set(0, "false");
+                results.add("Expected: " + date + "; but found: " + getDriver().findElement(By.xpath("(//div[@class='table-body']//p[@class='received'])[1]")).getText().substring(0,1) + "\n");
+            }
+        }
+        return results;
+    }
+
+    public void openProfileDetailsPopupOfTheFirstApplicant() {
+        getDriver().findElement(By.xpath("(//div[@class='table-body']//p[@class='applicant'])[1]")).click();
+    }
+
+    public void clickOnTheLinkAtTheVideoPrescreeningQuestionsField() {
+        parentHandle = getDriver().getWindowHandle();
+        getDriver().findElement(By.xpath("//a[@class='app-link']")).click();
+        ((JavascriptExecutor) getDriver()).executeScript("window.open('about:blank','_blank');");
+        String subWindowHandler = null;
+        Set<String> handles = getDriver().getWindowHandles();
+        Iterator<String> iterator = handles.iterator();
+        while (iterator.hasNext()) {
+            subWindowHandler = iterator.next();
+        }
+        getDriver().switchTo().window(subWindowHandler);
+        waitABit(5000);
+//        getDriver().switchTo().window(parentHandle);
+    }
 }

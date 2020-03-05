@@ -1,7 +1,6 @@
 package RealiseMe.com.steps;
 
 import RealiseMe.com.steps.serenity.EndUserSteps;
-import cucumber.api.PendingException;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -758,13 +757,137 @@ public class DefinitionSteps {
     @When("^Enter \"([^\"]*)\" to the postcode field$")
     public void enterToThePostcodeField(String arg0) throws Throwable {
         steps.enterToThePostcodeField(arg0);
-        throw new PendingException();
+
     }
 
     @When("^Choose \"([^\"]*)\" distance$")
     public void chooseDistance(String arg0) throws Throwable {
         steps.chooseDistance(arg0);
-        throw new PendingException();
+
+    }
+
+    @Then("^The \"([^\"]*)\" job is displayed in the search result$")
+    public void theJobIsDisplayedInTheSearchResult(String arg0) throws Throwable {
+      steps.theJobIsDisplayedInTheSearchResult(arg0);
+
+    }
+
+    @Then("^Click on the \"([^\"]*)\" button at the appropriate job$")
+    public void clickOnTheButtonAtTheAppropriateJob(String arg0) throws Throwable {
+        steps.clickOnTheButtonAtTheAppropriateJob(arg0);
+    }
+
+
+
+    @Then("^The \"([^\"]*)\" button is highlighted red at the appropriate job$")
+    public void theButtonIsHighlightedRedAtTheAppropriateJob(String arg0) throws Throwable {
+        steps.theSaveButtonIsHighlightedRedAtTheAppropriateJob(arg0);
+    }
+
+    @Then("^The \"([^\"]*)\" button displayed as saved$")
+    public void theButtonDisplayedAsSaved(String arg0) throws Throwable {
+        steps.theButtonDisplayedAsSaved(arg0);
+    }
+
+    @When("^Enter \"([^\"]*)\" text to the text field$")
+    public void enterTextToTheTextField(String arg0) throws Throwable {
+       steps.enterTextToTheTextField(arg0);
+    }
+
+    @Then("^Applied job is displayed in the \"([^\"]*)\" tab$")
+    public void appliedJobIsDisplayedInTheTab(String arg0) throws Throwable {
+        steps.appliedJobIsDisplayedInTheTab(arg0);
+    }
+
+
+
+    @When("^Click on the \"([^\"]*)\" button at the appropriate job title$")
+    public void clickOnTheButtonAtTheAppropriateJobTitle(String arg0) throws Throwable {
+        steps.clickOnTheButtonAtTheAppropriateJobTitle(arg0);
+    }
+
+    @When("^Click on the \"([^\"]*)\" button at the job preview page$")
+    public void clickOnTheButtonAtTheJobPreviewPage(String arg0) throws Throwable {
+        steps.clickOnTheButtonAtTheJobPreviewPage(arg0);
+    }
+
+    @Then("^The job name is displayed at the applicants page$")
+    public void theJobNameIsDisplayedAtTheApplicantsPage() {
+        steps.theJobNameIsDisplayedAtTheApplicantsPage();
+    }
+
+
+
+    @Then("^The \"([^\"]*)\" name of first applicant is displayed$")
+    public void theNameOfFirstApplicantIsDisplayed(String arg0) throws Throwable {
+      steps.theNameOfFirstApplicantIsDisplayed(arg0);
+    }
+
+    @Then("^The \"([^\"]*)\" name of second applicant is displayed$")
+    public void theNameOfSecondApplicantIsDisplayed(String arg0) throws Throwable {
+      steps.theNameOfSecondApplicantIsDisplayed(arg0);
+    }
+
+    @Then("^The current received date is displayed$")
+    public void theCurrentReceivedDateIsDisplayed() {
+        steps.theCurrentReceivedDateIsDisplayed();
+    }
+
+
+    @Then("^The message link of first applicant has right email address \"([^\"]*)\"$")
+    public void theMessageLinkOfFirstApplicantHasRightEmailAddress(String arg0) throws Throwable {
+        steps.theMessageLinkOfFirstApplicantHasRightEmailAddress(arg0);
+    }
+
+    @When("^Open profile details popup of the first applicant$")
+    public void openProfileDetailsPopupOfTheFirstApplicant() {
+        steps.openProfileDetailsPopupOfTheFirstApplicant();
+    }
+
+    @Then("^The \"([^\"]*)\" teacher name is displayed$")
+    public void theTeacherNameIsDisplayed(String arg0) throws Throwable {
+       steps.theTeacherNameIsDisplayed(arg0);
+    }
+
+    @Then("^The \"([^\"]*)\" section is displayed$")
+    public void theSectionIsDisplayed(String arg0) throws Throwable {
+        steps.theSectionIsDisplayed(arg0);
+    }
+
+    @Then("^The \"([^\"]*)\" teacher name is displayed at the accordion section$")
+    public void theTeacherNameIsDisplayedAtTheAccordionSection(String arg0) throws Throwable {
+    steps.theTeacherNameIsDisplayedAtTheAccordionSection(arg0);
+    }
+
+    @Then("^The \"([^\"]*)\" field contains the \"([^\"]*)\" attached document$")
+    public void theFieldContainsTheAttachedDocument(String arg0, String arg1) throws Throwable {
+       steps.theFieldContainsTheAttachedDocument(arg0,arg1);
+    }
+
+    @Then("^The covering message is displayed$")
+    public void theCoveringMessageIsDisplayed() {
+        steps.theCoveringMessageIsDisplayed();
+    }
+
+    @Then("^The odro site is opened in the new tab after clicking on the prescreening questions link$")
+    public void theOdroSiteIsOpenedInTheNewTabAfterClickingOnThePrescreeningQuestionsLink(List<String>list) {
+        steps.theOdroSiteIsOpenedInTheNewTabAfterClickingOnThePrescreeningQuestionsLink(list);
+    }
+
+    @When("^Click on the link at the Video Prescreening Questions field$")
+    public void clickOnTheLinkAtTheVideoPrescreeningQuestionsField() {
+        steps.clickOnTheLinkAtTheVideoPrescreeningQuestionsField();
+
+    }
+
+    @Then("^Applied job isn't displayed in the \"([^\"]*)\" tab$")
+    public void appliedJobIsnTDisplayedInTheTab(String arg0) throws Throwable {
+        steps.appliedJobIsnTDisplayedInTheTab(arg0);
+        }
+
+    @When("^Click on the appropriate job title at the \"([^\"]*)\" tab$")
+    public void clickOnTheAppropriateJobTitleAtTheTab(String arg0) throws Throwable {
+       steps.clickOnTheAppropriateJobTitleAtTheTab(arg0);
     }
 
 

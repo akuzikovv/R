@@ -45,7 +45,7 @@ Feature:  Job Search
     Then Salary is right displayed
     Then The "requested" text is displayed at the Video prescreening field
 
-  Scenario: Search appropriate job as logged in "Other" teacher
+  Scenario: Search appropriate job as logged in "Supply" teacher
     When Click on the login button
     When Click on the "Login as a teacher" button
     When Enter login "a.kuzikov@aimprosoft.com"
@@ -74,9 +74,10 @@ Feature:  Job Search
       When Enter password "Test123!"
       When Click on the Log in button
       When Click on the "jobs" button in the header
-      When Enter "SE129BT" to the postcode field
+      When Enter "NW36AE" to the postcode field
       When Choose "3" distance
       When Click on the "search" button
+      Then The "Reilly Stevens Plc" job is displayed in the search result
 
 
 

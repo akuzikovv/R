@@ -468,6 +468,10 @@ public class CommonActions extends PageObject {
             WebElement uploadElement = getDriver().findElement(By.xpath("(//input[@class='input-file'])[2]"));
             uploadElement.sendKeys("/home/akuzikov/IdeaProjects/RealiseMecom/src/test/resources/Files/" + arg0);
         }catch (Exception e){}
+        try {
+            WebElement uploadElement = getDriver().findElement(By.xpath("(//input[@class='input-file'])[3]"));
+            uploadElement.sendKeys("/home/akuzikov/IdeaProjects/RealiseMecom/src/test/resources/Files/" + arg0);
+        }catch (Exception e){}
     }
 
     public void getBookingID() {
@@ -767,5 +771,26 @@ public class CommonActions extends PageObject {
         current_date = date +", "+year;
 //        System.out.println(current_date);
         return current_date;
+    }
+
+    public void enterTextToTheTextField(String arg0) {
+        getDriver().findElement(By.xpath("//textarea[@type='text']")).sendKeys(arg0);
+        Serenity.getCurrentSession().addMetaData("covering message",arg0);
+    }
+
+    public ArrayList<String> theMessageLinkOfFirstApplicantHasRightEmailAddress(String arg0) {
+        ArrayList<String> results = new ArrayList<>();
+        results.add(0, "true");
+        if (!getDriver().findElement(By.xpath("(//div[@class='table-body']//a)[1]")).isDisplayed() ) {
+            results.set(0, "false");
+            results.add("Message link isn't displayed");
+        } else {
+            if ((!arg0.equals(getDriver().findElement(By.xpath("(//div[@class='table-body']//a)[1]")).getAttribute("href").substring(7)))) {
+                results.set(0, "false");
+                results.add("Expected: " + arg0 + "; but found: " + getDriver().findElement(By.xpath("(//div[@class='table-body']//p[@class='received'])[1]")).getAttribute("href").substring(7) + "\n");
+            }
+        }
+        return results;
+
     }
 }
