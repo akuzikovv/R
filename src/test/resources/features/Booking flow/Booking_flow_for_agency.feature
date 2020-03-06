@@ -54,7 +54,7 @@ Feature:  Booking flow for agency
     |Supply staff name|
     |123.21|
     |Subject                         |
-    When Upload "Candidate_Clearance_Summary.pdf" file
+    When Upload "Candidate_Summary.pdf" file
     When Choose "I confirm that this teacher is fully cleared with DBS." checkbox
     When Choose "I agree to RealiseMe" policy checkbox
     When Click on the "CONFIRM JOB" button
@@ -68,7 +68,7 @@ Feature:  Booking flow for agency
     When Click on the "bookings" button in the header
     When Find accepted invite by booking ID with "Agency 18" name
     Then Entered "Supply staff name" teacher name is displayed
-    Then Attached "Candidate_Clearance_Summary.pdf" file is displayed
+    Then Attached "Candidate_Summary.pdf" file is displayed
     Then The "123.21" rate is displayed
     When Approve accepted invite with "Agency 18" name
     Then Popup with "Thank you for approving this booking. When approving bookings, you are re-confirming our terms and conditions." text is appeared
@@ -85,7 +85,7 @@ Feature:  Booking flow for agency
       |Supply staff name|
       |123.21|
       |Subject                         |
-    When Upload "Candidate_Clearance_Summary.pdf" file
+    When Upload "Candidate_Summary.pdf" file
     When Choose "I confirm that this teacher is fully cleared with DBS." checkbox
     When Choose "I agree to RealiseMe" policy checkbox
     When Click on the "CONFIRM JOB" button
@@ -100,7 +100,7 @@ Feature:  Booking flow for agency
     When Click on the "bookings" button in the header
     When Find accepted invite by booking ID with "Agency 18" name
     Then Entered "Supply staff name" teacher name is displayed
-    Then Attached "Candidate_Clearance_Summary.pdf" file is displayed
+    Then Attached "Candidate_Summary.pdf" file is displayed
     Then The "123.21" rate is displayed
     When Decline accepted invite with "Agency 18" name
 
