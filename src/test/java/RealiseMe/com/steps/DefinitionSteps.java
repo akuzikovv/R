@@ -1,6 +1,7 @@
 package RealiseMe.com.steps;
 
 import RealiseMe.com.steps.serenity.EndUserSteps;
+import cucumber.api.PendingException;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -888,6 +889,16 @@ public class DefinitionSteps {
     @When("^Click on the appropriate job title at the \"([^\"]*)\" tab$")
     public void clickOnTheAppropriateJobTitleAtTheTab(String arg0) throws Throwable {
        steps.clickOnTheAppropriateJobTitleAtTheTab(arg0);
+    }
+
+    @When("^Add to the job name field \"([^\"]*)\"$")
+    public void addToTheJobNameField(String arg0) throws Throwable {
+         steps.addToTheJobNameField(arg0);
+    }
+
+    @Then("^Job title is right displayed$")
+    public void jobTitleIsRightDisplayed() {
+        steps.jobTitleIsRightDisplayed();
     }
 
 

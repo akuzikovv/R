@@ -112,6 +112,8 @@ public class LandingPage extends PageObject {
 
     public void clickOnTheLoginButton() {
 //        waitFor($(ILocators.login).waitUntilClickable());
+        commonActions.wait =  new WebDriverWait(getDriver(),20);
+        commonActions.wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(ILocators.login)));
         $(ILocators.login).click();
     }
 
@@ -132,7 +134,7 @@ public class LandingPage extends PageObject {
         try {
 
 
-        commonActions.wait =  new WebDriverWait(getDriver(),20);
+        commonActions.wait =  new WebDriverWait(getDriver(),40);
         commonActions.wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(ILocators.cookies_button)));
         $(ILocators.cookies_button).click();
         }catch (Exception e){}
@@ -140,6 +142,8 @@ public class LandingPage extends PageObject {
 
     public void enterJobTitleToTheSearchField() {
 //        System.out.println("SOUT="+Serenity.getCurrentSession().getMetaData().get("job name").toString());
+        commonActions.wait =  new WebDriverWait(getDriver(),40);
+        commonActions.wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@placeholder='enter keyword']")));
         getDriver().findElement(By.xpath("//input[@placeholder='enter keyword']")).sendKeys(Serenity.getCurrentSession().getMetaData().get("job name"));
 
     }

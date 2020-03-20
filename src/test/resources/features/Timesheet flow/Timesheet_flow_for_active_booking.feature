@@ -11,7 +11,7 @@ Feature:  Timesheet flow for active booking
       |"bookingName":"Booking for cleared teacher  20"|
       |"bookingDescription":"Booking Description text"|
       |"other_age_group":""                           |
-      |"dates":[{"date":"2020-01-27T08:30:00+02:00","fullDay":true,"start_time":"2020-01-27T08:30:00+02:00","end_time":"2020-01-27T16:00:00+02:00"},{"date":"2020-01-28T08:30:00+02:00","fullDay":false,"start_time":"2020-01-28T08:30:00+02:00","end_time":"2020-01-28T13:00:00+02:00"}]|
+      |"dates":[{"date":"2020-06-27T08:30:00+02:00","fullDay":true,"start_time":"2020-06-27T08:30:00+02:00","end_time":"2020-06-27T16:00:00+02:00"},{"date":"2020-06-28T08:30:00+02:00","fullDay":false,"start_time":"2020-06-28T08:30:00+02:00","end_time":"2020-06-28T13:00:00+02:00"}]|
       |"ageGroupIds":[{"age_group_id":"19abfc90-f45b-476b-920f-b05e6e3124a0"}]                                                              |
       |"schoolDocumentsIds":{"school_document_id":"9c78412f-fe27-4fcc-b527-405e903810e2"}                                                   |
       |"applyUsersIds":[{"user_id":"827fc573-d555-4cf8-9e6d-4d85e7d0e554","user_type":"TEACHER"}]                                           |
@@ -78,7 +78,7 @@ Feature:  Timesheet flow for active booking
       |"bookingName":"Booking for cleared teacher  20"|
       |"bookingDescription":"Booking Description text"|
       |"other_age_group":""                           |
-      |"dates":[{"date":"2020-01-27T08:30:00+02:00","fullDay":true,"start_time":"2020-01-27T08:30:00+02:00","end_time":"2020-01-27T16:00:00+02:00"},{"date":"2020-01-28T08:30:00+02:00","fullDay":false,"start_time":"2020-01-28T08:30:00+02:00","end_time":"2020-01-28T13:00:00+02:00"}]|
+      |"dates":[{"date":"2020-06-27T08:30:00+02:00","fullDay":true,"start_time":"2020-06-27T08:30:00+02:00","end_time":"2020-06-27T16:00:00+02:00"},{"date":"2020-06-28T08:30:00+02:00","fullDay":false,"start_time":"2020-06-28T08:30:00+02:00","end_time":"2020-06-28T13:00:00+02:00"}]|
       |"ageGroupIds":[{"age_group_id":"19abfc90-f45b-476b-920f-b05e6e3124a0"}]                                                              |
       |"schoolDocumentsIds":{"school_document_id":"9c78412f-fe27-4fcc-b527-405e903810e2"}                                                   |
       |"applyUsersIds":[{"user_id":"827fc573-d555-4cf8-9e6d-4d85e7d0e554","user_type":"TEACHER"}]                                           |
@@ -119,7 +119,7 @@ Feature:  Timesheet flow for active booking
       |"bookingName":"Booking for cleared teacher  20"|
       |"bookingDescription":"Booking Description text"|
       |"other_age_group":""                           |
-      |"dates":[{"date":"2020-01-27T08:30:00+02:00","fullDay":true,"start_time":"2020-01-27T08:30:00+02:00","end_time":"2020-01-27T16:00:00+02:00"},{"date":"2020-01-28T08:30:00+02:00","fullDay":false,"start_time":"2020-01-28T08:30:00+02:00","end_time":"2020-01-28T13:00:00+02:00"}]|
+      |"dates":[{"date":"2020-06-27T08:30:00+02:00","fullDay":true,"start_time":"2020-06-27T08:30:00+02:00","end_time":"2020-06-27T16:00:00+02:00"},{"date":"2020-06-28T08:30:00+02:00","fullDay":false,"start_time":"2020-06-28T08:30:00+02:00","end_time":"2020-06-28T13:00:00+02:00"}]|
       |"ageGroupIds":[{"age_group_id":"19abfc90-f45b-476b-920f-b05e6e3124a0"}]                                                              |
       |"schoolDocumentsIds":{"school_document_id":"9c78412f-fe27-4fcc-b527-405e903810e2"}                                                   |
       |"applyUsersIds":[{"user_id":"827fc573-d555-4cf8-9e6d-4d85e7d0e554","user_type":"TEACHER"}]                                           |
@@ -168,7 +168,7 @@ Feature:  Timesheet flow for active booking
     Then Email body contains necessary text "Sorry, The Camden School for Girls has declined your timesheet. Contact us for help with how to resolve this issue.RealiseMe Team"
     When Back to the first tab
 
-#  Scenario: Remove all user bookings
-#    When Remove all user bookings using request API
-#    | admin_id:\"538e52d0-a7c0-4e89-9b48-80f0d0ec958d\"|
-#    |user_id:\"827fc573-d555-4cf8-9e6d-4d85e7d0e554\"    |
+  Scenario: Remove all user bookings
+    When Remove all user bookings using request API
+    | admin_id:\"538e52d0-a7c0-4e89-9b48-80f0d0ec958d\"|
+    |user_id:\"827fc573-d555-4cf8-9e6d-4d85e7d0e554\"    |

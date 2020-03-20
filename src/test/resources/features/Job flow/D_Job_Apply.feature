@@ -20,6 +20,8 @@ Feature:  Job Apply
     When Enter "Covering Message" text to the text field
     When Click on the "APPLY" button
     Then Applied job is displayed in the "APPLIED" tab
+    When Click on the arrow down button
+    When Click on the LOGOUT button
 #
   Scenario: Apply job from landing page as logged in teacher
     When Click on the login button
@@ -37,6 +39,9 @@ Feature:  Job Apply
     When Enter "Covering Message" text to the text field
     When Click on the "APPLY" button
     Then Applied job is displayed in the "APPLIED" tab
+    When Click on the arrow down button
+    When Click on the LOGOUT button
+
 
   Scenario: Apply job from saved jobs tab as logged in teacher
     When Click on the login button
@@ -52,3 +57,5 @@ Feature:  Job Apply
     When Enter "Covering Message" text to the text field
     When Click on the "APPLY" button
     Then Applied job is displayed in the "APPLIED" tab
+    When Click on the arrow down button
+    When Click on the LOGOUT button

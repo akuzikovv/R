@@ -18,6 +18,8 @@ Feature:  Job Save
     When Click on the "search" button
     Then The "Saved" button is highlighted red at the appropriate job
     When Click on the "Saved" button at the appropriate job
+    When Click on the arrow down button
+    When Click on the LOGOUT button
 
 
   Scenario: Save appropriate job as logged in "Other" teacher
@@ -32,6 +34,8 @@ Feature:  Job Save
     Then Appropriate job is displayed in the search result
     Then Click on the "Save" button at the appropriate job
     Then The "Saved" button is highlighted red at the appropriate job
+    When Click on the arrow down button
+    When Click on the LOGOUT button
 
 
   Scenario: Save job from job preview page as non logged user
@@ -48,6 +52,8 @@ Feature:  Job Save
     When Click on the "search" button
     Then The "Saved" button is highlighted red at the appropriate job
     When Click on the "Saved" button at the appropriate job
+    When Click on the arrow down button
+    When Click on the LOGOUT button
 
   Scenario: Save job from job preview page as logged in "Other" teacher
     When Click on the login button
@@ -63,3 +69,5 @@ Feature:  Job Save
     When Click on the "SAVE" button at the job preview page
     When refresh the page
     Then The "SAVE" button displayed as saved
+    When Click on the arrow down button
+    When Click on the LOGOUT button

@@ -15,7 +15,7 @@ Feature:  Job Search
     Then the job description is right displayed
     Then Current posted date is displayed
     Then Chosen skills are displayed
-    Then Chosen closed date is displayed
+#    Then Chosen closed date is displayed
     Then Contract type is right displayed
       |Full-time|
 #    Then Contract term "Interim" is right displayd
@@ -38,7 +38,7 @@ Feature:  Job Search
     Then the job description is right displayed
     Then Current posted date is displayed
     Then Chosen skills are displayed
-    Then Chosen closed date is displayed
+#    Then Chosen closed date is displayed
     Then Contract type is right displayed
       |Full-time|
 #    Then Contract term "Interim" is right displayd
@@ -60,7 +60,7 @@ Feature:  Job Search
     Then the job description is right displayed
     Then Current posted date is displayed
     Then Chosen skills are displayed
-    Then Chosen closed date is displayed
+#    Then Chosen closed date is displayed
     Then Contract type is right displayed
       |Full-time|
 #    Then Contract term "Interim" is right displayd

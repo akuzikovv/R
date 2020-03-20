@@ -19,9 +19,9 @@ public class TeacherTimesheetsPage extends PageObject {
     CommonActions commonActions;
 
     public ArrayList<String> appropriateBookingIdIsDisplayed() {
-        waitABit(1000);
-        commonActions.wait =  new WebDriverWait(getDriver(),10);
-        commonActions.wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//p[@class='id']")));
+        waitABit(4000);
+        commonActions.wait =  new WebDriverWait(getDriver(),60);
+        commonActions.wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//p[@class='id']"))).isDisplayed();
         short_bookingId = getDriver().findElement(By.xpath("//p[@class='id']")).getText().substring(12);
         ArrayList<String> results = new ArrayList<>();
         results.add(0, "true");

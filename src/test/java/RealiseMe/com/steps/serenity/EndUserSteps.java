@@ -822,7 +822,9 @@ public class EndUserSteps  extends ScenarioSteps {
 
     @Step
     public void chosenClosedDateIsDisplayed() {
-        Assert.assertTrue("Chosen closed date isn't displayed", getDriver().findElement(By.xpath("//p[@class='apply-by' and contains(.,'"+Serenity.getCurrentSession().getMetaData().get("Closed date")+"')]")).isDisplayed());
+        ArrayList<String> results =  schoolJobsPage.chosenClosedDateIsDisplayed();
+        Assert.assertTrue("Chosen closed date isn't displayed"+ results, "true".equals(results.get(0)));
+//        getDriver().findElement(By.xpath("//p[@class='apply-by' and contains(.,'"+Serenity.getCurrentSession().getMetaData().get("Closed date")+"')]")).isDisplayed());
     }
 
 
@@ -889,6 +891,7 @@ public class EndUserSteps  extends ScenarioSteps {
 
     @Step
     public void theButtonDisplayedAsSaved(String arg0) {
+        waitABit(2000);
         System.out.println(getDriver().findElement(By.xpath("(//button[contains(.,'"+arg0+"')])[1]")).getAttribute("class"));
         Assert.assertTrue("\""+Serenity.getCurrentSession().getMetaData().get("job name")+"\" job isn't displayed as saved", getDriver().findElement(By.xpath("(//button[contains(.,'"+arg0+"')])[1]")).getAttribute("class").equals("save unsave"));
     }
@@ -995,6 +998,17 @@ public class EndUserSteps  extends ScenarioSteps {
     @Step
     public void clickOnTheAppropriateJobTitleAtTheTab(String arg0) {
         teacherJobsPage.clickOnTheAppropriateJobTitleAtTheTab(arg0);
+    }
+
+    @Step
+    public void addToTheJobNameField(String arg0) {
+        schoolJobsPage.addToTheJobNameField(arg0);
+    }
+
+    @Step
+    public void jobTitleIsRightDisplayed() {
+        Assert.assertTrue("\""+Serenity.getCurrentSession().getMetaData().get("job name")+"\" job still displayed as non edited:  "+ getDriver().findElement(By.xpath("//span[contains(.,'"+Serenity.getCurrentSession().getMetaData().get("job name")+"')]")).getText(), Serenity.getCurrentSession().getMetaData().get("edited job title").equals(getDriver().findElement(By.xpath("//span[contains(.,'"+Serenity.getCurrentSession().getMetaData().get("job name")+"')]")).getText()));
+
     }
 
 

@@ -6,6 +6,7 @@ import net.serenitybdd.core.Serenity;
 import net.serenitybdd.core.pages.PageObject;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -313,7 +314,13 @@ public class SchoolJobsPage extends PageObject {
 
     public void enterTheClosingDate(String arg0) {
         Serenity.getCurrentSession().addMetaData("Closed date",arg0.substring(3,5));
-        getDriver().findElement(By.xpath("//input[@placeholder='MM/DD/YYYY']")).sendKeys(arg0);
+//        try {
+//            getDriver().findElement(By.xpath("//input[@placeholder='MM/DD/YYYY']")).sendKeys(arg0);
+//        }catch (Exception e){}
+//        try {
+            getDriver().findElement(By.xpath("//input[@placeholder='DD.MM.YYYY']")).sendKeys(arg0);
+//        }catch (Exception e){}
+
     }
 
     public ArrayList<String> currentPostedDateIsDisplayed() {
@@ -333,10 +340,17 @@ public class SchoolJobsPage extends PageObject {
 
     public void chooseSkills(List<String> list) {
         getDriver().findElement(By.xpath("(//div[@class='input-group__selections'])[2]")).click();
+//        for (int i = 0;i<list.size();i++) {
+//            getDriver().findElement(By.xpath("(//div[@class='input-group__selections'])[2]")).sendKeys(list.get(i)+Keys.ENTER);
+//        }
+        //скролл из существующего списка
         waitABit(2000);
         JavascriptExecutor je = (JavascriptExecutor) getDriver();
         je.executeScript("arguments[0].scrollIntoView();",getDriver().findElement(By.xpath("//div[@class='list']//div")));
         for (int i = 0;i<list.size();i++){
+            if (!commonActions.isElementPresent("//a//div[contains(.,'\"+list.get(i)+\"')]")){
+                je.executeScript("arguments[0].scrollIntoView();",getDriver().findElement(By.xpath("//div[@class='list']//div[@class='list__tile__content' and contains(.,'"+list.get(i)+"')]")));
+            }
             getDriver().findElement(By.xpath("//a//div[contains(.,'"+list.get(i)+"')]")).click();
             Serenity.getCurrentSession().addMetaData("skill",list.get(i));
         }
@@ -407,5 +421,34 @@ public class SchoolJobsPage extends PageObject {
         getDriver().switchTo().window(subWindowHandler);
         waitABit(5000);
 //        getDriver().switchTo().window(parentHandle);
+    }
+
+    public void addToTheJobNameField(String arg0) {
+        getDriver().findElement(By.xpath("//input[@name='jobname']")).click();
+        getDriver().findElement(By.xpath("//input[@name='jobname']")).sendKeys(" "+arg0);
+        Serenity.getCurrentSession().addMetaData("edited job title",  getDriver().findElement(By.xpath("//input[@name='jobname']")).getText());
+
+    }
+
+    public void jobTitleIsRightDisplayed() {
+
+    }
+
+    public ArrayList<String> chosenClosedDateIsDisplayed() {
+        ArrayList<String> results = new ArrayList<>();
+        results.add(0, "true");
+//        getDriver().findElement(By.xpath("//p[@class='apply-by' and contains(.,'"+Serenity.getCurrentSession().getMetaData().get("Closed date")+"')]")).isDisplayed());
+
+        if (!commonActions.isElementPresent("//p[@class='apply-by' and contains(.,'"+Serenity.getCurrentSession().getMetaData().get("Closed date")+"')]") &
+                !getDriver().findElement(By.xpath("//p[@class='apply-by' and contains(.,'Dec')]")).isDisplayed() ) {
+            results.set(0, "false");
+            results.add("Skill isn't displayed");
+        } else {
+            if ((!"Dec".equals(getDriver().findElement(By.xpath("//p[@class='apply-by']")).getText().substring(20,24)))) {
+                results.set(0, "false");
+                results.add("Expected: " + "Dec" + "; but found: " + getDriver().findElement(By.xpath("//p[@class='apply-by']")).getText().substring(20,24) + "\n");
+            }
+        }
+        return results;
     }
 }
