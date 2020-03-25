@@ -69,8 +69,7 @@ public class SchoolBookingsPage extends PageObject {
     }
 
     public void enterTextToTheNameYourJobPostingField(String arg0) {
-        commonActions.wait = new WebDriverWait(getDriver(), 20);
-        commonActions.wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(ILocators.Name_your_job_posting_input)));
+        commonActions.waitUntilElementVisible(ILocators.Name_your_job_posting_input);
         try {
             $(ILocators.Name_your_job_posting_input).type(arg0);
         } catch (Exception e) {
@@ -87,6 +86,7 @@ public class SchoolBookingsPage extends PageObject {
     }
 
     public void chooseFullDayInTheMonthOfAvailableCalendar(String arg0, String arg1) {
+        commonActions.waitUntilElementVisible("(//span[contains(.,'" + arg0 + "')])[" + arg1 + "]");
         WebElement xpath = getDriver().findElement(By.xpath("(//span[contains(.,'" + arg0 + "')])[" + arg1 + "]"));
 //        if (!xpath.getAttribute("class").equals("datepicker-table-cal datepicker-day available full-day")) {
 //            getDriver().findElement(By.xpath("//div[@class='right']")).click();
@@ -95,13 +95,16 @@ public class SchoolBookingsPage extends PageObject {
     }
 
     public void chooseHalfDayInTheMonthOfAvailableCalendar(String arg0, String arg1) {
+        commonActions.waitUntilElementVisible("(//span[contains(.,'" + arg0 + "')])[" + arg1 + "]");
         WebElement xpath = getDriver().findElement(By.xpath("(//span[contains(.,'" + arg0 + "')])[" + arg1 + "]"));
         xpath.click();
         xpath.click();
     }
 
     public void chooseFullDayStartTime(String arg0) {
+        commonActions.waitUntilElementVisible(ILocators.Full_day_start_clear_button);
         $(ILocators.Full_day_start_clear_button).click();
+        commonActions.waitUntilElementVisible(ILocators.Full_Day_Start_time);
         $(ILocators.Full_Day_Start_time).click();
         WebElement xpath = getDriver().findElement(By.className("list")).findElement(By.xpath("//div[contains(@class,'__active')]//div[text()='" + arg0 + "']"));
         xpath.click();
@@ -177,8 +180,8 @@ public class SchoolBookingsPage extends PageObject {
 
     public void clickOnTheButtonAtTheTeacherWithName(String arg0) {
         if (getDriver().findElement(By.xpath("//a[contains(.,'AGENCIES')]")).getAttribute("class").equals("results router-link-exact-active active")) {
-            for (int i = 0; i < 20; i++) {
-                i = i + 1;
+            for (int i = 1; i < 21; i++) {
+//                i = i + 1;
                 if (getDriver().findElement(By.xpath("(//div[@class='table-info']//p)[" + i + "]")).getText().equals(arg0)) {
                     getDriver().findElement(By.xpath("(//div[@class='invite-to-job'])[" + i + "]")).click();
                     break;
@@ -190,7 +193,7 @@ public class SchoolBookingsPage extends PageObject {
             }
         } else {
             for (int i = 0; i < 20; i++) {
-                i = i + 1;
+//                i = i + 1;
                 if (getDriver().findElement(By.xpath("(//p[@class='name'])[" + i + "]")).getText().toLowerCase().equals(arg0.toLowerCase())) {
                     getDriver().findElement(By.xpath("(//div[@class='invite-to-job'])[" + i + "]")).click();
                     break;
@@ -223,8 +226,8 @@ public class SchoolBookingsPage extends PageObject {
                 waitABit(2000);
                 if (getDriver().findElement(By.xpath("//div[@class='table-row red-background']//p[contains(.,'" + arg0 + "')]/..//../..//i[@class='icon-check icons']")).isDisplayed()) {
                     getDriver().findElement(By.xpath("//div[@class='table-row red-background']//p[contains(.,'" + arg0 + "')]/..//../..//i[@class='icon-check icons']")).click();
-                    commonActions.wait =  new WebDriverWait(getDriver(),20);
-                    commonActions.wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='card']//div[@slot='bodyModal']")));
+
+                    commonActions.waitUntilElementVisible("//div[@class='card']//div[@slot='bodyModal']");
                     waitABit(2000);
                     return;
                 }
@@ -234,8 +237,8 @@ public class SchoolBookingsPage extends PageObject {
                 waitABit(2000);
                 if (getDriver().findElement(By.xpath("//div[@class='table-row red-background']//p[contains(.,'" + arg0 + "')]/..//../..//i[@class='icon-check icons']")).isDisplayed()) {
                     getDriver().findElement(By.xpath("//div[@class='table-row red-background']//p[contains(.,'" + arg0 + "')]/..//../..//i[@class='icon-check icons']")).click();
-                    commonActions.wait =  new WebDriverWait(getDriver(),20);
-                    commonActions.wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='card']//div[@slot='bodyModal']")));
+
+                    commonActions.waitUntilElementVisible("//div[@class='card']//div[@slot='bodyModal']");
                     waitABit(2000);
                     return;
                 }
@@ -245,8 +248,8 @@ public class SchoolBookingsPage extends PageObject {
                 waitABit(2000);
                 if (getDriver().findElement(By.xpath("//div[@class='table-row red-background']//p[contains(.,'" + arg0 + "')]/..//../..//i[@class='icon-check icons']")).isDisplayed()) {
                     getDriver().findElement(By.xpath("//div[@class='table-row red-background']//p[contains(.,'" + arg0 + "')]/..//../..//i[@class='icon-check icons']")).click();
-                    commonActions.wait =  new WebDriverWait(getDriver(),20);
-                    commonActions.wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='card']//div[@slot='bodyModal']")));
+
+                    commonActions.waitUntilElementVisible("//div[@class='card']//div[@slot='bodyModal']");
                     waitABit(2000);
                 }
             }
@@ -312,8 +315,7 @@ public class SchoolBookingsPage extends PageObject {
     }
 
     public ArrayList<String> popupWithTextIsAppeared(String arg0) {
-        commonActions.wait =  new WebDriverWait(getDriver(),20);
-        commonActions.wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='card']//div[@slot='bodyModal']")));
+        commonActions.waitUntilElementVisible("//div[@class='card']//div[@slot='bodyModal']");
         ArrayList<String> results = new ArrayList<>();
         results.add(0, "true");
         if (!getDriver().findElement(By.xpath("//div[@class='card']//div[@slot='bodyModal']")).getText().equals(arg0)) {

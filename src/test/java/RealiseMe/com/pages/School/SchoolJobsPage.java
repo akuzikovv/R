@@ -426,7 +426,7 @@ public class SchoolJobsPage extends PageObject {
     public void addToTheJobNameField(String arg0) {
         getDriver().findElement(By.xpath("//input[@name='jobname']")).click();
         getDriver().findElement(By.xpath("//input[@name='jobname']")).sendKeys(" "+arg0);
-        Serenity.getCurrentSession().addMetaData("edited job title",  getDriver().findElement(By.xpath("//input[@name='jobname']")).getText());
+        Serenity.getCurrentSession().addMetaData("edited job title",  Serenity.getCurrentSession().getMetaData().get("job name")+" "+arg0);
 
     }
 

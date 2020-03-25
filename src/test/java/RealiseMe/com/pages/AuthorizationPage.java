@@ -49,9 +49,14 @@ public class AuthorizationPage extends PageObject {
 
     public void enterLogin(String arg0) {
         waitABit(4000);
-        commonActions.wait = new WebDriverWait(getDriver(), 40);
-        commonActions.wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(ILocators.Email_field)));
-        $(ILocators.Email_field).type(arg0);
+        commonActions.waitUntilElementVisible(ILocators.Email_field);
+        if (commonActions.isElementPresent(ILocators.Email_field)) {
+            $(ILocators.Email_field).type(arg0);
+        }else {
+            commonActions.wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(ILocators.Email_field)));
+            $(ILocators.Email_field).type(arg0);
+        }
+
     }
 
     public void enterPassword(String arg0) {

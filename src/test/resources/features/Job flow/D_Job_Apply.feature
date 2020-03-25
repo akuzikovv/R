@@ -15,6 +15,7 @@ Feature:  Job Apply
     When Enter login "a.kuzikov@aimprosoft.com"
     When Enter password "Test123!"
     When Click on the Log in button
+    Then The job name is right displayed
     When Click on the "APPLY" button
     When Upload "Candidate_Summary.pdf" file
     When Enter "Covering Message" text to the text field

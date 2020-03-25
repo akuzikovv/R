@@ -1,5 +1,6 @@
 package RealiseMe.com.pages.School;
 
+import RealiseMe.com.pages.CommonActions.CommonActions;
 import net.serenitybdd.core.pages.PageObject;
 import org.openqa.selenium.By;
 
@@ -7,12 +8,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SchoolAccountPage  extends PageObject {
+    CommonActions commonActions;
     public String clid = "ZQ0ZbBhkvOv3f7rxEKPxq557nxygPeRn";
 
     public ArrayList<String> schoolAccountPageContainsNecessaryElements(List<String> list) {
         ArrayList<String> labels = new ArrayList<>();
         ArrayList<String> results = new ArrayList<>();
         results.add(0, "true");
+        commonActions.waitUntilElementVisible("//p[contains(.,'Tell us more about your school…')]");
         if (!getDriver().findElement(By.xpath("//p[contains(.,'Tell us more about your school…')]")).isDisplayed() ) {
             results.set(0, "false");
             results.add("Account page isn't opened");
