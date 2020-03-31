@@ -15,7 +15,7 @@ public class SchoolAccountPage  extends PageObject {
         ArrayList<String> labels = new ArrayList<>();
         ArrayList<String> results = new ArrayList<>();
         results.add(0, "true");
-        commonActions.waitUntilElementVisible("//p[contains(.,'Tell us more about your school…')]");
+        commonActions.waitUntilElementVisible("//p[contains(.,'Tell us more about your school…')]",60);
         if (!getDriver().findElement(By.xpath("//p[contains(.,'Tell us more about your school…')]")).isDisplayed() ) {
             results.set(0, "false");
             results.add("Account page isn't opened");

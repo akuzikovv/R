@@ -99,6 +99,7 @@ public class TeacherTimesheetsPage extends PageObject {
     public ArrayList<String> currentSubmissionDateIsAppeared() {
         ArrayList<String> results = new ArrayList<>();
         results.add(0, "true");
+        commonActions.waitUntilElementVisible("//p[@class='submission-date']//span",60);
         if (!getDriver().findElement(By.xpath("//p[@class='submission-date']//span")).isDisplayed() ) {
             results.set(0, "false");
             results.add("Submission date isn't displayed");

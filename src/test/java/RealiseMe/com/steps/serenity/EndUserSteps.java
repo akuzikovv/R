@@ -791,7 +791,11 @@ public class EndUserSteps  extends ScenarioSteps {
 
     @Step
     public void theJobNameIsRightDisplayed() {
-        commonActions.waitUntilElementVisible("//p[@class='specialty']");
+        commonActions.waitUntilElementVisible("//p[@class='specialty']",60);
+        if (!getDriver().findElement(By.xpath("//p[@class='specialty']")).isDisplayed()){
+            commonActions.refreshThePage();
+            commonActions.waitUntilElementVisible("//p[@class='specialty']",60);
+        }
         Assert.assertTrue("Incorrect job name is displayed. Expected: "+Serenity.getCurrentSession().getMetaData().get("job name")+" But found:  " +getDriver().findElement(By.xpath("//p[@class='specialty']")).getText(),getDriver().findElement(By.xpath("//p[@class='specialty']")).getText().equals(Serenity.getCurrentSession().getMetaData().get("job name")));
     }
 
@@ -1008,6 +1012,13 @@ public class EndUserSteps  extends ScenarioSteps {
     @Step
     public void jobTitleIsRightDisplayed() {
         Assert.assertTrue("\""+Serenity.getCurrentSession().getMetaData().get("job name")+"\" job still displayed as non edited. Expected: "+Serenity.getCurrentSession().getMetaData().get("edited job title")+" But found: "+ getDriver().findElement(By.xpath("//span[contains(.,'"+Serenity.getCurrentSession().getMetaData().get("job name")+"')]")).getText(), Serenity.getCurrentSession().getMetaData().get("edited job title").equals(getDriver().findElement(By.xpath("//span[contains(.,'"+Serenity.getCurrentSession().getMetaData().get("job name")+"')]")).getText()));
+
+    }
+
+    @Step
+    public void checkIfEnteredUserAlreadyExistsAndRegenerateNewEmail() {
+        authorizationPage.checkIfEnteredUserAlreadyExistsAndRegenerateNewEmail();
+
 
     }
 

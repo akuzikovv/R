@@ -45,14 +45,15 @@ public class SchoolTimesheetPage extends PageObject {
 
     public ArrayList<String> teacherRateForSchoolIsRightCalculated() {
         teacher_rate = Serenity.getCurrentSession().getMetaData().get("Teacher_rate");
-        teacher_rate_for_school = Float.parseFloat(getDriver().findElement(By.xpath("//p[contains(.,'" + Serenity.getCurrentSession().getMetaData().get("bookingShortID") + "')]/..//p[@class='rate']")).getText().substring(1));
         float expected_total_rate = (float) (Integer.parseInt(teacher_rate)* 1.175 +17.5);
         ArrayList<String> results = new ArrayList<>();
         results.add(0, "true");
+        commonActions.waitUntilElementVisible("//p[contains(.,'" + Serenity.getCurrentSession().getMetaData().get("bookingShortID") + "')]/..//p[@class='rate']",60);
         if (!commonActions.isElementPresent("//p[contains(.,'" + Serenity.getCurrentSession().getMetaData().get("bookingShortID") + "')]/..//p[@class='rate']") ) {
             results.set(0, "false");
             results.add("teacher rate for school isn't displayed");
         } else {
+            teacher_rate_for_school = Float.parseFloat(getDriver().findElement(By.xpath("//p[contains(.,'" + Serenity.getCurrentSession().getMetaData().get("bookingShortID") + "')]/..//p[@class='rate']")).getText().substring(1));
             if ((teacher_rate_for_school!=expected_total_rate )) {
                 results.set(0, "false");
                 results.add("Expected teacher rate for school : " + expected_total_rate + "; but found: " + teacher_rate_for_school + "\n");

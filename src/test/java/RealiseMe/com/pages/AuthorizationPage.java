@@ -1,8 +1,12 @@
 package RealiseMe.com.pages;
 
 import RealiseMe.com.ILocators;
+import RealiseMe.com.pages.Agency.AgencyAccountPage;
 import RealiseMe.com.pages.CommonActions.CommonActions;
+import RealiseMe.com.steps.DefinitionSteps;
+import net.serenitybdd.core.Serenity;
 import net.serenitybdd.core.pages.PageObject;
+import net.thucydides.core.annotations.Feature;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -49,7 +53,7 @@ public class AuthorizationPage extends PageObject {
 
     public void enterLogin(String arg0) {
         waitABit(4000);
-        commonActions.waitUntilElementVisible(ILocators.Email_field);
+        commonActions.waitUntilElementVisible(ILocators.Email_field,60);
         if (commonActions.isElementPresent(ILocators.Email_field)) {
             $(ILocators.Email_field).type(arg0);
         }else {
@@ -86,5 +90,19 @@ public class AuthorizationPage extends PageObject {
                 }
             }
         return results;
+    }
+
+    public void checkIfEnteredUserAlreadyExistsAndRegenerateNewEmail() {
+        commonActions.waitUntilElementVisible("//span[@class='animated fadeInUp']//span",5);
+        if (commonActions.isElementPresent("//span[@class='animated fadeInUp']//span")) {
+            System.out.println(getDriver().findElement(By.xpath("//span[@class='animated fadeInUp']//span")).getText());
+            if (getDriver().findElement(By.xpath("//span[@class='animated fadeInUp']//span")).getText().equals("USER ALREADY EXISTS.")) {
+                commonActions.waitUntilElementVisible(ILocators.Email_field,5);
+                getDriver().findElement(By.xpath(ILocators.Email_field)).clear();
+                commonActions.enterLoginOfNewUser(Serenity.getCurrentSession().getMetaData().get("user type"));
+                clickOnTheSIGNUPButton();
+                checkIfEnteredUserAlreadyExistsAndRegenerateNewEmail();
+            }
+        }
     }
 }

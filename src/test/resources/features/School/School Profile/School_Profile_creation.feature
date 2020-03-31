@@ -8,6 +8,7 @@ Feature:  School profile Creation
     When Enter login of new "newuatschool"
     When Enter password "Test123!"
     When Click on the SIGN UP button
+    When Check if entered user already exists and regenerate new email
     Then The "Thanks for signing up. Please check your email in order to verify your account. Please also check your spam." message after Sign Up is displayed
     When refresh the page
     When Click on the "Log In" tab

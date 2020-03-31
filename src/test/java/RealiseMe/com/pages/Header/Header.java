@@ -90,7 +90,7 @@ public class Header extends PageObject {
 
     public boolean clickOnTheLOGOUTButton() {
 
-        commonActions.waitUntilElementVisible(ILocators.LOGOUT_BUTTON);
+        commonActions.waitUntilElementVisible(ILocators.LOGOUT_BUTTON,60);
         if (!$(ILocators.LOGOUT_BUTTON).isPresent()) {
             return false;
         } else $(ILocators.LOGOUT_BUTTON).click();
@@ -100,7 +100,7 @@ public class Header extends PageObject {
 
     public void clickOnTheButtonInTheHeader(String arg0) {
         waitABit(5000);
-        commonActions.waitUntilElementVisible("//span[.='" + arg0 +"']");
+        commonActions.waitUntilElementVisible("//span[.='" + arg0 +"']",60);
         WebElement xpath = getDriver().findElement(By.xpath("//span[.='" + arg0 +"']"));
         xpath.click();
     }

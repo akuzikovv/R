@@ -1,7 +1,6 @@
 package RealiseMe.com.steps;
 
 import RealiseMe.com.steps.serenity.EndUserSteps;
-import cucumber.api.PendingException;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -899,6 +898,11 @@ public class DefinitionSteps {
     @Then("^Job title is right displayed$")
     public void jobTitleIsRightDisplayed() {
         steps.jobTitleIsRightDisplayed();
+    }
+
+    @When("^Check if entered user already exists and regenerate new email$")
+    public void checkIfEnteredUserAlreadyExistsAndRegenerateNewEmail() {
+        steps.checkIfEnteredUserAlreadyExistsAndRegenerateNewEmail();
     }
 
 

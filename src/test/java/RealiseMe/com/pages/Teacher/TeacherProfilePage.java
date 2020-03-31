@@ -18,14 +18,14 @@ public class TeacherProfilePage extends PageObject {
         ArrayList<String> results = new ArrayList<>();
         results.add(0, "true");
 
-        commonActions.waitUntilElementVisible("(//div[@class='components-name' and contains(text(),'Account')])[1]");
+        commonActions.waitUntilElementVisible("(//div[@class='components-name' and contains(text(),'Account')])[1]",60);
         if (!commonActions.isElementPresent("(//div[@class='components-name' and contains(text(),'Account')])[1]")){
 //                !getDriver().findElement(By.xpath("(//div[@class='components-name' and contains(text(),'Account')])[1]")).isDisplayed() ) {
             results.set(0, "false");
             results.add("Account page isn't opened");
         } else {
 
-           commonActions.waitUntilElementVisible("(//div[@class='components-name' and contains(text(),'Account')])[1]");
+           commonActions.waitUntilElementVisible("(//div[@class='components-name' and contains(text(),'Account')])[1]",60);
             labels.add(getDriver().findElement(By.xpath("(//div[@class='components-name' and contains(text(),'Account')])[1]")).getText());
             commonActions.wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='MyInfoAccount-name' and contains(text(),'Enter your name')]")));
             labels.add(getDriver().findElement(By.xpath("//div[@class='MyInfoAccount-name' and contains(text(),'Enter your name')]")).getText());

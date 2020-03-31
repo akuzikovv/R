@@ -405,6 +405,7 @@ public class SchoolJobsPage extends PageObject {
     }
 
     public void openProfileDetailsPopupOfTheFirstApplicant() {
+        commonActions.waitUntilElementVisible("(//div[@class='table-body']//p[@class='applicant'])[1]",60);
         getDriver().findElement(By.xpath("(//div[@class='table-body']//p[@class='applicant'])[1]")).click();
     }
 

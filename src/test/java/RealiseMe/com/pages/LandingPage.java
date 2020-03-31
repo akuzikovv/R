@@ -112,14 +112,14 @@ public class LandingPage extends PageObject {
 
     public void clickOnTheLoginButton() {
 //        waitFor($(ILocators.login).waitUntilClickable());
-      commonActions.waitUntilElementVisible(ILocators.login);
+      commonActions.waitUntilElementVisible(ILocators.login,60);
         $(ILocators.login).click();
     }
 
     public ArrayList<String> clickOnTheSignSchool_Landing_Button(String arg0) {
         ArrayList<String> results = new ArrayList<>();
         results.add(0, "true");
-        commonActions.waitUntilElementVisible(ILocators.school_sign_in);
+        commonActions.waitUntilElementVisible(ILocators.school_sign_in,60);
         if ($(ILocators.school_sign_in).getText().replace("\n", " ").equals(arg0)){
             $(ILocators.school_sign_in).click();
             results.set(0, "true");
@@ -131,17 +131,13 @@ public class LandingPage extends PageObject {
     }
 
     public void clickOnTheAgreeButtonAtTheBanner() {
-        try {
-
-
-       commonActions.waitUntilElementVisible(ILocators.cookies_button);
+       commonActions.waitUntilElementVisible(ILocators.cookies_button,60);
         $(ILocators.cookies_button).click();
-        }catch (Exception e){}
     }
 
     public void enterJobTitleToTheSearchField() {
 //        System.out.println("SOUT="+Serenity.getCurrentSession().getMetaData().get("job name").toString());
-        commonActions.waitUntilElementVisible("//input[@placeholder='enter keyword']");
+        commonActions.waitUntilElementVisible("//input[@placeholder='enter keyword']",60);
         getDriver().findElement(By.xpath("//input[@placeholder='enter keyword']")).sendKeys(Serenity.getCurrentSession().getMetaData().get("job name"));
 
     }

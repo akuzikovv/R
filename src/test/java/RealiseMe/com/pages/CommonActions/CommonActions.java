@@ -60,9 +60,12 @@ public class CommonActions extends PageObject {
     //    public WebDriverWait wait = new WebDriverWait(getDriver(), 10);
 
 
-    public void waitUntilElementVisible (String arg){
-        wait =  new WebDriverWait(getDriver(),40);
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(arg)));
+    public void waitUntilElementVisible (String arg, int time){
+        wait =  new WebDriverWait(getDriver(),time);
+        try {
+            wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(arg)));
+        }catch (Exception e){}
+
     }
 
 
@@ -113,13 +116,13 @@ public class CommonActions extends PageObject {
         try {
             WebElement xpath = getDriver().findElement(By.xpath("(//a[contains(.,'" + arg0 + "')])[1]"));
             xpath.click();
-            waitUntilElementVisible("//p[contains(.,'Please')])[3]");
+            waitUntilElementVisible("//p[contains(.,'Please')])[3]",60);
         } catch (Exception e) {
         }
         try {
             WebElement xpath = getDriver().findElement(By.xpath("(//a[contains(.,'" + arg0 + "')])[2]"));
             xpath.click();
-            waitUntilElementVisible("//p[contains(.,'Please')])[3]");
+            waitUntilElementVisible("//p[contains(.,'Please')])[3]",60);
         } catch (Exception e) {
         }
     }
@@ -321,6 +324,7 @@ public class CommonActions extends PageObject {
 
     public void enterLoginOfNewUser(String arg0) {
         random = (int) (Math.random() * 400 + 111);
+            Serenity.getCurrentSession().addMetaData("user type", arg0);
         email_of_new_user = arg0 + random + "@sharklasers.com";
         $(ILocators.Email_field).sendKeys(email_of_new_user);
     }
@@ -352,7 +356,7 @@ public class CommonActions extends PageObject {
         getDriver().findElement(By.xpath("//button[contains(.,'Set')]")).click();
         waitABit(30000);
 
-        waitUntilElementVisible("//td[contains(.,'Please')]");
+        waitUntilElementVisible("//td[contains(.,'Please')]",60);
         getDriver().findElement(By.xpath("//td[contains(.,'Please')]")).click();
     }
 
@@ -779,7 +783,7 @@ public class CommonActions extends PageObject {
     }
 
     public void enterTextToTheTextField(String arg0) {
-        waitUntilElementVisible("//textarea[@type='text']");
+        waitUntilElementVisible("//textarea[@type='text']",60);
         getDriver().findElement(By.xpath("//textarea[@type='text']")).sendKeys(arg0);
         Serenity.getCurrentSession().addMetaData("covering message",arg0);
     }
