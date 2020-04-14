@@ -163,4 +163,8 @@ public class LandingPage extends PageObject {
             getDriver().findElement(By.xpath(" //a[contains(.,'"+ Serenity.getCurrentSession().getMetaData().get("job name") +"')]/../../..//div[contains(.,'"+arg0+"')]")).click();
         }catch (Exception e){}
     }
+
+    public void clickOnTheAppropriateJobTitleAtTheBanner() {
+        getDriver().findElement(By.xpath("//span[contains(.,'"+Serenity.getCurrentSession().getMetaData().get("job name")+"')]")).click();
+    }
 }

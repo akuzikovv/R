@@ -895,7 +895,7 @@ public class EndUserSteps  extends ScenarioSteps {
 
     @Step
     public void theButtonDisplayedAsSaved(String arg0) {
-        waitABit(2000);
+        commonActions.waitUntilElementVisible("(//button[contains(.,'"+arg0+"')])[1]",10);
         System.out.println(getDriver().findElement(By.xpath("(//button[contains(.,'"+arg0+"')])[1]")).getAttribute("class"));
         Assert.assertTrue("\""+Serenity.getCurrentSession().getMetaData().get("job name")+"\" job isn't displayed as saved", getDriver().findElement(By.xpath("(//button[contains(.,'"+arg0+"')])[1]")).getAttribute("class").equals("save unsave"));
     }
@@ -1020,6 +1020,21 @@ public class EndUserSteps  extends ScenarioSteps {
         authorizationPage.checkIfEnteredUserAlreadyExistsAndRegenerateNewEmail();
 
 
+    }
+
+    @Step
+    public void createLogicMelonJobThroughAPI(List<String> list) throws IOException, ParseException {
+        commonActions.createLogicMelonJobThroughAPI(list);
+    }
+
+    @Step
+    public void appropriateJobIsDisplayedInTheTRENDINGJOBSBanner() {
+        commonActions.waitUntilElementVisible("//span[contains(.,'"+Serenity.getCurrentSession().getMetaData().get("job name")+"')]",60);
+        Assert.assertTrue("\""+Serenity.getCurrentSession().getMetaData().get("job name")+"\" job isn't displayed in the banner", getDriver().findElement(By.xpath("//span[contains(.,'"+Serenity.getCurrentSession().getMetaData().get("job name")+"')]")).isDisplayed());
+    }
+    @Step
+    public void clickOnTheAppropriateJobTitleAtTheBanner() {
+        landingPage.clickOnTheAppropriateJobTitleAtTheBanner();
     }
 
 

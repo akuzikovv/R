@@ -7,6 +7,7 @@ import org.apache.commons.io.IOUtils;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
+import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.NoSuchElementException;
@@ -20,6 +21,8 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.ProtocolException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -57,6 +60,9 @@ public class CommonActions extends PageObject {
     private String bookingLongId;
     private String bookingShortID;
     private String current_date;
+    private String date;
+    private String month;
+    private String year;
     //    public WebDriverWait wait = new WebDriverWait(getDriver(), 10);
 
 
@@ -365,6 +371,7 @@ public class CommonActions extends PageObject {
     }
 
 
+    @Test
     public void getAccessTokenAuth0() throws IOException, ParseException {
 //        JSONObject ReqBody = (JSONObject) parser.parse(new FileReader("src/test/resources/Files/ReqBody_school.json"));
         String url = "https://realiseme-school-uat.eu.auth0.com/oauth/token";
@@ -392,7 +399,7 @@ public class CommonActions extends PageObject {
             }
             JSONObject jsonObject = (JSONObject) parser.parse(response.toString());
             token = jsonObject.get("access_token").toString();
-//            System.out.println(token);
+            System.out.println(token);
         }
     }
 
@@ -773,12 +780,13 @@ public class CommonActions extends PageObject {
         getDriver().findElement(By.xpath("//div[contains(.,'"+arg0+"') and @class='radio-button']")).click();
     }
 
+
     public String getDate(){
-        String date = java.time.LocalDate.now().toString().substring(8,10);
-        String month = java.time.LocalDate.now().toString().substring(5,7);
-        String year = java.time.LocalDate.now().toString().substring(0,4);
+        date = java.time.LocalDate.now().toString().substring(8,10);
+        month = java.time.LocalDate.now().toString().substring(5,7);
+        year = java.time.LocalDate.now().toString().substring(0,4);
         current_date = date +", "+year;
-//        System.out.println(current_date);
+        System.out.println(current_date);
         return current_date;
     }
 
@@ -802,5 +810,62 @@ public class CommonActions extends PageObject {
         }
         return results;
 
+    }
+
+    public void createLogicMelonJobThroughAPI(List<String> list) throws IOException, ParseException {
+        random = (int) (Math.random() * 1000 + 111);
+        getDate();
+        String body = "{\"query\":\"mutation job($input: MelonJobPayload!) {\\n  postMelonJob(input: $input) {\\n    status\\n    message\\n    error {\\n      message\\n    }\\n  }\\n}\",\n" +
+                "\"variables\":{\n" +
+                "\t\"input\":{\n" +
+                list.get(0)+",\n" +
+                "\"job_details\":{\n" +
+                "\"name\":\"Job melon "+random+"\",\n" +
+                "\"description\":\"logic-melon "+random+"\",\n" +
+                "\"closing_date\":\""+year+"/"+month+"/"+date+"\",\n" +
+                "\"salary\":\""+random+"\",\n" +
+                "\"anonymisation\":false,\n" +
+                "\"video_prescreening\":false,\n" +
+                "\"video_interview\":false},\n" +
+                "\n" +
+                "\"skills\":[],\n" +
+                "\"application_form\":[],\n" +
+                "\"additional_documents\":[],\n" +
+                "\"contractTypes\":[\n" +
+                "{\"contract_type_id\":\"7f12270c-5f6a-423d-ad30-d2036dae5824\"},\n" +
+                "{\"contract_type_id\":\"69288980-0bc6-4546-a664-9df911478731\"}],\n" +
+                "\"contractTerms\":[\n" +
+                "{\"contract_term_id\":\"934b04cc-febf-4c63-90fa-7ba771398056\"},\n" +
+                "{\"contract_term_id\":\"7425f578-7d18-4975-966b-132f531710bf\"}]}\n" +
+                "},\n" +
+                "\"operationName\":\"job\"\n" +
+                "}";
+        Serenity.getCurrentSession().addMetaData("job name","Job melon "+random);
+        Serenity.getCurrentSession().addMetaData("job description","logic-melon "+random);
+        Serenity.getCurrentSession().addMetaData("Salary", String.valueOf(random));
+        String url = "https://mor1qbbju2.execute-api.us-east-1.amazonaws.com/uat/graphql";
+        urlObject = new URL(url);
+        HttpsURLConnection connection = (HttpsURLConnection) urlObject.openConnection();
+        connection.setRequestMethod("POST");
+        connection.setRequestProperty("content-type", "application/json");
+        connection.setRequestProperty("x-api-key", "JaiK7RbyVK6urN2WREaBeO4nhMNloH32fp6ecarg");
+        connection.setDoOutput(true);
+        try (OutputStream os = connection.getOutputStream()) {
+            byte[] input = body.getBytes("utf-8");
+            os.write(input, 0, input.length);
+        }
+        try (BufferedReader br = new BufferedReader(
+                new InputStreamReader(connection.getInputStream(), "utf-8"))) {
+            StringBuilder response = new StringBuilder();
+            String encoding = connection.getContentEncoding();
+            String responseLine = null;
+            encoding = encoding == null ? "UTF-8" : encoding;
+            String respbody = IOUtils.toString(connection.getInputStream(), encoding);
+            while ((responseLine = br.readLine()) != null) {
+                response.append(responseLine.trim());
+            }
+            JSONObject jsonObject = (JSONObject) parser.parse(respbody);
+            System.out.println(jsonObject.toString());
+        }
     }
 }

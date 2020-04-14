@@ -318,7 +318,7 @@ public class SchoolJobsPage extends PageObject {
 //            getDriver().findElement(By.xpath("//input[@placeholder='MM/DD/YYYY']")).sendKeys(arg0);
 //        }catch (Exception e){}
 //        try {
-            getDriver().findElement(By.xpath("//input[@placeholder='DD.MM.YYYY']")).sendKeys(arg0);
+            getDriver().findElement(By.xpath("//input[@placeholder='DD/MM/YYYY']")).sendKeys(arg0);
 //        }catch (Exception e){}
 
     }

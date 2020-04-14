@@ -905,6 +905,21 @@ public class DefinitionSteps {
         steps.checkIfEnteredUserAlreadyExistsAndRegenerateNewEmail();
     }
 
+    @When("^Create Logic Melon job through API$")
+    public void createLogicMelonJobThroughAPI(List<String>list) throws IOException, ParseException {
+        steps.createLogicMelonJobThroughAPI(list);
+    }
+
+    @Then("^Appropriate job is displayed in the TRENDING JOBS banner$")
+    public void appropriateJobIsDisplayedInTheTRENDINGJOBSBanner() {
+        steps.appropriateJobIsDisplayedInTheTRENDINGJOBSBanner();
+    }
+
+    @When("^Click on the appropriate job title at the banner$")
+    public void clickOnTheAppropriateJobTitleAtTheBanner() {
+        steps.clickOnTheAppropriateJobTitleAtTheBanner();
+    }
+
 
     //    @When("^Open report$")
 //    public void openReport() throws Throwable {
