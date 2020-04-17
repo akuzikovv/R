@@ -167,8 +167,8 @@ Feature:  Timesheet flow for active booking
     When Choose appropriate email message "Your timesheet has been declined"
     Then Email body contains necessary text "Sorry, The Camden School for Girls has declined your timesheet. Contact us for help with how to resolve this issue.RealiseMe Team"
     When Back to the first tab
-
+#
 #  Scenario: Remove all user bookings
-#    When Remove all user bookings using request API
-#    | admin_id:\"538e52d0-a7c0-4e89-9b48-80f0d0ec958d\"|
-#    |user_id:\"827fc573-d555-4cf8-9e6d-4d85e7d0e554\"    |
+##    When Remove all user bookings using request API
+##    | admin_id:\"538e52d0-a7c0-4e89-9b48-80f0d0ec958d\"|
+##    |user_id:\"827fc573-d555-4cf8-9e6d-4d85e7d0e554\"    |

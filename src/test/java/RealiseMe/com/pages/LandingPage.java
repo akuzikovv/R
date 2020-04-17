@@ -112,6 +112,7 @@ public class LandingPage extends PageObject {
 
     public void clickOnTheLoginButton() {
 //        waitFor($(ILocators.login).waitUntilClickable());
+        commonActions.waitUntilElementPresent(ILocators.login,60);
       commonActions.waitUntilElementVisible(ILocators.login,60);
         $(ILocators.login).click();
     }
@@ -131,6 +132,7 @@ public class LandingPage extends PageObject {
     }
 
     public void clickOnTheAgreeButtonAtTheBanner() {
+//        commonActions.waitUntilElementPresent(ILocators.cookies_button,60);
        commonActions.waitUntilElementVisible(ILocators.cookies_button,60);
         $(ILocators.cookies_button).click();
     }

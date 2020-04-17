@@ -24,7 +24,7 @@ public interface ILocators {
 
     /////////////////// LANDING PAGE ////////////////////////////
 
-    String cookies_button = "//div[@class='Cookie__button']";
+    String cookies_button = "//div[@class='Cookie__button' and contains(.,'I agree')]";
     String keyword_search = "//input[@class='input keyword']";
     String search_button ="//button[.='search']";
     String search_result = "//div[@class='result-wrapper']";

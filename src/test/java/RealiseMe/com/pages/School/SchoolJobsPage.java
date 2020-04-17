@@ -348,8 +348,10 @@ public class SchoolJobsPage extends PageObject {
         JavascriptExecutor je = (JavascriptExecutor) getDriver();
         je.executeScript("arguments[0].scrollIntoView();",getDriver().findElement(By.xpath("//div[@class='list']//div")));
         for (int i = 0;i<list.size();i++){
-            if (!commonActions.isElementPresent("//a//div[contains(.,'\"+list.get(i)+\"')]")){
-                je.executeScript("arguments[0].scrollIntoView();",getDriver().findElement(By.xpath("//div[@class='list']//div[@class='list__tile__content' and contains(.,'"+list.get(i)+"')]")));
+            if (!commonActions.isElementPresent("//a//div[contains(.,'"+list.get(i)+"')]")){
+                 do {je.executeScript("arguments[0].scrollIntoView(true);",getDriver().findElement(By.xpath("//div[@class='list']//div[@class='list__tile__content' and contains(.,'"+list.get(i)+"')]")));
+                 } while (!commonActions.isElementPresent("//a//div[contains(.,'"+list.get(i)+"')]"));
+//                je.executeScript("javascript:window.scrollBy(250,350)",getDriver().findElement(By.xpath("//div[@class='list']//div[@class='list__tile__content' and contains(.,'"+list.get(i)+"')]")));
             }
             getDriver().findElement(By.xpath("//a//div[contains(.,'"+list.get(i)+"')]")).click();
             Serenity.getCurrentSession().addMetaData("skill",list.get(i));

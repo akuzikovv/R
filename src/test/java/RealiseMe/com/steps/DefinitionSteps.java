@@ -920,6 +920,11 @@ public class DefinitionSteps {
         steps.clickOnTheAppropriateJobTitleAtTheBanner();
     }
 
+    @When("^Check booking creation status$")
+    public void checkBookingCreationStatus() throws IOException, ParseException {
+        steps.checkBookingCreationStatus();
+    }
+
 
     //    @When("^Open report$")
 //    public void openReport() throws Throwable {

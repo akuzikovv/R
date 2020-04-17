@@ -27,7 +27,7 @@ Feature:  Booking Creation
 #    When Enter "123.456" rate
     When Click on the "SHOW RESULTS" button
 #    When Click on the Invite to job button at the teacher with "cleared" status
-    When Click on the Invite to job button at the teacher with "Jeffrey Lebowski2" name
+    When Click on the Invite to job button at the teacher with "jeffrey lebowski2" name
     When Click on the "NEXT STEP" button
     When Click on the "SEND" button
     When Click on the "REVIEW INVITATIONS" button
@@ -41,6 +41,9 @@ Feature:  Booking Creation
     Then Appropriate teachers are displayed in the invites list
     When Click on the arrow down button
     When Click on the LOGOUT button
+
+  Scenario:  Check booking creation status
+      When Check booking creation status
 
 
   Scenario: Accept booking as CLEARED teacher

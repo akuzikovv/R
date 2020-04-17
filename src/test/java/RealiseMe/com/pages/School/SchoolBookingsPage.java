@@ -70,14 +70,14 @@ public class SchoolBookingsPage extends PageObject {
 
     public void enterTextToTheNameYourJobPostingField(String arg0) {
         commonActions.waitUntilElementVisible(ILocators.Name_your_job_posting_input,60);
-        try {
+//        try {
             $(ILocators.Name_your_job_posting_input).type(arg0);
-        } catch (Exception e) {
-        }
-        try {
-            $(ILocators.Name_your_job_posting_input_2).type(arg0);
-        } catch (Exception e) {
-        }
+//        } catch (Exception e) {
+//        }
+//        try {
+//            $(ILocators.Name_your_job_posting_input_2).type(arg0);
+//        } catch (Exception e) {
+//        }
 
     }
 
@@ -195,6 +195,7 @@ public class SchoolBookingsPage extends PageObject {
         } else {
             for (int i = 0; i < 20; i++) {
                 i = i + 1;
+                waitABit(1000);
                 if (getDriver().findElement(By.xpath("(//p[@class='name'])[" + i + "]")).getText().toLowerCase().equals(arg0.toLowerCase())) {
                     getDriver().findElement(By.xpath("(//div[@class='invite-to-job'])[" + i + "]")).click();
                     break;

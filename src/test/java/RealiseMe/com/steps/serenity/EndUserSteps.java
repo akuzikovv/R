@@ -487,7 +487,7 @@ public class EndUserSteps  extends ScenarioSteps {
     @Step
     public void findInviteWithJobTitle(String arg0) {
         commonActions.findInviteWithJobTitle(arg0);
-        waitABit(5000);
+//        waitABit(5000);
     }
 
     @Step
@@ -744,6 +744,8 @@ public class EndUserSteps  extends ScenarioSteps {
 
     @Step
     public void theStatusIsDisplayed(String arg0) {
+        waitABit(1000);
+        commonActions.waitUntilElementIsNotVisible("//textarea",60);
         Assert.assertTrue("Incorrect status is displayed: "+ getDriver().findElement(By.xpath("(//p[@class='status'])[2]")).getText(), arg0.equals(getDriver().findElement(By.xpath("(//p[@class='status'])[2]")).getText()));
     }
 
@@ -1035,6 +1037,11 @@ public class EndUserSteps  extends ScenarioSteps {
     @Step
     public void clickOnTheAppropriateJobTitleAtTheBanner() {
         landingPage.clickOnTheAppropriateJobTitleAtTheBanner();
+    }
+
+    @Step
+    public void checkBookingCreationStatus() throws IOException, ParseException {
+        commonActions.checkBookingCreationStatus();
     }
 
 
