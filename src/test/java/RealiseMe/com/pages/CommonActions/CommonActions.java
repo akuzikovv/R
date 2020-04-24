@@ -100,16 +100,19 @@ public class CommonActions extends PageObject {
             return;
         }
         if (isElementPresent("//button[contains(.,'" + arg0 + "')]")) {
-            getDriver().findElement(By.xpath("//button[contains(.,'" + arg0 + "')]")).click();
+//            getDriver().findElement(By.xpath("//button[contains(.,'" + arg0 + "')]")).click();
+
+            try {
+                getDriver().findElement(By.xpath("(//button[contains(.,'" + arg0 + "')])[1]")).click();
+            }catch (Exception e){}
+            try {
+                getDriver().findElement(By.xpath("(//button[contains(.,'" + arg0 + "')])[2]")).click();
+            }catch (Exception e){}
+            try {
+                getDriver().findElement(By.xpath("(//button[contains(.,'" + arg0 + "')])[3]")).click();
+            }catch (Exception e){}
             return;
-        }
-        if (isElementPresent("(//button[contains(.,'" + arg0 + "')])[1]")) {
-            getDriver().findElement(By.xpath("(//button[contains(.,'" + arg0 + "')])[1]")).click();
-            return;
-        }
-        if (isElementPresent("(//button[contains(.,'" + arg0 + "')])[2]")) {
-            getDriver().findElement(By.xpath("(//button[contains(.,'" + arg0 + "')])[2]")).click();
-            return;
+
         }
         if (isElementPresent("//span[contains(.,'" + arg0 + "')]")) {
             getDriver().findElement(By.xpath("//span[contains(.,'" + arg0 + "')]")).click();

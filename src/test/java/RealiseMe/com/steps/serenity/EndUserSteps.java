@@ -897,7 +897,8 @@ public class EndUserSteps  extends ScenarioSteps {
 
     @Step
     public void theButtonDisplayedAsSaved(String arg0) {
-        commonActions.waitUntilElementVisible("(//button[contains(.,'"+arg0+"')])[1]",10);
+        waitABit(1000);
+        commonActions.waitUntilElementVisible("(//button[contains(.,'"+arg0+"')])[1]",60);
         System.out.println(getDriver().findElement(By.xpath("(//button[contains(.,'"+arg0+"')])[1]")).getAttribute("class"));
         Assert.assertTrue("\""+Serenity.getCurrentSession().getMetaData().get("job name")+"\" job isn't displayed as saved", getDriver().findElement(By.xpath("(//button[contains(.,'"+arg0+"')])[1]")).getAttribute("class").equals("save unsave"));
     }
@@ -909,6 +910,7 @@ public class EndUserSteps  extends ScenarioSteps {
 
     @Step
     public void appliedJobIsDisplayedInTheTab(String arg0) {
+         commonActions.waitUntilElementVisible("//a[contains(.,'"+Serenity.getCurrentSession().getMetaData().get("job name")+"')]",60);
         Assert.assertTrue("\""+Serenity.getCurrentSession().getMetaData().get("job name")+"\" job isn't displayed as applied",  getDriver().findElement(By.xpath("//a[contains(.,'"+Serenity.getCurrentSession().getMetaData().get("job name")+"')]")).isDisplayed());
     }
 
@@ -924,7 +926,7 @@ public class EndUserSteps  extends ScenarioSteps {
 
     @Step
     public void theJobNameIsDisplayedAtTheApplicantsPage() {
-        waitABit(2000);
+        commonActions.waitUntilElementVisible("//div[@class='app-header']//a",60);
         Assert.assertTrue("Expected name : \""+Serenity.getCurrentSession().getMetaData().get("job name")+"\" but found: \""+getDriver().findElement(By.xpath("//div[@class='app-header']//a")).getText()+"\"",  Serenity.getCurrentSession().getMetaData().get("job name").equals(getDriver().findElement(By.xpath("//div[@class='app-header']//a")).getText()));
     }
 
@@ -1042,6 +1044,12 @@ public class EndUserSteps  extends ScenarioSteps {
     @Step
     public void checkBookingCreationStatus() throws IOException, ParseException {
         commonActions.checkBookingCreationStatus();
+    }
+
+    @Step
+    public void appropriateJobIsDisplayedInJobsTab(String arg0) {
+        commonActions.waitUntilElementVisible("//span[contains(.,'"+Serenity.getCurrentSession().getMetaData().get("job name")+"')]",60);
+        Assert.assertTrue("Created Job "+Serenity.getCurrentSession().getMetaData().get("job name")+" isn't displayed",getDriver().findElement(By.xpath("//span[contains(.,'"+Serenity.getCurrentSession().getMetaData().get("job name")+"')]")).isDisplayed());
     }
 
 

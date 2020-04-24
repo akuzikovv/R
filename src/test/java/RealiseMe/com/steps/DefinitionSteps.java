@@ -1,10 +1,12 @@
 package RealiseMe.com.steps;
 
 import RealiseMe.com.steps.serenity.EndUserSteps;
+import cucumber.api.PendingException;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import cucumber.runtime.model.CucumberScenario;
+import net.serenitybdd.core.Serenity;
 import net.thucydides.core.annotations.Steps;
 import org.json.simple.parser.ParseException;
 
@@ -923,6 +925,13 @@ public class DefinitionSteps {
     @When("^Check booking creation status$")
     public void checkBookingCreationStatus() throws IOException, ParseException {
         steps.checkBookingCreationStatus();
+    }
+
+
+    @Then("^Appropriate job is displayed in \"([^\"]*)\" jobs tab$")
+    public void appropriateJobIsDisplayedInJobsTab(String arg0) throws Throwable {
+        steps.appropriateJobIsDisplayedInJobsTab(arg0);
+
     }
 
 

@@ -64,8 +64,8 @@ Feature:  Job Creation
     Then the job description is right displayed
     Then Current posted date is displayed
 #    Then Chosen closed date is displayed
-    Then Contract type is right displayed
-      |Part-time|
+#    Then Contract type is right displayed
+#      |Part-time|
 #    Then Contract term "Interim" is right displayd
     Then Salary is right displayed
 
@@ -93,7 +93,7 @@ Feature:  Job Creation
     When Choose "SAAID" radiobutton
     When Choose skills
     |write|
-    |maths|
+#    |maths|
     When Click on the Post Job button
     Then The job name is right displayed
     Then the job description is right displayed
@@ -106,3 +106,4 @@ Feature:  Job Creation
     Then Salary is right displayed
     Then The "requested" text is displayed at the Video prescreening field
     When Click on the "submit" button
+    Then Appropriate job is displayed in "live" jobs tab

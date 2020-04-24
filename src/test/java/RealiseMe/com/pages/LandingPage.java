@@ -155,15 +155,19 @@ public class LandingPage extends PageObject {
     }
 
     public void clickOnTheButtonAtTheAppropriateJob(String arg0) {
-        try {
-            getDriver().findElement(By.xpath("//div[@class='job-table__item desktop']//a[@class='job-header__title' and contains(.,'" + Serenity.getCurrentSession().getMetaData().get("job name") + "')]//./../..//button[contains(.,'" + arg0 + "')]")).click();
-        }catch (Exception e){}
-        try {
+       if (commonActions.isElementPresent("//div[@class='job-table__item desktop']//a[@class='job-header__title' and contains(.,'" + Serenity.getCurrentSession().getMetaData().get("job name") + "')]//./../..//button[contains(.,'" + arg0 + "')]")) {
+           getDriver().findElement(By.xpath("//div[@class='job-table__item desktop']//a[@class='job-header__title' and contains(.,'" + Serenity.getCurrentSession().getMetaData().get("job name") + "')]//./../..//button[contains(.,'" + arg0 + "')]")).click();
+       }else
+       if (commonActions.isElementPresent("//div[@class='job-table__item desktop']//a[@class='job-header__title' and contains(.,'" + Serenity.getCurrentSession().getMetaData().get("job name") + "')]//./../..//a[contains(.,'" + arg0 + "')]")) {
             getDriver().findElement(By.xpath("//div[@class='job-table__item desktop']//a[@class='job-header__title' and contains(.,'" + Serenity.getCurrentSession().getMetaData().get("job name") + "')]//./../..//a[contains(.,'" + arg0 + "')]")).click();
-        }catch (Exception e){}
-        try {
-            getDriver().findElement(By.xpath(" //a[contains(.,'"+ Serenity.getCurrentSession().getMetaData().get("job name") +"')]/../../..//div[contains(.,'"+arg0+"')]")).click();
-        }catch (Exception e){}
+       }else
+       if (commonActions.isElementPresent(" //a[contains(.,'"+ Serenity.getCurrentSession().getMetaData().get("job name") +"')]/../../..//div[contains(.,'"+arg0+"')]")) {
+           getDriver().findElement(By.xpath(" //a[contains(.,'" + Serenity.getCurrentSession().getMetaData().get("job name") + "')]/../../..//div[contains(.,'" + arg0 + "')]")).click();
+       }
+        if (commonActions.isElementPresent(" //a[contains(.,'"+ Serenity.getCurrentSession().getMetaData().get("job name") +"')]/../../../..//button[contains(.,'"+arg0+"')]")) {
+            getDriver().findElement(By.xpath(" //a[contains(.,'" + Serenity.getCurrentSession().getMetaData().get("job name") + "')]/../../../..//button[contains(.,'" + arg0 + "')]")).click();
+        }
+       else getDriver().findElement(By.xpath("Button isn't found")).click();
     }
 
     public void clickOnTheAppropriateJobTitleAtTheBanner() {
