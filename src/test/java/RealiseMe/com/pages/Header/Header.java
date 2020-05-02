@@ -82,10 +82,16 @@ public class Header extends PageObject {
     }
 
     public boolean clickOnTheArrowDownButton() {
+        commonActions.waitUntilElementVisible(ILocators.arrow_down_button,60);
         if (!$(ILocators.arrow_down_button).isPresent()) {
             return false;
-        } else $(ILocators.arrow_down_button).click();
-        return true;
+        } else {
+//            waitABit(2000);
+            commonActions.waitUntilElementIsClickable(ILocators.arrow_down_button,60);
+            $(ILocators.arrow_down_button).click();
+
+            return true;
+        }
     }
 
     public boolean clickOnTheLOGOUTButton() {
@@ -93,15 +99,18 @@ public class Header extends PageObject {
         commonActions.waitUntilElementVisible(ILocators.LOGOUT_BUTTON,60);
         if (!$(ILocators.LOGOUT_BUTTON).isPresent()) {
             return false;
-        } else $(ILocators.LOGOUT_BUTTON).click();
-        return true;
+        } else {
+            commonActions.waitUntilElementVisible(ILocators.LOGOUT_BUTTON,60);
+            $(ILocators.LOGOUT_BUTTON).click();
+            return true;
+        }
 
     }
 
     public void clickOnTheButtonInTheHeader(String arg0) {
         waitABit(5000);
-        commonActions.waitUntilElementVisible("//span[.='" + arg0 +"']",60);
-        WebElement xpath = getDriver().findElement(By.xpath("//span[.='" + arg0 +"']"));
+        commonActions.waitUntilElementVisible("//div[@class='btn__content' and contains(.,'" + arg0 +"')]",60);
+        WebElement xpath = getDriver().findElement(By.xpath("//div[@class='btn__content' and contains(.,'" + arg0 +"')]"));
         xpath.click();
     }
 }

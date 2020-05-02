@@ -55,9 +55,12 @@ Feature:  Job Creation
 
   Scenario: Logic Melon Job creation
     When Create Logic Melon job through API
+#    uat
     |"school_id":"ef1e8d35-5619-4a40-a76e-cd6b4eab07d6"|
+    #dev
+#    |"school_id":"2b0a40e1-78db-4c0f-a9ba-eedd505c586c"|
     |"closing_date":"2020/09/22"|
-    When Click on the "jobs" button
+    When Click on the "Jobs" button in the header
     Then Appropriate job is displayed in the TRENDING JOBS banner
     When Click on the appropriate job title at the banner
     Then The job name is right displayed
@@ -77,7 +80,7 @@ Feature:  Job Creation
     When Enter login "newuatschool28@yopmail.com"
     When Enter password "Test123!"
     When Click on the Log in button
-    When Click on the "jobs" button in the header
+    When Click on the "Jobs" button in the header
     When Click on the "POST A NEW JOB" button
     When Fill all necessary fields
     |Job|

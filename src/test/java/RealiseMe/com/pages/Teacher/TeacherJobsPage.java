@@ -34,15 +34,17 @@ public class TeacherJobsPage extends PageObject {
     public void clickOnTheAppropriateJobTitleAtTheTab(String arg0) {
         commonActions.waitUntilElementVisible("//a[contains(.,'"+ Serenity.getCurrentSession().getMetaData().get("job name")+"')]",60);
        parentHandle = getDriver().getWindowHandle();
+      commonActions.waitUntilElementIsClickable("//a[contains(.,'"+ Serenity.getCurrentSession().getMetaData().get("job name")+"')]",60);
         getDriver().findElement(By.xpath("//a[contains(.,'"+ Serenity.getCurrentSession().getMetaData().get("job name")+"')]")).click();
-        ((JavascriptExecutor) getDriver()).executeScript("window.open('about:blank','_blank');");
-        String subWindowHandler = null;
-        Set<String> handles = getDriver().getWindowHandles();
-        Iterator<String> iterator = handles.iterator();
-        while (iterator.hasNext()) {
-            subWindowHandler = iterator.next();
-        }
-        getDriver().switchTo().window(subWindowHandler);
+//        waitABit(5000);
+//        ((JavascriptExecutor) getDriver()).executeScript("window.open('about:blank','_blank');");
+//        String subWindowHandler = null;
+//        Set<String> handles = getDriver().getWindowHandles();
+//        Iterator<String> iterator = handles.iterator();
+//        while (iterator.hasNext()) {
+//            subWindowHandler = iterator.next();
+//        }
+//        getDriver().switchTo().window(subWindowHandler);
 
     }
 }

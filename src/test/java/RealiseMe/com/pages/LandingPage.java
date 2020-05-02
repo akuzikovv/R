@@ -46,8 +46,7 @@ public class LandingPage extends PageObject {
     public boolean theButtonIsHighlighted(String arg0) {
         if (arg0.equals($(ILocators.first_result_saved_button).getText())) {
             return true;
-        }
-        else return false;
+        } else return false;
     }
 
     public void clickOnTheJobTitle() {
@@ -58,26 +57,26 @@ public class LandingPage extends PageObject {
         ArrayList<String> labels = new ArrayList<>();
         ArrayList<String> results = new ArrayList<>();
         results.add(0, "true");
-        if (!$(ILocators.preview).isPresent()||
-                !$(ILocators.job_title).isPresent()||
-                !$(ILocators.location).isPresent()||
-                !$(ILocators.location_icon).isPresent()||
-                !$(ILocators.calendar_icon).isPresent()||
-                !$(ILocators.posted).isPresent()||
-                !$(ILocators.alarm_icon).isPresent()||
-                !$(ILocators.apply_on).isPresent()||
-                !$(ILocators.school).isPresent()||
-                !$(ILocators.job_description).isPresent()||
-                !$(ILocators.apply_button).isPresent()||
-                !$(ILocators.contract_type).isPresent()||
-                !$(ILocators.contract_term).isPresent()||
-                !$(ILocators.salary).isPresent()||
-                !$(ILocators.school_profile).isPresent()||
-                !$(ILocators.skills).isPresent()||
-                !$(ILocators.documents).isPresent()||
-                !$(ILocators.video_prescreening).isPresent()||
+        if (!$(ILocators.preview).isPresent() ||
+                !$(ILocators.job_title).isPresent() ||
+                !$(ILocators.location).isPresent() ||
+                !$(ILocators.location_icon).isPresent() ||
+                !$(ILocators.calendar_icon).isPresent() ||
+                !$(ILocators.posted).isPresent() ||
+                !$(ILocators.alarm_icon).isPresent() ||
+                !$(ILocators.apply_on).isPresent() ||
+                !$(ILocators.school).isPresent() ||
+                !$(ILocators.job_description).isPresent() ||
+                !$(ILocators.apply_button).isPresent() ||
+                !$(ILocators.contract_type).isPresent() ||
+                !$(ILocators.contract_term).isPresent() ||
+                !$(ILocators.salary).isPresent() ||
+                !$(ILocators.school_profile).isPresent() ||
+                !$(ILocators.skills).isPresent() ||
+                !$(ILocators.documents).isPresent() ||
+                !$(ILocators.video_prescreening).isPresent() ||
                 !$(ILocators.video_interview).isPresent()
-                ) {
+        ) {
             results.set(0, "false");
             results.add("Table columns header is absent" + "\n");
         } else {
@@ -112,65 +111,76 @@ public class LandingPage extends PageObject {
 
     public void clickOnTheLoginButton() {
 //        waitFor($(ILocators.login).waitUntilClickable());
-        commonActions.waitUntilElementPresent(ILocators.login,60);
-      commonActions.waitUntilElementVisible(ILocators.login,60);
+        commonActions.waitUntilElementPresent(ILocators.login, 60);
+        commonActions.waitUntilElementVisible(ILocators.login, 60);
+        commonActions.waitUntilElementIsClickable(ILocators.login, 60);
         $(ILocators.login).click();
     }
 
     public ArrayList<String> clickOnTheSignSchool_Landing_Button(String arg0) {
         ArrayList<String> results = new ArrayList<>();
         results.add(0, "true");
-        commonActions.waitUntilElementVisible(ILocators.school_sign_in,60);
-        if ($(ILocators.school_sign_in).getText().replace("\n", " ").equals(arg0)){
+        commonActions.waitUntilElementVisible(ILocators.school_sign_in, 60);
+        if ($(ILocators.school_sign_in).getText().replace("\n", " ").equals(arg0)) {
             $(ILocators.school_sign_in).click();
             results.set(0, "true");
-        }else {
+        } else {
             results.set(0, "false");
             results.add("Expected: " + arg0 + "; but found: " + $(ILocators.school_sign_in).getText().replace("\n", " ") + "\n");
         }
-            return results;
+        return results;
     }
 
     public void clickOnTheAgreeButtonAtTheBanner() {
 //        commonActions.waitUntilElementPresent(ILocators.cookies_button,60);
-       commonActions.waitUntilElementVisible(ILocators.cookies_button,60);
+        commonActions.waitUntilElementVisible(ILocators.cookies_button, 60);
         $(ILocators.cookies_button).click();
     }
 
     public void enterJobTitleToTheSearchField() {
 //        System.out.println("SOUT="+Serenity.getCurrentSession().getMetaData().get("job name").toString());
-        commonActions.waitUntilElementVisible("//input[@placeholder='enter keyword']",60);
-        getDriver().findElement(By.xpath("//input[@placeholder='enter keyword']")).sendKeys(Serenity.getCurrentSession().getMetaData().get("job name"));
+        commonActions.waitUntilElementVisible("//input[@class='input keyword']", 60);
+        getDriver().findElement(By.xpath("//input[@class='input keyword']")).sendKeys(Serenity.getCurrentSession().getMetaData().get("job name"));
 
     }
 
     public void clickOnTheAppropriateJobTitle() {
         try {
             getDriver().findElement(By.xpath("//div[@class='job-table__item desktop']//a[@class='job-header__title' and contains(.,'" + Serenity.getCurrentSession().getMetaData().get("job name") + "')]")).click();
-        }catch (Exception e){}
+        } catch (Exception e) {
+        }
         try {
-            getDriver().findElement(By.xpath("//a[contains(.,'"+Serenity.getCurrentSession().getMetaData().get("job name")+"')]")).click();
-            }catch (Exception e){}
+            getDriver().findElement(By.xpath("//a[contains(.,'" + Serenity.getCurrentSession().getMetaData().get("job name") + "')]")).click();
+        } catch (Exception e) {
+        }
 
     }
 
     public void clickOnTheButtonAtTheAppropriateJob(String arg0) {
-       if (commonActions.isElementPresent("//div[@class='job-table__item desktop']//a[@class='job-header__title' and contains(.,'" + Serenity.getCurrentSession().getMetaData().get("job name") + "')]//./../..//button[contains(.,'" + arg0 + "')]")) {
-           getDriver().findElement(By.xpath("//div[@class='job-table__item desktop']//a[@class='job-header__title' and contains(.,'" + Serenity.getCurrentSession().getMetaData().get("job name") + "')]//./../..//button[contains(.,'" + arg0 + "')]")).click();
-       }else
-       if (commonActions.isElementPresent("//div[@class='job-table__item desktop']//a[@class='job-header__title' and contains(.,'" + Serenity.getCurrentSession().getMetaData().get("job name") + "')]//./../..//a[contains(.,'" + arg0 + "')]")) {
+        commonActions.waitUntilElementVisible("//div[@class='job-table__item desktop']//a[@class='job-header__title' and contains(.,'" + Serenity.getCurrentSession().getMetaData().get("job name") + "')]//./../..//button[contains(.,'" + arg0 + "')]", 20);
+        if (commonActions.isElementPresent("//div[@class='job-table__item desktop']//a[@class='job-header__title' and contains(.,'" + Serenity.getCurrentSession().getMetaData().get("job name") + "')]//./../..//button[contains(.,'" + arg0 + "')]")) {
+            getDriver().findElement(By.xpath("//div[@class='job-table__item desktop']//a[@class='job-header__title' and contains(.,'" + Serenity.getCurrentSession().getMetaData().get("job name") + "')]//./../..//button[contains(.,'" + arg0 + "')]")).click();
+            return;
+        } else
+            commonActions.waitUntilElementVisible("//div[@class='job-table__item desktop']//a[@class='job-header__title' and contains(.,'" + Serenity.getCurrentSession().getMetaData().get("job name") + "')]//./../..//a[contains(.,'" + arg0 + "')]", 20);
+        if (commonActions.isElementPresent("//div[@class='job-table__item desktop']//a[@class='job-header__title' and contains(.,'" + Serenity.getCurrentSession().getMetaData().get("job name") + "')]//./../..//a[contains(.,'" + arg0 + "')]")) {
             getDriver().findElement(By.xpath("//div[@class='job-table__item desktop']//a[@class='job-header__title' and contains(.,'" + Serenity.getCurrentSession().getMetaData().get("job name") + "')]//./../..//a[contains(.,'" + arg0 + "')]")).click();
-       }else
-       if (commonActions.isElementPresent(" //a[contains(.,'"+ Serenity.getCurrentSession().getMetaData().get("job name") +"')]/../../..//div[contains(.,'"+arg0+"')]")) {
-           getDriver().findElement(By.xpath(" //a[contains(.,'" + Serenity.getCurrentSession().getMetaData().get("job name") + "')]/../../..//div[contains(.,'" + arg0 + "')]")).click();
-       }
-        if (commonActions.isElementPresent(" //a[contains(.,'"+ Serenity.getCurrentSession().getMetaData().get("job name") +"')]/../../../..//button[contains(.,'"+arg0+"')]")) {
+            return;
+        } else
+            commonActions.waitUntilElementVisible("//a[contains(.,'" + Serenity.getCurrentSession().getMetaData().get("job name") + "')]/../../..//div[contains(.,'" + arg0 + "')]", 20);
+        if (commonActions.isElementPresent(" //a[contains(.,'" + Serenity.getCurrentSession().getMetaData().get("job name") + "')]/../../..//div[contains(.,'" + arg0 + "')]")) {
+            getDriver().findElement(By.xpath(" //a[contains(.,'" + Serenity.getCurrentSession().getMetaData().get("job name") + "')]/../../..//div[contains(.,'" + arg0 + "')]")).click();
+            return;
+        } else
+            commonActions.waitUntilElementVisible("//a[contains(.,'" + Serenity.getCurrentSession().getMetaData().get("job name") + "')]/../../../..//button[contains(.,'" + arg0 + "')]", 20);
+        if (commonActions.isElementPresent("//a[contains(.,'" + Serenity.getCurrentSession().getMetaData().get("job name") + "')]/../../../..//button[contains(.,'" + arg0 + "')]")) {
             getDriver().findElement(By.xpath(" //a[contains(.,'" + Serenity.getCurrentSession().getMetaData().get("job name") + "')]/../../../..//button[contains(.,'" + arg0 + "')]")).click();
-        }
-       else getDriver().findElement(By.xpath("Button isn't found")).click();
+            return;
+        } else getDriver().findElement(By.xpath("Button isn't found")).click();
+
     }
 
     public void clickOnTheAppropriateJobTitleAtTheBanner() {
-        getDriver().findElement(By.xpath("//span[contains(.,'"+Serenity.getCurrentSession().getMetaData().get("job name")+"')]")).click();
+        getDriver().findElement(By.xpath("//span[contains(.,'" + Serenity.getCurrentSession().getMetaData().get("job name") + "')]")).click();
     }
 }

@@ -92,6 +92,14 @@ public class CommonActions extends PageObject {
         }
 
     }
+    public void waitUntilElementIsClickable(String arg, int time) {
+        wait = new WebDriverWait(getDriver(), time);
+        try {
+            wait.until(ExpectedConditions.elementToBeClickable(By.xpath(arg)));
+        } catch (Exception e) {
+        }
+
+    }
 
 
     public void clickOnTheButton(String arg0) {
@@ -485,7 +493,8 @@ public class CommonActions extends PageObject {
     }
 
     public void clickOnTheSignUpButton() {
-        getDriver().findElement(By.xpath("(//span[contains(.,'sign up')])[2]")).click();
+        waitUntilElementVisible(ILocators.sign_up,60);
+        getDriver().findElement(By.xpath(ILocators.sign_up)).click();
     }
 
     public ArrayList<String> theProfilingQuestionsPageContainsNecessaryElements(List<String> list, String arg0) {
@@ -523,19 +532,17 @@ public class CommonActions extends PageObject {
     }
 
     public void uploadFile(String arg0) {
-        try {
+        waitUntilElementVisible("//textarea[@type='text']", 60);
             WebElement uploadElement = getDriver().findElement(By.xpath("(//input[@class='input-file'])[1]"));
             uploadElement.sendKeys("/Users/Anton/IdeaProjects/RealiseMe4/src/test/resources/Files/" + arg0);
 
-        } catch (Exception e) {
-        }
         try {
-            WebElement uploadElement = getDriver().findElement(By.xpath("(//input[@class='input-file'])[2]"));
+             uploadElement = getDriver().findElement(By.xpath("(//input[@class='input-file'])[2]"));
             uploadElement.sendKeys("/Users/Anton/IdeaProjects/RealiseMe4/src/test/resources/Files/" + arg0);
         } catch (Exception e) {
         }
         try {
-            WebElement uploadElement = getDriver().findElement(By.xpath("(//input[@class='input-file'])[3]"));
+            uploadElement = getDriver().findElement(By.xpath("(//input[@class='input-file'])[3]"));
             uploadElement.sendKeys("/Users/Anton/IdeaProjects/RealiseMe4/src/test/resources/Files/" + arg0);
         } catch (Exception e) {
         }
@@ -961,12 +968,14 @@ public class CommonActions extends PageObject {
             Serenity.getCurrentSession().addMetaData("job name", "Job melon " + random);
             Serenity.getCurrentSession().addMetaData("job description", "logic-melon " + random);
             Serenity.getCurrentSession().addMetaData("Salary", String.valueOf(random));
-            String url = "https://mor1qbbju2.execute-api.us-east-1.amazonaws.com/uat/graphql";
+            String url = "https://mor1qbbju2.execute-api.us-east-1.amazonaws.com/uat/graphql";//uat
+//            String url = "https://m0k6bdan78.execute-api.us-east-1.amazonaws.com/dev/graphql";//dev
             urlObject = new URL(url);
             HttpsURLConnection connection = (HttpsURLConnection) urlObject.openConnection();
             connection.setRequestMethod("POST");
             connection.setRequestProperty("content-type", "application/json");
-            connection.setRequestProperty("x-api-key", "JaiK7RbyVK6urN2WREaBeO4nhMNloH32fp6ecarg");
+            connection.setRequestProperty("x-api-key", "JaiK7RbyVK6urN2WREaBeO4nhMNloH32fp6ecarg");//uat
+//            connection.setRequestProperty("x-api-key", "XdCiMyMZ2VaBZOeFUYhgw6CjFkDwlyLkiB4QuI42");//dev
             connection.setDoOutput(true);
             try (OutputStream os = connection.getOutputStream()) {
                 byte[] input = body.getBytes("utf-8");

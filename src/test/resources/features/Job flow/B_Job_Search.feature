@@ -6,7 +6,7 @@ Feature:  Job Search
 
 
   Scenario: Search appropriate job as non logged teacher
-    When Click on the "jobs" button
+    When Click on the "Jobs" button in the header
     When Enter job title to the search field
     When Click on the "search" button
     Then Appropriate job is displayed in the search result
@@ -29,7 +29,7 @@ Feature:  Job Search
     When Enter login "uatteacher22@yopmail.com"
     When Enter password "Test123!"
     When Click on the Log in button
-    When Click on the "jobs" button in the header
+    When Click on the "Jobs" button in the header
     When Enter job title to the search field
     When Click on the "search" button
     Then Appropriate job is displayed in the search result
@@ -51,7 +51,7 @@ Feature:  Job Search
     When Enter login "a.kuzikov@aimprosoft.com"
     When Enter password "Test123!"
     When Click on the Log in button
-    When Click on the "jobs" button in the header
+    When Click on the "Jobs" button in the header
     When Enter job title to the search field
     When Click on the "search" button
     Then Appropriate job is displayed in the search result
@@ -73,7 +73,7 @@ Feature:  Job Search
       When Enter login "a.kuzikov@aimprosoft.com"
       When Enter password "Test123!"
       When Click on the Log in button
-      When Click on the "jobs" button in the header
+      When Click on the "Jobs" button in the header
       When Enter "NW36AE" to the postcode field
       When Choose "3" distance
       When Click on the "search" button

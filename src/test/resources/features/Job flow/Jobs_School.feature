@@ -23,7 +23,7 @@ Feature: School Jobs
 
 
   Scenario: Jobs page contains necessary elements
-    When Click on the "jobs" button in the header
+    When Click on the "Jobs" button in the header
     Then  Jobs page contains all necessary elements:
       | Jobs            |
       | LIVE            |

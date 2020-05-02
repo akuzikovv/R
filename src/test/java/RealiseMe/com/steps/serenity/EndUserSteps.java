@@ -133,7 +133,7 @@ public class EndUserSteps  extends ScenarioSteps {
     }
     @Step
     public void clickOnTheArrowDownButton() {
-        Assert.assertTrue("Log out button is absent",header.clickOnTheArrowDownButton());
+        Assert.assertTrue("Arrow Down button is absent",header.clickOnTheArrowDownButton());
     }
     @Step
     public void userIsLogout() {
@@ -891,13 +891,14 @@ public class EndUserSteps  extends ScenarioSteps {
 
     @Step
     public void theSaveButtonIsHighlightedRedAtTheAppropriateJob(String arg0) {
+        commonActions.waitUntilElementVisible("//div[@class='job-table__item desktop']//a[@class='job-header__title' and contains(.,'"+ Serenity.getCurrentSession().getMetaData().get("job name")+"')]//./../..//button[contains(.,'"+arg0+"')]",60);
         Assert.assertTrue("\""+Serenity.getCurrentSession().getMetaData().get("job name")+"\" job isn't displayed as saved",  getDriver().findElement(By.xpath("//div[@class='job-table__item desktop']//a[@class='job-header__title' and contains(.,'"+ Serenity.getCurrentSession().getMetaData().get("job name")+"')]//./../..//button[contains(.,'"+arg0+"')]")).isDisplayed());
     }
 
 
     @Step
     public void theButtonDisplayedAsSaved(String arg0) {
-        waitABit(1000);
+        waitABit(3000);
         commonActions.waitUntilElementVisible("(//button[contains(.,'"+arg0+"')])[1]",60);
         System.out.println(getDriver().findElement(By.xpath("(//button[contains(.,'"+arg0+"')])[1]")).getAttribute("class"));
         Assert.assertTrue("\""+Serenity.getCurrentSession().getMetaData().get("job name")+"\" job isn't displayed as saved", getDriver().findElement(By.xpath("(//button[contains(.,'"+arg0+"')])[1]")).getAttribute("class").equals("save unsave"));
@@ -927,6 +928,7 @@ public class EndUserSteps  extends ScenarioSteps {
     @Step
     public void theJobNameIsDisplayedAtTheApplicantsPage() {
         commonActions.waitUntilElementVisible("//div[@class='app-header']//a",60);
+        waitABit(2000);
         Assert.assertTrue("Expected name : \""+Serenity.getCurrentSession().getMetaData().get("job name")+"\" but found: \""+getDriver().findElement(By.xpath("//div[@class='app-header']//a")).getText()+"\"",  Serenity.getCurrentSession().getMetaData().get("job name").equals(getDriver().findElement(By.xpath("//div[@class='app-header']//a")).getText()));
     }
 

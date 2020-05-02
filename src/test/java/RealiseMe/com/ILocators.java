@@ -4,19 +4,19 @@ public interface ILocators {
 
 ///////////////////////////  HEADER ///////////////////////////
     String header = "//div[@class='Header']";
-    String jobs = "//span[.='jobs']";
-    String dashboard = "//span[.='dashboard']";
-    String blog = "//span[.='blog']";
-    String forum = "//span[.='forum']";
-    String login = "//span[contains(.,'login')]";
-    String sign_up = "//span[.='sign up']";
-    String messaging = "//span[.='messaging']";
-    String bookings = "//span[.='bookings']";
+    String jobs = "//div[@class='btn__content' and contains(.,'jobs')]";
+    String dashboard = "//div[@class='btn__content' and contains(.,'dashboard')]";
+    String blog = "//div[.='blog']";
+    String forum = "//div[.='forum']";
+    String login = "//div[@class='btn__content' and contains(.,'Login')]";
+    String sign_up = "//div[@class='btn__content' and contains(.,'sign up')]";
+    String messaging = "//div[.='messaging']";
+    String bookings = "//div[@class='btn__content' and contains(.,'Bookings')]";
     String bell_icon = "//i[@class='icon-bell icons']";
     String user_photo_icon = "//li[@class='user-name desktop']//img[@alt='users icon']";
     String user_name = "//li[@class='user-name desktop']//span";
-    String arrow_down_button =  "//li[@class='user-name desktop']//i[@class='icon-arrow-down icons']";
-    String LOGOUT_BUTTON = "//div[.='Logout']";
+    String arrow_down_button =  "//div[@class='btn__content']//div[@class='avatar']";
+    String LOGOUT_BUTTON = "//div[@class='btn__content' and contains(.,'Log out')]";
     String spinner = "//div[@class='spinner-wrapper']";
     String button = "//button";
     String span = "//span";

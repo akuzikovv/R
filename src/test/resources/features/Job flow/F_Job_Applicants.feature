@@ -8,7 +8,7 @@ Feature:  Job Creation
     When Enter login "newuatschool28@yopmail.com"
     When Enter password "Test123!"
     When Click on the Log in button
-    When Click on the "jobs" button in the header
+    When Click on the "Jobs" button in the header
 
   Scenario: School view applicants
     When Click on the "view applicants" button at the appropriate job title

@@ -32,7 +32,7 @@ Feature:  Timesheet flow for completed booking
     When Enter login "newuatteacher176@sharklasers.com"
     When Enter password "Test123!"
     When Click on the Log in button
-    When Click on the "bookings" button in the header
+    When Click on the "Bookings" button in the header
     When Click on the "past booking" tab
     When Click on the "timesheet" button of the appropriate booking
     Then Appropriate booking id is displayed
@@ -45,14 +45,14 @@ Feature:  Timesheet flow for completed booking
     When Choose appropriate email message "Confirmation of your timesheet submission"
     Then Email body contains necessary text "This is to confirm that your recent timesheet has been submitted to The Camden School for Girls for approval.Once the school has approved the timesheet, payment to you will be authorised."
     When Back to the first tab
-    When Click on the arrow down button
+#    When Click on the arrow down button
     When Click on the LOGOUT button
     When Click on the login button
     When Click on the "Login as a school" button
     When Enter login "newuatschool501@sharklasers.com"
     When Enter password "Test123!"
     When Click on the Log in button
-    When Click on the "bookings" button in the header
+    When Click on the "Bookings" button in the header
     When Click on the "completed" tab
     Then Teacher rate for school is right calculated
     When Click on the "Booking for cleared teacher" button of the appropriate booking
@@ -94,7 +94,7 @@ Feature:  Timesheet flow for completed booking
     When Enter login "newuatteacher176@sharklasers.com"
     When Enter password "Test123!"
     When Click on the Log in button
-    When Click on the "bookings" button in the header
+    When Click on the "Bookings" button in the header
     When Click on the "past booking" tab
     When Click on the "timesheet" button of the appropriate booking
     Then Appropriate booking id is displayed
@@ -137,7 +137,7 @@ Feature:  Timesheet flow for completed booking
     When Enter login "newuatteacher176@sharklasers.com"
     When Enter password "Test123!"
     When Click on the Log in button
-    When Click on the "bookings" button in the header
+    When Click on the "Bookings" button in the header
     When Click on the "past booking" tab
     When Click on the "timesheet" button of the appropriate booking
     Then Appropriate booking id is displayed
@@ -145,14 +145,14 @@ Feature:  Timesheet flow for completed booking
     Then Total rate for teacher is right calculated
     When Accept timesheet
     Then Current submission date is appeared
-    When Click on the arrow down button
+#    When Click on the arrow down button
     When Click on the LOGOUT button
     When Click on the login button
     When Click on the "Login as a school" button
     When Enter login "newuatschool501@sharklasers.com"
     When Enter password "Test123!"
     When Click on the Log in button
-    When Click on the "bookings" button in the header
+    When Click on the "Bookings" button in the header
     When Click on the "completed" tab
     Then Teacher rate for school is right calculated
     When Click on the "Booking for cleared teacher" button of the appropriate booking

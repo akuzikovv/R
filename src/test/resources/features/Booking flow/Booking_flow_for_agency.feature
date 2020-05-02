@@ -12,7 +12,8 @@ Feature:  Booking flow for agency
     When Enter login "newuatschool28@yopmail.com"
     When Enter password "Test123!"
     When Click on the Log in button
-    When Click on the "bookings" button in the header
+    When Click on the "Bookings" button in the header
+    When Click on the "invites" tab
     When Click on the "New Supply Booking" button
     When Enter "Booking for agency" to the Name your job posting field
     When Enter "Booking Description" to the Describe the job field
@@ -48,7 +49,8 @@ Feature:  Booking flow for agency
     When Enter login "newagencyuat18@yopmail.com"
     When Enter password "Test123!"
     When Click on the Log in button
-    When Click on the "bookings" button in the header
+    When Click on the "Bookings" button in the header
+    When Click on the "invites" tab
     When Click on the "accept" button of the appropriate booking
     When Fill required fields
     |Supply staff name|
@@ -65,7 +67,7 @@ Feature:  Booking flow for agency
     When Enter login "newuatschool28@yopmail.com"
     When Enter password "Test123!"
     When Click on the Log in button
-    When Click on the "bookings" button in the header
+    When Click on the "Bookings" button in the header
     When Find accepted invite by booking ID with "Promise Education" name
     Then Entered "Supply staff name" teacher name is displayed
     Then Attached "Candidate_Summary.pdf" file is displayed
@@ -79,7 +81,8 @@ Feature:  Booking flow for agency
     When Enter login "newagencyuat18@yopmail.com"
     When Enter password "Test123!"
     When Click on the Log in button
-    When Click on the "bookings" button in the header
+    When Click on the "Bookings" button in the header
+    When Click on the "invites" tab
     When Click on the "accept" button of the appropriate booking
     When Fill required fields
       |Supply staff name|
@@ -90,14 +93,14 @@ Feature:  Booking flow for agency
     When Choose "I agree to RealiseMe" policy checkbox
     When Click on the "CONFIRM JOB" button
     When wait time
-    When Click on the arrow down button
+#    When Click on the arrow down button
     When Click on the LOGOUT button
     When Click on the login button
     When Click on the "Login as a school" button
     When Enter login "newuatschool28@yopmail.com"
     When Enter password "Test123!"
     When Click on the Log in button
-    When Click on the "bookings" button in the header
+    When Click on the "Bookings" button in the header
     When Find accepted invite by booking ID with "Promise Education" name
     Then Entered "Supply staff name" teacher name is displayed
     Then Attached "Candidate_Summary.pdf" file is displayed
@@ -109,7 +112,8 @@ Feature:  Booking flow for agency
     When Enter login "newagencyuat18@yopmail.com"
     When Enter password "Test123!"
     When Click on the Log in button
-    When Click on the "bookings" button in the header
+    When Click on the "Bookings" button in the header
+    When Click on the "invites" tab
 #    When Find invite with "Booking for agency" job title
     When Click on the "decline" button of the appropriate booking
     When Click on the "confirm" button
