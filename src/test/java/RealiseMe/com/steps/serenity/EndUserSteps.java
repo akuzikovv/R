@@ -935,12 +935,12 @@ public class EndUserSteps  extends ScenarioSteps {
 
     @Step
     public void theNameOfFirstApplicantIsDisplayed(String arg0) {
-        Assert.assertTrue("Expected name : \""+arg0+"\" but found: "+getDriver().findElement(By.xpath("(//div[@class='table-body']//p[@class='applicant'])[1]")).getText(),  arg0.equals(getDriver().findElement(By.xpath("(//div[@class='table-body']//p[@class='applicant'])[1]")).getText()));
+        Assert.assertTrue("Expected name : \""+arg0+"\" but found: "+getDriver().findElement(By.xpath("(//div[@class='table-body']//button[@class='toggle'])[1]")).getText(),  arg0.equals(getDriver().findElement(By.xpath("(//div[@class='table-body']//button[@class='toggle'])[1]")).getText()));
     }
 
     @Step
     public void theNameOfSecondApplicantIsDisplayed(String arg0) {
-        Assert.assertTrue("Expected name : \""+arg0+"\" but found: "+getDriver().findElement(By.xpath("(//div[@class='table-body']//p[@class='applicant'])[2]")).getText(),  arg0.equals(getDriver().findElement(By.xpath("(//div[@class='table-body']//p[@class='applicant'])[2]")).getText()));
+        Assert.assertTrue("Expected name : \""+arg0+"\" but found: "+getDriver().findElement(By.xpath("(//div[@class='table-body']//button[@class='toggle'])[2]")).getText(),  arg0.equals(getDriver().findElement(By.xpath("(//div[@class='table-body']//button[@class='toggle'])[2]")).getText()));
     }
 
     @Step

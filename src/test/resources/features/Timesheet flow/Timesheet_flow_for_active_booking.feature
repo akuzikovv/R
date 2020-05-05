@@ -43,7 +43,7 @@ Feature:  Timesheet flow for active booking
     When Choose appropriate email message "Confirmation of your timesheet submission"
     Then Email body contains necessary text "This is to confirm that your recent timesheet has been submitted to The Camden School for Girls for approval.Once the school has approved the timesheet, payment to you will be authorised."
     When Back to the first tab
-#    When Click on the arrow down button
+    When Click on the arrow down button
     When Click on the LOGOUT button
     When Click on the login button
     When Click on the "Login as a school" button
@@ -146,7 +146,7 @@ Feature:  Timesheet flow for active booking
     Then Total rate for teacher is right calculated
     When Accept timesheet
     Then Current submission date is appeared
-#    When Click on the arrow down button
+    When Click on the arrow down button
     When Click on the LOGOUT button
     When Click on the login button
     When Click on the "Login as a school" button

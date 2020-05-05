@@ -93,7 +93,7 @@ Feature:  Booking flow for agency
     When Choose "I agree to RealiseMe" policy checkbox
     When Click on the "CONFIRM JOB" button
     When wait time
-#    When Click on the arrow down button
+    When Click on the arrow down button
     When Click on the LOGOUT button
     When Click on the login button
     When Click on the "Login as a school" button

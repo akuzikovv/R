@@ -16,7 +16,7 @@ public interface ILocators {
     String user_photo_icon = "//li[@class='user-name desktop']//img[@alt='users icon']";
     String user_name = "//li[@class='user-name desktop']//span";
     String arrow_down_button =  "//div[@class='btn__content']//div[@class='avatar']";
-    String LOGOUT_BUTTON = "//div[@class='btn__content' and contains(.,'Log out')]";
+    String LOGOUT_BUTTON = "//div[@class='list__tile__title' and contains(.,'Logout')]";
     String spinner = "//div[@class='spinner-wrapper']";
     String button = "//button";
     String span = "//span";
