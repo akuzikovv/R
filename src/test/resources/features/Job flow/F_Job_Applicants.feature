@@ -1,4 +1,4 @@
-Feature:  Job Creation
+Feature:  Job Applicants
 
   Background:
     Given open landing page
