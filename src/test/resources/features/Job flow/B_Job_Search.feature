@@ -25,7 +25,7 @@ Feature:  Job Search
 
   Scenario: Search appropriate job as logged in "Other" teacher
     When Click on the login button
-    When Click on the "Login as a teacher" button
+#    When Click on the "Login as a teacher" button
     When Enter login "uatteacher22@yopmail.com"
     When Enter password "Test123!"
     When Click on the Log in button
@@ -47,7 +47,7 @@ Feature:  Job Search
 
   Scenario: Search appropriate job as logged in "Supply" teacher
     When Click on the login button
-    When Click on the "Login as a teacher" button
+#    When Click on the "Login as a teacher" button
     When Enter login "a.kuzikov@aimprosoft.com"
     When Enter password "Test123!"
     When Click on the Log in button
@@ -69,7 +69,7 @@ Feature:  Job Search
 
     Scenario: Search appropriate job by postcode
       When Click on the login button
-      When Click on the "Login as a teacher" button
+#      When Click on the "Login as a teacher" button
       When Enter login "a.kuzikov@aimprosoft.com"
       When Enter password "Test123!"
       When Click on the Log in button

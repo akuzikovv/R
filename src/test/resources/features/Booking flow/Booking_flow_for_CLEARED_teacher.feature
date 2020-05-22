@@ -6,7 +6,7 @@ Feature:  Booking Creation
     When Click on the login button
 
   Scenario: Create booking for CLEARED teacher
-    When Click on the "Login as a school" button
+#    When Click on the "Login as a school" button
     When Enter login "newuatschool28@yopmail.com"
     When Enter password "Test123!"
     When Click on the Log in button
@@ -44,10 +44,14 @@ Feature:  Booking Creation
 
   Scenario:  Check booking creation status
       When Check booking creation status
+    |"bookingName":"Booking for cleared teacher  20"|
+    |"dates":[{"date":"2020-08-27T08:30:00+02:00","fullDay":true,"start_time":"2020-08-27T08:30:00+02:00","end_time":"2020-08-27T16:00:00+02:00"},{"date":"2020-08-28T08:30:00+02:00","fullDay":false,"start_time":"2020-08-28T08:30:00+02:00","end_time":"2020-08-28T13:00:00+02:00"}]|
+    |"applyUsersIds":[{"user_id":"c93f0da1-4131-408a-8d09-eed7e5766a44","user_type":"TEACHER"}]                                                                                                                                     |
+    |"teachersTypeIdsSchema":[{"teacher_type_id":"59153f42-83b1-4964-b3ad-5a50226c342a"},{"teacher_type_id":"5d714ae1-4fb4-4b89-a927-47c4396c418e"}]                                                                                |
 
 
   Scenario: Accept booking as CLEARED teacher
-    When Click on the "Login as a teacher" button
+#    When Click on the "Login as a teacher" button
     When Enter login "a.kuzikov@aimprosoft.com"
     When Enter password "Test123!"
     When Click on the Log in button
@@ -60,7 +64,7 @@ Feature:  Booking Creation
     When Click on the LOGOUT button
 
   Scenario: Approve booking as school
-    When Click on the "Login as a school" button
+#    When Click on the "Login as a school" button
     When Enter login "newuatschool28@yopmail.com"
     When Enter password "Test123!"
     When Click on the Log in button
@@ -73,7 +77,7 @@ Feature:  Booking Creation
     When Click on the LOGOUT button
 
   Scenario: Accept booking as CLEARED teacher and Decline booking as school
-    When Click on the "Login as a teacher" button
+#    When Click on the "Login as a teacher" button
     When Enter login "a.kuzikov@aimprosoft.com"
     When Enter password "Test123!"
     When Click on the Log in button
@@ -86,7 +90,7 @@ Feature:  Booking Creation
     When Click on the arrow down button
     When Click on the LOGOUT button
     When Click on the login button
-    When Click on the "Login as a school" button
+#    When Click on the "Login as a school" button
     When Enter login "newuatschool28@yopmail.com"
     When Enter password "Test123!"
     When Click on the Log in button
@@ -99,7 +103,7 @@ Feature:  Booking Creation
     When Click on the LOGOUT button
 
   Scenario: Decline booking as CLEARED teacher
-    When Click on the "Login as a teacher" button
+#    When Click on the "Login as a teacher" button
     When Enter login "a.kuzikov@aimprosoft.com"
     When Enter password "Test123!"
     When Click on the Log in button

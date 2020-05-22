@@ -6,7 +6,7 @@ Feature:  Job Withdraw
 
   Scenario: Withdraw job from applied jobs tab
     When Click on the login button
-    When Click on the "Login as a teacher" button
+#    When Click on the "Login as a teacher" button
     When Enter login "a.kuzikov@aimprosoft.com"
     When Enter password "Test123!"
     When Click on the Log in button

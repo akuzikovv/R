@@ -317,13 +317,32 @@ public class SchoolBookingsPage extends PageObject {
     }
 
     public ArrayList<String> popupWithTextIsAppeared(String arg0) {
-        commonActions.waitUntilElementVisible("//div[@class='card']//div[@slot='bodyModal']",60);
         ArrayList<String> results = new ArrayList<>();
         results.add(0, "true");
-        if (!getDriver().findElement(By.xpath("//div[@class='card']//div[@slot='bodyModal']")).getText().equals(arg0)) {
-            results.set(0, "false");
-            results.add("Expected: " + arg0 + "; but found: " +
-                    getDriver().findElement(By.xpath("//div[@class='card']//div[@slot='bodyModal']")).getText() + "\n");
+        if (arg0.contains("timesheet")){
+            commonActions.waitUntilElementVisible("//div[@class='card']//div[@slot='bodyModal']",60);
+            if (!getDriver().findElement(By.xpath("//div[@class='card']//div[@slot='bodyModal']")).getText().equals(arg0)) {
+                results.set(0, "false");
+                results.add("Expected: " + arg0 + "; but found: " +
+                        getDriver().findElement(By.xpath("//div[@class='card']//div[@slot='bodyModal']")).getText() + "\n");
+            }
+        }else {
+//        try {
+            commonActions.waitUntilElementVisible("//div[@class='card']//p[@slot='bodyModal']", 60);
+            if (!getDriver().findElement(By.xpath("//div[@class='card']//p[@slot='bodyModal']")).getText().equals(arg0)) {
+                results.set(0, "false");
+                results.add("Expected: " + arg0 + "; but found: " +
+                        getDriver().findElement(By.xpath("//div[@class='card']//p[@slot='bodyModal']")).getText() + "\n");
+            }
+//        }catch (Exception e){}
+//        try {
+//            commonActions.waitUntilElementVisible("//div[@class='card']//div[@slot='bodyModal']",60);
+//            if (!getDriver().findElement(By.xpath("//div[@class='card']//div[@slot='bodyModal']")).getText().equals(arg0)) {
+//                results.set(0, "false");
+//                results.add("Expected: " + arg0 + "; but found: " +
+//                        getDriver().findElement(By.xpath("//div[@class='card']//div[@slot='bodyModal']")).getText() + "\n");
+//            }
+//        }catch (Exception e){}
         }
         return results;
     }

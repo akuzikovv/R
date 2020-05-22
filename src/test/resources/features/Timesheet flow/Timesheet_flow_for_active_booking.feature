@@ -26,7 +26,7 @@ Feature:  Timesheet flow for active booking
     When Approve booking as school using request API
       |"userId":"827fc573-d555-4cf8-9e6d-4d85e7d0e554"|
       |"schoolId":"9b3daa63-4ef8-43a4-8e7c-8b62ff6367f1"|
-    When Click on the "Login as a teacher" button
+#    When Click on the "Login as a teacher" button
     When Enter login "newuatteacher176@sharklasers.com"
     When Enter password "Test123!"
     When Click on the Log in button
@@ -46,7 +46,7 @@ Feature:  Timesheet flow for active booking
     When Click on the arrow down button
     When Click on the LOGOUT button
     When Click on the login button
-    When Click on the "Login as a school" button
+#    When Click on the "Login as a school" button
     When Enter login "newuatschool501@sharklasers.com"
     When Enter password "Test123!"
     When Click on the Log in button
@@ -93,7 +93,7 @@ Feature:  Timesheet flow for active booking
     When Approve booking as school using request API
       |"userId":"827fc573-d555-4cf8-9e6d-4d85e7d0e554"|
       |"schoolId":"9b3daa63-4ef8-43a4-8e7c-8b62ff6367f1"|
-    When Click on the "Login as a teacher" button
+#    When Click on the "Login as a teacher" button
     When Enter login "newuatteacher176@sharklasers.com"
     When Enter password "Test123!"
     When Click on the Log in button
@@ -134,7 +134,7 @@ Feature:  Timesheet flow for active booking
     When Approve booking as school using request API
       |"userId":"827fc573-d555-4cf8-9e6d-4d85e7d0e554"|
       |"schoolId":"9b3daa63-4ef8-43a4-8e7c-8b62ff6367f1"|
-    When Click on the "Login as a teacher" button
+#    When Click on the "Login as a teacher" button
     When Enter login "newuatteacher176@sharklasers.com"
     When Enter password "Test123!"
     When Click on the Log in button
@@ -149,7 +149,7 @@ Feature:  Timesheet flow for active booking
     When Click on the arrow down button
     When Click on the LOGOUT button
     When Click on the login button
-    When Click on the "Login as a school" button
+#    When Click on the "Login as a school" button
     When Enter login "newuatschool501@sharklasers.com"
     When Enter password "Test123!"
     When Click on the Log in button

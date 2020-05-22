@@ -8,7 +8,7 @@ Feature:  Booking flow for agency
 
 
   Scenario: Create booking for agency
-    When Click on the "Login as a school" button
+#    When Click on the "Login as a school" button
     When Enter login "newuatschool28@yopmail.com"
     When Enter password "Test123!"
     When Click on the Log in button
@@ -43,9 +43,17 @@ Feature:  Booking flow for agency
     When Open booking section
     Then Appropriate teachers are displayed in the invites list
 
+  Scenario:  Check booking creation status
+    When Check booking creation status
+      |"bookingName":"Booking for agency  20"|
+      |"dates":[{"date":"2020-08-27T08:30:00+02:00","fullDay":true,"start_time":"2020-08-27T08:30:00+02:00","end_time":"2020-08-27T16:00:00+02:00"},{"date":"2020-08-28T08:30:00+02:00","fullDay":false,"start_time":"2020-08-28T08:30:00+02:00","end_time":"2020-08-28T13:00:00+02:00"}]|
+      |"applyUsersIds":[{"user_id":"7788d865-860a-46cb-afcb-3dc786a7e67f","user_type":"AGENCY"}]                                          |
+    |"teachersTypeIdsSchema":[{"teacher_type_id":"5d714ae1-4fb4-4b89-a927-47c4396c418e"}]                                               |
+
+
 
   Scenario: Accept booking as agency
-    When Click on the "Login as an agency" button
+#    When Click on the "Login as an agency" button
     When Enter login "newagencyuat18@yopmail.com"
     When Enter password "Test123!"
     When Click on the Log in button
@@ -63,7 +71,7 @@ Feature:  Booking flow for agency
     When wait time
 
   Scenario: Approve booking as school
-    When Click on the "Login as a school" button
+#    When Click on the "Login as a school" button
     When Enter login "newuatschool28@yopmail.com"
     When Enter password "Test123!"
     When Click on the Log in button
@@ -77,7 +85,7 @@ Feature:  Booking flow for agency
     When Close popup
 
   Scenario: Accept booking as agency and Decline booking as school
-    When Click on the "Login as an agency" button
+#    When Click on the "Login as an agency" button
     When Enter login "newagencyuat18@yopmail.com"
     When Enter password "Test123!"
     When Click on the Log in button
@@ -96,7 +104,7 @@ Feature:  Booking flow for agency
     When Click on the arrow down button
     When Click on the LOGOUT button
     When Click on the login button
-    When Click on the "Login as a school" button
+#    When Click on the "Login as a school" button
     When Enter login "newuatschool28@yopmail.com"
     When Enter password "Test123!"
     When Click on the Log in button
@@ -108,7 +116,7 @@ Feature:  Booking flow for agency
     When Decline accepted invite with "Promise Education" name
 
   Scenario: Decline booking as agency
-    When Click on the "Login as an agency" button
+#    When Click on the "Login as an agency" button
     When Enter login "newagencyuat18@yopmail.com"
     When Enter password "Test123!"
     When Click on the Log in button

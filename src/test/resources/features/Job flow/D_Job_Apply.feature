@@ -26,7 +26,7 @@ Feature:  Job Apply
 
   Scenario: Apply job from landing page as logged in teacher
     When Click on the login button
-    When Click on the "Login as a teacher" button
+#    When Click on the "Login as a teacher" button
     When Enter login "uatteacher22@yopmail.com"
     When Enter password "Test123!"
     When Click on the Log in button
@@ -46,7 +46,7 @@ Feature:  Job Apply
 
   Scenario: Apply job from saved jobs tab as logged in teacher
     When Click on the login button
-    When Click on the "Login as a teacher" button
+#    When Click on the "Login as a teacher" button
     When Enter login "teach20uat2@yopmail.com"
     When Enter password "Test123!"
     When Click on the Log in button

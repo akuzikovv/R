@@ -923,8 +923,8 @@ public class DefinitionSteps {
     }
 
     @When("^Check booking creation status$")
-    public void checkBookingCreationStatus() throws IOException, ParseException {
-        steps.checkBookingCreationStatus();
+    public void checkBookingCreationStatus(List<String>list2) throws IOException, ParseException {
+        steps.checkBookingCreationStatus(list2);
     }
 
 

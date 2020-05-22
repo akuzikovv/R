@@ -701,55 +701,57 @@ public class CommonActions extends PageObject {
 
         //    @Test
         public void createBookingUsingRequestAPI (List < String > list) throws IOException, ParseException {
-            getAccessTokenAuth0();
-            String body = "{\"operationName\":\"createBooking\",\"variables\":{\"input\":{" +
-                    list.get(0) + "," +
-                    list.get(1) + "," +
-                    list.get(2) + "," +
-                    list.get(3) + "," +
-                    list.get(4) + "," +
-                    list.get(5) + "," +
-                    list.get(6) + "," +
-                    list.get(7) + "," +
-                    list.get(8) + "," +
-                    list.get(9) + "," +
-                    list.get(10) + "," +
-                    list.get(11) + "," +
-                    list.get(12) + "}}," +
-                    "\"query\":\"mutation createBooking($input: CreateBookingPayload!) {\\n  createBooking(input: $input) {\\n    id\\n    short_id\\n    name\\n    description\\n    __typename\\n  }\\n}\\n\"}";
-            String url = "https://29cwhlvcb3.execute-api.us-east-1.amazonaws.com/uat/graphql";
-            urlObject = new URL(url);
-            HttpsURLConnection connection = (HttpsURLConnection) urlObject.openConnection();
-            connection.setRequestMethod("POST");
-            connection.setRequestProperty("content-type", "application/json");
-            connection.setRequestProperty("authorization", token);
-            connection.setDoOutput(true);
-            try (OutputStream os = connection.getOutputStream()) {
-                byte[] input = body.getBytes("utf-8");
-                os.write(input, 0, input.length);
-            }
-            try (BufferedReader br = new BufferedReader(
-                    new InputStreamReader(connection.getInputStream(), "utf-8"))) {
-                StringBuilder response = new StringBuilder();
-                String encoding = connection.getContentEncoding();
-                String responseLine = null;
-                encoding = encoding == null ? "UTF-8" : encoding;
-                String respbody = IOUtils.toString(connection.getInputStream(), encoding);
-                while ((responseLine = br.readLine()) != null) {
-                    response.append(responseLine.trim());
-                }
-                JSONObject jsonObject = (JSONObject) parser.parse(respbody);
-                JSONObject jsonObject2 = (JSONObject) parser.parse(jsonObject.get("data").toString());
-                JSONObject jsonObject3 = (JSONObject) parser.parse(jsonObject2.get("createBooking").toString());
-                bookingLongId = jsonObject3.get("id").toString();
-                bookingShortID = jsonObject3.get("short_id").toString();
-                Serenity.getCurrentSession().addMetaData("bookingLongId", bookingLongId);
-                Serenity.getCurrentSession().addMetaData("bookingShortID", bookingShortID);
-                Serenity.getCurrentSession().addMetaData("bookingShortIDforTimesheets", bookingShortID);
-                System.out.println("bookingLongId = " + bookingLongId);
-                System.out.println("bookingShortID = " + bookingShortID);
-            }
+        getAccessTokenAuth0();
+        String body = "{\"operationName\":\"createBooking\",\"variables\":{\"input\":{" +
+                list.get(0) + "," +
+                list.get(1) + "," +
+                list.get(2) + "," +
+                list.get(3) + "," +
+                list.get(4) + "," +
+                list.get(5) + "," +
+                list.get(6) + "," +
+                list.get(7) + "," +
+                list.get(8) + "," +
+                list.get(9) + "," +
+                list.get(10) + "," +
+                list.get(11) + "," +
+                list.get(12) + "}}," +
+                "\"query\":\"mutation createBooking($input: CreateBookingPayload!) {\\n  createBooking(input: $input) {\\n    id\\n    short_id\\n    name\\n    description\\n    __typename\\n  }\\n}\\n\"}";
+        String url = "https://29cwhlvcb3.execute-api.us-east-1.amazonaws.com/uat/graphql";
+        urlObject = new URL(url);
+        HttpsURLConnection connection = (HttpsURLConnection) urlObject.openConnection();
+        connection.setRequestMethod("POST");
+        connection.setRequestProperty("content-type", "application/json");
+        connection.setRequestProperty("authorization", token);
+        connection.setDoOutput(true);
+        try (OutputStream os = connection.getOutputStream()) {
+            byte[] input = body.getBytes("utf-8");
+            os.write(input, 0, input.length);
         }
+        try (BufferedReader br = new BufferedReader(
+                new InputStreamReader(connection.getInputStream(), "utf-8"))) {
+            StringBuilder response = new StringBuilder();
+            String encoding = connection.getContentEncoding();
+            String responseLine = null;
+            encoding = encoding == null ? "UTF-8" : encoding;
+            String respbody = IOUtils.toString(connection.getInputStream(), encoding);
+            while ((responseLine = br.readLine()) != null) {
+                response.append(responseLine.trim());
+            }
+            JSONObject jsonObject = (JSONObject) parser.parse(respbody);
+            JSONObject jsonObject2 = (JSONObject) parser.parse(jsonObject.get("data").toString());
+            JSONObject jsonObject3 = (JSONObject) parser.parse(jsonObject2.get("createBooking").toString());
+            bookingLongId = jsonObject3.get("id").toString();
+            bookingShortID = jsonObject3.get("short_id").toString();
+            Serenity.getCurrentSession().addMetaData("bookingLongId", bookingLongId);
+            Serenity.getCurrentSession().addMetaData("bookingShortID", bookingShortID);
+            Serenity.getCurrentSession().addMetaData("bookingShortIDforTimesheets", bookingShortID);
+            System.out.println("bookingLongId = " + bookingLongId);
+            System.out.println("bookingShortID = " + bookingShortID);
+        }
+    }
+
+
 
         public void acceptBookingAsClearedTeacherUsingRequestAPI (List < String > list) throws
         IOException, ParseException {
@@ -996,19 +998,19 @@ public class CommonActions extends PageObject {
             }
         }
 
-        public void checkBookingCreationStatus() throws IOException, ParseException {
-            if (creation_status = false) {
+        public void checkBookingCreationStatus(List<String> list2) throws IOException, ParseException {
+            if (creation_status == false) {
                 System.out.println("creation_status" + creation_status);
                 ArrayList<String> list = new ArrayList<>();
-                list.add("\"school_id\":\"9b3daa63-4ef8-43a4-8e7c-8b62ff6367f1\"");
-                list.add("\"bookingName\":\"Booking for cleared teacher  20\"");
+                list.add("\"school_id\":\"ef1e8d35-5619-4a40-a76e-cd6b4eab07d6\"");
+                list.add(list2.get(0));
                 list.add("\"bookingDescription\":\"Booking Description text\"");
                 list.add("\"other_age_group\":\"\"");
-                list.add("\"dates\":[{\"date\":\"2020-08-27T08:30:00+02:00\",\"fullDay\":true,\"start_time\":\"2020-08-27T08:30:00+02:00\",\"end_time\":\"2020-08-27T16:00:00+02:00\"},{\"date\":\"2020-08-28T08:30:00+02:00\",\"fullDay\":false,\"start_time\":\"2020-08-28T08:30:00+02:00\",\"end_time\":\"2020-08-28T13:00:00+02:00\"}]");
+                list.add(list2.get(1));
                 list.add("\"ageGroupIds\":[{\"age_group_id\":\"19abfc90-f45b-476b-920f-b05e6e3124a0\"}] ");
                 list.add("\"schoolDocumentsIds\":{\"school_document_id\":\"9c78412f-fe27-4fcc-b527-405e903810e2\"}                                               ");
-                list.add("\"applyUsersIds\":[{\"user_id\":\"827fc573-d555-4cf8-9e6d-4d85e7d0e554\",\"user_type\":\"TEACHER\"}]                   ");
-                list.add("\"teachersTypeIdsSchema\":[{\"teacher_type_id\":\"59153f42-83b1-4964-b3ad-5a50226c342a\"},{\"teacher_type_id\":\"5d714ae1-4fb4-4b89-a927-47c4396c418e\"}]");
+                list.add(list2.get(2));
+                list.add(list2.get(3));
                 list.add("\"creator_id\":\"f161024f-7d3a-4738-a804-8d9bfeeb9453\"                                                 ");
                 list.add("\"anonymisation\":false                                           ");
                 list.add("\"documents\":null            ");

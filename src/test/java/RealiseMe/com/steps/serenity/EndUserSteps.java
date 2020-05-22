@@ -1044,8 +1044,8 @@ public class EndUserSteps  extends ScenarioSteps {
     }
 
     @Step
-    public void checkBookingCreationStatus() throws IOException, ParseException {
-        commonActions.checkBookingCreationStatus();
+    public void checkBookingCreationStatus(List<String> list2) throws IOException, ParseException {
+        commonActions.checkBookingCreationStatus(list2);
     }
 
     @Step
