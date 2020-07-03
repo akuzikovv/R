@@ -7,6 +7,8 @@ import org.junit.runner.RunWith;
 @RunWith(CucumberWithSerenity.class)
 @CucumberOptions(features= {"" +
         "src/test/resources/features/Booking flow/Booking_flow_for_CLEARED_teacher.feature",
+        "src/test/resources/features/Booking flow/Booking_flow_for_PENDING_teacher.feature",
+        "src/test/resources/features/Booking flow/Booking_flow_for_UNCLEARED_teacher.feature",
         "src/test/resources/features/Booking flow/Booking_flow_for_agency.feature",
         "src/test/resources/features/Timesheet flow/Timesheet_flow_for_active_booking.feature",
         "src/test/resources/features/Timesheet flow/Timesheet_flow_for_completed_booking.feature",

@@ -1054,6 +1054,14 @@ public class EndUserSteps  extends ScenarioSteps {
         Assert.assertTrue("Created Job "+Serenity.getCurrentSession().getMetaData().get("job name")+" isn't displayed",getDriver().findElement(By.xpath("//span[contains(.,'"+Serenity.getCurrentSession().getMetaData().get("job name")+"')]")).isDisplayed());
     }
 
+    @Step
+    public void theButtonOfTheAppropriateBookingIsnTClickable(String arg0) throws IOException, ParseException {
+
+        ArrayList<String> results =   commonActions.theButtonOfTheAppropriateBookingIsnTClickable(arg0);
+        System.out.println("results"+results.get(0));
+        Assert.assertTrue("The "+arg0+"Button is clickable"+ results, "true".equals(results.get(0)));
+    }
+
 
 //    @Step
 //    public void openReport() {

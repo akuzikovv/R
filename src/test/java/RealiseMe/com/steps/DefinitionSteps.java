@@ -934,6 +934,11 @@ public class DefinitionSteps {
 
     }
 
+    @Then("^The \"([^\"]*)\" button of the appropriate booking isn't clickable$")
+    public void theButtonOfTheAppropriateBookingIsnTClickable(String arg0) throws Throwable {
+        steps.theButtonOfTheAppropriateBookingIsnTClickable(arg0);
+    }
+
 
     //    @When("^Open report$")
 //    public void openReport() throws Throwable {

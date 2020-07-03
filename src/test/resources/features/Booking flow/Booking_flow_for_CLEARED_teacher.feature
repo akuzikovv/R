@@ -1,4 +1,4 @@
-Feature:  Booking Creation
+Feature:  Booking flow for CLEARED teacher
 
   Background:
     Given open landing page
@@ -112,6 +112,7 @@ Feature:  Booking Creation
 #    When Find invite with "Booking for cleared teacher" job title
     When Click on the "decline" button of the appropriate booking
     When Click on the "confirm" button
+
 
 
 

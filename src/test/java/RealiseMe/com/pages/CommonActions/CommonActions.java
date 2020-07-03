@@ -1026,4 +1026,21 @@ public class CommonActions extends PageObject {
                 System.out.println(Serenity.getCurrentSession().getMetaData().get("bookingShortID"));
             }
         }
+
+    public ArrayList<String> theButtonOfTheAppropriateBookingIsnTClickable(String arg0) throws IOException, ParseException {
+        clickOnTheButtonOfTheAppropriateBooking(arg0);
+        waitABit(5000);
+        ArrayList<String> results = new ArrayList<>();
+        String atribute = getDriver().findElement(By.xpath("//p[@class='hidden-content__block-description']/../../../../../..//button[contains(.,'" + arg0 + "')]")).getAttribute("disabled");
+        System.out.println("disabled attribute = "+atribute);
+        results.add(0, "true");
+        if (!getDriver().findElement(By.xpath("//p[@class='hidden-content__block-description']/../../../../../..//button[contains(.,'" + arg0 + "')]")).getAttribute("disabled").equals("true")) {
+//            System.out.println(getDriver().findElement(By.xpath("//p[@class='hidden-content__block-description']/../../../../../..//button[contains(.,'" + arg0 + "')]")).getCssValue("disabled").equals("disabled"));
+            results.set(0, "false");
+            results.add("Button is clickable");
+        }
+        return results;
     }
+}
+
+

@@ -164,10 +164,14 @@ public class SchoolBookingsPage extends PageObject {
     public ArrayList<String> checkPengingPopup(String arg0) {
         ArrayList<String> results = new ArrayList<>();
         results.add(0, "true");
-        if ($(ILocators.Pending_status).isPresent() & !getDriver().findElement(By.xpath("//div[contains(text(),'You have selected a teacher whose DBS clearance is')]")).getText().equals(arg0)) {
+        if (!commonActions.isElementPresent("//div[@class='acceptDecline-body' and contains(.,'DBS')]")
+                & !commonActions.isElementPresent("//div[contains(text(),'You have selected a teacher whose DBS clearance is')]")){
+//        if ($(ILocators.Pending_status).isPresent() & !getDriver().findElement(By.xpath("//div[contains(text(),'You have selected a teacher whose DBS clearance is')]")).getText().equals(arg0)&
+//        getDriver().findElement(By.xpath("//div[@class='acceptDecline-body' and contains(.,'DBS')]")).getText().equals(arg0)) {
             results.set(0, "false");
-            results.add("Text in the uncleared popup is absent or wrong" + "\n");
+            results.add("Text in the pending popup is absent" + "\n");
         } else {
+
 
         }
         return results;
