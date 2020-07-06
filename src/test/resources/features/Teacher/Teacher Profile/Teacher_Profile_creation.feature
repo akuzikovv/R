@@ -1,5 +1,7 @@
 Feature:  Teacher profile Creation
 
+
+
   Scenario: Create teacher profile
     Given open landing page
     When click on the agree button at the banner
@@ -49,6 +51,9 @@ Feature:  Teacher profile Creation
       |5. Do you enjoy working in a collaborative environment or prefer working independently?|
     When wait time
     Then Delete "Teacher" account
+
+
+
 
 
 

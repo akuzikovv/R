@@ -56,7 +56,28 @@ Feature:  School profile Creation
     |3. Is your school run on a tight methodical basis or a more adaptable, flexible one?|
     |4. Is your school strict on discipline or more lenient and individual-based?        |
     |5. Does your school participate in collaboration with other schools or work independently?|
-    Then Delete "School" account
+#    Then Delete "School" account
+
+
+  Scenario: Fill school profile
+    Given open landing page
+    When click on the agree button at the banner
+    When Click on the login button
+#    When Click on the school "Login as a school" button
+    When Enter login of new created user
+    When Enter password "Test123!"
+    When Click on the Log in button
+    When CLick on the "edit" button at the "Account" section
+    When Enter "N1C 4BT" postcode to the "enter postcode" field
+    When Click on the "Find Address" button
+    When Choose random address from the dropdown in the "40" range
+    When Enter the school name to the field "Auto school"
+    When Enter the short description "Short description" to the "Tell us about your school…" field
+    When Enter the "www.google.com" to the "Website" field
+    When Enter the "1234567890" to the "landline" field
+    When Choose "policies" checkbox
+    When Click on the "save" button
+    When wait time
 
 
 

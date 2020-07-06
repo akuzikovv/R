@@ -1074,6 +1074,36 @@ public class EndUserSteps  extends ScenarioSteps {
         Assert.assertTrue("The "+arg0+" section isn't opened "+ results, "true".equals(results.get(0)));
     }
 
+    @Step
+    public void clickOnTheButtonAtTheSection(String arg0, String arg1) {
+        commonActions.clickOnTheButtonAtTheSection(arg0,arg1);
+    }
+
+    @Step
+    public void enterPostcodeToTheField(String arg0, String arg1) {
+        commonActions.enterPostcodeToTheField(arg0,arg1);
+    }
+
+    @Step
+    public void chooseRandomAddressFromTheDropdownInTheRange(String arg0) {
+        commonActions.chooseRandomAddressFromTheDropdownInTheRange(arg0);
+    }
+
+    @Step
+    public void enterTheSchoolNameToTheField(String arg0) {
+        schoolAccountPage.enterTheSchoolNameToTheField(arg0);
+    }
+
+    @Step
+    public void enterTheShortDescriptionToTheField(String arg1, String arg0) {
+        schoolAccountPage.enterTheShortDescriptionToTheField(arg0,arg1);
+    }
+
+    @Step
+    public void enterTheToTheField(String arg0, String arg1) {
+        commonActions.enterTheToTheField(arg0,arg1);
+    }
+
 
 //    @Step
 //    public void openReport() {

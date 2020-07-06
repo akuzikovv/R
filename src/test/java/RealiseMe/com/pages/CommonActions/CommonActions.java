@@ -210,6 +210,11 @@ public class CommonActions extends PageObject {
             xpath.click();
         } catch (Exception e) {
         }
+        try {
+            WebElement xpath = getDriver().findElement(By.xpath("//div[@class='"+arg0+"']//div[@role='checkbox']"));
+            xpath.click();
+        } catch (Exception e) {
+        }
     }
 
     public void closePopup() {
@@ -388,6 +393,7 @@ public class CommonActions extends PageObject {
         random = (int) (Math.random() * 400 + 111);
         Serenity.getCurrentSession().addMetaData("user type", arg0);
         email_of_new_user = arg0 + random + "@sharklasers.com";
+        Serenity.getCurrentSession().addMetaData("emailOfNewUser",email_of_new_user);
         $(ILocators.Email_field).sendKeys(email_of_new_user);
     }
 
@@ -396,7 +402,8 @@ public class CommonActions extends PageObject {
     }
 
     public void enterLoginOfNewCreatedUser() {
-        getDriver().findElement(By.xpath("//input[@type='email']")).sendKeys(email_of_new_user);
+        getDriver().findElement(By.xpath("//input[@type='email']")).sendKeys(Serenity.getCurrentSession().getMetaData().get("emailOfNewUser"));
+        System.out.println(Serenity.getCurrentSession().getMetaData().get("emailOfNewUser"));
     }
 
     public void openInTheNewTab(String arg0) {
@@ -1044,6 +1051,28 @@ public class CommonActions extends PageObject {
 
     public void clickOnTheLink(String arg0) {
         getDriver().findElement(By.xpath("//a[contains(.,'"+arg0+"')]")).click();
+    }
+
+    public void clickOnTheButtonAtTheSection(String arg0, String arg1) {
+        waitUntilElementVisible("//div[@class='component-header' and contains(.,'"+arg1+"')]//span[contains(.,'"+arg0+"')]",40);
+        getDriver().findElement(By.xpath("//div[@class='component-header' and contains(.,'"+arg1+"')]//span[contains(.,'"+arg0+"')]")).click();
+    }
+
+    public void enterPostcodeToTheField(String arg0, String arg1) {
+        getDriver().findElement(By.xpath("//input[@placeholder='"+arg1+"']")).sendKeys(arg0);
+    }
+
+    public void chooseRandomAddressFromTheDropdownInTheRange(String arg0) {
+        int max = Integer.parseInt(arg0);
+        int min = 1;
+        int range = max - min + 1;
+        random =  (int)(Math.random() * range) + min;
+        getDriver().findElement(By.xpath("(//div[@class='list']//a[@class='list__tile list__tile--link'])["+random+"]")).click();
+
+    }
+
+    public void enterTheToTheField(String arg0, String arg1) {
+        getDriver().findElement(By.xpath("//input[@placeholder='"+arg1+"']")).sendKeys(arg0);
     }
 }
 

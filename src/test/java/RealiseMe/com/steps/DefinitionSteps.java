@@ -949,6 +949,38 @@ public class DefinitionSteps {
         steps.theSectionIsOpened(arg0);
     }
 
+    @When("^CLick on the \"([^\"]*)\" button at the \"([^\"]*)\" section$")
+    public void clickOnTheButtonAtTheSection(String arg0, String arg1) throws Throwable {
+        steps.clickOnTheButtonAtTheSection(arg0,arg1);
+    }
+
+    @When("^Enter \"([^\"]*)\" postcode to the \"([^\"]*)\" field$")
+    public void enterPostcodeToTheField(String arg0, String arg1) throws Throwable {
+        steps.enterPostcodeToTheField(arg0,arg1);
+    }
+
+    @When("^Choose random address from the dropdown in the \"([^\"]*)\" range$")
+    public void chooseRandomAddressFromTheDropdownInTheRange(String arg0) throws Throwable {
+       steps.chooseRandomAddressFromTheDropdownInTheRange(arg0);
+    }
+
+    @When("^Enter the school name to the field \"([^\"]*)\"$")
+    public void enterTheSchoolNameToTheField(String arg0) throws Throwable {
+        steps.enterTheSchoolNameToTheField(arg0);
+    }
+
+
+
+    @When("^Enter the short description \"([^\"]*)\" to the \"([^\"]*)\" field$")
+    public void enterTheShortDescriptionToTheField(String arg0, String arg1) throws Throwable {
+        steps.enterTheShortDescriptionToTheField(arg0,arg1);
+    }
+
+    @When("^Enter the \"([^\"]*)\" to the \"([^\"]*)\" field$")
+    public void enterTheToTheField(String arg0, String arg1) throws Throwable {
+        steps.enterTheToTheField(arg0,arg1);
+    }
+
 
     //    @When("^Open report$")
 //    public void openReport() throws Throwable {

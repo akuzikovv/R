@@ -72,4 +72,11 @@ public class SchoolAccountPage  extends PageObject {
     }
 
 
+    public void enterTheSchoolNameToTheField(String arg0) {
+        getDriver().findElement(By.xpath("//input[@name='firstname']")).sendKeys(arg0);
+    }
+
+    public void enterTheShortDescriptionToTheField(String arg1, String arg0) {
+        getDriver().findElement(By.xpath("//textarea[@placeholder='"+arg1+"']")).sendKeys(arg0);
+    }
 }
