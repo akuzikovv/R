@@ -40,6 +40,7 @@ public class Header extends PageObject {
         ArrayList<String> labels = new ArrayList<>();
         ArrayList<String> results = new ArrayList<>();
         results.add(0, "true");
+        commonActions.waitUntilElementVisible(ILocators.dashboard,30);
         if (!$(ILocators.dashboard).isPresent()) {
             results.set(0, "false");
             results.add("Header is absent" + "\n");
@@ -48,6 +49,7 @@ public class Header extends PageObject {
 //            labels.add($(ILocators.messaging).getText());
             labels.add($(ILocators.jobs).getText());
             labels.add($(ILocators.bookings).getText());
+            labels.add($(ILocators.community).getText());
             for (int i = 0; i < list.size(); i++) {
                 if (!list.get(i).equals(labels.get(i))) {
                     results.set(0, "false");

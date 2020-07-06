@@ -4,8 +4,9 @@ public interface ILocators {
 
 ///////////////////////////  HEADER ///////////////////////////
     String header = "//div[@class='Header']";
-    String jobs = "//div[@class='btn__content' and contains(.,'jobs')]";
-    String dashboard = "//div[@class='btn__content' and contains(.,'dashboard')]";
+    String jobs = "//div[@class='btn__content' and contains(.,'Jobs')]";
+    String dashboard = "//div[@class='btn__content' and contains(.,'Dashboard')]";
+    String community = "//div[@class='btn__content' and contains(.,'Community')]";
     String blog = "//div[.='blog']";
     String forum = "//div[.='forum']";
     String login = "//div[@class='btn__content' and contains(.,'Login')]";
@@ -14,7 +15,7 @@ public interface ILocators {
     String bookings = "//div[@class='btn__content' and contains(.,'Bookings')]";
     String bell_icon = "//i[@class='icon-bell icons']";
     String user_photo_icon = "//li[@class='user-name desktop']//img[@alt='users icon']";
-    String user_name = "//li[@class='user-name desktop']//span";
+    String user_name = "//div[@class='btn__content']//div[@class='profile-name']";
     String arrow_down_button =  "//div[@class='btn__content']//div[@class='avatar']";
     String LOGOUT_BUTTON = "//div[@class='list__tile__title' and contains(.,'Logout')]";
     String spinner = "//div[@class='spinner-wrapper']";

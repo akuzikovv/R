@@ -320,7 +320,7 @@ public class SchoolBookingsPage extends PageObject {
         getDriver().findElement(By.xpath("(//i[@class='icon-close icons'])[" + counter + "]")).click();
     }
 
-    public ArrayList<String> popupWithTextIsAppeared(String arg0) {
+    public ArrayList<String> popupWithTextIsAppeared(String arg0, List<String> list) {
         ArrayList<String> results = new ArrayList<>();
         results.add(0, "true");
         if (arg0.contains("timesheet")){
@@ -330,23 +330,30 @@ public class SchoolBookingsPage extends PageObject {
                 results.add("Expected: " + arg0 + "; but found: " +
                         getDriver().findElement(By.xpath("//div[@class='card']//div[@slot='bodyModal']")).getText() + "\n");
             }
+        }
+        if (arg0.contains("wow")){
+            commonActions.waitUntilElementVisible("//div[@class='card']//div[@class='title-body']",60);
+            String strMain = getDriver().findElement(By.xpath("//div[@class='card']//div[@class='title-body']")).getText();
+            String[] arrSplit = strMain.split("\n");
+            ArrayList<String> list2 = new ArrayList<>();
+            for (int i=0; i < arrSplit.length; i++)
+            {
+                list2.add(arrSplit[i]);
+            }
+            if (!list2.get(0).equals(list.get(0))||
+                    list2.get(1).equals(list.get(1))||
+                            list2.get(2).equals(list.get(2))) {
+                results.set(0, "false");
+                results.add("Expected: " + arg0 + "; but found: " +
+                        getDriver().findElement(By.xpath("//div[@class='card']//div[@class='title-body']")).getText() + "\n");
+            }
         }else {
-//        try {
             commonActions.waitUntilElementVisible("//div[@class='card']//p[@slot='bodyModal']", 60);
             if (!getDriver().findElement(By.xpath("//div[@class='card']//p[@slot='bodyModal']")).getText().equals(arg0)) {
                 results.set(0, "false");
                 results.add("Expected: " + arg0 + "; but found: " +
                         getDriver().findElement(By.xpath("//div[@class='card']//p[@slot='bodyModal']")).getText() + "\n");
             }
-//        }catch (Exception e){}
-//        try {
-//            commonActions.waitUntilElementVisible("//div[@class='card']//div[@slot='bodyModal']",60);
-//            if (!getDriver().findElement(By.xpath("//div[@class='card']//div[@slot='bodyModal']")).getText().equals(arg0)) {
-//                results.set(0, "false");
-//                results.add("Expected: " + arg0 + "; but found: " +
-//                        getDriver().findElement(By.xpath("//div[@class='card']//div[@slot='bodyModal']")).getText() + "\n");
-//            }
-//        }catch (Exception e){}
         }
         return results;
     }

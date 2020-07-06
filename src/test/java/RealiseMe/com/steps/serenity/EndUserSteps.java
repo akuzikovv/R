@@ -545,8 +545,8 @@ public class EndUserSteps  extends ScenarioSteps {
     }
 
     @Step
-    public void popupWithTextIsAppeared(String arg0) {
-        ArrayList<String> results = schoolBookingsPage.popupWithTextIsAppeared(arg0);
+    public void popupWithTextIsAppeared(String arg0, List<String> list) {
+        ArrayList<String> results = schoolBookingsPage.popupWithTextIsAppeared(arg0,list);
         Assert.assertTrue(String.valueOf(results), "true".equals(results.get(0)));
     }
 
@@ -1060,6 +1060,18 @@ public class EndUserSteps  extends ScenarioSteps {
         ArrayList<String> results =   commonActions.theButtonOfTheAppropriateBookingIsnTClickable(arg0);
         System.out.println("results"+results.get(0));
         Assert.assertTrue("The "+arg0+"Button is clickable"+ results, "true".equals(results.get(0)));
+    }
+
+    @Step
+    public void clickOnTheLink(String arg0) {
+        commonActions.clickOnTheLink(arg0);
+    }
+
+    @Step
+    public void theSectionIsOpened(String arg0) {
+
+        ArrayList<String> results =    teacherProfilePage.theSectionIsOpened(arg0);
+        Assert.assertTrue("The "+arg0+" section isn't opened "+ results, "true".equals(results.get(0)));
     }
 
 

@@ -460,8 +460,8 @@ public class DefinitionSteps {
     }
 
     @Then("^Popup with \"([^\"]*)\" text is appeared$")
-    public void popupWithTextIsAppeared(String arg0) throws Throwable {
-       steps.popupWithTextIsAppeared(arg0);
+    public void popupWithTextIsAppeared(String arg0,List<String>list) throws Throwable {
+       steps.popupWithTextIsAppeared(arg0,list);
     }
 
     @When("^Enter login of new \"([^\"]*)\"$")
@@ -937,6 +937,16 @@ public class DefinitionSteps {
     @Then("^The \"([^\"]*)\" button of the appropriate booking isn't clickable$")
     public void theButtonOfTheAppropriateBookingIsnTClickable(String arg0) throws Throwable {
         steps.theButtonOfTheAppropriateBookingIsnTClickable(arg0);
+    }
+
+    @When("^Click on the \"([^\"]*)\" link$")
+    public void clickOnTheLink(String arg0) throws Throwable {
+        steps.clickOnTheLink(arg0);
+    }
+
+    @Then("^The \"([^\"]*)\" section is opened$")
+    public void theSectionIsOpened(String arg0) throws Throwable {
+        steps.theSectionIsOpened(arg0);
     }
 
 

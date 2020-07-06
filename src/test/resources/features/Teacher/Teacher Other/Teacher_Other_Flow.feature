@@ -4,8 +4,8 @@ Feature: Teacher Other Flow
     Given open landing page
     When click on the agree button at the banner
     When Click on the login button
-    When Click on the "Login as a teacher" button
-    When Enter login "newqateacher29@yopmail.com"
+#    When Click on the "Login as a teacher" button
+    When Enter login "uatteacher22@yopmail.com"
     When Enter password "Test123!"
     When Click on the Log in button
 
@@ -15,9 +15,10 @@ Feature: Teacher Other Flow
       | dashboard      |
       | jobs |
       | bookings  |
-    Then  Header contains bell icon
+    |community  |
+#    Then  Header contains bell icon
     Then  Header contains user photo icon
-    Then  Header contains user name "First name Last name"
+    Then  Header contains user name "Teacher Other"
     Then  Header contains arrow down button
     Then  Other Teacher's Left panel contains all necessary elements:
 #      | rgba(220, 0, 142, 1)      |
@@ -39,6 +40,14 @@ Feature: Teacher Other Flow
     When  Close window
 
 
-  Scenario: The booking page isn't available for teacher with UNCLEARED status
-    When Click on the "bookings" button in the header
+  Scenario: The booking page isn't available for teacher Other
+    When Click on the "Bookings" button in the header
+    Then Popup with "No bookings yet, wow, we must be missing some information." text is appeared
+      |No bookings yet, wow, we must be missing some information.|
+  |Don’t worry, it only takes a few minutes to complete your profile and to be searchable by schools in your area. Click here to join the ReMe supply community and to receive a bonus after only your first 5 days work.|
+  |Realise your worth, realiseme."                                                                                                                                                               |
+    When Close popup
+    When Click on the "Bookings" button in the header
+    When Click on the "here" link
+    Then The "Teacher Details" section is opened
 

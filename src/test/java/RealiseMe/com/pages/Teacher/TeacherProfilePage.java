@@ -4,7 +4,6 @@ import RealiseMe.com.pages.CommonActions.CommonActions;
 import net.serenitybdd.core.pages.PageObject;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -52,6 +51,20 @@ public class TeacherProfilePage extends PageObject {
     }
 
 
+    public ArrayList<String> theSectionIsOpened(String arg0) {
+        ArrayList<String> results = new ArrayList<>();
+        results.add(0, "true");
+        commonActions.waitUntilElementVisible("//a[contains(.,'"+arg0+"')]",60);
+//        String attribute = getDriver().findElement(By.xpath("//a[contains(.,'"+arg0+"')]")).getAttribute("class");
+//        System.out.println(attribute);
+        if (!commonActions.isElementPresent("//a[contains(.,'"+arg0+"')]")||
+                !getDriver().findElement(By.xpath("//a[contains(.,'"+arg0+"')]")).getAttribute("class").equals("primary--text list__tile--active list__tile list__tile--link")){
+//                !getDriver().findElement(By.xpath("(//div[@class='components-name' and contains(text(),'Account')])[1]")).isDisplayed() ) {
+            results.set(0, "false");
+            results.add("The "+arg0+" page isn't opened");
+        }
 
+        return results;
+    }
 }
 

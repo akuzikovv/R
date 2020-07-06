@@ -1041,6 +1041,10 @@ public class CommonActions extends PageObject {
         }
         return results;
     }
+
+    public void clickOnTheLink(String arg0) {
+        getDriver().findElement(By.xpath("//a[contains(.,'"+arg0+"')]")).click();
+    }
 }
 
 
