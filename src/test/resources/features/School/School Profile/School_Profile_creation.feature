@@ -70,15 +70,34 @@ Feature:  School profile Creation
     When CLick on the "edit" button at the "Account" section
     When Enter "N1C 4BT" postcode to the "enter postcode" field
     When Click on the "Find Address" button
-    When Choose random address from the dropdown in the "40" range
+    When Choose random address from the dropdown in the "5" range
     When Enter the school name to the field "Auto school"
     When Enter the short description "Short description" to the "Tell us about your school…" field
     When Enter the "www.google.com" to the "Website" field
     When Enter the "1234567890" to the "landline" field
-    When Choose "policies" checkbox
+    When Choose "primary" checkbox
+    When Choose "academy" checkbox
+    When Choose "Policies" checkbox
     When Click on the "save" button
     When wait time
+    When wait time
+    When wait time
+    When wait time
 
+#    Scenario: click
+#      Given open landing page
+#      When click on the agree button at the banner
+#      When Click on the login button
+##    When Click on the school "Login as a school" button
+#      When Enter login "newuatschool167@sharklasers.com"
+#      When Enter password "Test123!"
+#      When Click on the Log in button
+#      When CLick on the "edit" button at the "Account" section
+#      When Choose "Policies" checkbox
+#      When wait time
+#      When wait time
+#      When wait time
+#      When wait time
 
 
 

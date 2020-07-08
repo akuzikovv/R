@@ -123,7 +123,7 @@ public class CommonActions extends PageObject {
 
         }
         if (isElementPresent("//span[contains(.,'" + arg0 + "')]")) {
-            getDriver().findElement(By.xpath("//span[contains(.,'" + arg0 + "')]")).click();
+            getDriver().findElement(By.xpath("(//span[contains(.,'" + arg0 + "')])[1]")).click();
             return;
         }
         if (isElementPresent("//p[contains(.,'" + arg0 + "')]")) {
@@ -200,21 +200,41 @@ public class CommonActions extends PageObject {
     }
 
     public void chooseCheckbox(String arg0) {
-        try {
+        if(isElementPresent("//p[contains(.,'"+arg0+"')]/../../..//div[@class='input-group--selection-controls__ripple']")) {
+            WebElement xpath = getDriver().findElement(By.xpath("//p[contains(.,'"+arg0+"')]/../../..//div[@class='input-group--selection-controls__ripple']"));
+            xpath.click();
+            System.out.println("5");
+            return;
+
+        }
+        if(isElementPresent("//label[contains(.,'" + arg0 + "')]")) {
             WebElement xpath = getDriver().findElement(By.xpath("//label[contains(.,'" + arg0 + "')]"));
             xpath.click();
-        } catch (Exception e) {
+            System.out.println("1");
+            return;
         }
-        try {
+
+        if(isElementPresent("//span[contains(.,'" + arg0 + "')]//../..//div[@role='checkbox']")) {
             WebElement xpath = getDriver().findElement(By.xpath("//span[contains(.,'" + arg0 + "')]//../..//div[@role='checkbox']"));
             xpath.click();
-        } catch (Exception e) {
+            System.out.println("2");
+            return;
         }
-        try {
-            WebElement xpath = getDriver().findElement(By.xpath("//div[@class='"+arg0+"']//div[@role='checkbox']"));
+
+        if(isElementPresent("(//div[@class='"+arg0+"']//div[@role='checkbox']//div)[2]")) {
+            WebElement xpath = getDriver().findElement(By.xpath("(//div[@class='"+arg0+"']//div[@role='checkbox']//div)[2]"));
             xpath.click();
-        } catch (Exception e) {
+            System.out.println("3");
+            return;
         }
+        if(isElementPresent("//label[contains(.,'"+arg0+"')]/..//div[@class='input-group--selection-controls__ripple']")) {
+            WebElement xpath = getDriver().findElement(By.xpath("//label[contains(.,'"+arg0+"')]/..//div[@class='input-group--selection-controls__ripple']"));
+            xpath.click();
+            System.out.println("4");
+            return;
+
+        }
+
     }
 
     public void closePopup() {
@@ -1067,6 +1087,7 @@ public class CommonActions extends PageObject {
         int min = 1;
         int range = max - min + 1;
         random =  (int)(Math.random() * range) + min;
+        waitUntilElementVisible("(//div[@class='list']//a[@class='list__tile list__tile--link'])["+random+"]",30);
         getDriver().findElement(By.xpath("(//div[@class='list']//a[@class='list__tile list__tile--link'])["+random+"]")).click();
 
     }

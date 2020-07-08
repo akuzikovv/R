@@ -15,7 +15,7 @@ Feature: School Jobs
       | community |
       | jobs  |
       | bookings      |
-    Then  Header contains bell icon
+#    Then  Header contains bell icon
     Then  Header contains user photo icon
     Then  Header contains user name "Main Admin"
     Then  Header contains arrow down button
