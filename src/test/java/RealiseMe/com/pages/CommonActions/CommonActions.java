@@ -559,7 +559,7 @@ public class CommonActions extends PageObject {
     }
 
     public void uploadFile(String arg0) {
-        waitUntilElementVisible("//textarea[@type='text']", 60);
+        waitUntilElementVisible("//textarea[@type='text']", 10);
             WebElement uploadElement = getDriver().findElement(By.xpath("(//input[@class='input-file'])[1]"));
             uploadElement.sendKeys("/Users/Anton/IdeaProjects/RealiseMe4/src/test/resources/Files/" + arg0);
 
@@ -1094,6 +1094,56 @@ public class CommonActions extends PageObject {
 
     public void enterTheToTheField(String arg0, String arg1) {
         getDriver().findElement(By.xpath("//input[@placeholder='"+arg1+"']")).sendKeys(arg0);
+    }
+
+    public ArrayList<String> theAllEnteredDataToTheAccountSectionAreSaved(List<String> list) {
+        ArrayList<String> results = new ArrayList<>();
+        results.add(0, "true");
+        if (getDriver().getCurrentUrl().contains("school")){
+            SchoolSide=true;
+            System.out.println("SchoolSide = "+SchoolSide);
+            waitUntilElementVisible("//div[@class='MyInfoSchoolAccount-school' and contains(.,'"+list.get(0)+"')]",60);
+            if (!getDriver().findElement(By.xpath("//div[@class='MyInfoSchoolAccount-school' and contains(.,'"+list.get(0)+"')]")).isDisplayed()){
+//            !getDriver().findElement(By.xpath("//p[contains(.,'Address')]/..//div")).getText().equals(list.get(2))) {
+                results.set(0, "false");
+                results.add("School Account page isn't saved");
+//                results.add("Expected: "+list.get(2)+"; But found: "+getDriver().findElement(By.xpath("//p[contains(.,'Address')]/..//div")).getText());
+            } else {
+                for (int i = 1; i < list.size(); i++){
+                    if (!isElementPresent("//p[contains(.,'"+list.get(i)+"')]") &&
+                            !isElementPresent("//a[contains(.,'"+list.get(i)+"')]")&&
+                            !isElementPresent("//span[contains(.,'"+list.get(i)+"')]")) {
+                        results.set(0, "false");
+                        results.add("Expected: " + list.get(i) + "; but not displayed");
+                    }
+                }
+            }
+
+        }
+
+        return results;
+    }
+
+    public ArrayList<String> theTextIsDisplayedAtTheSection(String arg0, String arg1) {
+        waitUntilElementVisible("//div[@class='MyInfoDocuments-descr']",60);
+        ArrayList<String> results = new ArrayList<>();
+        results.add(0, "true");
+        if (!getDriver().findElement(By.xpath("//div[@class='MyInfoDocuments-descr']")).getText().equals(arg0)){
+            results.set(0, "false");
+            results.add("Expected: " + arg0 + "; but found: "+getDriver().findElement(By.xpath("//div[@class='MyInfoDocuments-descr']")).getText());
+        }
+        return results;
+    }
+
+    public ArrayList<String> uploadedFileIsSaved(String arg0) {
+        waitUntilElementVisible("//p[@class='MyInfoDocuments-file']",60);
+        ArrayList<String> results = new ArrayList<>();
+        results.add(0, "true");
+        if (!getDriver().findElement(By.xpath("//p[@class='MyInfoDocuments-file']")).getText().equals(arg0)){
+            results.set(0, "false");
+            results.add("Expected: " + arg0 + "; but found: "+getDriver().findElement(By.xpath("//p[@class='MyInfoDocuments-file']")).getText());
+        }
+        return results;
     }
 }
 

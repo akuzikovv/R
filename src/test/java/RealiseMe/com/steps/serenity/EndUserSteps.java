@@ -1104,6 +1104,25 @@ public class EndUserSteps  extends ScenarioSteps {
         commonActions.enterTheToTheField(arg0,arg1);
     }
 
+    @Step
+    public void theAllEnteredDataToTheAccountSectionAreSaved(List<String> list) {
+        ArrayList<String> results = commonActions.theAllEnteredDataToTheAccountSectionAreSaved(list);
+        Assert.assertTrue("Account page is wrong"+ results, "true".equals(results.get(0)));
+
+    }
+
+    @Step
+    public void theTextIsDisplayedAtTheSection(String arg0, String arg1) {
+        ArrayList<String> results = commonActions.theTextIsDisplayedAtTheSection(arg0,arg1);
+        Assert.assertTrue("Text isn't displayed"+ results, "true".equals(results.get(0)));
+    }
+
+    @Step
+    public void uploadedFileIsSaved(String arg0) {
+        ArrayList<String> results = commonActions.uploadedFileIsSaved(arg0);
+        Assert.assertTrue("File isn't saved"+ results, "true".equals(results.get(0)));
+    }
+
 
 //    @Step
 //    public void openReport() {

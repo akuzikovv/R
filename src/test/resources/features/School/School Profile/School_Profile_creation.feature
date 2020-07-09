@@ -59,7 +59,7 @@ Feature:  School profile Creation
 #    Then Delete "School" account
 
 
-  Scenario: Fill school profile
+  Scenario: Fill school's "Account" profile section
     Given open landing page
     When click on the agree button at the banner
     When Click on the login button
@@ -79,25 +79,31 @@ Feature:  School profile Creation
     When Choose "academy" checkbox
     When Choose "Policies" checkbox
     When Click on the "save" button
+    Then The all entered data to the Account section are saved
+    |Auto school|
+    |Short description|
+    |Apartment   |
+    |2 Wollstonecraft Street|
+    |London                 |
+    |N1C4BT                 |
+    |www.google.com         |
+    |primary                |
+    |Academy                |
+    |1234567890             |
+    |you have agreed to our T&Cs|
+
+  Scenario: Fill school's "Additional Document(s)" profile section
+    Given open landing page
+    When click on the agree button at the banner
+    When Click on the login button
+#    When Click on the school "Login as a school" button
+    When Enter login of new created user
+    When Enter password "Test123!"
+    When Click on the Log in button
+    Then The "Attach documents that may be useful to teachers, such as a school map and behaviour policy." text is displayed at the "Additional Document(s)" section
+    When CLick on the "edit" button at the "Additional Document(s)" section
+    When Upload "Candidate_Summary.pdf" file
+    When Click on the "save" button
+    Then Uploaded "Candidate_Summary.pdf" file is saved
     When wait time
     When wait time
-    When wait time
-    When wait time
-
-#    Scenario: click
-#      Given open landing page
-#      When click on the agree button at the banner
-#      When Click on the login button
-##    When Click on the school "Login as a school" button
-#      When Enter login "newuatschool167@sharklasers.com"
-#      When Enter password "Test123!"
-#      When Click on the Log in button
-#      When CLick on the "edit" button at the "Account" section
-#      When Choose "Policies" checkbox
-#      When wait time
-#      When wait time
-#      When wait time
-#      When wait time
-
-
-
