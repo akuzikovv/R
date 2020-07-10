@@ -1123,6 +1123,28 @@ public class EndUserSteps  extends ScenarioSteps {
         Assert.assertTrue("File isn't saved"+ results, "true".equals(results.get(0)));
     }
 
+    @Step
+    public void adminDetailsPageIsSaved(List<String> list) {
+        ArrayList<String> results = schoolAccountPage.adminDetailsPageIsSaved(list);
+        Assert.assertTrue("Section isn't saved"+ results, "true".equals(results.get(0)));
+    }
+
+    @Step
+    public void clickOnTheProfilingQuestion(String arg0) {
+        commonActions.clickOnTheProfilingQuestion(arg0);
+    }
+
+    @Step
+    public void dropdownContainsTheNextItems(List<String> list) {
+        ArrayList<String> results =   commonActions.dropdownContainsTheNextItems(list);
+        Assert.assertTrue("Dropdown contains wrong items"+ results, "true".equals(results.get(0)));
+    }
+
+    @Step
+    public void chooseTheItemInTheDropdown(String arg0) {
+        commonActions.chooseTheItemInTheDropdown(arg0);
+    }
+
 
 //    @Step
 //    public void openReport() {

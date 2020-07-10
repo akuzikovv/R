@@ -38,6 +38,7 @@ public class CommonActions extends PageObject {
     private int b;
     public WebDriverWait wait;
     public static int random;
+    public static int ProfilingQuestion_dropdown_counter;
     public String email_of_new_user;
     public String parentHandle;
     private static JSONParser parser = new JSONParser();
@@ -1093,7 +1094,9 @@ public class CommonActions extends PageObject {
     }
 
     public void enterTheToTheField(String arg0, String arg1) {
-        getDriver().findElement(By.xpath("//input[@placeholder='"+arg1+"']")).sendKeys(arg0);
+        if (isElementPresent("//input[@placeholder='"+arg1+"'])")) {
+            getDriver().findElement(By.xpath("//input[@placeholder='" + arg1 + "'])")).sendKeys(arg0);
+        }else getDriver().findElement(By.xpath("//p[contains(.,'"+arg1+"')]/..//input")).sendKeys(arg0);
     }
 
     public ArrayList<String> theAllEnteredDataToTheAccountSectionAreSaved(List<String> list) {
@@ -1144,6 +1147,36 @@ public class CommonActions extends PageObject {
             results.add("Expected: " + arg0 + "; but found: "+getDriver().findElement(By.xpath("//p[@class='MyInfoDocuments-file']")).getText());
         }
         return results;
+    }
+
+    public void clickOnTheProfilingQuestion(String arg0) {
+        getDriver().findElement(By.xpath("(//div[@class='menu'])["+arg0+"]/..//i")).click();
+        ProfilingQuestion_dropdown_counter = 6-Integer.parseInt(arg0);
+    }
+
+    public ArrayList<String> dropdownContainsTheNextItems(List<String> list) {
+        ArrayList<String> results = new ArrayList<>();
+        results.add(0, "true");
+//        if (getDriver().getCurrentUrl().contains("school")) {
+//            SchoolSide = true;
+//            System.out.println("SchoolSide = " + SchoolSide);
+        int number_of_item = 1;
+            for (int i = 0; i < list.size(); i++) {
+                waitUntilElementVisible("((//div[@class='list'])["+ProfilingQuestion_dropdown_counter+"]//div[@class='list__tile__title'])["+number_of_item+"]",30);
+                if (!list.get(i).equals(getDriver().findElement(By.xpath("((//div[@class='list'])["+ProfilingQuestion_dropdown_counter+"]//div[@class='list__tile__title'])["+number_of_item+"]")).getText().trim())) {
+                    results.set(0, "false");
+                    results.add("Expected: " + list.get(i) + "; but found: " + getDriver().findElement(By.xpath("((//div[@class='list'])["+ProfilingQuestion_dropdown_counter+"]//div[@class='list__tile__title'])["+number_of_item+"]")).getText().trim() + "\n");
+                    System.out.println("((//div[@class='list'])["+ProfilingQuestion_dropdown_counter+"]//div[@class='list__tile__title'])["+number_of_item+"]");
+                    break;
+                }
+                number_of_item++;
+            }
+//        }
+        return results;
+    }
+
+    public void chooseTheItemInTheDropdown(String arg0) {
+        getDriver().findElement(By.xpath("((//div[@class='list'])["+ProfilingQuestion_dropdown_counter+"]//div[@class='list__tile__title'])["+arg0+"]")).click();
     }
 }
 

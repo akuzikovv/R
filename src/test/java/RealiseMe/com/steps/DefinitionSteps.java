@@ -995,6 +995,28 @@ public class DefinitionSteps {
         steps.uploadedFileIsSaved(arg0);
     }
 
+    @Then("^Admin Details page is saved$")
+    public void adminDetailsPageIsSaved(List<String>list) {
+        steps.adminDetailsPageIsSaved(list);
+    }
+
+
+
+    @When("^Click on the \"([^\"]*)\" profiling question$")
+    public void clickOnTheProfilingQuestion(String arg0) throws Throwable {
+        steps.clickOnTheProfilingQuestion(arg0);
+    }
+
+    @When("^Dropdown contains the next items:$")
+    public void dropdownContainsTheNextItems(List<String>list) {
+        steps.dropdownContainsTheNextItems(list);
+    }
+
+    @When("^Choose the \"([^\"]*)\" item in the dropdown$")
+    public void chooseTheItemInTheDropdown(String arg0) throws Throwable {
+        steps.chooseTheItemInTheDropdown(arg0);
+    }
+
 
     //    @When("^Open report$")
 //    public void openReport() throws Throwable {

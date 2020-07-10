@@ -8,8 +8,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SchoolAccountPage  extends PageObject {
+
     CommonActions commonActions;
     public String clid = "ZQ0ZbBhkvOv3f7rxEKPxq557nxygPeRn";
+    public static int random;
 
     public ArrayList<String> schoolAccountPageContainsNecessaryElements(List<String> list) {
         ArrayList<String> labels = new ArrayList<>();
@@ -73,10 +75,25 @@ public class SchoolAccountPage  extends PageObject {
 
 
     public void enterTheSchoolNameToTheField(String arg0) {
-        getDriver().findElement(By.xpath("//input[@name='firstname']")).sendKeys(arg0);
+        int max = 1000;
+        int min = 1;
+        int range = max - min + 1;
+        random =  (int)(Math.random() * range) + min;
+        getDriver().findElement(By.xpath("//input[@name='firstname']")).sendKeys(arg0+" "+random);
     }
 
     public void enterTheShortDescriptionToTheField(String arg1, String arg0) {
         getDriver().findElement(By.xpath("//textarea[@placeholder='"+arg1+"']")).sendKeys(arg0);
+    }
+
+    public ArrayList<String> adminDetailsPageIsSaved(List<String> list) {
+        commonActions.waitUntilElementVisible("(//p[contains(.,'Name')]/..//p)[2]",20);
+        ArrayList<String> results = new ArrayList<>();
+        results.add(0, "true");
+        if (!getDriver().findElement(By.xpath("(//p[contains(.,'Name')]/..//p)[2]")).getText().equals(list.get(0))) {
+            results.set(0, "false");
+            results.add("Admin Details page isn't saved");
+        }
+        return results;
     }
 }
