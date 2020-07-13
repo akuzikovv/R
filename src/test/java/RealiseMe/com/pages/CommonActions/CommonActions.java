@@ -8,11 +8,11 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 import org.junit.Test;
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.NoSuchElementException;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.events.EventFiringWebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import javax.net.ssl.HttpsURLConnection;
@@ -24,6 +24,7 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.ProtocolException;
 import java.net.URL;
+import java.security.Key;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -65,7 +66,8 @@ public class CommonActions extends PageObject {
     private String month;
     private String year;
     private boolean creation_status;
-    private  boolean SchoolSide= false;
+    private boolean SchoolSide = false;
+    private boolean TeacherSide = false;
     //    public WebDriverWait wait = new WebDriverWait(getDriver(), 10);
 
 
@@ -77,6 +79,7 @@ public class CommonActions extends PageObject {
         }
 
     }
+
     public void waitUntilElementVisible(String arg, int time) {
         wait = new WebDriverWait(getDriver(), time);
         try {
@@ -85,6 +88,7 @@ public class CommonActions extends PageObject {
         }
 
     }
+
     public void waitUntilElementIsNotVisible(String arg, int time) {
         wait = new WebDriverWait(getDriver(), time);
         try {
@@ -93,6 +97,7 @@ public class CommonActions extends PageObject {
         }
 
     }
+
     public void waitUntilElementIsClickable(String arg, int time) {
         wait = new WebDriverWait(getDriver(), time);
         try {
@@ -113,13 +118,16 @@ public class CommonActions extends PageObject {
 
             try {
                 getDriver().findElement(By.xpath("(//button[contains(.,'" + arg0 + "')])[1]")).click();
-            }catch (Exception e){}
+            } catch (Exception e) {
+            }
             try {
                 getDriver().findElement(By.xpath("(//button[contains(.,'" + arg0 + "')])[2]")).click();
-            }catch (Exception e){}
+            } catch (Exception e) {
+            }
             try {
                 getDriver().findElement(By.xpath("(//button[contains(.,'" + arg0 + "')])[3]")).click();
-            }catch (Exception e){}
+            } catch (Exception e) {
+            }
             return;
 
         }
@@ -201,35 +209,35 @@ public class CommonActions extends PageObject {
     }
 
     public void chooseCheckbox(String arg0) {
-        if(isElementPresent("//p[contains(.,'"+arg0+"')]/../../..//div[@class='input-group--selection-controls__ripple']")) {
-            WebElement xpath = getDriver().findElement(By.xpath("//p[contains(.,'"+arg0+"')]/../../..//div[@class='input-group--selection-controls__ripple']"));
+        if (isElementPresent("//p[contains(.,'" + arg0 + "')]/../../..//div[@class='input-group--selection-controls__ripple']")) {
+            WebElement xpath = getDriver().findElement(By.xpath("//p[contains(.,'" + arg0 + "')]/../../..//div[@class='input-group--selection-controls__ripple']"));
             xpath.click();
             System.out.println("5");
             return;
 
         }
-        if(isElementPresent("//label[contains(.,'" + arg0 + "')]")) {
+        if (isElementPresent("//label[contains(.,'" + arg0 + "')]")) {
             WebElement xpath = getDriver().findElement(By.xpath("//label[contains(.,'" + arg0 + "')]"));
             xpath.click();
             System.out.println("1");
             return;
         }
 
-        if(isElementPresent("//span[contains(.,'" + arg0 + "')]//../..//div[@role='checkbox']")) {
+        if (isElementPresent("//span[contains(.,'" + arg0 + "')]//../..//div[@role='checkbox']")) {
             WebElement xpath = getDriver().findElement(By.xpath("//span[contains(.,'" + arg0 + "')]//../..//div[@role='checkbox']"));
             xpath.click();
             System.out.println("2");
             return;
         }
 
-        if(isElementPresent("(//div[@class='"+arg0+"']//div[@role='checkbox']//div)[2]")) {
-            WebElement xpath = getDriver().findElement(By.xpath("(//div[@class='"+arg0+"']//div[@role='checkbox']//div)[2]"));
+        if (isElementPresent("(//div[@class='" + arg0 + "']//div[@role='checkbox']//div)[2]")) {
+            WebElement xpath = getDriver().findElement(By.xpath("(//div[@class='" + arg0 + "']//div[@role='checkbox']//div)[2]"));
             xpath.click();
             System.out.println("3");
             return;
         }
-        if(isElementPresent("//label[contains(.,'"+arg0+"')]/..//div[@class='input-group--selection-controls__ripple']")) {
-            WebElement xpath = getDriver().findElement(By.xpath("//label[contains(.,'"+arg0+"')]/..//div[@class='input-group--selection-controls__ripple']"));
+        if (isElementPresent("//label[contains(.,'" + arg0 + "')]/..//div[@class='input-group--selection-controls__ripple']")) {
+            WebElement xpath = getDriver().findElement(By.xpath("//label[contains(.,'" + arg0 + "')]/..//div[@class='input-group--selection-controls__ripple']"));
             xpath.click();
             System.out.println("4");
             return;
@@ -414,7 +422,7 @@ public class CommonActions extends PageObject {
         random = (int) (Math.random() * 400 + 111);
         Serenity.getCurrentSession().addMetaData("user type", arg0);
         email_of_new_user = arg0 + random + "@sharklasers.com";
-        Serenity.getCurrentSession().addMetaData("emailOfNewUser",email_of_new_user);
+        Serenity.getCurrentSession().addMetaData("emailOfNewUser", email_of_new_user);
         $(ILocators.Email_field).sendKeys(email_of_new_user);
     }
 
@@ -424,6 +432,9 @@ public class CommonActions extends PageObject {
 
     public void enterLoginOfNewCreatedUser() {
         getDriver().findElement(By.xpath("//input[@type='email']")).sendKeys(Serenity.getCurrentSession().getMetaData().get("emailOfNewUser"));
+        if (Serenity.getCurrentSession().getMetaData().get("emailOfNewUser").contains("school")) {
+            Serenity.getCurrentSession().addMetaData("emailOfNewSchoolUser", Serenity.getCurrentSession().getMetaData().get("emailOfNewUser"));
+        }
         System.out.println(Serenity.getCurrentSession().getMetaData().get("emailOfNewUser"));
     }
 
@@ -521,7 +532,7 @@ public class CommonActions extends PageObject {
     }
 
     public void clickOnTheSignUpButton() {
-        waitUntilElementVisible(ILocators.sign_up,60);
+        waitUntilElementVisible(ILocators.sign_up, 60);
         getDriver().findElement(By.xpath(ILocators.sign_up)).click();
     }
 
@@ -561,11 +572,11 @@ public class CommonActions extends PageObject {
 
     public void uploadFile(String arg0) {
         waitUntilElementVisible("//textarea[@type='text']", 10);
-            WebElement uploadElement = getDriver().findElement(By.xpath("(//input[@class='input-file'])[1]"));
-            uploadElement.sendKeys("/Users/Anton/IdeaProjects/RealiseMe4/src/test/resources/Files/" + arg0);
+        WebElement uploadElement = getDriver().findElement(By.xpath("(//input[@class='input-file'])[1]"));
+        uploadElement.sendKeys("/Users/Anton/IdeaProjects/RealiseMe4/src/test/resources/Files/" + arg0);
 
         try {
-             uploadElement = getDriver().findElement(By.xpath("(//input[@class='input-file'])[2]"));
+            uploadElement = getDriver().findElement(By.xpath("(//input[@class='input-file'])[2]"));
             uploadElement.sendKeys("/Users/Anton/IdeaProjects/RealiseMe4/src/test/resources/Files/" + arg0);
         } catch (Exception e) {
         }
@@ -618,51 +629,49 @@ public class CommonActions extends PageObject {
         System.out.println(getBookingIDFromJson().get(0));
         System.out.println(getBookingIDFromJson().get(1));
         System.out.println(getBookingIDFromJson().get(2));
-        System.out.println("bookingShortID = "+Serenity.getCurrentSession().getMetaData().get("bookingShortID"));
-        System.out.println("bookingShortIDforTimesheets = "+Serenity.getCurrentSession().getMetaData().get("bookingShortIDforTimesheets"));
+        System.out.println("bookingShortID = " + Serenity.getCurrentSession().getMetaData().get("bookingShortID"));
+        System.out.println("bookingShortIDforTimesheets = " + Serenity.getCurrentSession().getMetaData().get("bookingShortIDforTimesheets"));
         System.out.println(getDriver().getCurrentUrl());
-        if (getDriver().getCurrentUrl().contains("school")){
-            SchoolSide=true;
-            System.out.println("SchoolSide = "+SchoolSide);
-            if (isElementPresent("//span[contains(.,'"+Serenity.getCurrentSession().getMetaData().get("bookingShortIDforTimesheets")+"')]")){
-                getDriver().findElement(By.xpath("//span[contains(.,'"+Serenity.getCurrentSession().getMetaData().get("bookingShortIDforTimesheets")+"')]/..//div[@class='role' and contains(.,'"+arg0+"')]")).click();
+        if (getDriver().getCurrentUrl().contains("school")) {
+            SchoolSide = true;
+            System.out.println("SchoolSide = " + SchoolSide);
+            if (isElementPresent("//span[contains(.,'" + Serenity.getCurrentSession().getMetaData().get("bookingShortIDforTimesheets") + "')]")) {
+                getDriver().findElement(By.xpath("//span[contains(.,'" + Serenity.getCurrentSession().getMetaData().get("bookingShortIDforTimesheets") + "')]/..//div[@class='role' and contains(.,'" + arg0 + "')]")).click();
                 System.out.println("Clicked");
-            }else
-                if (isElementPresent("//span[contains(text(),'Next')]")) {
-                    getDriver().findElement(By.xpath("//span[contains(text(),'Next')]")).click();
-                }
-        }
-        else for (int i = 1; i < 11 + 1; i++) {
+            } else if (isElementPresent("//span[contains(text(),'Next')]")) {
+                getDriver().findElement(By.xpath("//span[contains(text(),'Next')]")).click();
+            }
+        } else for (int i = 1; i < 11 + 1; i++) {
 //            if (!SchoolSide) {
-                getDriver().findElement(By.xpath("(//button[@class='open' and contains(.,'+')])[" + i + "]")).click();
+            getDriver().findElement(By.xpath("(//button[@class='open' and contains(.,'+')])[" + i + "]")).click();
 //            }
             if (getDriver().findElement(By.xpath("(//p[@class='hidden-content__block-description'])[1]")).getText().equals(getBookingIDFromJson().get(0)) ||
-                   getDriver().findElement(By.xpath("(//p[@class='hidden-content__block-description'])[1]")).getText().equals(getBookingIDFromJson().get(1)) ||
+                    getDriver().findElement(By.xpath("(//p[@class='hidden-content__block-description'])[1]")).getText().equals(getBookingIDFromJson().get(1)) ||
                     getDriver().findElement(By.xpath("(//p[@class='hidden-content__block-description'])[1]")).getText().equals(getBookingIDFromJson().get(2)) ||
-                   getDriver().findElement(By.xpath("(//p[@class='hidden-content__block-description'])[1]")).getText().equals(Serenity.getCurrentSession().getMetaData().get("bookingShortID"))){
+                    getDriver().findElement(By.xpath("(//p[@class='hidden-content__block-description'])[1]")).getText().equals(Serenity.getCurrentSession().getMetaData().get("bookingShortID"))) {
                 if (arg0.equals("timesheet")) {
-                    Serenity.getCurrentSession().addMetaData("bookingShortIDforTimesheets",getDriver().findElement(By.xpath("(//p[@class='hidden-content__block-description'])[1]")).getText());
+                    Serenity.getCurrentSession().addMetaData("bookingShortIDforTimesheets", getDriver().findElement(By.xpath("(//p[@class='hidden-content__block-description'])[1]")).getText());
                     getDriver().findElement(By.xpath("//p[@class='hidden-content__block-description']/../../../../../..//a[@class='timesheet__link' and contains(.,'timesheet')]")).click();
                     break;
                 } else {
 //                    if (SchoolSide){
 //                            getDriver().findElement(By.xpath("//span[contains(.,'"+Serenity.getCurrentSession().getMetaData().get("acceptedTimesheetByTeacher")+"')]/..//div[@class='role' and contains(.,'"+arg0+"')]")).click();
 //                    }
-                    if (arg0.equals("accept")|| arg0.equals("decline")) {
+                    if (arg0.equals("accept") || arg0.equals("decline")) {
                         getDriver().findElement(By.xpath("//p[@class='hidden-content__block-description']/../../../../../..//button[contains(.,'" + arg0 + "')]")).click();
                         break;
                     }
                 }
             } else {
 //                if (!SchoolSide) {
-                    getDriver().findElement(By.xpath("//button[@class='open' and contains(.,'-')]")).click();
+                getDriver().findElement(By.xpath("//button[@class='open' and contains(.,'-')]")).click();
 //                }
                 if ((i == 10) & isElementPresent("//span[contains(text(),'Next')]")) {
                     getDriver().findElement(By.xpath("//span[contains(text(),'Next')]")).click();
                     i = 0;
                 }
 
-        }
+            }
         }
 
 
@@ -724,11 +733,11 @@ public class CommonActions extends PageObject {
 ////            getDriver().findElement(By.xpath("//p[contains(.,'" + Serenity.getCurrentSession().getMetaData().get("bookingShortID") + "')]/..//a")).click();
 ////            return;
 ////        }
-        }
+    }
 
 
-        //    @Test
-        public void createBookingUsingRequestAPI (List < String > list) throws IOException, ParseException {
+    //    @Test
+    public void createBookingUsingRequestAPI(List<String> list) throws IOException, ParseException {
         getAccessTokenAuth0();
         String body = "{\"operationName\":\"createBooking\",\"variables\":{\"input\":{" +
                 list.get(0) + "," +
@@ -780,287 +789,286 @@ public class CommonActions extends PageObject {
     }
 
 
-
-        public void acceptBookingAsClearedTeacherUsingRequestAPI (List < String > list) throws
-        IOException, ParseException {
-            getAccessTokenAuth0();
-            String body = "{\"operationName\":\"acceptingBookingTeacher\",\"variables\":\n" +
-                    "            {\"payload\":{" +
-                    list.get(0) + "," + "\"bookingId\":\"" +
-                    Serenity.getCurrentSession().getMetaData().get("bookingLongId") + "\"," +
-                    list.get(1) + "}}," +
-                    " \"query\":\"mutation acceptingBookingTeacher($payload: BookingPayload!) {\\n  userAcceptedBooking(input: $payload)\\n}\\n\"}";
-            String url = "https://29cwhlvcb3.execute-api.us-east-1.amazonaws.com/uat/graphql";
-            urlObject = new URL(url);
-            HttpsURLConnection connection = (HttpsURLConnection) urlObject.openConnection();
-            connection.setRequestMethod("POST");
-            connection.setRequestProperty("content-type", "application/json");
-            connection.setRequestProperty("authorization", token);
-            connection.setDoOutput(true);
-            try (OutputStream os = connection.getOutputStream()) {
-                byte[] input = body.getBytes("utf-8");
-                os.write(input, 0, input.length);
-            }
-            try (BufferedReader br = new BufferedReader(
-                    new InputStreamReader(connection.getInputStream(), "utf-8"))) {
-                StringBuilder response = new StringBuilder();
-                String encoding = connection.getContentEncoding();
-                String responseLine = null;
-                encoding = encoding == null ? "UTF-8" : encoding;
-                String respbody = IOUtils.toString(connection.getInputStream(), encoding);
-                while ((responseLine = br.readLine()) != null) {
-                    response.append(responseLine.trim());
-                }
-                JSONObject jsonObject = (JSONObject) parser.parse(respbody);
-                System.out.println(jsonObject.toString());
-            }
+    public void acceptBookingAsClearedTeacherUsingRequestAPI(List<String> list) throws
+            IOException, ParseException {
+        getAccessTokenAuth0();
+        String body = "{\"operationName\":\"acceptingBookingTeacher\",\"variables\":\n" +
+                "            {\"payload\":{" +
+                list.get(0) + "," + "\"bookingId\":\"" +
+                Serenity.getCurrentSession().getMetaData().get("bookingLongId") + "\"," +
+                list.get(1) + "}}," +
+                " \"query\":\"mutation acceptingBookingTeacher($payload: BookingPayload!) {\\n  userAcceptedBooking(input: $payload)\\n}\\n\"}";
+        String url = "https://29cwhlvcb3.execute-api.us-east-1.amazonaws.com/uat/graphql";
+        urlObject = new URL(url);
+        HttpsURLConnection connection = (HttpsURLConnection) urlObject.openConnection();
+        connection.setRequestMethod("POST");
+        connection.setRequestProperty("content-type", "application/json");
+        connection.setRequestProperty("authorization", token);
+        connection.setDoOutput(true);
+        try (OutputStream os = connection.getOutputStream()) {
+            byte[] input = body.getBytes("utf-8");
+            os.write(input, 0, input.length);
         }
-
-        public void approveBookingAsSchoolUsingRequestAPI (List < String > list) throws IOException, ParseException {
-            getAccessTokenAuth0();
-            String body = "{\"operationName\":\"schoolAcceptTeacher\",\"variables\":{" +
-                    list.get(0) + "," + "\"bookingId\":\"" +
-                    Serenity.getCurrentSession().getMetaData().get("bookingLongId") + "\"," +
-                    list.get(1) + "},\n" +
-                    "\"query\":\"mutation schoolAcceptTeacher($userId: String!, $bookingId: String!, $schoolId: String!){schoolAcceptTeacher(userId: $userId, bookingId: $bookingId, schoolId: $schoolId)}\"}";
-            String url = "https://29cwhlvcb3.execute-api.us-east-1.amazonaws.com/uat/graphql";
-            urlObject = new URL(url);
-            HttpsURLConnection connection = (HttpsURLConnection) urlObject.openConnection();
-            connection.setRequestMethod("POST");
-            connection.setRequestProperty("content-type", "application/json");
-            connection.setRequestProperty("authorization", token);
-            connection.setDoOutput(true);
-            try (OutputStream os = connection.getOutputStream()) {
-                byte[] input = body.getBytes("utf-8");
-                os.write(input, 0, input.length);
+        try (BufferedReader br = new BufferedReader(
+                new InputStreamReader(connection.getInputStream(), "utf-8"))) {
+            StringBuilder response = new StringBuilder();
+            String encoding = connection.getContentEncoding();
+            String responseLine = null;
+            encoding = encoding == null ? "UTF-8" : encoding;
+            String respbody = IOUtils.toString(connection.getInputStream(), encoding);
+            while ((responseLine = br.readLine()) != null) {
+                response.append(responseLine.trim());
             }
-            try (BufferedReader br = new BufferedReader(
-                    new InputStreamReader(connection.getInputStream(), "utf-8"))) {
-                StringBuilder response = new StringBuilder();
-                String encoding = connection.getContentEncoding();
-                String responseLine = null;
-                encoding = encoding == null ? "UTF-8" : encoding;
-                String respbody = IOUtils.toString(connection.getInputStream(), encoding);
-                while ((responseLine = br.readLine()) != null) {
-                    response.append(responseLine.trim());
-                }
-                JSONObject jsonObject = (JSONObject) parser.parse(respbody);
-                System.out.println(body);
-                System.out.println(jsonObject.toString());
+            JSONObject jsonObject = (JSONObject) parser.parse(respbody);
+            System.out.println(jsonObject.toString());
+        }
+    }
+
+    public void approveBookingAsSchoolUsingRequestAPI(List<String> list) throws IOException, ParseException {
+        getAccessTokenAuth0();
+        String body = "{\"operationName\":\"schoolAcceptTeacher\",\"variables\":{" +
+                list.get(0) + "," + "\"bookingId\":\"" +
+                Serenity.getCurrentSession().getMetaData().get("bookingLongId") + "\"," +
+                list.get(1) + "},\n" +
+                "\"query\":\"mutation schoolAcceptTeacher($userId: String!, $bookingId: String!, $schoolId: String!){schoolAcceptTeacher(userId: $userId, bookingId: $bookingId, schoolId: $schoolId)}\"}";
+        String url = "https://29cwhlvcb3.execute-api.us-east-1.amazonaws.com/uat/graphql";
+        urlObject = new URL(url);
+        HttpsURLConnection connection = (HttpsURLConnection) urlObject.openConnection();
+        connection.setRequestMethod("POST");
+        connection.setRequestProperty("content-type", "application/json");
+        connection.setRequestProperty("authorization", token);
+        connection.setDoOutput(true);
+        try (OutputStream os = connection.getOutputStream()) {
+            byte[] input = body.getBytes("utf-8");
+            os.write(input, 0, input.length);
+        }
+        try (BufferedReader br = new BufferedReader(
+                new InputStreamReader(connection.getInputStream(), "utf-8"))) {
+            StringBuilder response = new StringBuilder();
+            String encoding = connection.getContentEncoding();
+            String responseLine = null;
+            encoding = encoding == null ? "UTF-8" : encoding;
+            String respbody = IOUtils.toString(connection.getInputStream(), encoding);
+            while ((responseLine = br.readLine()) != null) {
+                response.append(responseLine.trim());
             }
-        }
-
-
-        public void changeBookingStatusToCompleted (List < String > list) throws IOException, ParseException {
-            getAccessTokenAuth0();
-            String body = "{\"query\": \"mutation { adminCompleteBooking(" + list.get(0) + ", booking_id: \\\"" + Serenity.getCurrentSession().getMetaData().get("bookingLongId") + "\\\")}\", \"variables\":null}";
-            String url = "https://29cwhlvcb3.execute-api.us-east-1.amazonaws.com/uat/graphql";
-            urlObject = new URL(url);
-//        System.out.println(body);
-            HttpsURLConnection connection = (HttpsURLConnection) urlObject.openConnection();
-            connection.setRequestMethod("POST");
-            connection.setRequestProperty("content-type", "application/json");
-            connection.setRequestProperty("authorization", token);
-            connection.setDoOutput(true);
-            try (OutputStream os = connection.getOutputStream()) {
-                byte[] input = body.getBytes("utf-8");
-                os.write(input, 0, input.length);
-            }
-            try (BufferedReader br = new BufferedReader(
-                    new InputStreamReader(connection.getInputStream(), "utf-8"))) {
-                StringBuilder response = new StringBuilder();
-                String encoding = connection.getContentEncoding();
-                String responseLine = null;
-                encoding = encoding == null ? "UTF-8" : encoding;
-                String respbody = IOUtils.toString(connection.getInputStream(), encoding);
-                while ((responseLine = br.readLine()) != null) {
-                    response.append(responseLine.trim());
-                }
-                JSONObject jsonObject = (JSONObject) parser.parse(respbody);
-                System.out.println(jsonObject.toString());
-            }
-        }
-
-        public void enterEmailOfAppropriateTeacher (String arg0){
-            getDriver().findElement(By.xpath("//span[@title='Click to Edit']")).click();
-            getDriver().findElement(By.xpath("(//input[@type='text'])[2]")).sendKeys(arg0);
-            getDriver().findElement(By.xpath("//button[contains(.,'Set')]")).click();
-            waitABit(30000);
-
-        }
-
-        public void chooseAppropriateEmailMessage (String arg0){
-            wait = new WebDriverWait(getDriver(), 100);
-            wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//td[contains(.,'" + arg0 + "')]")));
-            getDriver().findElement(By.xpath("//td[contains(.,'" + arg0 + "')]")).click();
-            String message = getDriver().findElement(By.xpath("(//tbody)[6]")).getText().substring(53).trim().trim().trim();
-            System.out.println(message);
-            waitABit(2000);
-
-        }
-
-
-        public void removeAllUserBookingsUsingRequestAPI (List < String > list) throws IOException, ParseException {
-            getAccessTokenAuth0();
-            String body = "{\"query\": \"mutation { adminRemoveUserBookings(" + list.get(0) + "," + list.get(1) + "){id,short_id,name,description}}\", \"variables\":null}";
-            String url = "https://29cwhlvcb3.execute-api.us-east-1.amazonaws.com/uat/graphql";
-            urlObject = new URL(url);
+            JSONObject jsonObject = (JSONObject) parser.parse(respbody);
             System.out.println(body);
-            HttpsURLConnection connection = (HttpsURLConnection) urlObject.openConnection();
-            connection.setRequestMethod("POST");
-            connection.setRequestProperty("content-type", "application/json");
-            connection.setRequestProperty("authorization", token);
-            connection.setDoOutput(true);
-            try (OutputStream os = connection.getOutputStream()) {
-                byte[] input = body.getBytes("utf-8");
-                os.write(input, 0, input.length);
+            System.out.println(jsonObject.toString());
+        }
+    }
+
+
+    public void changeBookingStatusToCompleted(List<String> list) throws IOException, ParseException {
+        getAccessTokenAuth0();
+        String body = "{\"query\": \"mutation { adminCompleteBooking(" + list.get(0) + ", booking_id: \\\"" + Serenity.getCurrentSession().getMetaData().get("bookingLongId") + "\\\")}\", \"variables\":null}";
+        String url = "https://29cwhlvcb3.execute-api.us-east-1.amazonaws.com/uat/graphql";
+        urlObject = new URL(url);
+//        System.out.println(body);
+        HttpsURLConnection connection = (HttpsURLConnection) urlObject.openConnection();
+        connection.setRequestMethod("POST");
+        connection.setRequestProperty("content-type", "application/json");
+        connection.setRequestProperty("authorization", token);
+        connection.setDoOutput(true);
+        try (OutputStream os = connection.getOutputStream()) {
+            byte[] input = body.getBytes("utf-8");
+            os.write(input, 0, input.length);
+        }
+        try (BufferedReader br = new BufferedReader(
+                new InputStreamReader(connection.getInputStream(), "utf-8"))) {
+            StringBuilder response = new StringBuilder();
+            String encoding = connection.getContentEncoding();
+            String responseLine = null;
+            encoding = encoding == null ? "UTF-8" : encoding;
+            String respbody = IOUtils.toString(connection.getInputStream(), encoding);
+            while ((responseLine = br.readLine()) != null) {
+                response.append(responseLine.trim());
             }
-            try (BufferedReader br = new BufferedReader(
-                    new InputStreamReader(connection.getInputStream(), "utf-8"))) {
-                StringBuilder response = new StringBuilder();
-                String encoding = connection.getContentEncoding();
-                String responseLine = null;
-                encoding = encoding == null ? "UTF-8" : encoding;
-                String respbody = IOUtils.toString(connection.getInputStream(), encoding);
-                while ((responseLine = br.readLine()) != null) {
-                    response.append(responseLine.trim());
-                }
-                JSONObject jsonObject = (JSONObject) parser.parse(respbody);
-                System.out.println(jsonObject.toString());
+            JSONObject jsonObject = (JSONObject) parser.parse(respbody);
+            System.out.println(jsonObject.toString());
+        }
+    }
+
+    public void enterEmailOfAppropriateTeacher(String arg0) {
+        getDriver().findElement(By.xpath("//span[@title='Click to Edit']")).click();
+        getDriver().findElement(By.xpath("(//input[@type='text'])[2]")).sendKeys(arg0);
+        getDriver().findElement(By.xpath("//button[contains(.,'Set')]")).click();
+        waitABit(30000);
+
+    }
+
+    public void chooseAppropriateEmailMessage(String arg0) {
+        wait = new WebDriverWait(getDriver(), 100);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//td[contains(.,'" + arg0 + "')]")));
+        getDriver().findElement(By.xpath("//td[contains(.,'" + arg0 + "')]")).click();
+        String message = getDriver().findElement(By.xpath("(//tbody)[6]")).getText().substring(53).trim().trim().trim();
+        System.out.println(message);
+        waitABit(2000);
+
+    }
+
+
+    public void removeAllUserBookingsUsingRequestAPI(List<String> list) throws IOException, ParseException {
+        getAccessTokenAuth0();
+        String body = "{\"query\": \"mutation { adminRemoveUserBookings(" + list.get(0) + "," + list.get(1) + "){id,short_id,name,description}}\", \"variables\":null}";
+        String url = "https://29cwhlvcb3.execute-api.us-east-1.amazonaws.com/uat/graphql";
+        urlObject = new URL(url);
+        System.out.println(body);
+        HttpsURLConnection connection = (HttpsURLConnection) urlObject.openConnection();
+        connection.setRequestMethod("POST");
+        connection.setRequestProperty("content-type", "application/json");
+        connection.setRequestProperty("authorization", token);
+        connection.setDoOutput(true);
+        try (OutputStream os = connection.getOutputStream()) {
+            byte[] input = body.getBytes("utf-8");
+            os.write(input, 0, input.length);
+        }
+        try (BufferedReader br = new BufferedReader(
+                new InputStreamReader(connection.getInputStream(), "utf-8"))) {
+            StringBuilder response = new StringBuilder();
+            String encoding = connection.getContentEncoding();
+            String responseLine = null;
+            encoding = encoding == null ? "UTF-8" : encoding;
+            String respbody = IOUtils.toString(connection.getInputStream(), encoding);
+            while ((responseLine = br.readLine()) != null) {
+                response.append(responseLine.trim());
             }
-
+            JSONObject jsonObject = (JSONObject) parser.parse(respbody);
+            System.out.println(jsonObject.toString());
         }
 
-        public void chooseRadiobutton (String arg0){
-            getDriver().findElement(By.xpath("//div[contains(.,'" + arg0 + "') and @class='radio-button']")).click();
-        }
+    }
+
+    public void chooseRadiobutton(String arg0) {
+        getDriver().findElement(By.xpath("//div[contains(.,'" + arg0 + "') and @class='radio-button']")).click();
+    }
 
 
-        public String getDate () {
-            date = java.time.LocalDate.now().toString().substring(8, 10);
-            month = java.time.LocalDate.now().toString().substring(5, 7);
-            year = java.time.LocalDate.now().toString().substring(0, 4);
-            current_date = date + ", " + year;
-            System.out.println(current_date);
-            return current_date;
-        }
+    public String getDate() {
+        date = java.time.LocalDate.now().toString().substring(8, 10);
+        month = java.time.LocalDate.now().toString().substring(5, 7);
+        year = java.time.LocalDate.now().toString().substring(0, 4);
+        current_date = date + ", " + year;
+        System.out.println(current_date);
+        return current_date;
+    }
 
-        public void enterTextToTheTextField (String arg0){
-            waitUntilElementVisible("//textarea[@type='text']", 60);
-            getDriver().findElement(By.xpath("//textarea[@type='text']")).sendKeys(arg0);
-            Serenity.getCurrentSession().addMetaData("covering message", arg0);
-        }
+    public void enterTextToTheTextField(String arg0) {
+        waitUntilElementVisible("//textarea[@type='text']", 60);
+        getDriver().findElement(By.xpath("//textarea[@type='text']")).sendKeys(arg0);
+        Serenity.getCurrentSession().addMetaData("covering message", arg0);
+    }
 
-        public ArrayList<String> theMessageLinkOfFirstApplicantHasRightEmailAddress (String arg0){
-            ArrayList<String> results = new ArrayList<>();
-            results.add(0, "true");
-            if (!getDriver().findElement(By.xpath("(//div[@class='table-body']//a)[1]")).isDisplayed()) {
+    public ArrayList<String> theMessageLinkOfFirstApplicantHasRightEmailAddress(String arg0) {
+        ArrayList<String> results = new ArrayList<>();
+        results.add(0, "true");
+        if (!getDriver().findElement(By.xpath("(//div[@class='table-body']//a)[1]")).isDisplayed()) {
+            results.set(0, "false");
+            results.add("Message link isn't displayed");
+        } else {
+            if ((!arg0.equals(getDriver().findElement(By.xpath("(//div[@class='table-body']//a)[1]")).getAttribute("href").substring(7)))) {
                 results.set(0, "false");
-                results.add("Message link isn't displayed");
-            } else {
-                if ((!arg0.equals(getDriver().findElement(By.xpath("(//div[@class='table-body']//a)[1]")).getAttribute("href").substring(7)))) {
-                    results.set(0, "false");
-                    results.add("Expected: " + arg0 + "; but found: " + getDriver().findElement(By.xpath("(//div[@class='table-body']//p[@class='received'])[1]")).getAttribute("href").substring(7) + "\n");
-                }
+                results.add("Expected: " + arg0 + "; but found: " + getDriver().findElement(By.xpath("(//div[@class='table-body']//p[@class='received'])[1]")).getAttribute("href").substring(7) + "\n");
             }
-            return results;
-
         }
+        return results;
 
-        public void createLogicMelonJobThroughAPI (List < String > list) throws IOException, ParseException {
-            random = (int) (Math.random() * 1000 + 111);
-            getDate();
-            String body = "{\"query\":\"mutation job($input: MelonJobPayload!) {\\n  postMelonJob(input: $input) {\\n    status\\n    message\\n    error {\\n      message\\n    }\\n  }\\n}\",\n" +
-                    "\"variables\":{\n" +
-                    "\t\"input\":{\n" +
-                    list.get(0) + ",\n" +
-                    "\"job_details\":{\n" +
-                    "\"name\":\"Job melon " + random + "\",\n" +
-                    "\"description\":\"logic-melon " + random + "\",\n" +
-                    "\"closing_date\":\"" + year + "/" + month + "/" + date + "\",\n" +
-                    "\"salary\":\"" + random + "\",\n" +
-                    "\"anonymisation\":false,\n" +
-                    "\"video_prescreening\":false,\n" +
-                    "\"video_interview\":false},\n" +
-                    "\n" +
-                    "\"skills\":[],\n" +
-                    "\"application_form\":[],\n" +
-                    "\"additional_documents\":[],\n" +
-                    "\"contractTypes\":[\n" +
-                    "{\"contract_type_id\":\"7f12270c-5f6a-423d-ad30-d2036dae5824\"},\n" +
-                    "{\"contract_type_id\":\"69288980-0bc6-4546-a664-9df911478731\"}],\n" +
-                    "\"contractTerms\":[\n" +
-                    "{\"contract_term_id\":\"934b04cc-febf-4c63-90fa-7ba771398056\"},\n" +
-                    "{\"contract_term_id\":\"7425f578-7d18-4975-966b-132f531710bf\"}]}\n" +
-                    "},\n" +
-                    "\"operationName\":\"job\"\n" +
-                    "}";
-            Serenity.getCurrentSession().addMetaData("job name", "Job melon " + random);
-            Serenity.getCurrentSession().addMetaData("job description", "logic-melon " + random);
-            Serenity.getCurrentSession().addMetaData("Salary", String.valueOf(random));
-            String url = "https://mor1qbbju2.execute-api.us-east-1.amazonaws.com/uat/graphql";//uat
+    }
+
+    public void createLogicMelonJobThroughAPI(List<String> list) throws IOException, ParseException {
+        random = (int) (Math.random() * 1000 + 111);
+        getDate();
+        String body = "{\"query\":\"mutation job($input: MelonJobPayload!) {\\n  postMelonJob(input: $input) {\\n    status\\n    message\\n    error {\\n      message\\n    }\\n  }\\n}\",\n" +
+                "\"variables\":{\n" +
+                "\t\"input\":{\n" +
+                list.get(0) + ",\n" +
+                "\"job_details\":{\n" +
+                "\"name\":\"Job melon " + random + "\",\n" +
+                "\"description\":\"logic-melon " + random + "\",\n" +
+                "\"closing_date\":\"" + year + "/" + month + "/" + date + "\",\n" +
+                "\"salary\":\"" + random + "\",\n" +
+                "\"anonymisation\":false,\n" +
+                "\"video_prescreening\":false,\n" +
+                "\"video_interview\":false},\n" +
+                "\n" +
+                "\"skills\":[],\n" +
+                "\"application_form\":[],\n" +
+                "\"additional_documents\":[],\n" +
+                "\"contractTypes\":[\n" +
+                "{\"contract_type_id\":\"7f12270c-5f6a-423d-ad30-d2036dae5824\"},\n" +
+                "{\"contract_type_id\":\"69288980-0bc6-4546-a664-9df911478731\"}],\n" +
+                "\"contractTerms\":[\n" +
+                "{\"contract_term_id\":\"934b04cc-febf-4c63-90fa-7ba771398056\"},\n" +
+                "{\"contract_term_id\":\"7425f578-7d18-4975-966b-132f531710bf\"}]}\n" +
+                "},\n" +
+                "\"operationName\":\"job\"\n" +
+                "}";
+        Serenity.getCurrentSession().addMetaData("job name", "Job melon " + random);
+        Serenity.getCurrentSession().addMetaData("job description", "logic-melon " + random);
+        Serenity.getCurrentSession().addMetaData("Salary", String.valueOf(random));
+        String url = "https://mor1qbbju2.execute-api.us-east-1.amazonaws.com/uat/graphql";//uat
 //            String url = "https://m0k6bdan78.execute-api.us-east-1.amazonaws.com/dev/graphql";//dev
-            urlObject = new URL(url);
-            HttpsURLConnection connection = (HttpsURLConnection) urlObject.openConnection();
-            connection.setRequestMethod("POST");
-            connection.setRequestProperty("content-type", "application/json");
-            connection.setRequestProperty("x-api-key", "JaiK7RbyVK6urN2WREaBeO4nhMNloH32fp6ecarg");//uat
+        urlObject = new URL(url);
+        HttpsURLConnection connection = (HttpsURLConnection) urlObject.openConnection();
+        connection.setRequestMethod("POST");
+        connection.setRequestProperty("content-type", "application/json");
+        connection.setRequestProperty("x-api-key", "JaiK7RbyVK6urN2WREaBeO4nhMNloH32fp6ecarg");//uat
 //            connection.setRequestProperty("x-api-key", "XdCiMyMZ2VaBZOeFUYhgw6CjFkDwlyLkiB4QuI42");//dev
-            connection.setDoOutput(true);
-            try (OutputStream os = connection.getOutputStream()) {
-                byte[] input = body.getBytes("utf-8");
-                os.write(input, 0, input.length);
-            }
-            try (BufferedReader br = new BufferedReader(
-                    new InputStreamReader(connection.getInputStream(), "utf-8"))) {
-                StringBuilder response = new StringBuilder();
-                String encoding = connection.getContentEncoding();
-                String responseLine = null;
-                encoding = encoding == null ? "UTF-8" : encoding;
-                String respbody = IOUtils.toString(connection.getInputStream(), encoding);
-                while ((responseLine = br.readLine()) != null) {
-                    response.append(responseLine.trim());
-                }
-                JSONObject jsonObject = (JSONObject) parser.parse(respbody);
-                System.out.println(jsonObject.toString());
-            }
+        connection.setDoOutput(true);
+        try (OutputStream os = connection.getOutputStream()) {
+            byte[] input = body.getBytes("utf-8");
+            os.write(input, 0, input.length);
         }
+        try (BufferedReader br = new BufferedReader(
+                new InputStreamReader(connection.getInputStream(), "utf-8"))) {
+            StringBuilder response = new StringBuilder();
+            String encoding = connection.getContentEncoding();
+            String responseLine = null;
+            encoding = encoding == null ? "UTF-8" : encoding;
+            String respbody = IOUtils.toString(connection.getInputStream(), encoding);
+            while ((responseLine = br.readLine()) != null) {
+                response.append(responseLine.trim());
+            }
+            JSONObject jsonObject = (JSONObject) parser.parse(respbody);
+            System.out.println(jsonObject.toString());
+        }
+    }
 
-        public void checkBookingCreationStatus(List<String> list2) throws IOException, ParseException {
-            if (creation_status == false) {
-                System.out.println("creation_status" + creation_status);
-                ArrayList<String> list = new ArrayList<>();
-                list.add("\"school_id\":\"ef1e8d35-5619-4a40-a76e-cd6b4eab07d6\"");
-                list.add(list2.get(0));
-                list.add("\"bookingDescription\":\"Booking Description text\"");
-                list.add("\"other_age_group\":\"\"");
-                list.add(list2.get(1));
-                list.add("\"ageGroupIds\":[{\"age_group_id\":\"19abfc90-f45b-476b-920f-b05e6e3124a0\"}] ");
-                list.add("\"schoolDocumentsIds\":{\"school_document_id\":\"9c78412f-fe27-4fcc-b527-405e903810e2\"}                                               ");
-                list.add(list2.get(2));
-                list.add(list2.get(3));
-                list.add("\"creator_id\":\"f161024f-7d3a-4738-a804-8d9bfeeb9453\"                                                 ");
-                list.add("\"anonymisation\":false                                           ");
-                list.add("\"documents\":null            ");
-                list.add("\"subjectIds\":[{\"subject_id\":\"e0eb4195-27e9-4a20-8a6a-c994d008cc61\"}]");
-                createBookingUsingRequestAPI(list);
-                Serenity.getCurrentSession().addMetaData("BookingId1", Serenity.getCurrentSession().getMetaData().get("bookingShortID"));
-                System.out.println(Serenity.getCurrentSession().getMetaData().get("bookingShortID"));
-                createBookingUsingRequestAPI(list);
-                Serenity.getCurrentSession().addMetaData("BookingId2", Serenity.getCurrentSession().getMetaData().get("bookingShortID"));
-                System.out.println(Serenity.getCurrentSession().getMetaData().get("bookingShortID"));
-                createBookingUsingRequestAPI(list);
-                Serenity.getCurrentSession().addMetaData("BookingId3", Serenity.getCurrentSession().getMetaData().get("bookingShortID"));
-                System.out.println(Serenity.getCurrentSession().getMetaData().get("bookingShortID"));
-            }
+    public void checkBookingCreationStatus(List<String> list2) throws IOException, ParseException {
+        if (creation_status == false) {
+            System.out.println("creation_status" + creation_status);
+            ArrayList<String> list = new ArrayList<>();
+            list.add("\"school_id\":\"ef1e8d35-5619-4a40-a76e-cd6b4eab07d6\"");
+            list.add(list2.get(0));
+            list.add("\"bookingDescription\":\"Booking Description text\"");
+            list.add("\"other_age_group\":\"\"");
+            list.add(list2.get(1));
+            list.add("\"ageGroupIds\":[{\"age_group_id\":\"19abfc90-f45b-476b-920f-b05e6e3124a0\"}] ");
+            list.add("\"schoolDocumentsIds\":{\"school_document_id\":\"9c78412f-fe27-4fcc-b527-405e903810e2\"}                                               ");
+            list.add(list2.get(2));
+            list.add(list2.get(3));
+            list.add("\"creator_id\":\"f161024f-7d3a-4738-a804-8d9bfeeb9453\"                                                 ");
+            list.add("\"anonymisation\":false                                           ");
+            list.add("\"documents\":null            ");
+            list.add("\"subjectIds\":[{\"subject_id\":\"e0eb4195-27e9-4a20-8a6a-c994d008cc61\"}]");
+            createBookingUsingRequestAPI(list);
+            Serenity.getCurrentSession().addMetaData("BookingId1", Serenity.getCurrentSession().getMetaData().get("bookingShortID"));
+            System.out.println(Serenity.getCurrentSession().getMetaData().get("bookingShortID"));
+            createBookingUsingRequestAPI(list);
+            Serenity.getCurrentSession().addMetaData("BookingId2", Serenity.getCurrentSession().getMetaData().get("bookingShortID"));
+            System.out.println(Serenity.getCurrentSession().getMetaData().get("bookingShortID"));
+            createBookingUsingRequestAPI(list);
+            Serenity.getCurrentSession().addMetaData("BookingId3", Serenity.getCurrentSession().getMetaData().get("bookingShortID"));
+            System.out.println(Serenity.getCurrentSession().getMetaData().get("bookingShortID"));
         }
+    }
 
     public ArrayList<String> theButtonOfTheAppropriateBookingIsnTClickable(String arg0) throws IOException, ParseException {
         clickOnTheButtonOfTheAppropriateBooking(arg0);
         waitABit(5000);
         ArrayList<String> results = new ArrayList<>();
         String atribute = getDriver().findElement(By.xpath("//p[@class='hidden-content__block-description']/../../../../../..//button[contains(.,'" + arg0 + "')]")).getAttribute("disabled");
-        System.out.println("disabled attribute = "+atribute);
+        System.out.println("disabled attribute = " + atribute);
         results.add(0, "true");
         if (!getDriver().findElement(By.xpath("//p[@class='hidden-content__block-description']/../../../../../..//button[contains(.,'" + arg0 + "')]")).getAttribute("disabled").equals("true")) {
 //            System.out.println(getDriver().findElement(By.xpath("//p[@class='hidden-content__block-description']/../../../../../..//button[contains(.,'" + arg0 + "')]")).getCssValue("disabled").equals("disabled"));
@@ -1071,51 +1079,75 @@ public class CommonActions extends PageObject {
     }
 
     public void clickOnTheLink(String arg0) {
-        getDriver().findElement(By.xpath("//a[contains(.,'"+arg0+"')]")).click();
+        getDriver().findElement(By.xpath("//a[contains(.,'" + arg0 + "')]")).click();
     }
 
     public void clickOnTheButtonAtTheSection(String arg0, String arg1) {
-        waitUntilElementVisible("//div[@class='component-header' and contains(.,'"+arg1+"')]//span[contains(.,'"+arg0+"')]",40);
-        getDriver().findElement(By.xpath("//div[@class='component-header' and contains(.,'"+arg1+"')]//span[contains(.,'"+arg0+"')]")).click();
+        waitUntilElementVisible("//div[@class='component-header' and contains(.,'" + arg1 + "')]//span[contains(.,'" + arg0 + "')]", 40);
+        getDriver().findElement(By.xpath("//div[@class='component-header' and contains(.,'" + arg1 + "')]//span[contains(.,'" + arg0 + "')]")).click();
     }
 
     public void enterPostcodeToTheField(String arg0, String arg1) {
-        getDriver().findElement(By.xpath("//input[@placeholder='"+arg1+"']")).sendKeys(arg0);
+        getDriver().findElement(By.xpath("//input[@placeholder='" + arg1 + "']")).sendKeys(arg0);
     }
 
     public void chooseRandomAddressFromTheDropdownInTheRange(String arg0) {
         int max = Integer.parseInt(arg0);
         int min = 1;
         int range = max - min + 1;
-        random =  (int)(Math.random() * range) + min;
-        waitUntilElementVisible("(//div[@class='list']//a[@class='list__tile list__tile--link'])["+random+"]",30);
-        getDriver().findElement(By.xpath("(//div[@class='list']//a[@class='list__tile list__tile--link'])["+random+"]")).click();
+        random = (int) (Math.random() * range) + min;
+        waitUntilElementVisible("(//div[@class='list']//a[@class='list__tile list__tile--link'])[" + random + "]", 30);
+        getDriver().findElement(By.xpath("(//div[@class='list']//a[@class='list__tile list__tile--link'])[" + random + "]")).click();
 
     }
 
     public void enterTheToTheField(String arg0, String arg1) {
-        if (isElementPresent("//input[@placeholder='"+arg1+"'])")) {
-            getDriver().findElement(By.xpath("//input[@placeholder='" + arg1 + "'])")).sendKeys(arg0);
-        }else getDriver().findElement(By.xpath("//p[contains(.,'"+arg1+"')]/..//input")).sendKeys(arg0);
+        if (isElementPresent("//input[@placeholder='" + arg1 + "']")) {
+            getDriver().findElement(By.xpath("//input[@placeholder='" + arg1 + "']")).sendKeys(arg0);
+        } else if (isElementPresent("//textarea[@placeholder='" + arg1 + "']")) {
+            getDriver().findElement(By.xpath("//textarea[@placeholder='" + arg1 + "']")).sendKeys(arg0);
+        } else getDriver().findElement(By.xpath("//p[contains(.,'" + arg1 + "')]/..//input")).sendKeys(arg0);
+
     }
 
     public ArrayList<String> theAllEnteredDataToTheAccountSectionAreSaved(List<String> list) {
         ArrayList<String> results = new ArrayList<>();
         results.add(0, "true");
-        if (getDriver().getCurrentUrl().contains("school")){
-            SchoolSide=true;
-            System.out.println("SchoolSide = "+SchoolSide);
-            waitUntilElementVisible("//div[@class='MyInfoSchoolAccount-school' and contains(.,'"+list.get(0)+"')]",60);
-            if (!getDriver().findElement(By.xpath("//div[@class='MyInfoSchoolAccount-school' and contains(.,'"+list.get(0)+"')]")).isDisplayed()){
+        if (getDriver().getCurrentUrl().contains("school")) {
+            SchoolSide = true;
+            System.out.println("SchoolSide = " + SchoolSide);
+            waitUntilElementVisible("//div[@class='MyInfoSchoolAccount-school' and contains(.,'" + list.get(0) + "')]", 60);
+            if (!getDriver().findElement(By.xpath("//div[@class='MyInfoSchoolAccount-school' and contains(.,'" + list.get(0) + "')]")).isDisplayed()) {
 //            !getDriver().findElement(By.xpath("//p[contains(.,'Address')]/..//div")).getText().equals(list.get(2))) {
                 results.set(0, "false");
                 results.add("School Account page isn't saved");
 //                results.add("Expected: "+list.get(2)+"; But found: "+getDriver().findElement(By.xpath("//p[contains(.,'Address')]/..//div")).getText());
             } else {
-                for (int i = 1; i < list.size(); i++){
-                    if (!isElementPresent("//p[contains(.,'"+list.get(i)+"')]") &&
-                            !isElementPresent("//a[contains(.,'"+list.get(i)+"')]")&&
-                            !isElementPresent("//span[contains(.,'"+list.get(i)+"')]")) {
+                for (int i = 1; i < list.size(); i++) {
+                    if (!isElementPresent("//p[contains(.,'" + list.get(i) + "')]") &&
+                            !isElementPresent("//a[contains(.,'" + list.get(i) + "')]") &&
+                            !isElementPresent("//span[contains(.,'" + list.get(i) + "')]")) {
+                        results.set(0, "false");
+                        results.add("Expected: " + list.get(i) + "; but not displayed");
+                    }
+                }
+            }
+
+        }
+        if (getDriver().getCurrentUrl().contains("teacher")) {
+            TeacherSide = true;
+            System.out.println("Teacher = " + TeacherSide);
+            waitUntilElementVisible("//div[@class='MyInfoAccount-name' and contains(.,'" + list.get(0) + "')]", 60);
+            if (!getDriver().findElement(By.xpath("//div[@class='MyInfoAccount-name' and contains(.,'" + list.get(0) + "')]")).isDisplayed()) {
+//            !getDriver().findElement(By.xpath("//p[contains(.,'Address')]/..//div")).getText().equals(list.get(2))) {
+                results.set(0, "false");
+                results.add("Teacher Account page isn't saved");
+//                results.add("Expected: "+list.get(2)+"; But found: "+getDriver().findElement(By.xpath("//p[contains(.,'Address')]/..//div")).getText());
+            } else {
+                for (int i = 1; i < list.size(); i++) {
+                    if (!isElementPresent("//p[contains(.,'" + list.get(i) + "')]") &&
+                            !isElementPresent("//a[contains(.,'" + list.get(i) + "')]") &&
+                            !isElementPresent("//span[contains(.,'" + list.get(i) + "')]")) {
                         results.set(0, "false");
                         results.add("Expected: " + list.get(i) + "; but not displayed");
                     }
@@ -1128,55 +1160,107 @@ public class CommonActions extends PageObject {
     }
 
     public ArrayList<String> theTextIsDisplayedAtTheSection(String arg0, String arg1) {
-        waitUntilElementVisible("//div[@class='MyInfoDocuments-descr']",60);
+        waitUntilElementVisible("//div[@class='MyInfoDocuments-descr']", 60);
         ArrayList<String> results = new ArrayList<>();
         results.add(0, "true");
-        if (!getDriver().findElement(By.xpath("//div[@class='MyInfoDocuments-descr']")).getText().equals(arg0)){
+        if (!getDriver().findElement(By.xpath("//div[@class='MyInfoDocuments-descr']")).getText().equals(arg0)) {
             results.set(0, "false");
-            results.add("Expected: " + arg0 + "; but found: "+getDriver().findElement(By.xpath("//div[@class='MyInfoDocuments-descr']")).getText());
+            results.add("Expected: " + arg0 + "; but found: " + getDriver().findElement(By.xpath("//div[@class='MyInfoDocuments-descr']")).getText());
         }
         return results;
     }
 
     public ArrayList<String> uploadedFileIsSaved(String arg0) {
-        waitUntilElementVisible("//p[@class='MyInfoDocuments-file']",60);
+        waitUntilElementVisible("//p[@class='MyInfoDocuments-file']", 60);
         ArrayList<String> results = new ArrayList<>();
         results.add(0, "true");
-        if (!getDriver().findElement(By.xpath("//p[@class='MyInfoDocuments-file']")).getText().equals(arg0)){
+        if (!getDriver().findElement(By.xpath("//p[@class='MyInfoDocuments-file']")).getText().equals(arg0)) {
             results.set(0, "false");
-            results.add("Expected: " + arg0 + "; but found: "+getDriver().findElement(By.xpath("//p[@class='MyInfoDocuments-file']")).getText());
+            results.add("Expected: " + arg0 + "; but found: " + getDriver().findElement(By.xpath("//p[@class='MyInfoDocuments-file']")).getText());
         }
         return results;
     }
 
     public void clickOnTheProfilingQuestion(String arg0) {
-        getDriver().findElement(By.xpath("(//div[@class='menu'])["+arg0+"]/..//i")).click();
-        ProfilingQuestion_dropdown_counter = 6-Integer.parseInt(arg0);
+        getDriver().findElement(By.xpath("(//div[@class='menu'])[" + arg0 + "]/..//i")).click();
+        ProfilingQuestion_dropdown_counter = 6 - Integer.parseInt(arg0);
     }
 
-    public ArrayList<String> dropdownContainsTheNextItems(List<String> list) {
+    public ArrayList<String> dropdownContainsTheNextItems(List<String> list) throws InterruptedException {
         ArrayList<String> results = new ArrayList<>();
         results.add(0, "true");
-//        if (getDriver().getCurrentUrl().contains("school")) {
-//            SchoolSide = true;
-//            System.out.println("SchoolSide = " + SchoolSide);
+        JavascriptExecutor je = (JavascriptExecutor) getDriver();
         int number_of_item = 1;
+        if (getDriver().getCurrentUrl().contains("profiling-questions")) {
             for (int i = 0; i < list.size(); i++) {
-                waitUntilElementVisible("((//div[@class='list'])["+ProfilingQuestion_dropdown_counter+"]//div[@class='list__tile__title'])["+number_of_item+"]",30);
-                if (!list.get(i).equals(getDriver().findElement(By.xpath("((//div[@class='list'])["+ProfilingQuestion_dropdown_counter+"]//div[@class='list__tile__title'])["+number_of_item+"]")).getText().trim())) {
+                waitUntilElementVisible("((//div[@class='list'])[" + ProfilingQuestion_dropdown_counter + "]//div[@class='list__tile__title'])[" + number_of_item + "]", 30);
+                if (!list.get(i).equals(getDriver().findElement(By.xpath("((//div[@class='list'])[" + ProfilingQuestion_dropdown_counter + "]//div[@class='list__tile__title'])[" + number_of_item + "]")).getText().trim())) {
                     results.set(0, "false");
-                    results.add("Expected: " + list.get(i) + "; but found: " + getDriver().findElement(By.xpath("((//div[@class='list'])["+ProfilingQuestion_dropdown_counter+"]//div[@class='list__tile__title'])["+number_of_item+"]")).getText().trim() + "\n");
-                    System.out.println("((//div[@class='list'])["+ProfilingQuestion_dropdown_counter+"]//div[@class='list__tile__title'])["+number_of_item+"]");
+                    results.add("Expected: " + list.get(i) + "; but found: " + getDriver().findElement(By.xpath("((//div[@class='list'])[" + ProfilingQuestion_dropdown_counter + "]//div[@class='list__tile__title'])[" + number_of_item + "]")).getText().trim() + "\n");
+                    System.out.println("((//div[@class='list'])[" + ProfilingQuestion_dropdown_counter + "]//div[@class='list__tile__title'])[" + number_of_item + "]");
                     break;
                 }
                 number_of_item++;
             }
-//        }
+        }else
+            for (int i = 0; i < list.size(); i++) {
+                waitUntilElementVisible("//div[@class='menu__content menu__content--select menuable__content__active']//div[@class='list']", 30);
+                if (!isElementPresent("(//div[@class='menu__content menu__content--select menuable__content__active']//div[@class='list__tile__title'])[" + number_of_item + "]")) {
+                    number_of_item--;
+                    WebElement item = getDriver().findElement(By.xpath("(//div[@class='menu__content menu__content--select menuable__content__active']//div[@class='list__tile__title'])[" + number_of_item + "]"));
+                    System.out.println("Unable to view item : "+"\n"+item);
+                    number_of_item++;
+                    do {
+                        je.executeScript("arguments[0].scrollIntoView(true);", item);
+                    } while (!isElementPresent("(//div[@class='menu__content menu__content--select menuable__content__active']//div[@class='list__tile__title'])[" + number_of_item + "]"));
+                }
+                if (!list.get(i).equals(getDriver().findElement(By.xpath("(//div[@class='menu__content menu__content--select menuable__content__active']//div[@class='list__tile__title'])[" + number_of_item + "]")).getText().trim())) {
+                    results.set(0, "false");
+                    results.add("Expected: " + list.get(i) + "; but found: " + getDriver().findElement(By.xpath("(//div[@class='menu__content menu__content--select menuable__content__active']div[@class='list__tile__title'])[" + number_of_item + "]")).getText().trim() + "\n");
+                    break;
+                }
+                number_of_item++;
+            }
+
         return results;
     }
 
     public void chooseTheItemInTheDropdown(String arg0) {
-        getDriver().findElement(By.xpath("((//div[@class='list'])["+ProfilingQuestion_dropdown_counter+"]//div[@class='list__tile__title'])["+arg0+"]")).click();
+        if (getDriver().getCurrentUrl().contains("profiling-questions")) {
+            getDriver().findElement(By.xpath("((//div[@class='list'])[" + ProfilingQuestion_dropdown_counter + "]//div[@class='list__tile__title'])[" + arg0 + "]")).click();
+        } else
+            getDriver().findElement(By.xpath("//div[@class='list__tile__title' and contains(.,'" + arg0 + "')]")).click();
+
+    }
+
+    public void enterEmailOfNewSchoolUser() {
+//        if(!Serenity.getCurrentSession().getMetaData().get("emailOfNewSchoolUser").isEmpty()) {
+        getDriver().findElement(By.xpath("//input[@type='email']")).sendKeys(Serenity.getCurrentSession().getMetaData().get("emailOfNewSchoolUser"));
+//        }else getDriver().findElement(By.xpath("//input[@type='email']")).sendKeys(Serenity.getCurrentSession().getMetaData().get("emailOfNewUser"));
+    }
+
+    public void clickOnTheDropdown(String arg0) {
+        getDriver().findElement(By.xpath("//p[contains(.,'" + arg0 + "')]/..//div[@class='menu']/..//i")).click();
+    }
+
+    public void clickOnTheInputField(String arg0) {
+//        if(isElementPresent("//input[@placeholder='"+arg0+"']")) {
+        getDriver().findElement(By.xpath("//input[@placeholder='" + arg0 + "']")).click();
+//        }
+    }
+
+    public ArrayList<String> warningMessagesAreAppeared(List<String> list) {
+        ArrayList<String> results = new ArrayList<>();
+        results.add(0, "true");
+//        waitFor(String.valueOf($(ILocators.warning_contactTerm).isVisible()));
+
+        for (int i = 0; i < list.size(); i++) {
+            if (!getDriver().findElement(By.xpath("//input[@placeholder='" + list.get(i) + "' and @aria-required='true']")).getAttribute("aria-invalid").equals("true")) {
+                results.set(0, "false");
+                results.add("Expected: 'aria-invalid'= true ; but found: 'aria-invalid'= " + getDriver().findElement(By.xpath("//input[@placeholder='" + list.get(i) + "' and @aria-required='true']")).getAttribute("aria-invalid") + "\n");
+            }
+        }
+        return results;
     }
 }
 

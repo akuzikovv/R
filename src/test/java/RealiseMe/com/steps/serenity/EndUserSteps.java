@@ -320,8 +320,8 @@ public class EndUserSteps  extends ScenarioSteps {
 
     @Step
     public void warningMessagesAreAppeared(List<String> list) {
-        ArrayList<String> results =  schoolJobsPage.warningMessagesAreAppeared(list);
-        Assert.assertTrue("Create jpb page is wrong"+ results, "true".equals(results.get(0)));
+        ArrayList<String> results =  commonActions.warningMessagesAreAppeared(list);
+        Assert.assertTrue("Warning messages aren't appeared"+ results, "true".equals(results.get(0)));
 
     }
 
@@ -1135,7 +1135,7 @@ public class EndUserSteps  extends ScenarioSteps {
     }
 
     @Step
-    public void dropdownContainsTheNextItems(List<String> list) {
+    public void dropdownContainsTheNextItems(List<String> list) throws InterruptedException {
         ArrayList<String> results =   commonActions.dropdownContainsTheNextItems(list);
         Assert.assertTrue("Dropdown contains wrong items"+ results, "true".equals(results.get(0)));
     }
@@ -1143,6 +1143,21 @@ public class EndUserSteps  extends ScenarioSteps {
     @Step
     public void chooseTheItemInTheDropdown(String arg0) {
         commonActions.chooseTheItemInTheDropdown(arg0);
+    }
+
+    @Step
+    public void enterEmailOfNewSchoolUser() {
+        commonActions.enterEmailOfNewSchoolUser();
+    }
+
+    @Step
+    public void clickOnTheDropdown(String arg0) {
+        commonActions.clickOnTheDropdown(arg0);
+    }
+
+    @Step
+    public void clickOnTheInputField(String arg0) {
+        commonActions.clickOnTheInputField(arg0);
     }
 
 

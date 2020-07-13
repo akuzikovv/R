@@ -77,7 +77,8 @@ Feature:  Job Creation
   Scenario: Job creation
     When Click on the login button
 #    When Click on the school "Login as a school" button
-    When Enter login "newuatschool28@yopmail.com"
+#    When Enter login "newuatschool28@yopmail.com"
+    When Enter email of new school user
     When Enter password "Test123!"
     When Click on the Log in button
     When Click on the "Jobs" button in the header

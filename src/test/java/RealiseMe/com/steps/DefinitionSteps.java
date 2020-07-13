@@ -1008,13 +1008,28 @@ public class DefinitionSteps {
     }
 
     @When("^Dropdown contains the next items:$")
-    public void dropdownContainsTheNextItems(List<String>list) {
+    public void dropdownContainsTheNextItems(List<String>list) throws InterruptedException {
         steps.dropdownContainsTheNextItems(list);
     }
 
     @When("^Choose the \"([^\"]*)\" item in the dropdown$")
     public void chooseTheItemInTheDropdown(String arg0) throws Throwable {
         steps.chooseTheItemInTheDropdown(arg0);
+    }
+
+    @When("^Enter email of new school user$")
+    public void enterEmailOfNewSchoolUser() {
+        steps.enterEmailOfNewSchoolUser();
+    }
+
+    @When("^Click on the \"([^\"]*)\" dropdown$")
+    public void clickOnTheDropdown(String arg0) throws Throwable {
+        steps.clickOnTheDropdown(arg0);
+    }
+
+    @When("^Click on the \"([^\"]*)\" input field$")
+    public void clickOnTheInputField(String arg0) throws Throwable {
+        steps.clickOnTheInputField(arg0);
     }
 
 
