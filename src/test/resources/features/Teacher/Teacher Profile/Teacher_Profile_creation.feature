@@ -99,28 +99,19 @@ Feature:  Teacher profile Creation
       | Any other ethnic group                 |
     When Choose the "Any other White background" item in the dropdown
     When Click on the "enter your date of birth" input field
+    When Choose "1970" year
+    When Choose "Oct" month
+    When Choose "22" date
     When Enter the "Job title" to the "Job title" field
     When Enter the "Short introduction" to the "Write a short introduction about your yourself" field
     When Click on the "save" button
-    Then The all entered data to the Account section are saved
-      | Auto Teacher       |
-      | Job title          |
-      | Short introduction |
-
-  Scenario: Check required fields at the teacher's "Contact Details" profile section
-    Given open landing page
-    When click on the agree button at the banner
-    When Click on the login button
-    When Enter login of new created user
-    When Enter password "Test123!"
-    When Click on the Log in button
-    When CLick on the "edit" button at the "Contact Details" section
-    When Click on the "save" button
-    Then Warning messages are appeared:
-      | enter postcode       |
-      | Phone |
-
-
+    Then The all entered data to the Account "" section are saved
+      | Auto Teacher               |
+      | Male                       |
+      | 22/10/1970                 |
+      | Any other White background |
+      | Job title                  |
+      | Short introduction         |
 
 
   Scenario: Fill teacher's "Profiling Questions"  profile tab
@@ -180,7 +171,52 @@ Feature:  Teacher profile Creation
     When wait time
 
 
+  Scenario: Check required fields at the teacher's "Contact Details" profile section
+    Given open landing page
+    When click on the agree button at the banner
+    When Click on the login button
+#    When Enter login "newuatteacher246@sharklasers.com"
+    When Enter login of new created user
+    When Enter password "Test123!"
+    When Click on the Log in button
+    When CLick on the "edit" button at the "Contact Details" section
+    When Click on the "save" button
+    Then Warning messages are appeared:
+      | enter postcode |
+      | Phone          |
+      | Policies       |
 
+  Scenario: Fill "Contact Details" profile section as admin using request API
+    When Fill "Contact Details" profile section as admin using request API
+    Given open landing page
+    When click on the agree button at the banner
+    When Click on the login button
+    When Enter login of new created user
+    When Enter password "Test123!"
+    When Click on the Log in button
+    When Click on the arrow down button
+    When Click on the "Account" button
+    Then The all entered data to the Account "Contact Details" section are saved
+      | Postcode       |
+      | address line 1 |
+      | address line 2 |
+      | City           |
+      | County         |
+      | +44 0635094915     |
+
+  Scenario: Fill "Contact Details" profile section as user
+    Given open landing page
+    When click on the agree button at the banner
+    When Click on the login button
+    When Enter login of new created user
+    When Enter password "Test123!"
+    When Click on the Log in button
+    When Click on the arrow down button
+    When Click on the "Account" button
+    When CLick on the "edit" button at the "Contact Details" section
+    When Enter "NW3 5SQ" postcode to the "enter postcode" field
+    When Click on the "Find Address" button
+    When Choose random address from the dropdown in the "5" range
 
 
 

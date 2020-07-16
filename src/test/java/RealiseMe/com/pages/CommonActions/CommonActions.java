@@ -9,10 +9,7 @@ import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 import org.junit.Test;
 import org.openqa.selenium.*;
-import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.events.EventFiringWebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import javax.net.ssl.HttpsURLConnection;
@@ -21,10 +18,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.ProtocolException;
 import java.net.URL;
-import java.security.Key;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -1110,7 +1104,7 @@ public class CommonActions extends PageObject {
 
     }
 
-    public ArrayList<String> theAllEnteredDataToTheAccountSectionAreSaved(List<String> list) {
+    public ArrayList<String> theAllEnteredDataToTheAccountSectionAreSaved(List<String> list,String arg0) {
         ArrayList<String> results = new ArrayList<>();
         results.add(0, "true");
         if (getDriver().getCurrentUrl().contains("school")) {
@@ -1138,24 +1132,42 @@ public class CommonActions extends PageObject {
             TeacherSide = true;
             System.out.println("Teacher = " + TeacherSide);
             waitUntilElementVisible("//div[@class='MyInfoAccount-name' and contains(.,'" + list.get(0) + "')]", 60);
-            if (!getDriver().findElement(By.xpath("//div[@class='MyInfoAccount-name' and contains(.,'" + list.get(0) + "')]")).isDisplayed()) {
-//            !getDriver().findElement(By.xpath("//p[contains(.,'Address')]/..//div")).getText().equals(list.get(2))) {
-                results.set(0, "false");
-                results.add("Teacher Account page isn't saved");
-//                results.add("Expected: "+list.get(2)+"; But found: "+getDriver().findElement(By.xpath("//p[contains(.,'Address')]/..//div")).getText());
-            } else {
-                for (int i = 1; i < list.size(); i++) {
-                    if (!isElementPresent("//p[contains(.,'" + list.get(i) + "')]") &&
-                            !isElementPresent("//a[contains(.,'" + list.get(i) + "')]") &&
-                            !isElementPresent("//span[contains(.,'" + list.get(i) + "')]")) {
-                        results.set(0, "false");
-                        results.add("Expected: " + list.get(i) + "; but not displayed");
+
+            if (arg0.equals("Contact Details")) {
+                if (!getDriver().findElement(By.xpath("//div[@class='component-header' and contains(.,'" + arg0 + "')]")).isDisplayed()) {
+                    results.set(0, "false");
+                    results.add("Teacher Account page isn't saved");
+                } else {
+                    for (int i = 1; i < list.size(); i++) {
+                        if (!isElementPresent("//p[contains(.,'" + list.get(i) + "')]") &&
+                                !isElementPresent("//a[contains(.,'" + list.get(i) + "')]") &&
+                                !isElementPresent("//span[contains(.,'" + list.get(i) + "')]")) {
+                            results.set(0, "false");
+                            results.add("Expected: " + list.get(i) + "; but not displayed");
+                            break;
+                        }
                     }
                 }
+            } else {
+                if (!getDriver().findElement(By.xpath("//div[@class='MyInfoAccount-name' and contains(.,'" + list.get(0) + "')]")).isDisplayed()) {
+//            !getDriver().findElement(By.xpath("//p[contains(.,'Address')]/..//div")).getText().equals(list.get(2))) {
+                    results.set(0, "false");
+                    results.add("Teacher Account page isn't saved");
+//                results.add("Expected: "+list.get(2)+"; But found: "+getDriver().findElement(By.xpath("//p[contains(.,'Address')]/..//div")).getText());
+                } else {
+                    for (int i = 1; i < list.size(); i++) {
+                        if (!isElementPresent("//p[contains(.,'" + list.get(i) + "')]") &&
+                                !isElementPresent("//a[contains(.,'" + list.get(i) + "')]") &&
+                                !isElementPresent("//span[contains(.,'" + list.get(i) + "')]")) {
+                            results.set(0, "false");
+                            results.add("Expected: " + list.get(i) + "; but not displayed");
+                            break;
+                        }
+                    }
+                }
+
             }
-
         }
-
         return results;
     }
 
@@ -1253,14 +1265,97 @@ public class CommonActions extends PageObject {
         ArrayList<String> results = new ArrayList<>();
         results.add(0, "true");
 //        waitFor(String.valueOf($(ILocators.warning_contactTerm).isVisible()));
-
-        for (int i = 0; i < list.size(); i++) {
-            if (!getDriver().findElement(By.xpath("//input[@placeholder='" + list.get(i) + "' and @aria-required='true']")).getAttribute("aria-invalid").equals("true")) {
-                results.set(0, "false");
-                results.add("Expected: 'aria-invalid'= true ; but found: 'aria-invalid'= " + getDriver().findElement(By.xpath("//input[@placeholder='" + list.get(i) + "' and @aria-required='true']")).getAttribute("aria-invalid") + "\n");
+        if (getDriver().getCurrentUrl().contains("teacher_other/profile")) {
+            for (int i = 0; i < list.size(); i++) {
+                if ((isElementPresent("//input[@placeholder='" + list.get(i) + "' and @aria-required='true']")
+                        && !getDriver().findElement(By.xpath("//input[@placeholder='" + list.get(i) + "' and @aria-required='true']")).getAttribute("aria-invalid").equals("true"))&&
+                !isElementPresent("//p[contains(.,'"+list.get(i)+"')]/../../..//span[@class='text-error' and contains(.,'This is required')]")) {
+                    results.set(0, "false");
+                    results.add("Expected: 'aria-invalid'= true ; but found: 'aria-invalid'= " + getDriver().findElement(By.xpath("//input[@placeholder='" + list.get(i) + "' and @aria-required='true']")).getAttribute("aria-invalid") + "\n");
+                }
             }
         }
         return results;
+    }
+
+    public void chooseYear(String arg0) {
+        getDriver().findElement(By.xpath("//ul[@class='date-picker-years']//li[contains(.,'"+arg0+"')]")).click();
+    }
+
+    public void chooseMonth(String arg0) {
+        getDriver().findElement(By.xpath("//div[@class='date-picker-table date-picker-table--month']//div[contains(.,'"+arg0+"')]")).click();
+    }
+
+    public void chooseDate(String arg0) {
+        getDriver().findElement(By.xpath("//table//div[contains(.,'"+arg0+"')]")).click();
+    }
+
+    public void getUserID() throws IOException, ParseException {
+        getDriver().get("http://admin.uat.realiseme.com.s3-website-us-east-1.amazonaws.com/#/teachers/list");
+        getDriver().findElement(By.xpath("//input[@name='email']")).sendKeys("satintest1+admin@gmail.com");
+        getDriver().findElement(By.xpath("//input[@name='password']")).sendKeys("Test123!");
+        getDriver().findElement(By.xpath("//button[@name='submit']")).click();
+        waitUntilElementVisible("//p[contains(.,'"+Serenity.getCurrentSession().getMetaData().get("emailOfNewUser")+"')]/..//p[@class='name']",50);
+        getDriver().findElement(By.xpath("//p[contains(.,'"+Serenity.getCurrentSession().getMetaData().get("emailOfNewUser")+"')]/..//p[@class='name']")).click();
+        waitUntilElementVisible("//div[@class='id-wrapper']",60);
+        Serenity.getCurrentSession().addMetaData("NewUserID",getDriver().findElement(By.xpath("//div[@class='id-wrapper']")).getText().substring(4));
+        System.out.println("ID of new user = "+Serenity.getCurrentSession().getMetaData().get("NewUserID"));
+
+    }
+
+
+    public void fillProfileSectionAsAdminUsingRequestAPI(List<String> list) throws IOException, ParseException {
+        getUserID();
+        getAccessTokenAuth0();
+        ArrayList<String> results = new ArrayList<>();
+        results.add(0, "true");
+        String body = "{\"operationName\":\"adminUpdateTeacherContactDetails\"," +
+                "\"variables\":{\"admin_id\":\"538e52d0-a7c0-4e89-9b48-80f0d0ec958d\"," +
+                "\"input\":{\"lat\":null,\"long\":null," +
+                "\"post_code\":\"Postcode\"," +
+                "\"house\":\"address line 1\"," +
+                "\"street\":\"address line 2\"," +
+                "\"city\":\"City\"," +
+                "\"county\":\"County\"," +
+                "\"country\":\"Great Britain\"," +
+                "\"user_id\":\"" + Serenity.getCurrentSession().getMetaData().get("NewUserID") + "\"," +
+                "\"phone_number\":\"0635094915\"," +
+                "\"distance_willing_to_travel\":null}}," +
+                "\"query\":\"mutation adminUpdateTeacherContactDetails($admin_id: String!, $input: ContactDetailsEditAdminPayload!) {\\n  adminUpdateTeacherContactDetails(admin_id: $admin_id, input: $input) {\\n    status\\n    error {\\n      message\\n      __typename\\n    }\\n    __typename\\n  }\\n}\\n\"}";
+
+
+        String url = "https://fkyv0b9fh1.execute-api.us-east-1.amazonaws.com/uat/graphql";
+        urlObject = new URL(url);
+        HttpsURLConnection connection = (HttpsURLConnection) urlObject.openConnection();
+        connection.setRequestMethod("POST");
+        connection.setRequestProperty("content-type", "application/json");
+        connection.setRequestProperty("authorization", token);
+        connection.setDoOutput(true);
+        try (OutputStream os = connection.getOutputStream()) {
+            byte[] input = body.getBytes("utf-8");
+            os.write(input, 0, input.length);
+        }
+        try (BufferedReader br = new BufferedReader(
+                new InputStreamReader(connection.getInputStream(), "utf-8"))) {
+            StringBuilder response = new StringBuilder();
+            String encoding = connection.getContentEncoding();
+            String responseLine = null;
+            encoding = encoding == null ? "UTF-8" : encoding;
+            String respbody = IOUtils.toString(connection.getInputStream(), encoding);
+            while ((responseLine = br.readLine()) != null) {
+                response.append(responseLine.trim());
+            }
+            JSONObject jsonObject = (JSONObject) parser.parse(respbody);
+//            JSONObject jsonObject2 = (JSONObject) parser.parse(jsonObject.get("data").toString());
+//            delete_request_result = jsonObject2.get("adminRemove" + list.get(0) + "").toString();
+            System.out.println(jsonObject + " = " + email_of_new_user);
+        }
+
+    }
+
+
+    public void theAllEnteredDataToTheSectionAreSaved(String arg0, List<String> list) {
+
     }
 }
 

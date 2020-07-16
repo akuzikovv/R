@@ -8,6 +8,7 @@ import net.serenitybdd.core.Serenity;
 import net.serenitybdd.core.pages.PageObject;
 import net.thucydides.core.annotations.Feature;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -96,9 +97,12 @@ public class AuthorizationPage extends PageObject {
         commonActions.waitUntilElementVisible("//span[@class='animated fadeInUp']//span",5);
         if (commonActions.isElementPresent("//span[@class='animated fadeInUp']//span")) {
             System.out.println(getDriver().findElement(By.xpath("//span[@class='animated fadeInUp']//span")).getText());
-            if (getDriver().findElement(By.xpath("//span[@class='animated fadeInUp']//span")).getText().equals("USER ALREADY EXISTS.")) {
+            if (getDriver().findElement(By.xpath("//span[@class='animated fadeInUp']//span")).getText().equals("User already exists.")) {
                 commonActions.waitUntilElementVisible(ILocators.Email_field,5);
-                getDriver().findElement(By.xpath(ILocators.Email_field)).clear();
+                getDriver().findElement(By.xpath(ILocators.Email_field)).sendKeys(Keys.CONTROL+"A");
+                getDriver().findElement(By.xpath(ILocators.Email_field)).sendKeys(Keys.DELETE);
+                getDriver().findElement(By.xpath(ILocators.Email_field)).sendKeys(Keys.COMMAND+"A");
+                getDriver().findElement(By.xpath(ILocators.Email_field)).sendKeys(Keys.DELETE);
                 commonActions.enterLoginOfNewUser(Serenity.getCurrentSession().getMetaData().get("user type"));
                 clickOnTheSIGNUPButton();
                 checkIfEnteredUserAlreadyExistsAndRegenerateNewEmail();

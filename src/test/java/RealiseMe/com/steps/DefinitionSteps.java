@@ -980,9 +980,9 @@ public class DefinitionSteps {
         steps.enterTheToTheField(arg0,arg1);
     }
 
-    @Then("^The all entered data to the Account section are saved$")
-    public void theAllEnteredDataToTheAccountSectionAreSaved(List<String>list) {
-        steps.theAllEnteredDataToTheAccountSectionAreSaved(list);
+    @Then("^The all entered data to the Account \"([^\"]*)\" section are saved$")
+    public void theAllEnteredDataToTheAccountSectionAreSaved(String arg0,List<String>list) {
+        steps.theAllEnteredDataToTheAccountSectionAreSaved(list,arg0);
     }
 
     @Then("^The \"([^\"]*)\" text is displayed at the \"([^\"]*)\" section$")
@@ -1031,6 +1031,29 @@ public class DefinitionSteps {
     public void clickOnTheInputField(String arg0) throws Throwable {
         steps.clickOnTheInputField(arg0);
     }
+
+    @When("^Choose \"([^\"]*)\" year$")
+    public void chooseYear(String arg0) throws Throwable {
+       steps.chooseYear(arg0);
+
+    }
+
+    @When("^Choose \"([^\"]*)\" month$")
+    public void chooseMonth(String arg0) throws Throwable {
+       steps.chooseMonth(arg0);
+    }
+
+    @When("^Choose \"([^\"]*)\" date$")
+    public void chooseDate(String arg0) throws Throwable {
+        steps.chooseDate(arg0);
+    }
+
+    @When("^Fill \"([^\"]*)\" profile section as admin using request API$")
+    public void fillProfileSectionAsAdminUsingRequestAPI(List<String> list) throws Throwable {
+        steps.fillProfileSectionAsAdminUsingRequestAPI(list);
+    }
+
+
 
 
     //    @When("^Open report$")

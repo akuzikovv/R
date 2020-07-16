@@ -79,7 +79,7 @@ Feature:  School profile Creation
     When Choose "academy" checkbox
     When Choose "Policies" checkbox
     When Click on the "save" button
-    Then The all entered data to the Account section are saved
+    Then The all entered data to the Account "" section are saved
       | Auto school                 |
       | Short description           |
       | Apartment                   |

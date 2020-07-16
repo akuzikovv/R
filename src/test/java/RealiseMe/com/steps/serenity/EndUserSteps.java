@@ -1105,8 +1105,8 @@ public class EndUserSteps  extends ScenarioSteps {
     }
 
     @Step
-    public void theAllEnteredDataToTheAccountSectionAreSaved(List<String> list) {
-        ArrayList<String> results = commonActions.theAllEnteredDataToTheAccountSectionAreSaved(list);
+    public void theAllEnteredDataToTheAccountSectionAreSaved(List<String> list, String arg0) {
+        ArrayList<String> results = commonActions.theAllEnteredDataToTheAccountSectionAreSaved(list,arg0);
         Assert.assertTrue("Account page is wrong"+ results, "true".equals(results.get(0)));
 
     }
@@ -1159,6 +1159,28 @@ public class EndUserSteps  extends ScenarioSteps {
     public void clickOnTheInputField(String arg0) {
         commonActions.clickOnTheInputField(arg0);
     }
+
+    @Step
+    public void chooseYear(String arg0) {
+        commonActions.chooseYear(arg0);
+    }
+    @Step
+    public void chooseMonth(String arg0) {
+        commonActions.chooseMonth(arg0);
+    }
+
+    @Step
+    public void chooseDate(String arg0) {
+        commonActions.chooseDate(arg0);
+    }
+
+    @Step
+    public void fillProfileSectionAsAdminUsingRequestAPI(List<String> list) throws IOException, ParseException {
+           commonActions.fillProfileSectionAsAdminUsingRequestAPI(list);
+
+    }
+
+
 
 
 //    @Step
