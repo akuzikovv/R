@@ -6,6 +6,8 @@ Feature: Teacher Other Flow
     When Click on the login button
 #    When Click on the "Login as a teacher" button
     When Enter login "uatteacher22@yopmail.com"
+    #DEV
+#    When Enter login "newuatteacher229@sharklasers.com"
     When Enter password "Test123!"
     When Click on the Log in button
 

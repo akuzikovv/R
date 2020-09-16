@@ -83,7 +83,11 @@ public class SchoolAccountPage  extends PageObject {
     }
 
     public void enterTheShortDescriptionToTheField(String arg1, String arg0) {
-        getDriver().findElement(By.xpath("//textarea[@placeholder='"+arg1+"']")).sendKeys(arg0);
+        if (commonActions.isElementPresent("//input[@placeholder='"+arg1+"']")){
+            getDriver().findElement(By.xpath("//input[@placeholder='"+arg1+"']")).sendKeys(arg0);
+        }else if (commonActions.isElementPresent("//textarea[@placeholder='"+arg1+"']")) {
+            getDriver().findElement(By.xpath("//textarea[@placeholder='" + arg1 + "']")).sendKeys(arg0);
+        }
     }
 
     public ArrayList<String> adminDetailsPageIsSaved(List<String> list) {

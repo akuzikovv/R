@@ -11,9 +11,9 @@ Feature:  Timesheet flow for completed booking
       |"bookingName":"Booking for cleared teacher  20"|
       |"bookingDescription":"Booking Description text"|
       |"other_age_group":""                           |
-      |"dates":[{"date":"2020-08-27T08:30:00+02:00","fullDay":true,"start_time":"2020-08-27T08:30:00+02:00","end_time":"2020-08-27T16:00:00+02:00"},{"date":"2020-08-28T08:30:00+02:00","fullDay":false,"start_time":"2020-08-28T08:30:00+02:00","end_time":"2020-08-28T13:00:00+02:00"}]|
+      |"dates":[{"date":"2020-09-24T08:30:00+02:00","fullDay":true,"start_time":"2020-09-24T08:30:00+02:00","end_time":"2020-09-24T16:00:00+02:00"},{"date":"2020-09-25T08:30:00+02:00","fullDay":false,"start_time":"2020-09-25T08:30:00+02:00","end_time":"2020-09-25T13:00:00+02:00"}]|
       |"ageGroupIds":[{"age_group_id":"19abfc90-f45b-476b-920f-b05e6e3124a0"}]                                                              |
-      |"schoolDocumentsIds":{"school_document_id":"9c78412f-fe27-4fcc-b527-405e903810e2"}                                                   |
+      |"schoolDocumentsIds":null                                                |
       |"applyUsersIds":[{"user_id":"827fc573-d555-4cf8-9e6d-4d85e7d0e554","user_type":"TEACHER"}]                                           |
       |"teachersTypeIdsSchema":[{"teacher_type_id":"59153f42-83b1-4964-b3ad-5a50226c342a"},{"teacher_type_id":"5d714ae1-4fb4-4b89-a927-47c4396c418e"}]|
       |"creator_id":"f161024f-7d3a-4738-a804-8d9bfeeb9453"                                                                                            |
@@ -59,6 +59,7 @@ Feature:  Timesheet flow for completed booking
     Then Total rate for school is right calculated
     When Accept timesheet
     Then Popup with "Thank you for confirming this timesheet. When confirming timesheets, you are re-confirming our terms and conditions." text is appeared
+    |test|
     When Close popup
     Then Approve/Decline buttons are disabled
     When Open "https://www.guerrillamail.com/" in  the new tab
@@ -73,9 +74,9 @@ Feature:  Timesheet flow for completed booking
       |"bookingName":"Booking for cleared teacher  20"|
       |"bookingDescription":"Booking Description text"|
       |"other_age_group":""                           |
-      |"dates":[{"date":"2020-08-27T08:30:00+02:00","fullDay":true,"start_time":"2020-08-27T08:30:00+02:00","end_time":"2020-08-27T16:00:00+02:00"},{"date":"2020-08-28T08:30:00+02:00","fullDay":false,"start_time":"2020-08-28T08:30:00+02:00","end_time":"2020-08-28T13:00:00+02:00"}]|
+      |"dates":[{"date":"2021-08-27T08:30:00+02:00","fullDay":true,"start_time":"2021-08-27T08:30:00+02:00","end_time":"2021-08-27T16:00:00+02:00"},{"date":"2021-08-28T08:30:00+02:00","fullDay":false,"start_time":"2021-08-28T08:30:00+02:00","end_time":"2021-08-28T13:00:00+02:00"}]|
       |"ageGroupIds":[{"age_group_id":"19abfc90-f45b-476b-920f-b05e6e3124a0"}]                                                              |
-      |"schoolDocumentsIds":{"school_document_id":"9c78412f-fe27-4fcc-b527-405e903810e2"}                                                   |
+      |"schoolDocumentsIds":null                                                 |
       |"applyUsersIds":[{"user_id":"827fc573-d555-4cf8-9e6d-4d85e7d0e554","user_type":"TEACHER"}]                                           |
       |"teachersTypeIdsSchema":[{"teacher_type_id":"59153f42-83b1-4964-b3ad-5a50226c342a"},{"teacher_type_id":"5d714ae1-4fb4-4b89-a927-47c4396c418e"}]|
       |"creator_id":"f161024f-7d3a-4738-a804-8d9bfeeb9453"                                                                                            |
@@ -116,9 +117,9 @@ Feature:  Timesheet flow for completed booking
       |"bookingName":"Booking for cleared teacher  20"|
       |"bookingDescription":"Booking Description text"|
       |"other_age_group":""                           |
-      |"dates":[{"date":"2020-08-27T08:30:00+02:00","fullDay":true,"start_time":"2020-08-27T08:30:00+02:00","end_time":"2020-08-27T16:00:00+02:00"},{"date":"2020-08-28T08:30:00+02:00","fullDay":false,"start_time":"2020-08-28T08:30:00+02:00","end_time":"2020-08-28T13:00:00+02:00"}]|
+      |"dates":[{"date":"2021-08-27T08:30:00+02:00","fullDay":true,"start_time":"2021-08-27T08:30:00+02:00","end_time":"2021-08-27T16:00:00+02:00"},{"date":"2021-08-28T08:30:00+02:00","fullDay":false,"start_time":"2021-08-28T08:30:00+02:00","end_time":"2021-08-28T13:00:00+02:00"}]|
       |"ageGroupIds":[{"age_group_id":"19abfc90-f45b-476b-920f-b05e6e3124a0"}]                                                              |
-      |"schoolDocumentsIds":{"school_document_id":"9c78412f-fe27-4fcc-b527-405e903810e2"}                                                   |
+      |"schoolDocumentsIds":null                                          |
       |"applyUsersIds":[{"user_id":"827fc573-d555-4cf8-9e6d-4d85e7d0e554","user_type":"TEACHER"}]                                           |
       |"teachersTypeIdsSchema":[{"teacher_type_id":"59153f42-83b1-4964-b3ad-5a50226c342a"},{"teacher_type_id":"5d714ae1-4fb4-4b89-a927-47c4396c418e"}]|
       |"creator_id":"f161024f-7d3a-4738-a804-8d9bfeeb9453"                                                                                            |
@@ -172,3 +173,28 @@ Feature:  Timesheet flow for completed booking
 #    When Remove all user bookings using request API
 #      | admin_id:\"538e52d0-a7c0-4e89-9b48-80f0d0ec958d\"|
 #      |user_id:\"827fc573-d555-4cf8-9e6d-4d85e7d0e554\"    |
+
+
+#  Scenario: Create competed booking
+#    When Create Booking using request API
+#      |"school_id":"9b3daa63-4ef8-43a4-8e7c-8b62ff6367f1"|
+##      |"bookingName":"Booking for cleared teacher  20"|
+##      |"bookingDescription":"Booking Description text"|
+##      |"other_age_group":""                           |
+##      |"dates":[{"date":"2020-08-27T08:30:00+02:00","fullDay":true,"start_time":"2020-08-27T08:30:00+02:00","end_time":"2020-08-27T16:00:00+02:00"},{"date":"2020-08-28T08:30:00+02:00","fullDay":false,"start_time":"2020-08-28T08:30:00+02:00","end_time":"2020-08-28T13:00:00+02:00"}]|
+##      |"ageGroupIds":[{"age_group_id":"19abfc90-f45b-476b-920f-b05e6e3124a0"}]                                                              |
+##      |"schoolDocumentsIds":{"school_document_id":"9c78412f-fe27-4fcc-b527-405e903810e2"}                                                   |
+##      |"applyUsersIds":[{"user_id":"827fc573-d555-4cf8-9e6d-4d85e7d0e554","user_type":"TEACHER"}]                                           |
+##      |"teachersTypeIdsSchema":[{"teacher_type_id":"59153f42-83b1-4964-b3ad-5a50226c342a"},{"teacher_type_id":"5d714ae1-4fb4-4b89-a927-47c4396c418e"}]|
+##      |"creator_id":"f161024f-7d3a-4738-a804-8d9bfeeb9453"                                                                                            |
+##      |"anonymisation":false                                                                                                                          |
+##      |"documents":null                                                                                                                               |
+##      |"subjectIds":[{"subject_id":"e0eb4195-27e9-4a20-8a6a-c994d008cc61"}]                                                                              |
+#    When Accept booking as cleared teacher using request API
+#      |"userId":"aa8e7955-b3a3-428c-8354-1d3ceceaac5b"|
+#      |"schoolId":"4a82e641-74d0-4d25-8d58-634e1dccad07"  |
+#    When Approve booking as school using request API
+#      |"userId":"aa8e7955-b3a3-428c-8354-1d3ceceaac5b"|
+#      |"schoolId":"4a82e641-74d0-4d25-8d58-634e1dccad07"|
+#    When Change booking status to completed
+#      |admin_id:\"538e52d0-a7c0-4e89-9b48-80f0d0ec958d\"|

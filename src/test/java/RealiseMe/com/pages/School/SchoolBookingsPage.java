@@ -2,13 +2,12 @@ package RealiseMe.com.pages.School;
 
 import RealiseMe.com.ILocators;
 import RealiseMe.com.pages.CommonActions.CommonActions;
+import net.serenitybdd.core.Serenity;
 import net.serenitybdd.core.pages.PageObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -139,7 +138,7 @@ public class SchoolBookingsPage extends PageObject {
     public ArrayList<String> checkUnclearedPopup(String arg0) {
         ArrayList<String> results = new ArrayList<>();
         results.add(0, "true");
-        if ($(ILocators.Uncleared_status).isPresent() & !getDriver().findElement(By.xpath("//div[contains(text(),'You have selected a teacher that has not yet completed clearance.')]")).getText().equals(arg0)) {
+        if ($(ILocators.Uncleared_status).isPresent() & !getDriver().findElement(By.xpath("//div[@class='dialog Modal dialog--active dialog--persistent']//div[@class='title-body']")).getText().equals(arg0)) {
             results.set(0, "false");
             results.add("Text in the uncleared popup is absent or wrong" + "\n");
         } else {
@@ -220,45 +219,46 @@ public class SchoolBookingsPage extends PageObject {
             waitABit(2000);
             return;
         }
-        if ((!commonActions.isElementPresent("//div[@class='table-cell table-cell_id' and contains(.,'" + commonActions.getBookingIDFromJson().get(0) + "')]")) &
-                (!commonActions.isElementPresent("//div[@class='table-cell table-cell_id' and contains(.,'" + commonActions.getBookingIDFromJson().get(1) + "')]")) &
-                (!commonActions.isElementPresent("//div[@class='table-cell table-cell_id' and contains(.,'" + commonActions.getBookingIDFromJson().get(2) + "')]"))
+        if ((!commonActions.isElementPresent("//div[@class='table-cell table-cell_id' and contains(.,'" + Serenity.getCurrentSession().getMetaData().get("Accepted_Declined_Booking") + "')]"))
+//                &
+//                (!commonActions.isElementPresent("//div[@class='table-cell table-cell_id' and contains(.,'" + Serenity.getCurrentSession().getMetaData().get("BookingId2") + "')]")) &
+//                (!commonActions.isElementPresent("//div[@class='table-cell table-cell_id' and contains(.,'" + Serenity.getCurrentSession().getMetaData().get("BookingId3") + "')]"))
         ) {
             getDriver().findElement(By.xpath("//span[contains(text(),'Next')]")).click();
             approveAcceptedInviteWithName(arg0);
         } else {
-            if (commonActions.isElementPresent("//div[@class='table-cell table-cell_id' and contains(.,'" + commonActions.getBookingIDFromJson().get(0) + "')]")) {
-                getDriver().findElement(By.xpath("//div[@class='table-cell table-cell_id' and contains(.,'" + commonActions.getBookingIDFromJson().get(0) + "')]/..//button")).click();
+            if (commonActions.isElementPresent("//div[@class='table-cell table-cell_id' and contains(.,'" + Serenity.getCurrentSession().getMetaData().get("Accepted_Declined_Booking") + "')]")) {
+                getDriver().findElement(By.xpath("//div[@class='table-cell table-cell_id' and contains(.,'" + Serenity.getCurrentSession().getMetaData().get("Accepted_Declined_Booking") + "')]/..//button")).click();
                 waitABit(2000);
-                if (getDriver().findElement(By.xpath("//div[@class='table-row red-background']//p[contains(.,'" + arg0 + "')]/..//../..//i[@class='icon-check icons']")).isDisplayed()) {
-                    getDriver().findElement(By.xpath("//div[@class='table-row red-background']//p[contains(.,'" + arg0 + "')]/..//../..//i[@class='icon-check icons']")).click();
+                if (getDriver().findElement(By.xpath("//div[@class='opened school-table-row']/..//div[@class='table-row red-background']//p[@class='booking-accept']//i[@class='icon-check icons']")).isDisplayed()) {
+                    getDriver().findElement(By.xpath("//div[@class='opened school-table-row']/..//div[@class='table-row red-background']//p[@class='booking-accept']//i[@class='icon-check icons']")).click();
 
                     commonActions.waitUntilElementVisible("//div[@class='card']//div[@slot='bodyModal']",60);
                     waitABit(2000);
                     return;
                 }
             }
-            if (commonActions.isElementPresent("//div[@class='table-cell table-cell_id' and contains(.,'" + commonActions.getBookingIDFromJson().get(1) + "')]")) {
-                getDriver().findElement(By.xpath("//div[@class='table-cell table-cell_id' and contains(.,'" + commonActions.getBookingIDFromJson().get(1) + "')]/..//button")).click();
-                waitABit(2000);
-                if (getDriver().findElement(By.xpath("//div[@class='table-row red-background']//p[contains(.,'" + arg0 + "')]/..//../..//i[@class='icon-check icons']")).isDisplayed()) {
-                    getDriver().findElement(By.xpath("//div[@class='table-row red-background']//p[contains(.,'" + arg0 + "')]/..//../..//i[@class='icon-check icons']")).click();
-
-                    commonActions.waitUntilElementVisible("//div[@class='card']//div[@slot='bodyModal']",60);
-                    waitABit(2000);
-                    return;
-                }
-            }
-            if (commonActions.isElementPresent("//div[@class='table-cell table-cell_id' and contains(.,'" + commonActions.getBookingIDFromJson().get(2) + "')]")) {
-                getDriver().findElement(By.xpath("//div[@class='table-cell table-cell_id' and contains(.,'" + commonActions.getBookingIDFromJson().get(2) + "')]/..//button")).click();
-                waitABit(2000);
-                if (getDriver().findElement(By.xpath("//div[@class='table-row red-background']//p[contains(.,'" + arg0 + "')]/..//../..//i[@class='icon-check icons']")).isDisplayed()) {
-                    getDriver().findElement(By.xpath("//div[@class='table-row red-background']//p[contains(.,'" + arg0 + "')]/..//../..//i[@class='icon-check icons']")).click();
-
-                    commonActions.waitUntilElementVisible("//div[@class='card']//div[@slot='bodyModal']",60);
-                    waitABit(2000);
-                }
-            }
+//            if (commonActions.isElementPresent("//div[@class='table-cell table-cell_id' and contains(.,'" + Serenity.getCurrentSession().getMetaData().get("BookingId2") + "')]")) {
+//                getDriver().findElement(By.xpath("//div[@class='table-cell table-cell_id' and contains(.,'" + Serenity.getCurrentSession().getMetaData().get("BookingId2") + "')]/..//button")).click();
+//                waitABit(2000);
+//                if (getDriver().findElement(By.xpath("//div[@class='opened school-table-row']/..//div[@class='table-row red-background']//p[@class='booking-accept']//i[@class='icon-check icons']")).isDisplayed()) {
+//                    getDriver().findElement(By.xpath("//div[@class='opened school-table-row']/..//div[@class='table-row red-background']//p[@class='booking-accept']//i[@class='icon-check icons']")).click();
+//
+//                    commonActions.waitUntilElementVisible("//div[@class='card']//div[@slot='bodyModal']",60);
+//                    waitABit(2000);
+//                    return;
+//                }
+//            }
+//            if (commonActions.isElementPresent("//div[@class='table-cell table-cell_id' and contains(.,'" + Serenity.getCurrentSession().getMetaData().get("BookingId3") + "')]")) {
+//                getDriver().findElement(By.xpath("//div[@class='table-cell table-cell_id' and contains(.,'" + Serenity.getCurrentSession().getMetaData().get("BookingId3") + "')]/..//button")).click();
+//                waitABit(2000);
+//                if (getDriver().findElement(By.xpath("//div[@class='opened school-table-row']/..//div[@class='table-row red-background']//p[@class='booking-accept']//i[@class='icon-check icons']")).isDisplayed()) {
+//                    getDriver().findElement(By.xpath("//div[@class='opened school-table-row']/..//div[@class='table-row red-background']//p[@class='booking-accept']//i[@class='icon-check icons']")).click();
+//
+//                    commonActions.waitUntilElementVisible("//div[@class='card']//div[@slot='bodyModal']",60);
+//                    waitABit(2000);
+//                }
+//            }
         }
 //        counter=0;
 //        for (int y = 1; y < commonActions.getBookingCounter()+1; y++) {
@@ -283,23 +283,23 @@ public class SchoolBookingsPage extends PageObject {
     public ArrayList<String> enteredTeacherNameIsDisplayed(String arg) {
         ArrayList<String> results = new ArrayList<>();
         results.add(0, "true");
-        if (!getDriver().findElement(By.xpath("(//div[@class='table-row red-background']//p[contains(.,'Supply staff name')])")).getText().substring(19).equals(arg)) {
+        if (!getDriver().findElement(By.xpath("//div[@class='opened school-table-row']/..//div[@class='table-row red-background']//p[contains(.,'Supply staff name')]")).getText().substring(19).equals(arg)) {
             results.set(0, "false");
             results.add("Expected: " + arg + "; but found: " +
-                    getDriver().findElement(By.xpath("(//div[@class='table-row red-background']//p[contains(.,'Supply staff name')])")).getText().substring(19) + "\n");
+                    getDriver().findElement(By.xpath("//div[@class='opened school-table-row']/..//div[@class='table-row red-background']//p[contains(.,'Supply staff name')]")).getText().substring(19) + "\n");
         }
         return results;
 
     }
 
     public ArrayList<String> attachedFileIsDisplayed(String arg0) {
-        getDriver().findElement(By.xpath("(//div[@class='table-row red-background']//div[@class='profile-content'])")).click();
+        getDriver().findElement(By.xpath("//div[@class='opened school-table-row']/..//div[@class='table-row red-background']//div[@class='profile-content']")).click();
         ArrayList<String> results = new ArrayList<>();
         results.add(0, "true");
-        if (!getDriver().findElement(By.xpath("(//div[@class='table-row red-background']//li//a)")).getText().equals(arg0)) {
+        if (!getDriver().findElement(By.xpath("//div[@class='opened school-table-block']//div[@class='table-row red-background']//li//a")).getText().equals(arg0)) {
             results.set(0, "false");
             results.add("Expected: " + arg0 + "; but found: " +
-                    getDriver().findElement(By.xpath("(//div[@class='table-row red-background']//li//a)")).getText() + "\n");
+                    getDriver().findElement(By.xpath("//div[@class='opened school-table-block']//div[@class='table-row red-background']//li//a")).getText() + "\n");
         }
         return results;
 
@@ -308,10 +308,10 @@ public class SchoolBookingsPage extends PageObject {
     public ArrayList<String> theRateIsDisplayed(String arg0) {
         ArrayList<String> results = new ArrayList<>();
         results.add(0, "true");
-        if (!getDriver().findElement(By.xpath("(//div[@class='table-row red-background']//span[contains(.,'£')]/..)")).getText().substring(2).equals(arg0)) {
+        if (!getDriver().findElement(By.xpath("//div[@class='opened school-table-block']//div[@class='table-row red-background']//span[contains(.,'£')]/..")).getText().substring(2).equals(arg0)) {
             results.set(0, "false");
             results.add("Expected: " + arg0 + "; but found: " +
-                    getDriver().findElement(By.xpath("(//div[@class='table-row red-background']//span[contains(.,'£')]/..)")).getText().substring(2) + "\n");
+                    getDriver().findElement(By.xpath("//div[@class='opened school-table-block']//div[@class='table-row red-background']//span[contains(.,'£')]/..")).getText().substring(2) + "\n");
         }
         return results;
     }
@@ -349,7 +349,8 @@ public class SchoolBookingsPage extends PageObject {
             }
         }else {
             commonActions.waitUntilElementVisible("//div[@class='card']//p[@slot='bodyModal']", 60);
-            if (!getDriver().findElement(By.xpath("//div[@class='card']//p[@slot='bodyModal']")).getText().equals(arg0)) {
+            if ((commonActions.isElementPresent("//div[@class='card']//p[@slot='bodyModal']") && !getDriver().findElement(By.xpath("//div[@class='card']//p[@slot='bodyModal']")).getText().equals(arg0))&&
+                    !getDriver().findElement(By.xpath("//div[@class='dialog Modal dialog--active dialog--persistent']//div[@class='card']//p")).getText().equals(arg0)) {
                 results.set(0, "false");
                 results.add("Expected: " + arg0 + "; but found: " +
                         getDriver().findElement(By.xpath("//div[@class='card']//p[@slot='bodyModal']")).getText() + "\n");
@@ -360,7 +361,12 @@ public class SchoolBookingsPage extends PageObject {
 
 
     public void openBookingSection() {
-        getDriver().findElement(By.xpath("(//button[contains(.,'+')])[1]")).click();
+        if (!commonActions.isElementPresent("//div[@class='table-cell table-cell_id' and contains(.,'" + Serenity.getCurrentSession().getMetaData().get("BookingId1") + "')]")){
+            getDriver().findElement(By.xpath("//span[contains(text(),'Next')]")).click();
+           openBookingSection();
+        } else {
+                getDriver().findElement(By.xpath("//div[@class='table-cell table-cell_id' and contains(.,'" + Serenity.getCurrentSession().getMetaData().get("BookingId1") + "')]/..//button[contains(.,'+')]")).click();
+        }
     }
 
     public void declineAcceptedInviteWithName(String arg0) throws IOException, ParseException {
@@ -409,35 +415,46 @@ public class SchoolBookingsPage extends PageObject {
         }
     }
 
-    public void findAcceptedInviteByBookingID(String arg0) throws IOException, ParseException {
-        if ((!commonActions.isElementPresent("//div[@class='table-cell table-cell_id' and contains(.,'" + commonActions.getBookingIDFromJson().get(0) + "')]")) &
-                (!commonActions.isElementPresent("//div[@class='table-cell table-cell_id' and contains(.,'" + commonActions.getBookingIDFromJson().get(1) + "')]")) &
-                (!commonActions.isElementPresent("//div[@class='table-cell table-cell_id' and contains(.,'" + commonActions.getBookingIDFromJson().get(2) + "')]"))
-        ) {
-            getDriver().findElement(By.xpath("//span[contains(text(),'Next')]")).click();
+    public ArrayList<String> findAcceptedInviteByBookingID(String arg0) throws IOException, ParseException {
+        ArrayList<String> results = new ArrayList<>();
+        results.add(0, "true");
+        System.out.println("Accepted_Declined_Booking = "+Serenity.getCurrentSession().getMetaData().get("Accepted_Declined_Booking"));
+        if (!commonActions.isElementPresent("//div[@class='table-cell table-cell_id' and contains(.,'" + Serenity.getCurrentSession().getMetaData().get("Accepted_Declined_Booking") + "')]")) {
+            if (commonActions.isElementPresent("//span[contains(text(),'Next')]")) {
+                getDriver().findElement(By.xpath("//span[contains(text(),'Next')]")).click();
+                findAcceptedInviteByBookingID(arg0);
+            }else {
+                results.set(0, "false");
+                results.add("Accepted "+Serenity.getCurrentSession().getMetaData().get("Accepted_Declined_Booking")+" Booking isn't found");
+            }
         } else {
-            if (commonActions.isElementPresent("//div[@class='table-cell table-cell_id' and contains(.,'" + commonActions.getBookingIDFromJson().get(0) + "')]")) {
-                getDriver().findElement(By.xpath("//div[@class='table-cell table-cell_id' and contains(.,'" + commonActions.getBookingIDFromJson().get(0) + "')]/..//button")).click();
+            if (commonActions.isElementPresent("//div[@class='table-cell table-cell_id' and contains(.,'" + Serenity.getCurrentSession().getMetaData().get("Accepted_Declined_Booking") + "')]")) {
+                getDriver().findElement(By.xpath("//div[@class='table-cell table-cell_id' and contains(.,'"+Serenity.getCurrentSession().getMetaData().get("Accepted_Declined_Booking")+"')]/..//button[contains(.,'+')]")).click();
                 waitABit(2000);
-                if (getDriver().findElement(By.xpath("//div[@class='table-row red-background']//p[contains(.,'" + arg0 + "')]/..//../..//i[@class='icon-check icons']")).isDisplayed()) {
-                    return;
-                }else getDriver().findElement(By.xpath("//div[@class='table-cell table-cell_id' and contains(.,'" + commonActions.getBookingIDFromJson().get(0) + "')]/..//button")).click();
+                if (getDriver().findElement(By.xpath("//div[@class='opened school-table-row']/..//div[@class='table-row red-background']//p[@class='booking-accept']//span[@class='accept-school']")).getText().equals("accepted")) {
+                    results.set(0, "true");
+                }else {
+                    results.set(0, "false");
+                    results.add(Serenity.getCurrentSession().getMetaData().get("Accepted_Declined_Booking")+" Booking isn't accepted");
+//                    getDriver().findElement(By.xpath("//div[@class='table-cell table-cell_id' and contains(.,'" + Serenity.getCurrentSession().getMetaData().get("Accepted_Declined_Booking") + "')]/..//button[contains(.,'-')]")).click();
+                }
             }
-            if (commonActions.isElementPresent("//div[@class='table-cell table-cell_id' and contains(.,'" + commonActions.getBookingIDFromJson().get(1) + "')]")) {
-                getDriver().findElement(By.xpath("//div[@class='table-cell table-cell_id' and contains(.,'" + commonActions.getBookingIDFromJson().get(1) + "')]/..//button")).click();
-                waitABit(2000);
-                if (getDriver().findElement(By.xpath("//div[@class='table-row red-background']//p[contains(.,'" + arg0 + "')]/..//../..//i[@class='icon-check icons']")).isDisplayed()) {
-                    return;
-                }else getDriver().findElement(By.xpath("//div[@class='table-cell table-cell_id' and contains(.,'" + commonActions.getBookingIDFromJson().get(1) + "')]/..//button")).click();
-            }
-            if (commonActions.isElementPresent("//div[@class='table-cell table-cell_id' and contains(.,'" + commonActions.getBookingIDFromJson().get(2) + "')]")) {
-                getDriver().findElement(By.xpath("//div[@class='table-cell table-cell_id' and contains(.,'" + commonActions.getBookingIDFromJson().get(2) + "')]/..//button")).click();
-                waitABit(2000);
-                if (getDriver().findElement(By.xpath("//div[@class='table-row red-background']//p[contains(.,'" + arg0 + "')]/..//../..//i[@class='icon-check icons']")).isDisplayed()) {
-                    return;
-                }else getDriver().findElement(By.xpath("//div[@class='table-cell table-cell_id' and contains(.,'" + commonActions.getBookingIDFromJson().get(2) + "')]/..//button")).click();
-            }
+//            if (commonActions.isElementPresent("//div[@class='table-cell table-cell_id' and contains(.,'" + Serenity.getCurrentSession().getMetaData().get("BookingId2") + "')]")) {
+//                getDriver().findElement(By.xpath("//div[@class='table-cell table-cell_id' and contains(.,'" + Serenity.getCurrentSession().getMetaData().get("BookingId2") + "')]/..//button[contains(.,'+')]")).click();
+//                waitABit(2000);
+//                if (getDriver().findElement(By.xpath("//div[@class='opened school-table-row']/..//div[@class='table-row red-background']//p[@class='booking-accept']//span[@class='accept-school']")).getText().equals("accepted")) {
+//                    return;
+//                }else getDriver().findElement(By.xpath("//div[@class='table-cell table-cell_id' and contains(.,'" + Serenity.getCurrentSession().getMetaData().get("BookingId2") + "')]/..//button[contains(.,'-')]")).click();
+//            }
+//            if (commonActions.isElementPresent("//div[@class='table-cell table-cell_id' and contains(.,'" + Serenity.getCurrentSession().getMetaData().get("BookingId3") + "')]")) {
+//                getDriver().findElement(By.xpath("//div[@class='table-cell table-cell_id' and contains(.,'" + Serenity.getCurrentSession().getMetaData().get("BookingId3") + "')]/..//button[contains(.,'+')]")).click();
+//                waitABit(2000);
+//                if (getDriver().findElement(By.xpath("//div[@class='opened school-table-row']/..//div[@class='table-row red-background']//p[@class='booking-accept']//span[@class='accept-school']")).getText().equals("accepted")) {
+//                    return;
+//                }else getDriver().findElement(By.xpath("//div[@class='table-cell table-cell_id' and contains(.,'" + Serenity.getCurrentSession().getMetaData().get("BookingId3") + "')]/..//button[contains(.,'-')]")).click();
+//            }
         }
+        return results;
     }
 }
 

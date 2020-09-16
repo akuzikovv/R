@@ -13,7 +13,7 @@ Feature:  Job Apply
     When Click on the "Apply" button at the appropriate job
     When Click on the "APPLY" button
     When Enter login "a.kuzikov@aimprosoft.com"
-    When Enter password "Test123!"
+    When Enter password "AutoTest123!"
     When Click on the Log in button
     Then The job name is right displayed
     When Click on the "APPLY" button

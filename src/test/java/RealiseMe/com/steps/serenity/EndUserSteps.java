@@ -366,7 +366,9 @@ public class EndUserSteps  extends ScenarioSteps {
 
     @Step
     public void chooseCheckbox(String arg0) {
-        commonActions.chooseCheckbox(arg0);
+
+        ArrayList<String> results =  commonActions.chooseCheckbox(arg0);
+        Assert.assertTrue("Checkbox isn't found"+ results, "true".equals(results.get(0)));
     }
 
     @Step
@@ -421,7 +423,7 @@ public class EndUserSteps  extends ScenarioSteps {
     @Step
     public void appropriateTeachersAreDisplayedInTheInvitesList() {
         ArrayList<String> results = commonActions.appropriateTeachersAreDisplayedInTheInvitesList();
-        Assert.assertTrue("Teacher aren't invited" + results, "true".equals(results.get(0)));
+        Assert.assertTrue("Teacher isn't displayed" + results, "true".equals(results.get(0)));
     }
 
     @Step
@@ -667,7 +669,9 @@ public class EndUserSteps  extends ScenarioSteps {
 
     @Step
     public void findAcceptedInviteByBookingID(String arg0) throws IOException, ParseException {
-        schoolBookingsPage.findAcceptedInviteByBookingID(arg0);
+
+        ArrayList<String> results =    schoolBookingsPage.findAcceptedInviteByBookingID(arg0);;
+        Assert.assertTrue("Booking id is wrong"+ results, "true".equals(results.get(0)));
     }
 
     @Step
@@ -881,6 +885,7 @@ public class EndUserSteps  extends ScenarioSteps {
 
     @Step
     public void theJobIsDisplayedInTheSearchResult(String arg0) {
+        commonActions.waitUntilElementVisible("//div[@class='job-table__item desktop']//a[@class='job-header__title' and contains(.,'"+arg0+"')]",60);
         Assert.assertTrue("\""+arg0+"\" job isn't displayed in the search result", getDriver().findElement(By.xpath("//div[@class='job-table__item desktop']//a[@class='job-header__title' and contains(.,'"+arg0+"')]")).isDisplayed());
     }
 
@@ -935,12 +940,12 @@ public class EndUserSteps  extends ScenarioSteps {
 
     @Step
     public void theNameOfFirstApplicantIsDisplayed(String arg0) {
-        Assert.assertTrue("Expected name : \""+arg0+"\" but found: "+getDriver().findElement(By.xpath("(//div[@class='table-body']//button[@class='toggle'])[1]")).getText(),  arg0.equals(getDriver().findElement(By.xpath("(//div[@class='table-body']//button[@class='toggle'])[1]")).getText()));
+        Assert.assertTrue("Expected name : \""+arg0+"\" but found: "+getDriver().findElement(By.xpath("(//button[@class='applicant'])[1]")).getText(),  arg0.equals(getDriver().findElement(By.xpath("(//button[@class='applicant'])[1]")).getText()));
     }
 
     @Step
     public void theNameOfSecondApplicantIsDisplayed(String arg0) {
-        Assert.assertTrue("Expected name : \""+arg0+"\" but found: "+getDriver().findElement(By.xpath("(//div[@class='table-body']//button[@class='toggle'])[2]")).getText(),  arg0.equals(getDriver().findElement(By.xpath("(//div[@class='table-body']//button[@class='toggle'])[2]")).getText()));
+        Assert.assertTrue("Expected name : \""+arg0+"\" but found: "+getDriver().findElement(By.xpath("(//button[@class='applicant'])[2]")).getText(),  arg0.equals(getDriver().findElement(By.xpath("(//button[@class='applicant'])[2]")).getText()));
     }
 
     @Step
@@ -974,18 +979,18 @@ public class EndUserSteps  extends ScenarioSteps {
 
     @Step
     public void theTeacherNameIsDisplayedAtTheAccordionSection(String arg0) {
-        Assert.assertTrue("Expected name : \""+arg0+"\" but found: "+getDriver().findElement(By.xpath("//span[@class='app-name']")).getText(),  arg0.equals(getDriver().findElement(By.xpath("//span[@class='app-name']")).getText()));
+        Assert.assertTrue("Expected name : \""+arg0+"\" but found: "+getDriver().findElement(By.xpath("//h2[@class='header__title']")).getText(),  arg0.equals(getDriver().findElement(By.xpath("//h2[@class='header__title']")).getText()));
 
     }
 
     @Step
     public void theFieldContainsTheAttachedDocument(String arg0, String arg1) {
-        Assert.assertTrue("The \""+arg1+"\" document isn't displayed at the "+arg0+" field",  getDriver().findElement(By.xpath("//div[@class='accordion-wrapper']//div[contains(.,'"+arg0+"')]//a[contains(.,'"+arg1+"')]")).isDisplayed());
+        Assert.assertTrue("The \""+arg1+"\" document isn't displayed at the "+arg0+" field",  getDriver().findElement(By.xpath("//div[@class='hidden-content__wrap']//span[contains(.,'"+arg0+"')]/..//span[contains(.,'"+arg1+"')]")).isDisplayed());
     }
 
     @Step
     public void theCoveringMessageIsDisplayed() {
-        Assert.assertTrue("Expected message : \""+Serenity.getCurrentSession().getMetaData().get("covering message")+"\" but found: "+getDriver().findElement(By.xpath("//p[@class='app-message']")).getText(), Serenity.getCurrentSession().getMetaData().get("covering message").equals(getDriver().findElement(By.xpath("//p[@class='app-message']")).getText()));
+        Assert.assertTrue("Expected message : \""+Serenity.getCurrentSession().getMetaData().get("covering message")+"\" but found: "+getDriver().findElement(By.xpath("//div[@class='hidden-content__wrap']//span[contains(.,'Covering Message')]/..//p")).getText(), Serenity.getCurrentSession().getMetaData().get("covering message").equals(getDriver().findElement(By.xpath("//div[@class='hidden-content__wrap']//span[contains(.,'Covering Message')]/..//p")).getText()));
 
     }
 
@@ -1101,7 +1106,8 @@ public class EndUserSteps  extends ScenarioSteps {
 
     @Step
     public void enterTheToTheField(String arg0, String arg1) {
-        commonActions.enterTheToTheField(arg0,arg1);
+        ArrayList<String> results = commonActions.enterTheToTheField(arg0,arg1);
+        Assert.assertTrue("Can't find input field"+ results, "true".equals(results.get(0)));
     }
 
     @Step
@@ -1142,7 +1148,8 @@ public class EndUserSteps  extends ScenarioSteps {
 
     @Step
     public void chooseTheItemInTheDropdown(String arg0) {
-        commonActions.chooseTheItemInTheDropdown(arg0);
+        ArrayList<String> results =    commonActions.chooseTheItemInTheDropdown(arg0);
+        Assert.assertTrue("The '"+arg0+"' Item in the Dropdown isn't clickable"+ results, "true".equals(results.get(0)));
     }
 
     @Step
@@ -1151,8 +1158,10 @@ public class EndUserSteps  extends ScenarioSteps {
     }
 
     @Step
-    public void clickOnTheDropdown(String arg0) {
-        commonActions.clickOnTheDropdown(arg0);
+    public void clickOnTheDropdown(String arg1, String arg0) {
+        ArrayList<String> results =    commonActions.clickOnTheDropdown(arg0,arg1);
+        Assert.assertTrue("Dropdown isn't found","true".equals(results.get(0)));
+
     }
 
     @Step
@@ -1180,7 +1189,21 @@ public class EndUserSteps  extends ScenarioSteps {
 
     }
 
+    @Step
+    public void getUsersEmailsAtTheFirstTabs(String arg0,String arg1) {
+        commonActions.getUsersEmailsAtTheFirstTabs(arg0,arg1);
+    }
 
+    @Step
+    public void deleteAccounts(String arg0) throws IOException, ParseException {
+       commonActions.deleteAccounts(arg0);;
+    }
+
+    @Step
+    public void theAllNecessaryTextAtTheAccountSectionAreDisplayed(String arg0, List<String> list) {
+        ArrayList<String> results = commonActions.theAllNecessaryTextAtTheAccountSectionAreDisplayed(list,arg0);
+        Assert.assertTrue("Text at the page is wrong or absent"+ results, "true".equals(results.get(0)));
+    }
 
 
 //    @Step

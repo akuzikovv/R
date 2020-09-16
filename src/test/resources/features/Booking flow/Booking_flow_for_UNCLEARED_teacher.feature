@@ -1,5 +1,5 @@
 
-Feature:  Booking Creation
+Feature:  Booking flow for UNCLEARED teacher
 
   Background:
     Given open landing page
@@ -11,7 +11,7 @@ Feature:  Booking Creation
 
   Scenario: Create booking for UNCLEARED teacher
     When Enter login "newuatschool28@yopmail.com"
-    When Enter password "Test123!"
+    When Enter password "AutoTest123!"
     When Click on the Log in button
     When Click on the "Bookings" button in the header
     When Click on the "New Supply Booking" button
@@ -58,10 +58,10 @@ Feature:  Booking Creation
     When Click on the "invites" tab
     Then The "accept" button of the appropriate booking isn't clickable
 
-  Scenario: Remove all user bookings
-    When Remove all user bookings using request API
-    | admin_id:\"538e52d0-a7c0-4e89-9b48-80f0d0ec958d\"|
-    |user_id:\"73526632-4d90-4739-ad8c-5934573d5fa5\"    |
+#  Scenario: Remove all user bookings
+#    When Remove all user bookings using request API
+#    | admin_id:\"538e52d0-a7c0-4e89-9b48-80f0d0ec958d\"|
+#    |user_id:\"73526632-4d90-4739-ad8c-5934573d5fa5\"    |
 
 
 

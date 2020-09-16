@@ -389,7 +389,7 @@ public class SchoolJobsPage extends PageObject {
         ArrayList<String> results = new ArrayList<>();
         results.add(0, "true");
         String date;
-        if (!getDriver().findElement(By.xpath("(//div[@class='table-body']//p[@class='received'])[1]")).isDisplayed() ) {
+        if (!getDriver().findElement(By.xpath("(//span[@class='received__header'])[1]")).isDisplayed() ) {
             results.set(0, "false");
             results.add("Received date isn't displayed");
         } else {
@@ -397,23 +397,23 @@ public class SchoolJobsPage extends PageObject {
                 date = commonActions.getDate().substring(1,2);
             }
             else date = commonActions.getDate().substring(0,2);
-            if ((!date.equals(getDriver().findElement(By.xpath("(//div[@class='table-body']//p[@class='received'])[1]")).getText().substring(0,1)))&
-                    (!date.equals(getDriver().findElement(By.xpath("(//div[@class='table-body']//p[@class='received'])[1]")).getText().substring(0,2)))) {
+            if ((!date.equals(getDriver().findElement(By.xpath("(//span[@class='received__header'])[1]")).getText().substring(0,1)))&
+                    (!date.equals(getDriver().findElement(By.xpath("(//span[@class='received__header'])[1]")).getText().substring(0,2)))) {
                 results.set(0, "false");
-                results.add("Expected: " + date + "; but found: " + getDriver().findElement(By.xpath("(//div[@class='table-body']//p[@class='received'])[1]")).getText().substring(0,1) + "\n");
+                results.add("Expected: " + date + "; but found: " + getDriver().findElement(By.xpath("(//span[@class='received__header'])[1]")).getText().substring(0,1) + "\n");
             }
         }
         return results;
     }
 
     public void openProfileDetailsPopupOfTheFirstApplicant() {
-        commonActions.waitUntilElementVisible("(//div[@class='table-body']//p[@class='applicant'])[1]",60);
-        getDriver().findElement(By.xpath("(//div[@class='table-body']//p[@class='applicant'])[1]")).click();
+        commonActions.waitUntilElementVisible("(//button[@class='applicant'])[1]",60);
+        getDriver().findElement(By.xpath("(//button[@class='applicant'])[1]")).click();
     }
 
     public void clickOnTheLinkAtTheVideoPrescreeningQuestionsField() {
         parentHandle = getDriver().getWindowHandle();
-        getDriver().findElement(By.xpath("//a[@class='app-link']")).click();
+        getDriver().findElement(By.xpath("//div[@class='hidden-content__wrap']//span[contains(.,'Video Prescreening Questions')]/..//p//a")).click();
         ((JavascriptExecutor) getDriver()).executeScript("window.open('about:blank','_blank');");
         String subWindowHandler = null;
         Set<String> handles = getDriver().getWindowHandles();
@@ -427,6 +427,7 @@ public class SchoolJobsPage extends PageObject {
     }
 
     public void addToTheJobNameField(String arg0) {
+        commonActions.waitUntilElementVisible("//input[@name='jobname']",60);
         getDriver().findElement(By.xpath("//input[@name='jobname']")).click();
         getDriver().findElement(By.xpath("//input[@name='jobname']")).sendKeys(" "+arg0);
         Serenity.getCurrentSession().addMetaData("edited job title",  Serenity.getCurrentSession().getMetaData().get("job name")+" "+arg0);

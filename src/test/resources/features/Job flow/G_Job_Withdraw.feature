@@ -8,7 +8,7 @@ Feature:  Job Withdraw
     When Click on the login button
 #    When Click on the "Login as a teacher" button
     When Enter login "a.kuzikov@aimprosoft.com"
-    When Enter password "Test123!"
+    When Enter password "AutoTest123!"
     When Click on the Log in button
     When Click on the "Jobs" button in the header
 #    When Click on the arrow down button

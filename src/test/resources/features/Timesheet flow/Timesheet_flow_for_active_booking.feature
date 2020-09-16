@@ -57,6 +57,7 @@ Feature:  Timesheet flow for active booking
     Then Total rate for school is right calculated
     When Accept timesheet
     Then Popup with "Thank you for confirming this timesheet. When confirming timesheets, you are re-confirming our terms and conditions." text is appeared
+    |test|
     When Close popup
     Then Approve/Decline buttons are disabled
     When Open "https://www.guerrillamail.com/" in  the new tab

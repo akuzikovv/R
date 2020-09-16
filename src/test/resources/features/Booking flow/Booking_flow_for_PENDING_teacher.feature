@@ -1,5 +1,5 @@
 
-Feature:  Booking Creation
+Feature:  Booking flow for PENDING teacher
 
   Background:
     Given open landing page
@@ -10,7 +10,7 @@ Feature:  Booking Creation
 
   Scenario: Create booking for PENDING teacher
     When Enter login "newuatschool28@yopmail.com"
-    When Enter password "Test123!"
+    When Enter password "AutoTest123!"
     When Click on the Log in button
     When Click on the "Bookings" button in the header
     When Click on the "New Supply Booking" button
@@ -67,7 +67,7 @@ Feature:  Booking Creation
   Scenario: Accept booking as PENDING teacher
 #    When Click on the "Login as a teacher" button
     When Enter login "teachuatnew22@yopmail.com"
-    When Enter password "Test123!"
+    When Enter password "AutoTest123!"
     When Click on the Log in button
     When Click on the "Bookings" button in the header
     When Click on the "invites" tab
@@ -82,12 +82,13 @@ Feature:  Booking Creation
   Scenario: Approve booking as school
 #    When Click on the "Login as a school" button
     When Enter login "newuatschool28@yopmail.com"
-    When Enter password "Test123!"
+    When Enter password "AutoTest123!"
     When Click on the Log in button
     When Click on the "Bookings" button in the header
     When Approve accepted invite with "Pending Teacher" name
 #    When Approve appropriate booking
     Then Popup with "Thank you for approving this booking. When approving bookings, you are re-confirming our terms and conditions." text is appeared
+    |test|
     When Close popup
     When Click on the arrow down button
     When Click on the LOGOUT button
@@ -95,7 +96,7 @@ Feature:  Booking Creation
   Scenario: Accept booking as PENDING teacher and Decline booking as school
 #    When Click on the "Login as a teacher" button
     When Enter login "teachuatnew22@yopmail.com"
-    When Enter password "Test123!"
+    When Enter password "AutoTest123!"
     When Click on the Log in button
     When Click on the "Bookings" button in the header
     When Click on the "invites" tab
@@ -110,7 +111,7 @@ Feature:  Booking Creation
     When Click on the login button
 #    When Click on the "Login as a school" button
     When Enter login "newuatschool28@yopmail.com"
-    When Enter password "Test123!"
+    When Enter password "AutoTest123!"
     When Click on the Log in button
     When Click on the "Bookings" button in the header
 #    When Find accepted invite with "Booking for cleared teacher" job title
@@ -123,7 +124,7 @@ Feature:  Booking Creation
   Scenario: Decline booking as PENDING teacher
 #    When Click on the "Login as a teacher" button
     When Enter login "teachuatnew22@yopmail.com"
-    When Enter password "Test123!"
+    When Enter password "AutoTest123!"
     When Click on the Log in button
     When Click on the "Bookings" button in the header
     When Click on the "invites" tab
@@ -131,10 +132,10 @@ Feature:  Booking Creation
     When Click on the "decline" button of the appropriate booking
     When Click on the "confirm" button
 
-  Scenario: Remove all user bookings
-    When Remove all user bookings using request API
-      | admin_id:\"538e52d0-a7c0-4e89-9b48-80f0d0ec958d\"|
-      |user_id:\"6e66c2e6-1970-4fb1-9d3d-307b7218ec4e\"    |
+#  Scenario: Remove all user bookings
+#    When Remove all user bookings using request API
+#      | admin_id:\"538e52d0-a7c0-4e89-9b48-80f0d0ec958d\"|
+#      |user_id:\"6e66c2e6-1970-4fb1-9d3d-307b7218ec4e\"    |
 
 
 

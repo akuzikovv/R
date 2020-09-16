@@ -63,14 +63,14 @@ Feature:  Teacher profile Creation
     When CLick on the "edit" button at the "Account" section
     When Enter the "Auto" to the "First name*" field
     When Enter the "Teacher" to the "Last name*" field
-    When Click on the "Gender" dropdown
+    When Click on the "Gender" "" dropdown
     Then Dropdown contains the next items:
       | Other             |
       | Male              |
       | Prefer not to say |
       | Female            |
     When Choose the "Male" item in the dropdown
-    When Click on the "Ethnicity" dropdown
+    When Click on the "Ethnicity" "" dropdown
     Then Dropdown contains the next items:
       | English                                |
       | Welsh                                  |
@@ -202,21 +202,154 @@ Feature:  Teacher profile Creation
       | address line 2 |
       | City           |
       | County         |
-      | +44 0635094915     |
+      | +44 0635094915 |
 
-  Scenario: Fill "Contact Details" profile section as user
+  Scenario: Check popup of invalid postcode at the "Contact Details" profile section
     Given open landing page
     When click on the agree button at the banner
     When Click on the login button
+#    When Enter login "newuatteacher214@sharklasers.com"
     When Enter login of new created user
     When Enter password "Test123!"
     When Click on the Log in button
     When Click on the arrow down button
     When Click on the "Account" button
     When CLick on the "edit" button at the "Contact Details" section
+    When Choose "Policies" checkbox
+    When Click on the "save" button
+    Then Popup with "Sorry, your postcode can not be found. This will make it harder for schools to find you when searching for candidates. Please contact us for assistance." text is appeared
+      | popup text |
+    When Click on the "Ok" button
+    Then The all entered data to the Account "Contact Details" section are saved
+      | Postcode       |
+      | address line 1 |
+      | address line 2 |
+      | City           |
+      | County         |
+      | +44 0635094915 |
+
+
+  Scenario: Fill "Contact Details" profile section as user
+    Given open landing page
+    When click on the agree button at the banner
+    When Click on the login button
+#    When Enter login of new created user
+    When Enter login "newuatteacher156@sharklasers.com"
+    When Enter password "Test123!"
+    When Click on the Log in button
+    When Click on the arrow down button
+    When Click on the "Account" button
+    When CLick on the "edit" button at the "Contact Details" section
     When Enter "NW3 5SQ" postcode to the "enter postcode" field
-    When Click on the "Find Address" button
-    When Choose random address from the dropdown in the "5" range
+    When Click on the "find address" button
+    When Choose random address from the dropdown in the "2" range
+    When Click on the "save" button
+    Then The all entered data to the Account "Contact Details" section are saved
+      | Holy Trinity Primary School |
+      | Trinity Walk                |
+      | London                      |
+      | NW35SQ                      |
+      | +44 0635094915              |
+
+
+  Scenario: Fill "Teacher Details" profile section as supply user
+    Given open landing page
+    When click on the agree button at the banner
+    When Click on the login button
+    When Enter login "uatteach18@yopmail.com"
+#    When Enter login of new created user
+    When Enter password "Test123!"
+    When Click on the Log in button
+    When Click on the arrow down button
+    When Click on the "Account" button
+    When Click on the "Teacher Details" tab
+    Then The all necessary text at the Account "Teacher Details" section are displayed
+      | Are you a teacher or TA?                |
+      | Where do you currently work? (optional) |
+      | Complete our prescreening questions     |
+      | Please read and accept our T&Cs         |
+    When CLick on the "edit" button at the "Teacher Details" section
+    When Click on the "select teacher type" dropdown
+    When Choose the "Teacher" item in the dropdown
+    When Enter the "123456789" to the "GTC number" field
+    When Click on the "Supply" dropdown
+    When Choose the "Yes - I am looking for supply work" item in the dropdown
+    When Choose "I confirm I have read and understand the" checkbox
+    When Enter the "123456" to the "Enter your name" field
+    When Click on the "save" button
+    Then The all entered data to the Account "Teacher Details" section are saved
+      | Teacher                                 |
+      | 123456789                               |
+      | I am looking for supply work            |
+      | Where do you currently work? (optional) |
+      | Complete our prescreening questions     |
+      | confirmed                               |
+
+
+  Scenario: Fill "Supply Details" profile section as supply user
+    Given open landing page
+    When click on the agree button at the banner
+    When Click on the login button
+    When Enter login "uatteach18@yopmail.com"
+#    When Enter login of new created user
+    When Enter password "Test123!"
+    When Click on the Log in button
+    When Click on the arrow down button
+    When Click on the "Account" button
+    When Click on the "Supply Details" tab
+    Then The all necessary text at the Account "Supply Details" section are displayed
+      | I am not on the DBS Update Service                  |
+      | Enter your primary subject                          |
+      | Enter your secondary subjects                       |
+      | Tell us your extracurricular activities             |
+      | Enter your preferred daily pay rate                 |
+      | Enter your preferred long-term pay rate             |
+      | Enter your payment preference                       |
+      | Enter your payment method                           |
+      | Enter your national insurance number                |
+      | Provide at least one reference                      |
+      | Provide at least one reference                      |
+      | Have you worked in a school in the past 3 months?   |
+      | I have not completed the safeguarding questionnaire |
+      | I have not completed the medical declaration        |
+    When CLick on the "edit" button at the "Supply Details" section
+    When Choose "Already registered for Update Service (DBS)" radiobutton
+    When Enter the "123456789012" to the "Enter 12 character certificate number" field
+    When Upload "Candidate_Summary.pdf" file
+    When Click on the "Primary subject" input field
+    When Choose the "biology" item in the dropdown
+    When Click on the "Secondary subject" input field
+    When Choose the "classics" item in the dropdown
+    When Click on the "Extracurricular(s)" input field
+    When Choose the "careers" item in the dropdown
+    When Enter the "123" to the "Preferred daily rate" field
+    When Enter the "123" to the "Preferred long-term rate" field
+    When Enter the "123" to the "Preferred hourly rate" field
+#  When Click on the "Payment preference" "" dropdown
+    When Click on the "Select payment preference" "" dropdown
+  When Choose the "umbrella" item in the dropdown
+    When Click on the "Select payment preference" "2" dropdown
+    When Choose the "Key" item in the dropdown
+    When Click on the "NI" "" dropdown
+    When Choose the "Other" item in the dropdown
+  When Enter the "1234567890" to the "enter..." field
+  When Enter the "Name" to the "Full name" field
+    When Enter the "test@test.test" to the "Email" field
+    When Enter the "123123123123" to the "Mobile" field
+  When Choose "yes" radiobutton
+  When Choose "Supply Teaching Policies" checkbox
+  When Choose "Medical confirmation" checkbox
+  When Click on the "save" button
+  When wait time
+  When wait time
+
+
+   
+  
 
 
 
+
+#Scenario: delete accounts
+#  When Get users emails at the first "1" tabs "Teachers"
+#  Then Delete "Teacher" accounts

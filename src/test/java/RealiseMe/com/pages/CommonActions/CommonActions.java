@@ -28,6 +28,7 @@ import java.util.Set;
 
 public class CommonActions extends PageObject {
     private ArrayList<String> status_of_teacher;
+    private ArrayList<String> users_emails;
     private ArrayList<String> names = new ArrayList<>();
     private int counter, counterDecline;
     private int b;
@@ -59,7 +60,8 @@ public class CommonActions extends PageObject {
     private String date;
     private String month;
     private String year;
-    private boolean creation_status;
+    private boolean creation_status = false;
+    ;
     private boolean SchoolSide = false;
     private boolean TeacherSide = false;
     //    public WebDriverWait wait = new WebDriverWait(getDriver(), 10);
@@ -109,11 +111,15 @@ public class CommonActions extends PageObject {
         }
         if (isElementPresent("//button[contains(.,'" + arg0 + "')]")) {
 //            getDriver().findElement(By.xpath("//button[contains(.,'" + arg0 + "')]")).click();
-
-            try {
+            if (getDriver().getCurrentUrl().contains("school/job/live/")) {
                 getDriver().findElement(By.xpath("(//button[contains(.,'" + arg0 + "')])[1]")).click();
-            } catch (Exception e) {
-            }
+                return;
+            } else
+
+                try {
+                    getDriver().findElement(By.xpath("(//button[contains(.,'" + arg0 + "')])[1]")).click();
+                } catch (Exception e) {
+                }
             try {
                 getDriver().findElement(By.xpath("(//button[contains(.,'" + arg0 + "')])[2]")).click();
             } catch (Exception e) {
@@ -133,7 +139,7 @@ public class CommonActions extends PageObject {
             getDriver().findElement(By.xpath("//p[contains(.,'" + arg0 + "')]")).click();
             return;
         } else {
-            System.out.println(arg0 + " Button is found");
+            System.out.println(arg0 + " Button isn't found");
         }
 //        try {
 //            WebElement xpath = getDriver().findElement(By.xpath("//a[contains(.,'" + arg0 + "')]"));
@@ -168,27 +174,32 @@ public class CommonActions extends PageObject {
     }
 
     public void clickOnTheTab(String arg0) {
-        try {
-            if ($(ILocators.Jobs).getText().equals("Jobs")) {
-                WebElement xpath = getDriver().findElement(By.xpath("//a[@href='/school/job/" + arg0 + "']"));
-                xpath.click();
-            } else {
-                WebElement xpath = getDriver().findElement(By.xpath("//a[@href='/school/booking/" + arg0 + "']"));
-                xpath.click();
-            }
-        } catch (Exception e) {
+        waitABit(4000);
+        if (getDriver().getCurrentUrl().contains("job") || getDriver().getCurrentUrl().contains("booking")) {
+            waitUntilElementVisible("//div[@class='tabs__div' and contains (.,'" + arg0 + "')]", 60);
+            getDriver().findElement(By.xpath("//div[@class='tabs__div' and contains (.,'" + arg0 + "')]")).click();
+            waitABit(1000);
         }
-        try {
+        if (getDriver().getCurrentUrl().contains("auth0")) {
+            waitUntilElementVisible("(//a[contains(.,'" + arg0 + "')])[1]", 60);
             WebElement xpath = getDriver().findElement(By.xpath("(//a[contains(.,'" + arg0 + "')])[1]"));
             xpath.click();
-            waitUntilElementVisible("//p[contains(.,'Please')])[3]", 60);
-        } catch (Exception e) {
-        }
-        try {
-            WebElement xpath = getDriver().findElement(By.xpath("(//a[contains(.,'" + arg0 + "')])[2]"));
-            xpath.click();
-            waitUntilElementVisible("//p[contains(.,'Please')])[3]", 60);
-        } catch (Exception e) {
+        } else {
+            try {
+                waitUntilElementVisible("(//a[contains(.,'" + arg0 + "')])[1]", 20);
+                WebElement xpath = getDriver().findElement(By.xpath("(//a[contains(.,'" + arg0 + "')])[1]"));
+                xpath.click();
+                waitUntilElementVisible("//p[contains(.,'Please')])[3]", 20);
+            } catch (Exception e) {
+            }
+            try {
+                waitUntilElementVisible("(//a[contains(.,'" + arg0 + "')])[2]", 20);
+                WebElement xpath = getDriver().findElement(By.xpath("(//a[contains(.,'" + arg0 + "')])[2]"));
+                xpath.click();
+                waitUntilElementVisible("//p[contains(.,'Please')])[3]", 20);
+            } catch (Exception e) {
+            }
+
         }
     }
 
@@ -202,42 +213,78 @@ public class CommonActions extends PageObject {
         }
     }
 
-    public void chooseCheckbox(String arg0) {
+    public ArrayList<String> chooseCheckbox(String arg0) {
+        ArrayList<String> results = new ArrayList<>();
+        results.add(0, "false");
         if (isElementPresent("//p[contains(.,'" + arg0 + "')]/../../..//div[@class='input-group--selection-controls__ripple']")) {
             WebElement xpath = getDriver().findElement(By.xpath("//p[contains(.,'" + arg0 + "')]/../../..//div[@class='input-group--selection-controls__ripple']"));
             xpath.click();
+            try {
+                getDriver().findElement(By.xpath("//p[contains(.,'" + arg0 + "')]/..//div[@class='input-group--selection-controls__ripple']")).click();
+            }catch (Exception e ){}
+
             System.out.println("5");
-            return;
+            results.set(0, "true");
+            return results;
+
+        }
+        if (isElementPresent("//p[contains(.,'" + arg0 + "')]/..//div[@class='input-group--selection-controls__ripple']")) {
+            WebElement xpath = getDriver().findElement(By.xpath("//p[contains(.,'" + arg0 + "')]/..//div[@class='input-group--selection-controls__ripple']"));
+            xpath.click();
+            System.out.println("8");
+            results.set(0, "true");
+            return results;
 
         }
         if (isElementPresent("//label[contains(.,'" + arg0 + "')]")) {
             WebElement xpath = getDriver().findElement(By.xpath("//label[contains(.,'" + arg0 + "')]"));
             xpath.click();
             System.out.println("1");
-            return;
+            results.set(0, "true");
+            return results;
         }
 
         if (isElementPresent("//span[contains(.,'" + arg0 + "')]//../..//div[@role='checkbox']")) {
             WebElement xpath = getDriver().findElement(By.xpath("//span[contains(.,'" + arg0 + "')]//../..//div[@role='checkbox']"));
             xpath.click();
             System.out.println("2");
-            return;
+            results.set(0, "true");
+            return results;
         }
 
         if (isElementPresent("(//div[@class='" + arg0 + "']//div[@role='checkbox']//div)[2]")) {
             WebElement xpath = getDriver().findElement(By.xpath("(//div[@class='" + arg0 + "']//div[@role='checkbox']//div)[2]"));
             xpath.click();
             System.out.println("3");
-            return;
+            results.set(0, "true");
+            return results;
         }
         if (isElementPresent("//label[contains(.,'" + arg0 + "')]/..//div[@class='input-group--selection-controls__ripple']")) {
             WebElement xpath = getDriver().findElement(By.xpath("//label[contains(.,'" + arg0 + "')]/..//div[@class='input-group--selection-controls__ripple']"));
             xpath.click();
             System.out.println("4");
-            return;
+            results.set(0, "true");
+            return results;
+
+        }
+        if (isElementPresent("//p[contains(.,'" + arg0 + "')]//../../..//div[@role='checkbox']")) {
+            WebElement xpath = getDriver().findElement(By.xpath("//p[contains(.,'" + arg0 + "')]//../../..//div[@role='checkbox']"));
+            xpath.click();
+            System.out.println("6");
+            results.set(0, "true");
+            return results;
+
+        }
+        if (isElementPresent("//span[contains(.,'" + arg0 + "')]")) {
+            WebElement xpath = getDriver().findElement(By.xpath("//span[contains(.,'" + arg0 + "')]"));
+            xpath.click();
+            System.out.println("7");
+            results.set(0, "true");
+            return results;
 
         }
 
+        return results;
     }
 
     public void closePopup() {
@@ -249,8 +296,8 @@ public class CommonActions extends PageObject {
         int max = Integer.parseInt(counter);
 
         for (int i = 1; i < max + 1; i++) {
-            i++;
-            names.add(getDriver().findElement(By.xpath("(//div[@class='table-info']//p[@class='name'])[" + i + "]")).getText());
+            waitUntilElementVisible("((//div[@class='table-info']//p[@class='name'])[2])[" + i + "]", 40);
+            names.add(getDriver().findElement(By.xpath("((//div[@class='table-info']//p[@class='name'])[2])[" + i + "]")).getText());
         }
         return names;
 
@@ -268,35 +315,10 @@ public class CommonActions extends PageObject {
     public ArrayList<String> appropriateTeachersAreDisplayedInTheInvitesList() {
         ArrayList<String> results = new ArrayList<>();
         results.add(0, "true");
-//        int max2 = Integer.parseInt(getBookingCounter());
-        if (getBookingCounter() < 11) {
-            for (int i = 0; i < 10; i++) {
-                for (int y = 1; y < 11; y++) {
-                    if (names.get(i).equals(getDriver().findElement(By.xpath("(//p[@class='name'])[" + y + "]")).getText())) {
-                        results.set(0, "true");
-                        i = 9;
-                        break;
-                    } else {
-                        results.set(0, "false");
-                    }
-                }
-            }
-        } else {
-            for (int i = 0; i < 10; i++) {
-                for (int y = 1; y < 11; y++) {
-                    if (names.get(i).equals(getDriver().findElement(By.xpath("(//p[@class='name'])[" + y + "]")).getText())) {
-                        results.set(0, "true");
-                        i = 9;
-                        break;
-                    } else {
-                        results.set(0, "false");
-                    }
-                    if ((y == 10) & (!names.get(i).equals(getDriver().findElement(By.xpath("(//p[@class='name'])[" + y + "]")).getText()))) {
-                        getDriver().findElement(By.xpath("//span[contains(text(),'Next')]")).click();
-                        y = 0;
-                    }
-                }
-            }
+        waitUntilElementVisible("//div[@class='table-cell table-cell_id' and contains(.,'" + Serenity.getCurrentSession().getMetaData().get("BookingId1") + "')]/../..//div[@class='table-row__block']//p", 60);
+        if (!names.get(0).equals(getDriver().findElement(By.xpath("//div[@class='table-cell table-cell_id' and contains(.,'" + Serenity.getCurrentSession().getMetaData().get("BookingId1") + "')]/../..//div[@class='table-row__block']//p")).getText())) {
+            results.set(0, "false");
+            results.add("Expected: " + names.get(0) + " ; But found: " + getDriver().findElement(By.xpath("//div[@class='table-cell table-cell_id' and contains(.,'" + Serenity.getCurrentSession().getMetaData().get("BookingId1") + "')]/../..//div[@class='table-row__block']//p")).getText());
         }
         return results;
     }
@@ -525,6 +547,7 @@ public class CommonActions extends PageObject {
         }
     }
 
+
     public void clickOnTheSignUpButton() {
         waitUntilElementVisible(ILocators.sign_up, 60);
         getDriver().findElement(By.xpath(ILocators.sign_up)).click();
@@ -582,13 +605,30 @@ public class CommonActions extends PageObject {
     }
 
     public void getBookingID() {
-        String bookingId1 = getDriver().findElement(By.xpath("(//div[@class='school-table-row']//div[@class='table-cell table-cell_id'])[1]")).getText();
-        String bookingId2 = getDriver().findElement(By.xpath("(//div[@class='school-table-row']//div[@class='table-cell table-cell_id'])[2]")).getText();
-        String bookingId3 = getDriver().findElement(By.xpath("(//div[@class='school-table-row']//div[@class='table-cell table-cell_id'])[3]")).getText();
+        int i = 1;
+        for (i = 1; i < 11; i++) {
+            if (!getDriver().findElement(By.xpath("(//div[@class='school-table-row']//div[@class='table-cell table-cell_id'])[" + i + "]/../..//div[@class='table-cell table-cell_status']")).getText().equals("attention required")) {
+                break;
+            } else if (i == 10 && getDriver().findElement(By.xpath("(//div[@class='school-table-row']//div[@class='table-cell table-cell_id'])[" + i + "]/../..//div[@class='table-cell table-cell_status']")).getText().equals("attention required")) {
+                getDriver().findElement(By.xpath("//span[contains(text(),'Next')]")).click();
+                i = 0;
+            }
+        }
+        String bookingId1 = getDriver().findElement(By.xpath("(//div[@class='school-table-row']//div[@class='table-cell table-cell_id'])[" + i + "]")).getText();
+        i++;
+        String bookingId2 = getDriver().findElement(By.xpath("(//div[@class='school-table-row']//div[@class='table-cell table-cell_id'])[" + i + "]")).getText();
+        i++;
+        String bookingId3 = getDriver().findElement(By.xpath("(//div[@class='school-table-row']//div[@class='table-cell table-cell_id'])[" + i + "]")).getText();
+        System.out.println("BookingId1 = " + bookingId1);
+        System.out.println("BookingId2 = " + bookingId2);
+        System.out.println("BookingId3 = " + bookingId3);
         Serenity.getCurrentSession().addMetaData("BookingId1", bookingId1);
         Serenity.getCurrentSession().addMetaData("BookingId2", bookingId2);
         Serenity.getCurrentSession().addMetaData("BookingId3", bookingId3);
         creation_status = true;
+        Serenity.getCurrentSession().addMetaData("creation_status", "true");
+        System.out.println("creation_status = " + Serenity.getCurrentSession().getMetaData().get("creation_status"));
+
        /* try {
             BufferedWriter writer = Files.newBufferedWriter(Paths.get("src/test/resources/Files/BookingID.json"));
             JSONObject bookingIDObject = new JSONObject();
@@ -620,9 +660,9 @@ public class CommonActions extends PageObject {
     }
 
     public void clickOnTheButtonOfTheAppropriateBooking(String arg0) throws IOException, ParseException {
-        System.out.println(getBookingIDFromJson().get(0));
-        System.out.println(getBookingIDFromJson().get(1));
-        System.out.println(getBookingIDFromJson().get(2));
+        System.out.println(Serenity.getCurrentSession().getMetaData().get("BookingId1"));
+        System.out.println(Serenity.getCurrentSession().getMetaData().get("BookingId2"));
+        System.out.println(Serenity.getCurrentSession().getMetaData().get("BookingId3"));
         System.out.println("bookingShortID = " + Serenity.getCurrentSession().getMetaData().get("bookingShortID"));
         System.out.println("bookingShortIDforTimesheets = " + Serenity.getCurrentSession().getMetaData().get("bookingShortIDforTimesheets"));
         System.out.println(getDriver().getCurrentUrl());
@@ -639,9 +679,9 @@ public class CommonActions extends PageObject {
 //            if (!SchoolSide) {
             getDriver().findElement(By.xpath("(//button[@class='open' and contains(.,'+')])[" + i + "]")).click();
 //            }
-            if (getDriver().findElement(By.xpath("(//p[@class='hidden-content__block-description'])[1]")).getText().equals(getBookingIDFromJson().get(0)) ||
-                    getDriver().findElement(By.xpath("(//p[@class='hidden-content__block-description'])[1]")).getText().equals(getBookingIDFromJson().get(1)) ||
-                    getDriver().findElement(By.xpath("(//p[@class='hidden-content__block-description'])[1]")).getText().equals(getBookingIDFromJson().get(2)) ||
+            if (getDriver().findElement(By.xpath("(//p[@class='hidden-content__block-description'])[1]")).getText().equals(Serenity.getCurrentSession().getMetaData().get("BookingId1")) ||
+                    getDriver().findElement(By.xpath("(//p[@class='hidden-content__block-description'])[1]")).getText().equals(Serenity.getCurrentSession().getMetaData().get("BookingId2")) ||
+                    getDriver().findElement(By.xpath("(//p[@class='hidden-content__block-description'])[1]")).getText().equals(Serenity.getCurrentSession().getMetaData().get("BookingId3")) ||
                     getDriver().findElement(By.xpath("(//p[@class='hidden-content__block-description'])[1]")).getText().equals(Serenity.getCurrentSession().getMetaData().get("bookingShortID"))) {
                 if (arg0.equals("timesheet")) {
                     Serenity.getCurrentSession().addMetaData("bookingShortIDforTimesheets", getDriver().findElement(By.xpath("(//p[@class='hidden-content__block-description'])[1]")).getText());
@@ -651,9 +691,27 @@ public class CommonActions extends PageObject {
 //                    if (SchoolSide){
 //                            getDriver().findElement(By.xpath("//span[contains(.,'"+Serenity.getCurrentSession().getMetaData().get("acceptedTimesheetByTeacher")+"')]/..//div[@class='role' and contains(.,'"+arg0+"')]")).click();
 //                    }
-                    if (arg0.equals("accept") || arg0.equals("decline")) {
+                    if (arg0.equals("accept")) {
                         getDriver().findElement(By.xpath("//p[@class='hidden-content__block-description']/../../../../../..//button[contains(.,'" + arg0 + "')]")).click();
+                        Serenity.getCurrentSession().addMetaData("Accepted_Declined_Booking", getDriver().findElement(By.xpath("(//p[@class='hidden-content__block-description'])[1]")).getText());
+                        System.out.println("Accepted booking = " + Serenity.getCurrentSession().getMetaData().get("Accepted_Declined_Booking"));
+                        i = 10;
                         break;
+                    }
+                    if (arg0.equals("decline")) {
+                        System.out.println(getDriver().findElement(By.xpath("//p[@class='hidden-content__block-description']/../../../../../..//button[contains(.,'accept')]")).getCssValue("background-color"));
+                        if (getDriver().findElement(By.xpath("//p[@class='hidden-content__block-description']/../../../../../..//button[contains(.,'accept')]")).getCssValue("background-color").equals("#00b86c")) {
+                            getDriver().findElement(By.xpath("//button[@class='open' and contains(.,'-')]")).click();
+                            if ((i == 10) & isElementPresent("//span[contains(text(),'Next')]")) {
+                                getDriver().findElement(By.xpath("//span[contains(text(),'Next')]")).click();
+                                i = 0;
+                            } else return;
+                        } else {
+                            System.out.println("Decline booking = " + getDriver().findElement(By.xpath("(//p[@class='hidden-content__block-description'])[1]")).getText());
+                            getDriver().findElement(By.xpath("//p[@class='hidden-content__block-description']/../../../../../..//button[contains(.,'" + arg0 + "')]")).click();
+                            i = 10;
+                            break;
+                        }
                     }
                 }
             } else {
@@ -664,75 +722,15 @@ public class CommonActions extends PageObject {
                     getDriver().findElement(By.xpath("//span[contains(text(),'Next')]")).click();
                     i = 0;
                 }
-
             }
         }
-
-
-//        if ((!isElementPresent("//p[contains(.,'" + getBookingIDFromJson().get(0) + "')]/../../../../../..//button[contains(.,'" + arg0 + "')]")) &
-//                (!isElementPresent("//p[contains(.,'" + getBookingIDFromJson().get(1) + "')]/../../../../../..//button[contains(.,'" + arg0 + "')]")) &
-//                (!isElementPresent("//p[contains(.,'" + getBookingIDFromJson().get(2) + "')]/../../../../../..//button[contains(.,'" + arg0 + "')]")) &
-//                (!isElementPresent("//p[contains(.,'" + Serenity.getCurrentSession().getMetaData().get("bookingShortID") + "')]/../../../../../..//button[contains(.,'" + arg0 + "')]")) &
-//                isElementPresent("//span[contains(text(),'Next')]")) {
-//            getDriver().findElement(By.xpath("//span[contains(text(),'Next')]")).click();
-//            clickOnTheButtonOfTheAppropriateBooking(arg0);
-//        }
-////        if (isElementPresent("//p[contains(.,'" + getBookingIDFromJson().get(0) + "')]/../../../../../../..//span[contains(.,'" + arg0 + "')]")) {
-////            try {
-////                getDriver().findElement(By.xpath("(//p[contains(.,'" + getBookingIDFromJson().get(0) + "')]/../../../../../../..//span[contains(.,'" + arg0 + "')])[1]")).click();
-////            } catch (Exception e) {
-////            }
-////            try {
-////                getDriver().findElement(By.xpath("(//p[contains(.,'" + getBookingIDFromJson().get(0) + "')]/../../../../../../..//span[contains(.,'" + arg0 + "')])[2]")).click();
-////            } catch (Exception e) {
-////            }
-////            return;
-////        } else if (isElementPresent("//p[contains(.,'" + getBookingIDFromJson().get(1) + "')]/../../../../../../..//span[contains(.,'" + arg0 + "')]")) {
-////            try {
-////                getDriver().findElement(By.xpath("(//p[contains(.,'" + getBookingIDFromJson().get(1) + "')]/../../../../../../..//span[contains(.,'" + arg0 + "')])[1]")).click();
-////            } catch (Exception e) {
-////            }
-////            try {
-////                getDriver().findElement(By.xpath("(//p[contains(.,'" + getBookingIDFromJson().get(1) + "')]/../../../../../../..//span[contains(.,'" + arg0 + "')])[2]")).click();
-////            } catch (Exception e) {
-////            }
-////            return;
-////        } else if (isElementPresent("//p[contains(.,'" + getBookingIDFromJson().get(2) + "')]/../../../../../../..//span[contains(.,'" + arg0 + "')]")) {
-////            try {
-////                getDriver().findElement(By.xpath("(//p[contains(.,'" + getBookingIDFromJson().get(2) + "')]/../../../../../../..//span[contains(.,'" + arg0 + "')])[1]")).click();
-////            } catch (Exception e) {
-////            }
-////            try {
-////                getDriver().findElement(By.xpath("(//p[contains(.,'" + getBookingIDFromJson().get(2) + "')]/../../../../../../..//span[contains(.,'" + arg0 + "')])[2]")).click();
-////            } catch (Exception e) {
-////            }
-////            return;
-//        if (isElementPresent("//p[contains(.,'" + getBookingIDFromJson().get(0) + "')]/../../../../../..//button[contains(.,'" + arg0 + "')]")) {
-//                getDriver().findElement(By.xpath("//p[contains(.,'" + getBookingIDFromJson().get(0) + "')]/../../../../../..//button[contains(.,'" + arg0 + "')]")).click();
-//            return;
-//        }
-//        if (isElementPresent("//p[contains(.,'" + getBookingIDFromJson().get(1) + "')]/../../../../../..//button[contains(.,'" + arg0 + "')]")) {
-//            getDriver().findElement(By.xpath("//p[contains(.,'" + getBookingIDFromJson().get(1) + "')]/../../../../../..//button[contains(.,'" + arg0 + "')]")).click();
-//            return;
-//        }
-//        if (isElementPresent("//p[contains(.,'" + getBookingIDFromJson().get(2) + "')]/../../../../../..//button[contains(.,'" + arg0 + "')]")) {
-//            getDriver().findElement(By.xpath("//p[contains(.,'" + getBookingIDFromJson().get(2) + "')]/../../../../../..//button[contains(.,'" + arg0 + "')]")).click();
-//            return;
-//        }
-//        else if (isElementPresent("//p[contains(.,'" + Serenity.getCurrentSession().getMetaData().get("bookingShortID") + "')]/../../../../../..//button[contains(.,'" + arg0 + "')]")) {
-//            getDriver().findElement(By.xpath("//p[contains(.,'" + Serenity.getCurrentSession().getMetaData().get("bookingShortID") + "')]/../../../../../..//button[contains(.,'" + arg0 + "')]")).click();
-//            return;
-//        }
-////        else  if (isElementPresent("//p[contains(.,'" + Serenity.getCurrentSession().getMetaData().get("bookingShortID") + "')]/..//a")) {
-////            getDriver().findElement(By.xpath("//p[contains(.,'" + Serenity.getCurrentSession().getMetaData().get("bookingShortID") + "')]/..//a")).click();
-////            return;
-////        }
     }
 
 
     //    @Test
     public void createBookingUsingRequestAPI(List<String> list) throws IOException, ParseException {
         getAccessTokenAuth0();
+//        String body = "{\"operationName\":\"createBooking\",\"variables\":{\"input\":{\"school_id\":\"4a82e641-74d0-4d25-8d58-634e1dccad07\",\"bookingName\":\"asdsd\",\"bookingDescription\":\"asdasd\",\"other_age_group\":\"\",\"dates\":[{\"date\":\"2020-08-31T08:30:00+03:00\",\"fullDay\":true,\"start_time\":\"2020-08-31T08:30:00+03:00\",\"end_time\":\"2020-08-31T16:00:00+03:00\"}],\"ageGroupIds\":null,\"schoolDocumentsIds\":null,\"applyUsersIds\":[{\"user_id\":\"aa8e7955-b3a3-428c-8354-1d3ceceaac5b\",\"user_type\":\"TEACHER\"}],\"teachersTypeIdsSchema\":[{\"teacher_type_id\":\"5d714ae1-4fb4-4b89-a927-47c4396c418e\"}],\"creator_id\":\"94b348d1-32f4-44a8-b7d1-8a35b55ef6bc\",\"anonymisation\":false,\"documents\":null,\"subjectIds\":[]}},\"query\":\"mutation createBooking($input: CreateBookingPayload!) {\\n  createBooking(input: $input) {\\n    id\\n    short_id\\n    name\\n    description\\n    __typename\\n  }\\n}\\n\"}";
         String body = "{\"operationName\":\"createBooking\",\"variables\":{\"input\":{" +
                 list.get(0) + "," +
                 list.get(1) + "," +
@@ -748,6 +746,7 @@ public class CommonActions extends PageObject {
                 list.get(11) + "," +
                 list.get(12) + "}}," +
                 "\"query\":\"mutation createBooking($input: CreateBookingPayload!) {\\n  createBooking(input: $input) {\\n    id\\n    short_id\\n    name\\n    description\\n    __typename\\n  }\\n}\\n\"}";
+//        System.out.println(body);
         String url = "https://29cwhlvcb3.execute-api.us-east-1.amazonaws.com/uat/graphql";
         urlObject = new URL(url);
         HttpsURLConnection connection = (HttpsURLConnection) urlObject.openConnection();
@@ -770,6 +769,7 @@ public class CommonActions extends PageObject {
                 response.append(responseLine.trim());
             }
             JSONObject jsonObject = (JSONObject) parser.parse(respbody);
+            System.out.println(jsonObject);
             JSONObject jsonObject2 = (JSONObject) parser.parse(jsonObject.get("data").toString());
             JSONObject jsonObject3 = (JSONObject) parser.parse(jsonObject2.get("createBooking").toString());
             bookingLongId = jsonObject3.get("id").toString();
@@ -934,7 +934,20 @@ public class CommonActions extends PageObject {
     }
 
     public void chooseRadiobutton(String arg0) {
-        getDriver().findElement(By.xpath("//div[contains(.,'" + arg0 + "') and @class='radio-button']")).click();
+        if (isElementPresent("//span[contains(.,'" + arg0 + "')]/..//div[@role='radio']")) {
+            getDriver().findElement(By.xpath("//span[contains(.,'" + arg0 + "')]/..//div[@role='radio']")).click();
+        }
+        if (isElementPresent("//div[contains(.,'" + arg0 + "') and @class='radio-button']")){
+            getDriver().findElement(By.xpath("//div[contains(.,'" + arg0 + "') and @class='radio-button']")).click();
+        }
+        if (isElementPresent("//label[contains(.,'"+arg0+"')]")){
+            getDriver().findElement(By.xpath("//label[contains(.,'"+arg0+"')]")).click();
+        }
+//        if (isElementPresent("//label[contains(.,'"+arg0+"')]/..//.//i[@class='icon icon--selection-control material-icons icon--radio']")){
+//            getDriver().findElement(By.xpath("//label[contains(.,'"+arg0+"')]/..//.//i[@class='icon icon--selection-control material-icons icon--radio']")).click();
+//        }
+
+
     }
 
 
@@ -1029,8 +1042,8 @@ public class CommonActions extends PageObject {
     }
 
     public void checkBookingCreationStatus(List<String> list2) throws IOException, ParseException {
-        if (creation_status == false) {
-            System.out.println("creation_status" + creation_status);
+        System.out.println("creation_status = " + Serenity.getCurrentSession().getMetaData().get("creation_status"));
+        if (!Serenity.getCurrentSession().getMetaData().get("creation_status").equals("true")) {
             ArrayList<String> list = new ArrayList<>();
             list.add("\"school_id\":\"ef1e8d35-5619-4a40-a76e-cd6b4eab07d6\"");
             list.add(list2.get(0));
@@ -1082,6 +1095,11 @@ public class CommonActions extends PageObject {
     }
 
     public void enterPostcodeToTheField(String arg0, String arg1) {
+        getDriver().findElement(By.xpath("//input[@placeholder='" + arg1 + "']")).click();
+        for (int i = 0; i < 20; i++) {
+            getDriver().findElement(By.xpath("//input[@placeholder='" + arg1 + "']")).sendKeys(Keys.BACK_SPACE);
+        }
+        getDriver().findElement(By.xpath("//input[@placeholder='" + arg1 + "']")).sendKeys(Keys.DELETE);
         getDriver().findElement(By.xpath("//input[@placeholder='" + arg1 + "']")).sendKeys(arg0);
     }
 
@@ -1095,16 +1113,34 @@ public class CommonActions extends PageObject {
 
     }
 
-    public void enterTheToTheField(String arg0, String arg1) {
+    public ArrayList<String> enterTheToTheField(String arg0, String arg1) {
+        ArrayList<String> results = new ArrayList<>();
+        results.add(0, "false");
         if (isElementPresent("//input[@placeholder='" + arg1 + "']")) {
             getDriver().findElement(By.xpath("//input[@placeholder='" + arg1 + "']")).sendKeys(arg0);
-        } else if (isElementPresent("//textarea[@placeholder='" + arg1 + "']")) {
+            results.set(0, "true");
+            return results;
+        }
+        if (isElementPresent("//textarea[@placeholder='" + arg1 + "']")) {
             getDriver().findElement(By.xpath("//textarea[@placeholder='" + arg1 + "']")).sendKeys(arg0);
-        } else getDriver().findElement(By.xpath("//p[contains(.,'" + arg1 + "')]/..//input")).sendKeys(arg0);
+            results.set(0, "true");
+            return results;
+        }
+        if (isElementPresent("//p[contains(.,'" + arg1 + "')]/..//input")) {
+            getDriver().findElement(By.xpath("//p[contains(.,'" + arg1 + "')]/..//input")).sendKeys(arg0);
+            results.set(0, "true");
+            return results;
+        }
+        if (isElementPresent("//p[contains(.,'" + arg1 + "')]/../../..//input")) {
+            getDriver().findElement(By.xpath("//p[contains(.,'" + arg1 + "')]/../../..//input")).sendKeys(arg0);
+            results.set(0, "true");
+            return results;
+        }
 
+        return results;
     }
 
-    public ArrayList<String> theAllEnteredDataToTheAccountSectionAreSaved(List<String> list,String arg0) {
+    public ArrayList<String> theAllEnteredDataToTheAccountSectionAreSaved(List<String> list, String arg0) {
         ArrayList<String> results = new ArrayList<>();
         results.add(0, "true");
         if (getDriver().getCurrentUrl().contains("school")) {
@@ -1134,11 +1170,29 @@ public class CommonActions extends PageObject {
             waitUntilElementVisible("//div[@class='MyInfoAccount-name' and contains(.,'" + list.get(0) + "')]", 60);
 
             if (arg0.equals("Contact Details")) {
+                waitUntilElementVisible("//div[@class='component-header' and contains(.,'" + arg0 + "')]", 60);
                 if (!getDriver().findElement(By.xpath("//div[@class='component-header' and contains(.,'" + arg0 + "')]")).isDisplayed()) {
                     results.set(0, "false");
                     results.add("Teacher Account page isn't saved");
                 } else {
                     for (int i = 1; i < list.size(); i++) {
+                        if (!isElementPresent("//p[contains(.,'" + list.get(i) + "')]") &&
+                                !isElementPresent("//a[contains(.,'" + list.get(i) + "')]") &&
+                                !isElementPresent("//span[contains(.,'" + list.get(i) + "')]")) {
+                            results.set(0, "false");
+                            results.add("Expected: " + list.get(i) + "; but not displayed");
+                            break;
+                        }
+                    }
+                }
+            }
+            if (arg0.equals("Teacher Details")) {
+                waitUntilElementVisible("//div[@class='component-header' and contains(.,'" + arg0 + "')]", 60);
+                if (!getDriver().findElement(By.xpath("//div[@class='component-header' and contains(.,'" + arg0 + "')]")).isDisplayed()) {
+                    results.set(0, "false");
+                    results.add("Teacher Details page isn't saved");
+                } else {
+                    for (int i = 0; i < list.size(); i++) {
                         if (!isElementPresent("//p[contains(.,'" + list.get(i) + "')]") &&
                                 !isElementPresent("//a[contains(.,'" + list.get(i) + "')]") &&
                                 !isElementPresent("//span[contains(.,'" + list.get(i) + "')]")) {
@@ -1214,13 +1268,13 @@ public class CommonActions extends PageObject {
                 }
                 number_of_item++;
             }
-        }else
+        } else
             for (int i = 0; i < list.size(); i++) {
                 waitUntilElementVisible("//div[@class='menu__content menu__content--select menuable__content__active']//div[@class='list']", 30);
                 if (!isElementPresent("(//div[@class='menu__content menu__content--select menuable__content__active']//div[@class='list__tile__title'])[" + number_of_item + "]")) {
                     number_of_item--;
                     WebElement item = getDriver().findElement(By.xpath("(//div[@class='menu__content menu__content--select menuable__content__active']//div[@class='list__tile__title'])[" + number_of_item + "]"));
-                    System.out.println("Unable to view item : "+"\n"+item);
+                    System.out.println("Unable to view item : " + "\n" + item);
                     number_of_item++;
                     do {
                         je.executeScript("arguments[0].scrollIntoView(true);", item);
@@ -1237,12 +1291,44 @@ public class CommonActions extends PageObject {
         return results;
     }
 
-    public void chooseTheItemInTheDropdown(String arg0) {
+    public ArrayList<String> chooseTheItemInTheDropdown(String arg0) {
+        ArrayList<String> results = new ArrayList<>();
+        results.add(0, "false");
         if (getDriver().getCurrentUrl().contains("profiling-questions")) {
             getDriver().findElement(By.xpath("((//div[@class='list'])[" + ProfilingQuestion_dropdown_counter + "]//div[@class='list__tile__title'])[" + arg0 + "]")).click();
-        } else
-            getDriver().findElement(By.xpath("//div[@class='list__tile__title' and contains(.,'" + arg0 + "')]")).click();
-
+            results.set(0, "true");
+            return results;
+        }
+        if (getDriver().getCurrentUrl().contains("supply-details")) {
+            if (isElementPresent("(//div[@class='list__tile__title' and contains(.,'" + arg0 + "')]/../..//div[@role='checkbox'])")) {
+                if (getDriver().findElement(By.xpath("(//div[@class='list__tile__title' and contains(.,'" + arg0 + "')]/../..//div[@role='checkbox'])[3]")).isDisplayed()) {
+                    getDriver().findElement(By.xpath("(//div[@class='list__tile__title' and contains(.,'" + arg0 + "')]/../..//div[@role='checkbox'])[3]")).click();
+                    results.set(0, "true");
+                    return results;
+                }
+                if (getDriver().findElement(By.xpath("(//div[@class='list__tile__title' and contains(.,'" + arg0 + "')]/../..//div[@role='checkbox'])[2]")).isDisplayed()) {
+                    getDriver().findElement(By.xpath("(//div[@class='list__tile__title' and contains(.,'" + arg0 + "')]/../..//div[@role='checkbox'])[2]")).click();
+                    results.set(0, "true");
+                    return results;
+                }
+                if (getDriver().findElement(By.xpath("(//div[@class='list__tile__title' and contains(.,'" + arg0 + "')]/../..//div[@role='checkbox'])[1]")).isDisplayed()) {
+                    getDriver().findElement(By.xpath("(//div[@class='list__tile__title' and contains(.,'" + arg0 + "')]/../..//div[@role='checkbox'])[1]")).click();
+                    results.set(0, "true");
+                    return results;
+                }
+            }
+            if (getDriver().findElement(By.xpath("//div[@class='list__tile__title' and contains(.,'" + arg0 + "')]/../../..")).isDisplayed()) {
+                getDriver().findElement(By.xpath("//div[@class='list__tile__title' and contains(.,'" + arg0 + "')]/../..")).click();
+                results.set(0, "true");
+                return results;
+            }
+//            if (getDriver().findElement(By.xpath("//a[@class='list__tile list__tile--link']//div[@class='list__tile__content']//div[contains(.,'"+arg0+"')]")).isDisplayed()) {
+                getDriver().findElement(By.xpath("//div[@class='menu__content menu__content--select menuable__content__active']//div[3]//a[1]")).click();
+                results.set(0, "true");
+                return results;
+//            }
+        }
+        return results;
     }
 
     public void enterEmailOfNewSchoolUser() {
@@ -1251,13 +1337,38 @@ public class CommonActions extends PageObject {
 //        }else getDriver().findElement(By.xpath("//input[@type='email']")).sendKeys(Serenity.getCurrentSession().getMetaData().get("emailOfNewUser"));
     }
 
-    public void clickOnTheDropdown(String arg0) {
-        getDriver().findElement(By.xpath("//p[contains(.,'" + arg0 + "')]/..//div[@class='menu']/..//i")).click();
+    public ArrayList<String> clickOnTheDropdown(String arg1, String arg0) {
+        ArrayList<String> results = new ArrayList<>();
+        results.add(0, "false");
+        if (arg1.isEmpty()) {
+            arg1 = "1";
+        }
+        if (isElementPresent("//p[contains(.,'" + arg0 + "')]/..//div[@class='menu']/..//i")) {
+            getDriver().findElement(By.xpath("//p[contains(.,'" + arg0 + "')]/..//div[@class='menu']/..//i")).click();
+            results.set(0, "true");
+            return results;
+        }
+        if (isElementPresent("(//span[contains(.,'" + arg0 + "')])[" + arg1 + "]")) {
+            getDriver().findElement(By.xpath("(//span[contains(.,'" + arg0 + "')])[" + arg1 + "]")).click();
+            results.set(0, "true");
+            return results;
+        }
+        if (isElementPresent("//p[contains(.,'" + arg0 + "')]/..//span//div[@role='combobox']")) {
+            getDriver().findElement(By.xpath("//p[contains(.,'" + arg0 + "')]/..//span//div[@role='combobox']")).click();
+            results.set(0, "true");
+            return results;
+        }
+        return results;
+
     }
 
     public void clickOnTheInputField(String arg0) {
 //        if(isElementPresent("//input[@placeholder='"+arg0+"']")) {
-        getDriver().findElement(By.xpath("//input[@placeholder='" + arg0 + "']")).click();
+        if (isElementPresent("//input[@placeholder='" + arg0 + "']")) {
+            getDriver().findElement(By.xpath("//input[@placeholder='" + arg0 + "']")).click();
+        } else
+            getDriver().findElement(By.xpath("//p[contains(.,'" + arg0 + "')]")).click();
+        getDriver().findElement(By.xpath("//p[contains(.,'" + arg0 + "')]/../../..//input")).click();
 //        }
     }
 
@@ -1268,8 +1379,8 @@ public class CommonActions extends PageObject {
         if (getDriver().getCurrentUrl().contains("teacher_other/profile")) {
             for (int i = 0; i < list.size(); i++) {
                 if ((isElementPresent("//input[@placeholder='" + list.get(i) + "' and @aria-required='true']")
-                        && !getDriver().findElement(By.xpath("//input[@placeholder='" + list.get(i) + "' and @aria-required='true']")).getAttribute("aria-invalid").equals("true"))&&
-                !isElementPresent("//p[contains(.,'"+list.get(i)+"')]/../../..//span[@class='text-error' and contains(.,'This is required')]")) {
+                        && !getDriver().findElement(By.xpath("//input[@placeholder='" + list.get(i) + "' and @aria-required='true']")).getAttribute("aria-invalid").equals("true")) &&
+                        !isElementPresent("//p[contains(.,'" + list.get(i) + "')]/../../..//span[@class='text-error' and contains(.,'This is required')]")) {
                     results.set(0, "false");
                     results.add("Expected: 'aria-invalid'= true ; but found: 'aria-invalid'= " + getDriver().findElement(By.xpath("//input[@placeholder='" + list.get(i) + "' and @aria-required='true']")).getAttribute("aria-invalid") + "\n");
                 }
@@ -1279,27 +1390,36 @@ public class CommonActions extends PageObject {
     }
 
     public void chooseYear(String arg0) {
-        getDriver().findElement(By.xpath("//ul[@class='date-picker-years']//li[contains(.,'"+arg0+"')]")).click();
+        getDriver().findElement(By.xpath("//ul[@class='date-picker-years']//li[contains(.,'" + arg0 + "')]")).click();
     }
 
     public void chooseMonth(String arg0) {
-        getDriver().findElement(By.xpath("//div[@class='date-picker-table date-picker-table--month']//div[contains(.,'"+arg0+"')]")).click();
+        getDriver().findElement(By.xpath("//div[@class='date-picker-table date-picker-table--month']//div[contains(.,'" + arg0 + "')]")).click();
     }
 
     public void chooseDate(String arg0) {
-        getDriver().findElement(By.xpath("//table//div[contains(.,'"+arg0+"')]")).click();
+        getDriver().findElement(By.xpath("//table//div[contains(.,'" + arg0 + "')]")).click();
     }
 
     public void getUserID() throws IOException, ParseException {
+//        getDriver().get("http://admin.uat.realiseme.com.s3-website-us-east-1.amazonaws.com/#/teachers/list");
         getDriver().get("http://admin.uat.realiseme.com.s3-website-us-east-1.amazonaws.com/#/teachers/list");
         getDriver().findElement(By.xpath("//input[@name='email']")).sendKeys("satintest1+admin@gmail.com");
         getDriver().findElement(By.xpath("//input[@name='password']")).sendKeys("Test123!");
         getDriver().findElement(By.xpath("//button[@name='submit']")).click();
-        waitUntilElementVisible("//p[contains(.,'"+Serenity.getCurrentSession().getMetaData().get("emailOfNewUser")+"')]/..//p[@class='name']",50);
-        getDriver().findElement(By.xpath("//p[contains(.,'"+Serenity.getCurrentSession().getMetaData().get("emailOfNewUser")+"')]/..//p[@class='name']")).click();
-        waitUntilElementVisible("//div[@class='id-wrapper']",60);
-        Serenity.getCurrentSession().addMetaData("NewUserID",getDriver().findElement(By.xpath("//div[@class='id-wrapper']")).getText().substring(4));
-        System.out.println("ID of new user = "+Serenity.getCurrentSession().getMetaData().get("NewUserID"));
+
+        waitUntilElementVisible("//p[contains(.,'" + Serenity.getCurrentSession().getMetaData().get("emailOfNewUser") + "')]/..//p[@class='name']", 50);
+        if (!isElementPresent("//p[contains(.,'" + Serenity.getCurrentSession().getMetaData().get("emailOfNewUser") + "')]/..//p[@class='name']"))
+            do {
+                waitUntilElementVisible("//p[contains(.,'" + Serenity.getCurrentSession().getMetaData().get("emailOfNewUser") + "')]/..//p[@class='name']", 50);
+                refreshThePage();
+            } while (isElementPresent("//p[contains(.,'" + Serenity.getCurrentSession().getMetaData().get("emailOfNewUser") + "')]/..//p[@class='name']"));
+
+
+        getDriver().findElement(By.xpath("//p[contains(.,'" + Serenity.getCurrentSession().getMetaData().get("emailOfNewUser") + "')]/..//p[@class='name']")).click();
+        waitUntilElementVisible("//div[@class='id-wrapper']", 60);
+        Serenity.getCurrentSession().addMetaData("NewUserID", getDriver().findElement(By.xpath("//div[@class='id-wrapper']")).getText().substring(4));
+        System.out.println("ID of new user = " + Serenity.getCurrentSession().getMetaData().get("NewUserID"));
 
     }
 
@@ -1357,6 +1477,109 @@ public class CommonActions extends PageObject {
     public void theAllEnteredDataToTheSectionAreSaved(String arg0, List<String> list) {
 
     }
+
+    public ArrayList<String> getUsersEmailsAtTheFirstTabs(String arg0, String arg1) {
+        getDriver().get("http://admin.uat.realiseme.com.s3-website-us-east-1.amazonaws.com/#/teachers/list");
+        getDriver().findElement(By.xpath("//input[@name='email']")).sendKeys("satintest1+admin@gmail.com");
+        getDriver().findElement(By.xpath("//input[@name='password']")).sendKeys("Test123!");
+        getDriver().findElement(By.xpath("//button[@name='submit']")).click();
+        waitUntilElementVisible("//a[@class='panel-block' and contains(.,'" + arg1 + "')]", 60);
+        if (!arg1.equals("Teachers")) {
+            getDriver().findElement(By.xpath("//a[@class='panel-block' and contains(.,'" + arg1 + "')]")).click();
+        }
+        users_emails = new ArrayList<>();
+        for (int i = 1; i < 11; i++) {
+            users_emails.add(getDriver().findElement(By.xpath("(//div[@class='table-body-row']//p[@class='email'])[" + i + "]")).getText());
+            if (i == 10 && !arg0.equals(getDriver().findElement(By.xpath("//li[@class='Pagination-item active-page']")).getText())) {
+                getDriver().findElement(By.xpath("//span[contains(.,'Next')]")).click();
+                i = 0;
+            }
+        }
+        return users_emails;
+    }
+
+    public void deleteAccounts(String arg0) throws IOException, ParseException {
+        getAccessTokenAuth0();
+        for (int i = 0; i < users_emails.size(); i++) {
+            String body = "{\"query\":\"mutation {\\n  adminRemove" + arg0 + "(admin_id: \\\"" + admid + "\\\", email: \\\"" + users_emails.get(i) + "\\\")}\",\"variables\":null}";
+            System.out.println(body);
+            String url = "https://8nn63ifaff.execute-api.us-east-1.amazonaws.com/uat/graphql";
+            urlObject = new URL(url);
+            HttpsURLConnection connection = (HttpsURLConnection) urlObject.openConnection();
+            connection.setRequestMethod("POST");
+            connection.setRequestProperty("content-type", "application/json");
+            connection.setRequestProperty("authorization", token);
+            connection.setDoOutput(true);
+            try (OutputStream os = connection.getOutputStream()) {
+                byte[] input = body.getBytes("utf-8");
+                os.write(input, 0, input.length);
+            }
+            try (BufferedReader br = new BufferedReader(
+                    new InputStreamReader(connection.getInputStream(), "utf-8"))) {
+                StringBuilder response = new StringBuilder();
+                String encoding = connection.getContentEncoding();
+                String responseLine = null;
+                encoding = encoding == null ? "UTF-8" : encoding;
+                String respbody = IOUtils.toString(connection.getInputStream(), encoding);
+                while ((responseLine = br.readLine()) != null) {
+                    response.append(responseLine.trim());
+                }
+                JSONObject jsonObject = (JSONObject) parser.parse(respbody);
+                JSONObject jsonObject2 = (JSONObject) parser.parse(jsonObject.get("data").toString());
+                delete_request_result = jsonObject2.toString();
+                System.out.println(jsonObject2 + " = " + users_emails.get(i));
+
+            }
+        }
+    }
+
+    public ArrayList<String> theAllNecessaryTextAtTheAccountSectionAreDisplayed(List<String> list, String arg0) {
+        ArrayList<String> results = new ArrayList<>();
+        results.add(0, "true");
+
+        if (getDriver().getCurrentUrl().contains("teacher_supply/details")) {
+            TeacherSide = true;
+            System.out.println("Teacher = " + TeacherSide);
+            waitUntilElementVisible("//span[@class='TeacherAccountDetail-description' and contains(.,'" + list.get(0) + "')]'", 60);
+            if (!getDriver().findElement(By.xpath("//span[@class='TeacherAccountDetail-description' and contains(.,'" + list.get(0) + "')]")).isDisplayed()) {
+                results.set(0, "false");
+                results.add(list.get(0) + " isn't found");
+            } else {
+                for (int i = 1; i < list.size(); i++) {
+                    if (!isElementPresent("//p[contains(.,'" + list.get(i) + "')]") &&
+                            !isElementPresent("//a[contains(.,'" + list.get(i) + "')]") &&
+                            !isElementPresent("//span[contains(.,'" + list.get(i) + "')]")) {
+                        results.set(0, "false");
+                        results.add("Expected: " + list.get(i) + "; but not displayed");
+                        break;
+                    }
+                }
+            }
+
+        }
+        if (getDriver().getCurrentUrl().contains("teacher_supply/supply-details")) {
+            TeacherSide = true;
+            System.out.println("Teacher = " + TeacherSide);
+            waitUntilElementVisible("//span[@class='TeacherSupplyDetails-description' and contains(.,'" + list.get(0) + "')]'", 60);
+            if (!getDriver().findElement(By.xpath("//span[@class='TeacherSupplyDetails-description' and contains(.,'" + list.get(0) + "')]")).isDisplayed()) {
+                results.set(0, "false");
+                results.add(list.get(0) + " isn't found");
+            } else {
+                for (int i = 1; i < list.size(); i++) {
+                    if (!isElementPresent("//p[contains(.,'" + list.get(i) + "')]") &&
+                            !isElementPresent("//a[contains(.,'" + list.get(i) + "')]") &&
+                            !isElementPresent("//span[contains(.,'" + list.get(i) + "')]")) {
+                        results.set(0, "false");
+                        results.add("Expected: " + list.get(i) + "; but not displayed");
+                        break;
+                    }
+                }
+            }
+
+        }
+        return results;
+    }
+
 }
 
 

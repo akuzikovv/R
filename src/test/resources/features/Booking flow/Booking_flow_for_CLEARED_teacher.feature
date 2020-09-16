@@ -8,7 +8,7 @@ Feature:  Booking flow for CLEARED teacher
   Scenario: Create booking for CLEARED teacher
 #    When Click on the "Login as a school" button
     When Enter login "newuatschool28@yopmail.com"
-    When Enter password "Test123!"
+    When Enter password "AutoTest123!"
     When Click on the Log in button
     When Click on the "Bookings" button in the header
     When Click on the "New Supply Booking" button
@@ -41,6 +41,16 @@ Feature:  Booking flow for CLEARED teacher
     Then Appropriate teachers are displayed in the invites list
     When Click on the arrow down button
     When Click on the LOGOUT button
+#    When Click on the login button
+#    When Enter login "a.kuzikov@aimprosoft.com"
+#    When Enter password "AutoTest123!"
+#    When Click on the Log in button
+#    When Click on the "Bookings" button in the header
+#    When Click on the "invites" tab
+##    When Find invite with "Booking for cleared teacher" job title
+#    When Click on the "decline" button of the appropriate booking
+#    When Click on the "confirm" button
+
 
   Scenario:  Check booking creation status
       When Check booking creation status
@@ -53,7 +63,7 @@ Feature:  Booking flow for CLEARED teacher
   Scenario: Accept booking as CLEARED teacher
 #    When Click on the "Login as a teacher" button
     When Enter login "a.kuzikov@aimprosoft.com"
-    When Enter password "Test123!"
+    When Enter password "AutoTest123!"
     When Click on the Log in button
     When Click on the "Bookings" button in the header
     When Click on the "invites" tab
@@ -66,12 +76,13 @@ Feature:  Booking flow for CLEARED teacher
   Scenario: Approve booking as school
 #    When Click on the "Login as a school" button
     When Enter login "newuatschool28@yopmail.com"
-    When Enter password "Test123!"
+    When Enter password "AutoTest123!"
     When Click on the Log in button
     When Click on the "Bookings" button in the header
     When Approve accepted invite with "Jeffrey Lebowski2" name
 #    When Approve appropriate booking
     Then Popup with "Thank you for approving this booking. When approving bookings, you are re-confirming our terms and conditions." text is appeared
+    |test|
     When Close popup
     When Click on the arrow down button
     When Click on the LOGOUT button
@@ -79,7 +90,7 @@ Feature:  Booking flow for CLEARED teacher
   Scenario: Accept booking as CLEARED teacher and Decline booking as school
 #    When Click on the "Login as a teacher" button
     When Enter login "a.kuzikov@aimprosoft.com"
-    When Enter password "Test123!"
+    When Enter password "AutoTest123!"
     When Click on the Log in button
     When Click on the "Bookings" button in the header
     When Click on the "invites" tab
@@ -92,7 +103,7 @@ Feature:  Booking flow for CLEARED teacher
     When Click on the login button
 #    When Click on the "Login as a school" button
     When Enter login "newuatschool28@yopmail.com"
-    When Enter password "Test123!"
+    When Enter password "AutoTest123!"
     When Click on the Log in button
     When Click on the "Bookings" button in the header
 #    When Find accepted invite with "Booking for cleared teacher" job title
@@ -105,13 +116,20 @@ Feature:  Booking flow for CLEARED teacher
   Scenario: Decline booking as CLEARED teacher
 #    When Click on the "Login as a teacher" button
     When Enter login "a.kuzikov@aimprosoft.com"
-    When Enter password "Test123!"
+    When Enter password "AutoTest123!"
     When Click on the Log in button
     When Click on the "Bookings" button in the header
     When Click on the "invites" tab
 #    When Find invite with "Booking for cleared teacher" job title
     When Click on the "decline" button of the appropriate booking
     When Click on the "confirm" button
+#
+#
+#  Scenario: Remove all user bookings
+#    When Remove all user bookings using request API
+#      | admin_id:\"538e52d0-a7c0-4e89-9b48-80f0d0ec958d\"|
+#      |user_id:\"c93f0da1-4131-408a-8d09-eed7e5766a44\"    |
+
 
 
 

@@ -1022,9 +1022,9 @@ public class DefinitionSteps {
         steps.enterEmailOfNewSchoolUser();
     }
 
-    @When("^Click on the \"([^\"]*)\" dropdown$")
-    public void clickOnTheDropdown(String arg0) throws Throwable {
-        steps.clickOnTheDropdown(arg0);
+    @When("^Click on the \"([^\"]*)\" \"([^\"]*)\" dropdown$")
+    public void clickOnTheDropdown(String arg0,String arg1) throws Throwable {
+        steps.clickOnTheDropdown(arg0,arg1);
     }
 
     @When("^Click on the \"([^\"]*)\" input field$")
@@ -1053,7 +1053,20 @@ public class DefinitionSteps {
         steps.fillProfileSectionAsAdminUsingRequestAPI(list);
     }
 
+    @When("^Get users emails at the first \"([^\"]*)\" tabs \"([^\"]*)\"$")
+    public void getUsersEmailsAtTheFirstTabs(String arg0,String arg1) throws Throwable {
+        steps.getUsersEmailsAtTheFirstTabs(arg0,arg1);
+    }
 
+    @Then("^Delete \"([^\"]*)\" accounts$")
+    public void deleteAccounts(String arg0) throws Throwable {
+        steps.deleteAccounts(arg0);
+    }
+
+    @Then("^The all necessary text at the Account \"([^\"]*)\" section are displayed$")
+    public void theAllNecessaryTextAtTheAccountSectionAreDisplayed(String arg0,List<String> list) throws Throwable {
+       steps.theAllNecessaryTextAtTheAccountSectionAreDisplayed(arg0,list);
+    }
 
 
     //    @When("^Open report$")

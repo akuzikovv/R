@@ -99,10 +99,11 @@ public class AuthorizationPage extends PageObject {
             System.out.println(getDriver().findElement(By.xpath("//span[@class='animated fadeInUp']//span")).getText());
             if (getDriver().findElement(By.xpath("//span[@class='animated fadeInUp']//span")).getText().equals("User already exists.")) {
                 commonActions.waitUntilElementVisible(ILocators.Email_field,5);
-                getDriver().findElement(By.xpath(ILocators.Email_field)).sendKeys(Keys.CONTROL+"A");
-                getDriver().findElement(By.xpath(ILocators.Email_field)).sendKeys(Keys.DELETE);
-                getDriver().findElement(By.xpath(ILocators.Email_field)).sendKeys(Keys.COMMAND+"A");
-                getDriver().findElement(By.xpath(ILocators.Email_field)).sendKeys(Keys.DELETE);
+                getDriver().findElement(By.xpath(ILocators.Email_field)).click();
+                for (int i = 0; i < 30; i++) {
+                    getDriver().findElement(By.xpath(ILocators.Email_field)).sendKeys(Keys.BACK_SPACE);
+                }
+//                getDriver().findElement(By.xpath(ILocators.Email_field)).clear();
                 commonActions.enterLoginOfNewUser(Serenity.getCurrentSession().getMetaData().get("user type"));
                 clickOnTheSIGNUPButton();
                 checkIfEnteredUserAlreadyExistsAndRegenerateNewEmail();

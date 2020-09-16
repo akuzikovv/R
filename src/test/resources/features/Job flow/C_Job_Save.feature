@@ -12,7 +12,7 @@ Feature:  Job Save
     Then Appropriate job is displayed in the search result
     When Click on the "Save" button at the appropriate job
     When Enter login "a.kuzikov@aimprosoft.com"
-    When Enter password "Test123!"
+    When Enter password "AutoTest123!"
     When Click on the Log in button
     When Enter job title to the search field
     When Click on the "search" button
@@ -46,7 +46,7 @@ Feature:  Job Save
     When Click on the appropriate job title
     Then Click on the "SAVE" button
     When Enter login "a.kuzikov@aimprosoft.com"
-    When Enter password "Test123!"
+    When Enter password "AutoTest123!"
     When Click on the Log in button
     When Enter job title to the search field
     When Click on the "search" button
