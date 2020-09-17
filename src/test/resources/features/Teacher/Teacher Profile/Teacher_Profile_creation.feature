@@ -197,10 +197,10 @@ Feature:  Teacher profile Creation
     When Click on the arrow down button
     When Click on the "Account" button
     Then The all entered data to the Account "Contact Details" section are saved
-      | Postcode       |
       | address line 1 |
       | address line 2 |
       | City           |
+      | Postcode       |
       | County         |
       | +44 0635094915 |
 
@@ -245,19 +245,19 @@ Feature:  Teacher profile Creation
     When Choose random address from the dropdown in the "2" range
     When Click on the "save" button
     Then The all entered data to the Account "Contact Details" section are saved
-      | Holy Trinity Primary School |
-      | Trinity Walk                |
-      | London                      |
-      | NW35SQ                      |
-      | +44 0635094915              |
+#      | Holy Trinity Primary School |
+      | Trinity Walk   |
+      | London         |
+      | NW35SQ         |
+      | +44 0635094915 |
 
 
   Scenario: Fill "Teacher Details" profile section as supply user
     Given open landing page
     When click on the agree button at the banner
     When Click on the login button
-    When Enter login "uatteach18@yopmail.com"
-#    When Enter login of new created user
+#    When Enter login "uatteach18@yopmail.com"
+    When Enter login of new created user
     When Enter password "Test123!"
     When Click on the Log in button
     When Click on the arrow down button
@@ -269,10 +269,10 @@ Feature:  Teacher profile Creation
       | Complete our prescreening questions     |
       | Please read and accept our T&Cs         |
     When CLick on the "edit" button at the "Teacher Details" section
-    When Click on the "select teacher type" dropdown
+    When Click on the "select teacher type" "" dropdown
     When Choose the "Teacher" item in the dropdown
     When Enter the "123456789" to the "GTC number" field
-    When Click on the "Supply" dropdown
+    When Click on the "Supply" "" dropdown
     When Choose the "Yes - I am looking for supply work" item in the dropdown
     When Choose "I confirm I have read and understand the" checkbox
     When Enter the "123456" to the "Enter your name" field
@@ -290,8 +290,8 @@ Feature:  Teacher profile Creation
     Given open landing page
     When click on the agree button at the banner
     When Click on the login button
-    When Enter login "uatteach18@yopmail.com"
-#    When Enter login of new created user
+#    When Enter login "uatteach18@yopmail.com"
+    When Enter login of new created user
     When Enter password "Test123!"
     When Click on the Log in button
     When Click on the arrow down button
@@ -327,21 +327,60 @@ Feature:  Teacher profile Creation
     When Enter the "123" to the "Preferred hourly rate" field
 #  When Click on the "Payment preference" "" dropdown
     When Click on the "Select payment preference" "" dropdown
-  When Choose the "umbrella" item in the dropdown
+    When Choose the "umbrella" item in the dropdown
     When Click on the "Select payment preference" "2" dropdown
     When Choose the "Key" item in the dropdown
     When Click on the "NI" "" dropdown
     When Choose the "Other" item in the dropdown
-  When Enter the "1234567890" to the "enter..." field
-  When Enter the "Name" to the "Full name" field
+    When Enter the "1234567890" to the "enter..." field
+    When Enter the "Name" to the "Full name" field
     When Enter the "test@test.test" to the "Email" field
     When Enter the "123123123123" to the "Mobile" field
-  When Choose "yes" radiobutton
-  When Choose "Supply Teaching Policies" checkbox
-  When Choose "Medical confirmation" checkbox
-  When Click on the "save" button
-  When wait time
-  When wait time
+    When Choose "yes" radiobutton
+    When Choose "Supply Teaching Policies" checkbox
+    When Choose "Medical confirmation" checkbox
+    When Click on the "save" button
+    Then The all necessary text at the Account "Supply Details" section are displayed
+      | completed                                           |
+      | biology                                             |
+      | classics                                            |
+      | careers                                             |
+      | £123                                                |
+      | £123                                                |
+      | umbrella                                            |
+      | Key                                                 |
+      | 1234567890                                          |
+      | Name: Name                                          |
+      | Email: test@test.test                               |
+      | Mobile: 123123123123                                |
+      | yes                                                 |
+      | I have not completed the safeguarding questionnaire |
+      | you have confirmed you are...                       |
+
+
+  Scenario: Fill "Clearance Documents" profile section as supply user
+    Given open landing page
+    When click on the agree button at the banner
+    When Click on the login button
+    When Enter login "uatteach18@yopmail.com"
+#    When Enter login of new created user
+    When Enter password "Test123!"
+    When Click on the Log in button
+    When Click on the arrow down button
+    When Click on the "Account" button
+    When Click on the "Supply Details" tab
+    When CLick on the "edit" button at the "Clearance Documents" section
+    When Upload "Candidate_Summary.pdf" file to the "CV" field
+    When Upload "Candidate_Summary1.pdf" file to the "Proof of address" field
+    When Upload "Candidate_Summary2.pdf" file to the "Proof of address" field
+    When Upload "Candidate_Summar3.pdf" file to the "Right to work" field
+    When Click on the "save" button
+    Then The all necessary text at the Account "Supply Details" section are displayed
+      | Candidate_Summary.pdf  |
+      | Candidate_Summary1.pdf |
+      | Candidate_Summary2.pdf |
+      | Candidate_Summary3.pdf |
+
 
 
    
