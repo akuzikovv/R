@@ -6,6 +6,11 @@ Feature:  Booking flow for agency
     When click on the agree button at the banner
     When Click on the login button
 
+      Scenario: Remove all user bookings
+    When Remove all user bookings using request API
+      | admin_id:\"538e52d0-a7c0-4e89-9b48-80f0d0ec958d\"|
+      |user_id:\"7788d865-860a-46cb-afcb-3dc786a7e67f\"    |
+
 
   Scenario: Create booking for agency
 #    When Click on the "Login as a school" button
@@ -128,10 +133,7 @@ Feature:  Booking flow for agency
     When Click on the "confirm" button
 
 
-#  Scenario: Remove all user bookings
-#    When Remove all user bookings using request API
-#      | admin_id:\"538e52d0-a7c0-4e89-9b48-80f0d0ec958d\"|
-#      |user_id:\"7788d865-860a-46cb-afcb-3dc786a7e67f\"    |
+
 
 
 

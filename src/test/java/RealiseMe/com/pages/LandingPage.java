@@ -133,7 +133,8 @@ public class LandingPage extends PageObject {
 
     public void clickOnTheAgreeButtonAtTheBanner() {
 //        commonActions.waitUntilElementPresent(ILocators.cookies_button,60);
-        commonActions.waitUntilElementVisible(ILocators.cookies_button, 60);
+        commonActions.waitUntilElementVisible(ILocators.cookies_button, 100);
+        commonActions.waitUntilElementVisible("//h1[contains(.,'Teacher talent, is a cloud solution')]", 40);
         $(ILocators.cookies_button).click();
     }
 

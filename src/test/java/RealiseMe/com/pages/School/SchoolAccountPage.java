@@ -82,12 +82,19 @@ public class SchoolAccountPage  extends PageObject {
         getDriver().findElement(By.xpath("//input[@name='firstname']")).sendKeys(arg0+" "+random);
     }
 
-    public void enterTheShortDescriptionToTheField(String arg1, String arg0) {
+    public ArrayList<String> enterTheShortDescriptionToTheField(String arg1, String arg0) {
+        ArrayList<String> results = new ArrayList<>();
+        results.add(0, "false");
         if (commonActions.isElementPresent("//input[@placeholder='"+arg1+"']")){
             getDriver().findElement(By.xpath("//input[@placeholder='"+arg1+"']")).sendKeys(arg0);
+            results.set(0,"true");
+            return results;
         }else if (commonActions.isElementPresent("//textarea[@placeholder='"+arg1+"']")) {
             getDriver().findElement(By.xpath("//textarea[@placeholder='" + arg1 + "']")).sendKeys(arg0);
+            results.set(0,"true");
+            return results;
         }
+        return results;
     }
 
     public ArrayList<String> adminDetailsPageIsSaved(List<String> list) {

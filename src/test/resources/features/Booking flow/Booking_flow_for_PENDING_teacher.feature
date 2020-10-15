@@ -5,7 +5,11 @@ Feature:  Booking flow for PENDING teacher
     Given open landing page
     When click on the agree button at the banner
     When Click on the login button
-#    When Click on the school "Login as a school" button
+
+    Scenario: Remove all user bookings
+    When Remove all user bookings using request API
+      | admin_id:\"538e52d0-a7c0-4e89-9b48-80f0d0ec958d\"|
+      |user_id:\"fc26e25c-93fe-4c16-aa8a-867be0d161de\"    |
 
 
   Scenario: Create booking for PENDING teacher
@@ -60,13 +64,13 @@ Feature:  Booking flow for PENDING teacher
     When Check booking creation status
       |"bookingName":"Booking for pending teacher  20"|
       |"dates":[{"date":"2020-08-27T08:30:00+02:00","fullDay":true,"start_time":"2020-08-27T08:30:00+02:00","end_time":"2020-08-27T16:00:00+02:00"},{"date":"2020-08-28T08:30:00+02:00","fullDay":false,"start_time":"2020-08-28T08:30:00+02:00","end_time":"2020-08-28T13:00:00+02:00"}]|
-      |"applyUsersIds":[{"user_id":"6e66c2e6-1970-4fb1-9d3d-307b7218ec4e","user_type":"TEACHER"}]                                                                                                                                     |
+      |"applyUsersIds":[{"user_id":"fc26e25c-93fe-4c16-aa8a-867be0d161de","user_type":"TEACHER"}]                                                                                                                                     |
       |"teachersTypeIdsSchema":[{"teacher_type_id":"59153f42-83b1-4964-b3ad-5a50226c342a"},{"teacher_type_id":"5d714ae1-4fb4-4b89-a927-47c4396c418e"}]                                                                                |
 
 
   Scenario: Accept booking as PENDING teacher
 #    When Click on the "Login as a teacher" button
-    When Enter login "teachuatnew22@yopmail.com"
+    When Enter login "newuatteacherl23@yopmail.com"
     When Enter password "AutoTest123!"
     When Click on the Log in button
     When Click on the "Bookings" button in the header
@@ -95,7 +99,7 @@ Feature:  Booking flow for PENDING teacher
 
   Scenario: Accept booking as PENDING teacher and Decline booking as school
 #    When Click on the "Login as a teacher" button
-    When Enter login "teachuatnew22@yopmail.com"
+    When Enter login "newuatteacherl23@yopmail.com"
     When Enter password "AutoTest123!"
     When Click on the Log in button
     When Click on the "Bookings" button in the header
@@ -123,7 +127,7 @@ Feature:  Booking flow for PENDING teacher
 
   Scenario: Decline booking as PENDING teacher
 #    When Click on the "Login as a teacher" button
-    When Enter login "teachuatnew22@yopmail.com"
+    When Enter login "newuatteacherl23@yopmail.com"
     When Enter password "AutoTest123!"
     When Click on the Log in button
     When Click on the "Bookings" button in the header
@@ -132,10 +136,7 @@ Feature:  Booking flow for PENDING teacher
     When Click on the "decline" button of the appropriate booking
     When Click on the "confirm" button
 
-#  Scenario: Remove all user bookings
-#    When Remove all user bookings using request API
-#      | admin_id:\"538e52d0-a7c0-4e89-9b48-80f0d0ec958d\"|
-#      |user_id:\"6e66c2e6-1970-4fb1-9d3d-307b7218ec4e\"    |
+
 
 
 

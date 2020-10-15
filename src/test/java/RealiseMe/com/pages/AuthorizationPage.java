@@ -68,7 +68,7 @@ public class AuthorizationPage extends PageObject {
         ArrayList<String> results = new ArrayList<>();
         results.add(0, "true");
         $(ILocators.Log_In).click();
-        commonActions.waitUntilElementVisible("//div[@class='btn__content' and contains(.,'Dashboard')]",10);
+        commonActions.waitUntilElementVisible("//div[@class='btn__content' and contains(.,'Dashboard')]",100);
         if (!commonActions.isElementPresent("//div[@class='btn__content' and contains(.,'Dashboard')]")&& !commonActions.isElementPresent("//span[@class='animated fadeInUp']//span")){
             results.set(0,"false");
             System.out.println("false");

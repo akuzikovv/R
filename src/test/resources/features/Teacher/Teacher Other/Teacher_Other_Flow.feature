@@ -24,7 +24,7 @@ Feature: Teacher Other Flow
     Then  Header contains arrow down button
     Then  Other Teacher's Left panel contains all necessary elements:
 #      | rgba(220, 0, 142, 1)      |
-      | add a photo               |
+      | upload               |
 #      | Looking for supply jobs?  |
 #      | Update your profile here  |
 #      | Who’s veiwed your profile |

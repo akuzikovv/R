@@ -82,7 +82,7 @@ Feature:  New Users Flow
     When Open profile details popup of the first applicant
     Then The "Auto Teacher" teacher name is displayed
     Then The "ABOUT ME" section is displayed
-    Then The "PRESCREENING QUESTIONS:" section is displayed
+#    Then The "PRESCREENING QUESTIONS:" section is displayed
     Then The "TEACHER CHARACTERISTICS" section is displayed
     Then The "CV" section is displayed
     Then The "Documents" section is displayed
@@ -94,8 +94,8 @@ Feature:  New Users Flow
     Then The "Application Form" field contains the "Candidate_Summary.pdf" attached document
     Then The "Additional Documents" field contains the "Candidate_Summary.pdf" attached document
     Then The covering message is displayed
-    When Click on the link at the Video Prescreening Questions field
-    Then The odro site is opened in the new tab after clicking on the prescreening questions link
+#    When Click on the link at the Video Prescreening Questions field
+#    Then The odro site is opened in the new tab after clicking on the prescreening questions link
       |https://meet.odro.co.uk/remeuat/archive/5e5fc31ce7ec316aad5c3349/5e25924c27782761c154aa62|
 
   Scenario: Withdraw job from applied jobs tab as new teacher

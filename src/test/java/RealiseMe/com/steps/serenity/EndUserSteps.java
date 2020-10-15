@@ -1102,7 +1102,8 @@ public class EndUserSteps  extends ScenarioSteps {
 
     @Step
     public void enterTheShortDescriptionToTheField(String arg1, String arg0) {
-        schoolAccountPage.enterTheShortDescriptionToTheField(arg0,arg1);
+        ArrayList<String> results =  schoolAccountPage.enterTheShortDescriptionToTheField(arg0,arg1);
+        Assert.assertTrue("Can't find input field"+ results, "true".equals(results.get(0)));
     }
 
     @Step

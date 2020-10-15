@@ -1170,7 +1170,7 @@ public class CommonActions extends PageObject {
         if (getDriver().getCurrentUrl().contains("teacher")) {
             TeacherSide = true;
             System.out.println("Teacher = " + TeacherSide);
-            waitUntilElementVisible("//div[@class='MyInfoAccount-name' and contains(.,'" + list.get(0) + "')]", 60);
+            waitUntilElementVisible("//div[@class='MyInfoAccount-name']", 60);
 
             if (arg0.equals("Contact Details")) {
                 waitUntilElementVisible("//div[@class='component-header' and contains(.,'" + arg0 + "')]", 60);
