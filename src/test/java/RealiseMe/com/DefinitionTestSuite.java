@@ -9,7 +9,7 @@ import org.junit.runner.RunWith;
         "src/test/resources/features/Teacher/Teacher Profile/Teacher_Profile_creation.feature",
         "src/test/resources/features/A_School/A_School Profile/A_School_Profile_creation.feature",
         "src/test/resources/features/Agency/Agency Profile/Agency_Profile_creation.feature",
-        "src/test/resources/features/Z_New_Users_Flow/Z_New_Users_Flow.feature",
+//        "src/test/resources/features/Z_New_Users_Flow/Z_New_Users_Flow.feature",
         "src/test/resources/features/Booking flow/Booking_flow_for_CLEARED_teacher.feature",
         "src/test/resources/features/Booking flow/Booking_flow_for_PENDING_teacher.feature",
         "src/test/resources/features/Booking flow/Booking_flow_for_UNCLEARED_teacher.feature",

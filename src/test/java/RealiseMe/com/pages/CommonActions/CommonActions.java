@@ -1206,12 +1206,12 @@ public class CommonActions extends PageObject {
                     }
                 }
             } else {
-                if (!getDriver().findElement(By.xpath("//div[@class='MyInfoAccount-name' and contains(.,'" + list.get(0) + "')]")).isDisplayed()) {
-//            !getDriver().findElement(By.xpath("//p[contains(.,'Address')]/..//div")).getText().equals(list.get(2))) {
-                    results.set(0, "false");
-                    results.add("Teacher Account page isn't saved");
-//                results.add("Expected: "+list.get(2)+"; But found: "+getDriver().findElement(By.xpath("//p[contains(.,'Address')]/..//div")).getText());
-                } else {
+//                if (!getDriver().findElement(By.xpath("//div[@class='MyInfoAccount-name' and contains(.,'" + list.get(0) + "')]")).isDisplayed()) {
+////            !getDriver().findElement(By.xpath("//p[contains(.,'Address')]/..//div")).getText().equals(list.get(2))) {
+//                    results.set(0, "false");
+//                    results.add("Teacher Account page isn't saved");
+////                results.add("Expected: "+list.get(2)+"; But found: "+getDriver().findElement(By.xpath("//p[contains(.,'Address')]/..//div")).getText());
+//                } else {
                     for (int i = 1; i < list.size(); i++) {
                         if (!isElementPresent("//p[contains(.,'" + list.get(i) + "')]") &&
                                 !isElementPresent("//a[contains(.,'" + list.get(i) + "')]") &&
@@ -1224,7 +1224,7 @@ public class CommonActions extends PageObject {
                 }
 
             }
-        }
+//        }
         return results;
     }
 
