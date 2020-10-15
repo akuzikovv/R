@@ -17,7 +17,7 @@ Feature:  New Users Flow
     When Choose "Supply" checkbox
     When Choose "Interim" checkbox
     When Choose "Full-time" checkbox
-    When Choose "Please tick if you want to request video prescreening questions to be answered for enhanced applications." checkbox
+#    When Choose "Please tick if you want to request video prescreening questions to be answered for enhanced applications." checkbox
     When Upload "Candidate_Summary.pdf" file
     When Enter the "05/12/2020" closing date
     When Choose "Social Augmentation with AI Direct Targeting" radiobutton
@@ -32,7 +32,7 @@ Feature:  New Users Flow
       | Full-time |
     Then Contract term "Interim" is right displayd
     Then Salary is right displayed
-    Then The "requested" text is displayed at the Video prescreening field
+#    Then The "requested" text is displayed at the Video prescreening field
     When Click on the "submit" button
     Then Appropriate job is displayed in "live" jobs tab
 
@@ -101,7 +101,7 @@ Feature:  New Users Flow
   Scenario: Withdraw job from applied jobs tab as new teacher
     When Click on the login button
     When Enter login of new created user "teacher"
-    When Enter password "AutoTest123!"
+    When Enter password "Test123!"
     When Click on the Log in button
     When Click on the "Jobs" button in the header
     When Click on the "APPLIED JOBS" button
@@ -154,6 +154,7 @@ Feature:  New Users Flow
     When Click on the LOGOUT button
 
   Scenario: Accept booking as new PENDING teacher
+    When Click on the login button
     When Enter login of new created user "teacher"
     When Enter password "Test123!"
     When Click on the Log in button
@@ -167,6 +168,7 @@ Feature:  New Users Flow
     When Click on the LOGOUT button
 
   Scenario: Approve booking as new school
+    When Click on the login button
     When Enter login of new created user "school"
     When Enter password "Test123!"
     When Click on the Log in button
@@ -181,6 +183,7 @@ Feature:  New Users Flow
 
 
   Scenario: Create booking for new agency
+    When Click on the login button
     When Enter login of new created user "school"
     When Enter password "Test123!"
     When Click on the Log in button
@@ -210,6 +213,7 @@ Feature:  New Users Flow
     Then Appropriate teachers are displayed in the invites list
 
   Scenario: Accept booking as new agency
+    When Click on the login button
     When Enter login of new created user "agency"
     When Enter password "Test123!"
     When Click on the Log in button
@@ -228,6 +232,7 @@ Feature:  New Users Flow
 
 
   Scenario: Approve booking as new school
+    When Click on the login button
     When Enter login of new created user "school"
     When Enter password "Test123!"
     When Click on the Log in button
