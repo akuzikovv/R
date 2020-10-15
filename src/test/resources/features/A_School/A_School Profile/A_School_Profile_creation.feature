@@ -12,7 +12,7 @@ Feature:  School profile Creation
     Then The "Thanks for signing up. Please check your email in order to verify your account. Please also check your spam." message after Sign Up is displayed
     When refresh the page
     When Click on the "Log In" tab
-    When Enter login of new created user
+    When Enter login of new created user "school"
     When Enter password "Test123!"
     When Click on the Log in button
     When The "Sorry, you need to verify your email before you can login. Check your email for a verification link." message before email VERIFICATION is displayed
@@ -64,7 +64,7 @@ Feature:  School profile Creation
     When click on the agree button at the banner
     When Click on the login button
 #    When Click on the school "Login as a school" button
-    When Enter login of new created user
+    When Enter login of new created user "school"
     When Enter password "Test123!"
     When Click on the Log in button
     When CLick on the "edit" button at the "Account" section
@@ -97,7 +97,7 @@ Feature:  School profile Creation
     When click on the agree button at the banner
     When Click on the login button
 #    When Click on the school "Login as a school" button
-    When Enter login of new created user
+    When Enter login of new created user "school"
     When Enter password "Test123!"
     When Click on the Log in button
     Then The "Attach documents that may be useful to teachers, such as a school map and behaviour policy." text is displayed at the "Additional Document(s)" section
@@ -111,7 +111,7 @@ Feature:  School profile Creation
     When click on the agree button at the banner
     When Click on the login button
 #    When Click on the school "Login as a school" button
-    When Enter login of new created user
+    When Enter login of new created user "school"
     When Enter password "Test123!"
     When Click on the Log in button
     When Click on the "Admin Details" tab
@@ -132,7 +132,7 @@ Feature:  School profile Creation
     When click on the agree button at the banner
     When Click on the login button
 #    When Click on the school "Login as a school" button
-    When Enter login of new created user
+    When Enter login of new created user "school"
     When Enter password "Test123!"
     When Click on the Log in button
     When Click on the arrow down button

@@ -7,7 +7,7 @@ Feature:  Job Withdraw
   Scenario: Withdraw job from applied jobs tab
     When Click on the login button
 #    When Click on the "Login as a teacher" button
-    When Enter login "a.kuzikov@aimprosoft.com"
+    When Enter login "newuatautotestteacher7@yopmail.com"
     When Enter password "AutoTest123!"
     When Click on the Log in button
     When Click on the "Jobs" button in the header

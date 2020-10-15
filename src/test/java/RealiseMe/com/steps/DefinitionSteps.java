@@ -483,9 +483,9 @@ public class DefinitionSteps {
         steps.refreshThePage();
     }
 
-    @When("^Enter login of new created user$")
-    public void enterLoginOfNewCreatedUser() {
-        steps.enterLoginOfNewCreatedUser();
+    @When("^Enter login of new created user \"([^\\\"]*)\"$")
+    public void enterLoginOfNewCreatedUser(String arg0) {
+        steps.enterLoginOfNewCreatedUser(arg0);
     }
 
     @When("^The \"([^\"]*)\" message before email VERIFICATION is displayed$")
@@ -1066,6 +1066,11 @@ public class DefinitionSteps {
     @Then("^The all necessary text at the Account \"([^\"]*)\" section are displayed$")
     public void theAllNecessaryTextAtTheAccountSectionAreDisplayed(String arg0,List<String> list) throws Throwable {
        steps.theAllNecessaryTextAtTheAccountSectionAreDisplayed(arg0,list);
+    }
+
+    @When("^Upload \"([^\"]*)\" file to the \"([^\"]*)\" field$")
+    public void uploadFileToTheField(String arg0, String arg1) throws Throwable {
+       steps.uploadFileToTheField(arg0,arg1);
     }
 
 

@@ -446,10 +446,19 @@ public class CommonActions extends PageObject {
         getDriver().navigate().refresh();
     }
 
-    public void enterLoginOfNewCreatedUser() {
-        getDriver().findElement(By.xpath("//input[@type='email']")).sendKeys(Serenity.getCurrentSession().getMetaData().get("emailOfNewUser"));
-        if (Serenity.getCurrentSession().getMetaData().get("emailOfNewUser").contains("school")) {
+    public void enterLoginOfNewCreatedUser(String arg0) {
+
+        if (Serenity.getCurrentSession().getMetaData().get("emailOfNewUser").contains("school")|| arg0.equals("school")) {
             Serenity.getCurrentSession().addMetaData("emailOfNewSchoolUser", Serenity.getCurrentSession().getMetaData().get("emailOfNewUser"));
+            getDriver().findElement(By.xpath("//input[@type='email']")).sendKeys(Serenity.getCurrentSession().getMetaData().get("emailOfNewSchoolUser"));
+        }
+        if (Serenity.getCurrentSession().getMetaData().get("emailOfNewUser").contains("teacher")|| arg0.equals("teacher")) {
+            Serenity.getCurrentSession().addMetaData("emailOfNewTeacherUser", Serenity.getCurrentSession().getMetaData().get("emailOfNewUser"));
+            getDriver().findElement(By.xpath("//input[@type='email']")).sendKeys(Serenity.getCurrentSession().getMetaData().get("emailOfNewTeacherUser"));
+        }
+        if (Serenity.getCurrentSession().getMetaData().get("emailOfNewUser").contains("agency")|| arg0.equals("agency")) {
+            Serenity.getCurrentSession().addMetaData("emailOfNewAgencyUser", Serenity.getCurrentSession().getMetaData().get("emailOfNewUser"));
+            getDriver().findElement(By.xpath("//input[@type='email']")).sendKeys(Serenity.getCurrentSession().getMetaData().get("emailOfNewAgencyUser"));
         }
         System.out.println(Serenity.getCurrentSession().getMetaData().get("emailOfNewUser"));
     }
@@ -517,7 +526,8 @@ public class CommonActions extends PageObject {
     //        @Test
     public String deleteAccount(String arg0) throws IOException, ParseException {
         getAccessTokenAuth0();
-        String body = "{\"query\":\"mutation {\\n  adminRemove" + arg0 + "(admin_id: \\\"" + admid + "\\\", email: \\\"" + email_of_new_user + "\\\")}\",\"variables\":null}";
+//        String body = "{\"query\":\"mutation {\\n  adminRemove" + arg0 + "(admin_id: \\\"" + admid + "\\\", email: \\\"" + email_of_new_user + "\\\")}\",\"variables\":null}";
+        String body = "{\"query\":\"mutation {\\n  adminRemove" + arg0 + "(admin_id: \\\"" + admid + "\\\", email: \\\"newuatteacher374@sharklasers.com\\\")}\",\"variables\":null}";
         String url = "https://8nn63ifaff.execute-api.us-east-1.amazonaws.com/uat/graphql";
         urlObject = new URL(url);
         HttpsURLConnection connection = (HttpsURLConnection) urlObject.openConnection();
@@ -676,9 +686,7 @@ public class CommonActions extends PageObject {
                 getDriver().findElement(By.xpath("//span[contains(text(),'Next')]")).click();
             }
         } else for (int i = 1; i < 11 + 1; i++) {
-//            if (!SchoolSide) {
             getDriver().findElement(By.xpath("(//button[@class='open' and contains(.,'+')])[" + i + "]")).click();
-//            }
             if (getDriver().findElement(By.xpath("(//p[@class='hidden-content__block-description'])[1]")).getText().equals(Serenity.getCurrentSession().getMetaData().get("BookingId1")) ||
                     getDriver().findElement(By.xpath("(//p[@class='hidden-content__block-description'])[1]")).getText().equals(Serenity.getCurrentSession().getMetaData().get("BookingId2")) ||
                     getDriver().findElement(By.xpath("(//p[@class='hidden-content__block-description'])[1]")).getText().equals(Serenity.getCurrentSession().getMetaData().get("BookingId3")) ||
@@ -688,9 +696,6 @@ public class CommonActions extends PageObject {
                     getDriver().findElement(By.xpath("//p[@class='hidden-content__block-description']/../../../../../..//a[@class='timesheet__link' and contains(.,'timesheet')]")).click();
                     break;
                 } else {
-//                    if (SchoolSide){
-//                            getDriver().findElement(By.xpath("//span[contains(.,'"+Serenity.getCurrentSession().getMetaData().get("acceptedTimesheetByTeacher")+"')]/..//div[@class='role' and contains(.,'"+arg0+"')]")).click();
-//                    }
                     if (arg0.equals("accept")) {
                         getDriver().findElement(By.xpath("//p[@class='hidden-content__block-description']/../../../../../..//button[contains(.,'" + arg0 + "')]")).click();
                         Serenity.getCurrentSession().addMetaData("Accepted_Declined_Booking", getDriver().findElement(By.xpath("(//p[@class='hidden-content__block-description'])[1]")).getText());
@@ -715,9 +720,7 @@ public class CommonActions extends PageObject {
                     }
                 }
             } else {
-//                if (!SchoolSide) {
                 getDriver().findElement(By.xpath("//button[@class='open' and contains(.,'-')]")).click();
-//                }
                 if ((i == 10) & isElementPresent("//span[contains(text(),'Next')]")) {
                     getDriver().findElement(By.xpath("//span[contains(text(),'Next')]")).click();
                     i = 0;
@@ -1327,6 +1330,11 @@ public class CommonActions extends PageObject {
                 results.set(0, "true");
                 return results;
 //            }
+        }else
+        if (getDriver().findElement(By.xpath("//a[@class='list__tile list__tile--link']//div[@class='list__tile__content']//div[contains(.,'"+arg0+"')]")).isDisplayed()) {
+            getDriver().findElement(By.xpath("//a[@class='list__tile list__tile--link']//div[@class='list__tile__content']//div[contains(.,'" + arg0 + "')]")).click();
+            results.set(0, "true");
+            return results;
         }
         return results;
     }
@@ -1364,12 +1372,13 @@ public class CommonActions extends PageObject {
 
     public void clickOnTheInputField(String arg0) {
 //        if(isElementPresent("//input[@placeholder='"+arg0+"']")) {
+        waitUntilElementVisible("//input[@placeholder='" + arg0 + "']",60);
         if (isElementPresent("//input[@placeholder='" + arg0 + "']")) {
             getDriver().findElement(By.xpath("//input[@placeholder='" + arg0 + "']")).click();
-        } else
+        } else{
             getDriver().findElement(By.xpath("//p[contains(.,'" + arg0 + "')]")).click();
         getDriver().findElement(By.xpath("//p[contains(.,'" + arg0 + "')]/../../..//input")).click();
-//        }
+        }
     }
 
     public ArrayList<String> warningMessagesAreAppeared(List<String> list) {
@@ -1561,7 +1570,8 @@ public class CommonActions extends PageObject {
             TeacherSide = true;
             System.out.println("Teacher = " + TeacherSide);
             waitUntilElementVisible("//span[@class='TeacherSupplyDetails-description' and contains(.,'" + list.get(0) + "')]'", 60);
-            if (!getDriver().findElement(By.xpath("//span[@class='TeacherSupplyDetails-description' and contains(.,'" + list.get(0) + "')]")).isDisplayed()) {
+            if (!isElementPresent("//span[@class='TeacherSupplyDetails-description' and contains(.,'" + list.get(0) + "')]") &&
+            !getDriver().findElement(By.xpath("//div[@class='TeacherSupplyDocuments-description' and contains(.,'"+list.get(1)+"')]")).isDisplayed()) {
                 results.set(0, "false");
                 results.add(list.get(0) + " isn't found");
             } else {
@@ -1580,6 +1590,11 @@ public class CommonActions extends PageObject {
         return results;
     }
 
+    public void uploadFileToTheField(String arg0, String arg1) {
+        WebElement uploadElement = getDriver().findElement(By.xpath("//span[contains(.,'"+arg1+"')]/..//input"));
+        uploadElement.sendKeys("/Users/Anton/IdeaProjects/RealiseMe4/src/test/resources/Files/" + arg0);
+
+    }
 }
 
 

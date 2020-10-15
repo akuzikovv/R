@@ -110,7 +110,8 @@ public class EndUserSteps  extends ScenarioSteps {
 
     @Step
     public void clickOnTheLogInButton() {
-        authorizationPage.clickOnTheLogInButton();
+        ArrayList<String> results =  authorizationPage.clickOnTheLogInButton();
+        Assert.assertTrue("User isn't logged in"+ results, "true".equals(results.get(0)));
     }
 
     @Step
@@ -574,8 +575,8 @@ public class EndUserSteps  extends ScenarioSteps {
     }
 
     @Step
-    public void enterLoginOfNewCreatedUser() {
-        commonActions.enterLoginOfNewCreatedUser();
+    public void enterLoginOfNewCreatedUser(String arg0) {
+        commonActions.enterLoginOfNewCreatedUser(arg0);
     }
 
     @Step
@@ -1203,6 +1204,11 @@ public class EndUserSteps  extends ScenarioSteps {
     public void theAllNecessaryTextAtTheAccountSectionAreDisplayed(String arg0, List<String> list) {
         ArrayList<String> results = commonActions.theAllNecessaryTextAtTheAccountSectionAreDisplayed(list,arg0);
         Assert.assertTrue("Text at the page is wrong or absent"+ results, "true".equals(results.get(0)));
+    }
+
+    @Step
+    public void uploadFileToTheField(String arg0, String arg1) {
+        commonActions.uploadFileToTheField(arg0,arg1);
     }
 
 

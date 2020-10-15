@@ -13,7 +13,7 @@ Feature:  Teacher profile Creation
     Then The "Thanks for signing up. Please check your email in order to verify your account. Please also check your spam." message after Sign Up is displayed
     When refresh the page
     When Click on the "Log In" tab
-    When Enter login of new created user
+    When Enter login of new created user "teacher"
     When Enter password "Test123!"
     When Click on the Log in button
     When The "Sorry, you need to verify your email before you can login. Check your email for a verification link." message before email VERIFICATION is displayed
@@ -49,14 +49,14 @@ Feature:  Teacher profile Creation
       | 4. How would you describe your behaviour management style?                              |
       | 5. Do you enjoy working in a collaborative environment or prefer working independently? |
     When wait time
-#    Then Delete "Teacher" account
+
 
 
   Scenario: Fill teacher's "Account" profile section
     Given open landing page
     When click on the agree button at the banner
     When Click on the login button
-    When Enter login of new created user
+    When Enter login of new created user "teacher"
 #    When Enter login "newuatteacher167@sharklasers.com"
     When Enter password "Test123!"
     When Click on the Log in button
@@ -119,7 +119,7 @@ Feature:  Teacher profile Creation
     When click on the agree button at the banner
     When Click on the login button
 #    When Click on the school "Login as a school" button
-    When Enter login of new created user
+    When Enter login of new created user "teacher"
     When Enter password "Test123!"
     When Click on the Log in button
     When Click on the arrow down button
@@ -176,7 +176,7 @@ Feature:  Teacher profile Creation
     When click on the agree button at the banner
     When Click on the login button
 #    When Enter login "newuatteacher246@sharklasers.com"
-    When Enter login of new created user
+    When Enter login of new created user "teacher"
     When Enter password "Test123!"
     When Click on the Log in button
     When CLick on the "edit" button at the "Contact Details" section
@@ -191,7 +191,7 @@ Feature:  Teacher profile Creation
     Given open landing page
     When click on the agree button at the banner
     When Click on the login button
-    When Enter login of new created user
+    When Enter login of new created user "teacher"
     When Enter password "Test123!"
     When Click on the Log in button
     When Click on the arrow down button
@@ -209,7 +209,7 @@ Feature:  Teacher profile Creation
     When click on the agree button at the banner
     When Click on the login button
 #    When Enter login "newuatteacher214@sharklasers.com"
-    When Enter login of new created user
+    When Enter login of new created user "teacher"
     When Enter password "Test123!"
     When Click on the Log in button
     When Click on the arrow down button
@@ -233,8 +233,8 @@ Feature:  Teacher profile Creation
     Given open landing page
     When click on the agree button at the banner
     When Click on the login button
-#    When Enter login of new created user
-    When Enter login "newuatteacher156@sharklasers.com"
+    When Enter login of new created user "teacher"
+#    When Enter login "newuatteacher156@sharklasers.com"
     When Enter password "Test123!"
     When Click on the Log in button
     When Click on the arrow down button
@@ -257,7 +257,7 @@ Feature:  Teacher profile Creation
     When click on the agree button at the banner
     When Click on the login button
 #    When Enter login "uatteach18@yopmail.com"
-    When Enter login of new created user
+    When Enter login of new created user "teacher"
     When Enter password "Test123!"
     When Click on the Log in button
     When Click on the arrow down button
@@ -291,7 +291,7 @@ Feature:  Teacher profile Creation
     When click on the agree button at the banner
     When Click on the login button
 #    When Enter login "uatteach18@yopmail.com"
-    When Enter login of new created user
+    When Enter login of new created user "teacher"
     When Enter password "Test123!"
     When Click on the Log in button
     When Click on the arrow down button
@@ -362,8 +362,8 @@ Feature:  Teacher profile Creation
     Given open landing page
     When click on the agree button at the banner
     When Click on the login button
-    When Enter login "uatteach18@yopmail.com"
-#    When Enter login of new created user
+#    When Enter login "teachuatnew2224@yopmail.com"
+    When Enter login of new created user "teacher"
     When Enter password "Test123!"
     When Click on the Log in button
     When Click on the arrow down button
@@ -373,9 +373,9 @@ Feature:  Teacher profile Creation
     When Upload "Candidate_Summary.pdf" file to the "CV" field
     When Upload "Candidate_Summary1.pdf" file to the "Proof of address" field
     When Upload "Candidate_Summary2.pdf" file to the "Proof of address" field
-    When Upload "Candidate_Summar3.pdf" file to the "Right to work" field
+    When Upload "Candidate_Summary3.pdf" file to the "Right to work" field
     When Click on the "save" button
-    Then The all necessary text at the Account "Supply Details" section are displayed
+    Then The all necessary text at the Account "Clearance Documents" section are displayed
       | Candidate_Summary.pdf  |
       | Candidate_Summary1.pdf |
       | Candidate_Summary2.pdf |
@@ -383,12 +383,8 @@ Feature:  Teacher profile Creation
 
 
 
-   
+#   Scenario: Delete "Teacher" account
+#   Then Delete "Teacher" account
   
 
 
-
-
-#Scenario: delete accounts
-#  When Get users emails at the first "1" tabs "Teachers"
-#  Then Delete "Teacher" accounts

@@ -55,7 +55,7 @@ Feature:  Booking flow for agency
   Scenario: Accept booking as agency
 #    When Click on the "Login as an agency" button
     When Enter login "newagencyuat18@yopmail.com"
-    When Enter password "AutoTest123!"
+    When Enter password "Test123!"
     When Click on the Log in button
     When Click on the "Bookings" button in the header
     When Click on the "invites" tab
@@ -88,7 +88,7 @@ Feature:  Booking flow for agency
   Scenario: Accept booking as agency and Decline booking as school
 #    When Click on the "Login as an agency" button
     When Enter login "newagencyuat18@yopmail.com"
-    When Enter password "AutoTest123!"
+    When Enter password "Test123!"
     When Click on the Log in button
     When Click on the "Bookings" button in the header
     When Click on the "invites" tab
@@ -119,7 +119,7 @@ Feature:  Booking flow for agency
   Scenario: Decline booking as agency
 #    When Click on the "Login as an agency" button
     When Enter login "newagencyuat18@yopmail.com"
-    When Enter password "AutoTest123!"
+    When Enter password "Test123!"
     When Click on the Log in button
     When Click on the "Bookings" button in the header
     When Click on the "invites" tab
