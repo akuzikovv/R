@@ -1,4 +1,4 @@
-Feature: Teacher Other Home Page
+Feature: Teacher Supply Home Page
 
   Background:
     Given open landing page

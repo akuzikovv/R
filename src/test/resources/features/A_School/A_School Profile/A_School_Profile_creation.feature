@@ -41,22 +41,11 @@ Feature:  School profile Creation
       | Please read and confirm our T&Cs                                                            |
       | Add social account                                                                          |
       | Attach documents that may be useful to teachers, such as a school map and behaviour policy. |
-    When Click on the "Admin Details" tab
-    Then Admin Details page is opened
-      | Main Admin Details |
-      | Name               |
-      | Email              |
-      | Mobile             |
-    Then The "+ add" button is disabled
-    When Click on the "Profiling Questions" tab
-    Then The "School" Profiling Questions page contains necessary elements
-      | Profiling Questions                                                                        |
-      | 1. Is your school driven more by?                                                          |
-      | 2. How would you describe your school’s environment?                                       |
-      | 3. Is your school run on a tight methodical basis or a more adaptable, flexible one?       |
-      | 4. Is your school strict on discipline or more lenient and individual-based?               |
-      | 5. Does your school participate in collaboration with other schools or work independently? |
+
 #    Then Delete "School" account
+
+    Scenario:  Set school's status to "active" as admin using request API
+    When Set school's status to "active" as admin using request API
 
 
   Scenario: Fill school's "Account" profile section
@@ -120,6 +109,7 @@ Feature:  School profile Creation
       | Name               |
       | Email              |
       | Mobile             |
+    Then The "+ add" button is disabled
     When CLick on the "edit" button at the "Main Admin Details" section
     When Enter the "Main" to the "First name" field
     When Enter the "Admin" to the "Last name" field
@@ -138,6 +128,13 @@ Feature:  School profile Creation
     When Click on the arrow down button
     When Click on the "Account" button
     When Click on the "Profiling Questions" tab
+    Then The "School" Profiling Questions page contains necessary elements
+      | Profiling Questions                                                                        |
+      | 1. Is your school driven more by?                                                          |
+      | 2. How would you describe your school’s environment?                                       |
+      | 3. Is your school run on a tight methodical basis or a more adaptable, flexible one?       |
+      | 4. Is your school strict on discipline or more lenient and individual-based?               |
+      | 5. Does your school participate in collaboration with other schools or work independently? |
     When CLick on the "edit" button at the "Profiling Questions" section
     When Click on the "1" profiling question
     Then Dropdown contains the next items:

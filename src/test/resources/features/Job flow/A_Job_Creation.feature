@@ -93,7 +93,7 @@ Feature:  Job Creation
     When Choose "Full-time" checkbox
     When Choose "Please tick if you want to request video prescreening questions to be answered for enhanced applications." checkbox
     When Upload "Candidate_Summary.pdf" file
-    When Enter the "05/12/2020" closing date
+    When Enter the "05/12/2021" closing date
     When Choose "Social Augmentation with AI Direct Targeting" radiobutton
     When Choose skills
     |write|

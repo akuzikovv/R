@@ -4,6 +4,7 @@ import RealiseMe.com.ILocators;
 import net.serenitybdd.core.Serenity;
 import net.serenitybdd.core.pages.PageObject;
 import org.apache.commons.io.IOUtils;
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
@@ -437,7 +438,11 @@ public class CommonActions extends PageObject {
     public void enterLoginOfNewUser(String arg0) {
         random = (int) (Math.random() * 400 + 111);
         Serenity.getCurrentSession().addMetaData("user type", arg0);
+        if (arg0.contains("admin")){
+            email_of_new_user = arg0 + random + "@yopmail.com";
+        }else {
         email_of_new_user = arg0 + random + "@sharklasers.com";
+        }
         Serenity.getCurrentSession().addMetaData("emailOfNewUser", email_of_new_user);
         $(ILocators.Email_field).sendKeys(email_of_new_user);
     }
@@ -600,16 +605,16 @@ public class CommonActions extends PageObject {
     public void uploadFile(String arg0) {
         waitUntilElementVisible("//textarea[@type='text']", 10);
         WebElement uploadElement = getDriver().findElement(By.xpath("(//input[@class='input-file'])[1]"));
-        uploadElement.sendKeys("/Users/Anton/IdeaProjects/RealiseMe4/src/test/resources/Files/" + arg0);
+        uploadElement.sendKeys("/Users/anton/IdeaProjects/R/src/test/resources/Files/" + arg0);
 
         try {
             uploadElement = getDriver().findElement(By.xpath("(//input[@class='input-file'])[2]"));
-            uploadElement.sendKeys("/Users/Anton/IdeaProjects/RealiseMe4/src/test/resources/Files/" + arg0);
+            uploadElement.sendKeys("/Users/anton/IdeaProjects/R/src/test/resources/Files/" + arg0);
         } catch (Exception e) {
         }
         try {
             uploadElement = getDriver().findElement(By.xpath("(//input[@class='input-file'])[3]"));
-            uploadElement.sendKeys("/Users/Anton/IdeaProjects/RealiseMe4/src/test/resources/Files/" + arg0);
+            uploadElement.sendKeys("/Users/anton/IdeaProjects/R/src/test/resources/Files/" + arg0);
         } catch (Exception e) {
         }
     }
@@ -1410,31 +1415,80 @@ public class CommonActions extends PageObject {
         getDriver().findElement(By.xpath("//table//div[contains(.,'" + arg0 + "')]")).click();
     }
 
-    public void getUserID() throws IOException, ParseException {
-//        getDriver().get("http://admin.uat.realiseme.com.s3-website-us-east-1.amazonaws.com/#/teachers/list");
-        getDriver().get("http://admin.uat.realiseme.com.s3-website-us-east-1.amazonaws.com/#/teachers/list");
-        getDriver().findElement(By.xpath("//input[@name='email']")).sendKeys("satintest1+admin@gmail.com");
-        getDriver().findElement(By.xpath("//input[@name='password']")).sendKeys("Test123!");
-        getDriver().findElement(By.xpath("//button[@name='submit']")).click();
 
-        waitUntilElementVisible("//p[contains(.,'" + Serenity.getCurrentSession().getMetaData().get("emailOfNewUser") + "')]/..//p[@class='name']", 50);
-        if (!isElementPresent("//p[contains(.,'" + Serenity.getCurrentSession().getMetaData().get("emailOfNewUser") + "')]/..//p[@class='name']"))
-            do {
-                waitUntilElementVisible("//p[contains(.,'" + Serenity.getCurrentSession().getMetaData().get("emailOfNewUser") + "')]/..//p[@class='name']", 50);
-                refreshThePage();
-            } while (isElementPresent("//p[contains(.,'" + Serenity.getCurrentSession().getMetaData().get("emailOfNewUser") + "')]/..//p[@class='name']"));
-
-
-        getDriver().findElement(By.xpath("//p[contains(.,'" + Serenity.getCurrentSession().getMetaData().get("emailOfNewUser") + "')]/..//p[@class='name']")).click();
-        waitUntilElementVisible("//div[@class='id-wrapper']", 60);
-        Serenity.getCurrentSession().addMetaData("NewUserID", getDriver().findElement(By.xpath("//div[@class='id-wrapper']")).getText().substring(4));
-        System.out.println("ID of new user = " + Serenity.getCurrentSession().getMetaData().get("NewUserID"));
+    public void getUserID(String arg0) throws IOException, ParseException {
+        if (arg0.equals("school")){
+            getAccessTokenAuth0();
+            String body = "{\"operationName\":\"elasticSearch\"," +
+                    "\"variables\":{\"elasticQuery\":" +
+                    "{\"sort\":[{\"createdDate\":{\"order\":\"desc\"}}]," +
+                    "\"from\":0,\"size\":10}}," +
+                    "\"query\":\"query elasticSearch($elasticQuery: JSON!) {\\n  elastic(es: $elasticQuery) " +
+                    "{\\n    json\\n    __typename\\n  }\\n}\\n\"}";
+            String url = "https://xla29952p5.execute-api.us-east-1.amazonaws.com/uat/graphql";
+            urlObject = new URL(url);
+            HttpsURLConnection connection = (HttpsURLConnection) urlObject.openConnection();
+            connection.setRequestMethod("POST");
+            connection.setRequestProperty("content-type", "application/json");
+            connection.setRequestProperty("authorization", token);
+            connection.setDoOutput(true);
+            try (OutputStream os = connection.getOutputStream()) {
+                byte[] input = body.getBytes("utf-8");
+                os.write(input, 0, input.length);
+            }
+            try (BufferedReader br = new BufferedReader(
+                    new InputStreamReader(connection.getInputStream(), "utf-8"))) {
+                StringBuilder response = new StringBuilder();
+                String encoding = connection.getContentEncoding();
+                String responseLine = null;
+                encoding = encoding == null ? "UTF-8" : encoding;
+                String respbody = IOUtils.toString(connection.getInputStream(), encoding);
+                while ((responseLine = br.readLine()) != null) {
+                    response.append(responseLine.trim());
+                }
+                JSONObject jsonObject = (JSONObject) parser.parse(respbody);
+                JSONObject jsonObject2 = (JSONObject) parser.parse(jsonObject.get("data").toString());
+                JSONObject jsonObject3 = (JSONObject) parser.parse(jsonObject2.get("elastic").toString());
+                JSONObject jsonObject4 = (JSONObject) parser.parse(jsonObject3.get("json").toString());
+                JSONObject jsonObject5 = (JSONObject) parser.parse(jsonObject4.get("hits").toString());
+                JSONArray resultsObject = (JSONArray) parser.parse(jsonObject5.get("hits").toString());
+                for (int i= 0; i<10;i++) {
+                    JSONObject jsonObject6 = (JSONObject) parser.parse(resultsObject.get(i).toString());
+                    JSONObject jsonObject7 = (JSONObject) parser.parse(jsonObject6.get("_source").toString());
+                    JSONObject jsonObject8 = (JSONObject) parser.parse(jsonObject7.toString());
+                    String school_email = jsonObject8.get("email").toString();
+                    System.out.println(school_email);
+                    if (school_email.equals( Serenity.getCurrentSession().getMetaData().get("emailOfNewSchoolUser") )){
+                        System.out.println("school_email = " + school_email);
+                        String school_id = jsonObject8.get("id").toString();
+                        Serenity.getCurrentSession().addMetaData("NewSchoolID", school_id);
+                        System.out.println("ID of new school user = " + Serenity.getCurrentSession().getMetaData().get("NewSchoolID"));
+                        break;
+                    }
+                }
+            }
+        }else {
+            getDriver().get("http://admin.uat.realiseme.com.s3-website-us-east-1.amazonaws.com/#/teachers/list");
+            getDriver().findElement(By.xpath("//input[@name='email']")).sendKeys("satintest1+admin@gmail.com");
+            getDriver().findElement(By.xpath("//input[@name='password']")).sendKeys("Test123!");
+            getDriver().findElement(By.xpath("//button[@name='submit']")).click();
+            waitUntilElementVisible("//p[contains(.,'" + Serenity.getCurrentSession().getMetaData().get("emailOfNewUser") + "')]/..//p[@class='name']", 50);
+            if (!isElementPresent("//p[contains(.,'" + Serenity.getCurrentSession().getMetaData().get("emailOfNewUser") + "')]/..//p[@class='name']"))
+                do {
+                    waitUntilElementVisible("//p[contains(.,'" + Serenity.getCurrentSession().getMetaData().get("emailOfNewUser") + "')]/..//p[@class='name']", 50);
+                    refreshThePage();
+                } while (isElementPresent("//p[contains(.,'" + Serenity.getCurrentSession().getMetaData().get("emailOfNewUser") + "')]/..//p[@class='name']"));
+            getDriver().findElement(By.xpath("//p[contains(.,'" + Serenity.getCurrentSession().getMetaData().get("emailOfNewUser") + "')]/..//p[@class='name']")).click();
+            waitUntilElementVisible("//div[@class='id-wrapper']", 60);
+            Serenity.getCurrentSession().addMetaData("NewUserID", getDriver().findElement(By.xpath("//div[@class='id-wrapper']")).getText().substring(4));
+            System.out.println("ID of new user = " + Serenity.getCurrentSession().getMetaData().get("NewUserID"));
+        }
 
     }
 
 
     public void fillProfileSectionAsAdminUsingRequestAPI(List<String> list) throws IOException, ParseException {
-        getUserID();
+        getUserID("");
         getAccessTokenAuth0();
         ArrayList<String> results = new ArrayList<>();
         results.add(0, "true");
@@ -1592,7 +1646,60 @@ public class CommonActions extends PageObject {
 
     public void uploadFileToTheField(String arg0, String arg1) {
         WebElement uploadElement = getDriver().findElement(By.xpath("//span[contains(.,'"+arg1+"')]/..//input"));
-        uploadElement.sendKeys("/Users/Anton/IdeaProjects/RealiseMe4/src/test/resources/Files/" + arg0);
+        uploadElement.sendKeys("/Users/Anton/IdeaProjects/R/src/test/resources/Files/" + arg0);
+    }
+
+    public ArrayList<String> getPasswordFromMail() {
+        ArrayList<String> results = new ArrayList<>();
+        results.add(0, "true");
+        return results;
+    }
+
+    public ArrayList<String> setSchoolSStatusToAsAdminUsingRequestAPI(String arg0) throws IOException, ParseException {
+        getUserID("school");
+        getAccessTokenAuth0();
+        ArrayList<String> results = new ArrayList<>();
+        results.add(0, "true");
+        String body = "{\"operationName\":\"updateSchoolStatus\"," +
+                "\"variables\":" +
+                "{\"adminId\":\"538e52d0-a7c0-4e89-9b48-80f0d0ec958d\"," +
+                "\"schoolId\":\""+Serenity.getCurrentSession().getMetaData().get("NewSchoolID")+"\"," +
+                "\"statusName\":\""+arg0+"\"}," +
+                "\"query\":\"mutation updateSchoolStatus($adminId: String!, $schoolId: String!, $statusName: String!) {\\n  updateSchoolStatus(adminId: $adminId, schoolId: $schoolId, statusName: $statusName)\\n}\\n\"}";
+
+        String url = "https://xla29952p5.execute-api.us-east-1.amazonaws.com/uat/graphql";
+        urlObject = new URL(url);
+        HttpsURLConnection connection = (HttpsURLConnection) urlObject.openConnection();
+        connection.setRequestMethod("POST");
+        connection.setRequestProperty("content-type", "application/json");
+        connection.setRequestProperty("authorization", token);
+        connection.setDoOutput(true);
+        try (OutputStream os = connection.getOutputStream()) {
+            byte[] input = body.getBytes("utf-8");
+            os.write(input, 0, input.length);
+        }
+        try (BufferedReader br = new BufferedReader(
+                new InputStreamReader(connection.getInputStream(), "utf-8"))) {
+            StringBuilder response = new StringBuilder();
+            String encoding = connection.getContentEncoding();
+            String responseLine = null;
+            encoding = encoding == null ? "UTF-8" : encoding;
+            String respbody = IOUtils.toString(connection.getInputStream(), encoding);
+            while ((responseLine = br.readLine()) != null) {
+                response.append(responseLine.trim());
+            }
+            JSONObject jsonObject = (JSONObject) parser.parse(respbody);
+            JSONObject jsonObject2 = (JSONObject) parser.parse(jsonObject.get("data").toString());
+            JSONObject jsonObject3 = (JSONObject) parser.parse(jsonObject2.get("updateSchoolStatus").toString());
+            String school_status = jsonObject3.get("accountStatus").toString();
+            System.out.println("school_status = "+school_status);
+            if (!school_status.equals("active")){
+                results.set(0, "false");
+                results.add("response: " + jsonObject.toString());
+            }
+        }
+
+        return results;
 
     }
 }

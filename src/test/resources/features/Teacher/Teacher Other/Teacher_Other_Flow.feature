@@ -4,7 +4,6 @@ Feature: Teacher Other Flow
     Given open landing page
     When click on the agree button at the banner
     When Click on the login button
-#    When Click on the "Login as a teacher" button
     When Enter login "uatteacher22@yopmail.com"
     #DEV
 #    When Enter login "newuatteacher229@sharklasers.com"
@@ -18,7 +17,6 @@ Feature: Teacher Other Flow
       | jobs |
       | bookings  |
     |community  |
-#    Then  Header contains bell icon
     Then  Header contains user photo icon
     Then  Header contains user name "Teacher Other"
     Then  Header contains arrow down button

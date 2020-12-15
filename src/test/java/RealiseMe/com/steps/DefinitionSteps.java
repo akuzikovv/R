@@ -1073,6 +1073,16 @@ public class DefinitionSteps {
        steps.uploadFileToTheField(arg0,arg1);
     }
 
+    @When("^Get password from mail$")
+    public void getPasswordFromMail() {
+        steps.getPasswordFromMail();
+    }
+
+    @When("^Set school's status to \"([^\"]*)\" as admin using request API$")
+    public void setSchoolSStatusToAsAdminUsingRequestAPI(String arg0) throws Throwable {
+        steps.setSchoolSStatusToAsAdminUsingRequestAPI(arg0);
+    }
+
 
     //    @When("^Open report$")
 //    public void openReport() throws Throwable {
