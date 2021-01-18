@@ -1083,6 +1083,28 @@ public class DefinitionSteps {
         steps.setSchoolSStatusToAsAdminUsingRequestAPI(arg0);
     }
 
+    @When("^Enter email of new admin$")
+    public void enterEmailOfNewAdmin() {
+        steps.enterEmailOfNewAdmin();
+    }
+
+    @When("^Enter password of new created admin$")
+    public void enterPasswordOfNewCreatedAdmin() {
+        steps.enterPasswordOfNewCreatedAdmin();
+    }
+
+    @When("^CLick on the \"([^\"]*)\" button at the section with \"([^\"]*)\"$")
+    public void clickOnTheButtonAtTheSectionWith(String arg0, String arg1) throws Throwable {
+        steps.clickOnTheButtonAtTheSectionWith(arg0,arg1);
+
+
+    }
+
+    @Then("^Appropriate admin is deleted$")
+    public void appropriateAdminIsDeleted() {
+        steps.appropriateAdminIsDeleted();
+    }
+
 
     //    @When("^Open report$")
 //    public void openReport() throws Throwable {

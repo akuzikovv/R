@@ -348,7 +348,7 @@ public class SchoolBookingsPage extends PageObject {
                         getDriver().findElement(By.xpath("//div[@class='card']//div[@class='title-body']")).getText() + "\n");
             }
         }else {
-            commonActions.waitUntilElementVisible("//div[@class='card']//p[@slot='bodyModal']", 60);
+            commonActions.waitUntilElementVisible("//div[@class='card']//p[@slot='bodyModal']", 10);
             if ((commonActions.isElementPresent("//div[@class='card']//p[@slot='bodyModal']") && !getDriver().findElement(By.xpath("//div[@class='card']//p[@slot='bodyModal']")).getText().equals(arg0))&&
                     !getDriver().findElement(By.xpath("//div[@class='dialog Modal dialog--active dialog--persistent']//div[@class='card']//p")).getText().equals(arg0)) {
                 results.set(0, "false");

@@ -438,11 +438,11 @@ public class CommonActions extends PageObject {
     public void enterLoginOfNewUser(String arg0) {
         random = (int) (Math.random() * 400 + 111);
         Serenity.getCurrentSession().addMetaData("user type", arg0);
-        if (arg0.contains("admin")){
-            email_of_new_user = arg0 + random + "@yopmail.com";
-        }else {
+//        if (arg0.contains("admin")){
+//            email_of_new_user = arg0 + random + "@yopmail.com";
+//        }else {
         email_of_new_user = arg0 + random + "@sharklasers.com";
-        }
+//        }
         Serenity.getCurrentSession().addMetaData("emailOfNewUser", email_of_new_user);
         $(ILocators.Email_field).sendKeys(email_of_new_user);
     }
@@ -465,6 +465,10 @@ public class CommonActions extends PageObject {
             Serenity.getCurrentSession().addMetaData("emailOfNewAgencyUser", Serenity.getCurrentSession().getMetaData().get("emailOfNewUser"));
             getDriver().findElement(By.xpath("//input[@type='email']")).sendKeys(Serenity.getCurrentSession().getMetaData().get("emailOfNewAgencyUser"));
         }
+//        if (Serenity.getCurrentSession().getMetaData().get("emailOfNewUser").contains("admin")|| arg0.equals("admin")) {
+//            Serenity.getCurrentSession().addMetaData("emailOfNewAdminUser", Serenity.getCurrentSession().getMetaData().get("emailOfNewUser"));
+//            getDriver().findElement(By.xpath("//input[@type='email']")).sendKeys(Serenity.getCurrentSession().getMetaData().get("emailOfNewAdminUser"));
+//        }
         System.out.println(Serenity.getCurrentSession().getMetaData().get("emailOfNewUser"));
     }
 
@@ -904,7 +908,8 @@ public class CommonActions extends PageObject {
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//td[contains(.,'" + arg0 + "')]")));
         getDriver().findElement(By.xpath("//td[contains(.,'" + arg0 + "')]")).click();
         String message = getDriver().findElement(By.xpath("(//tbody)[6]")).getText().substring(53).trim().trim().trim();
-        System.out.println(message);
+//        System.out.println(message);
+        Serenity.getCurrentSession().addMetaData("Emailmessage",message);
         waitABit(2000);
 
     }
@@ -1651,7 +1656,18 @@ public class CommonActions extends PageObject {
 
     public ArrayList<String> getPasswordFromMail() {
         ArrayList<String> results = new ArrayList<>();
-        results.add(0, "true");
+        results.add(0, "false");
+        if (!Serenity.getCurrentSession().getMetaData().get("Emailmessage").equals("")) {
+            String[] getPasswordText = Serenity.getCurrentSession().getMetaData().get("Emailmessage").split("Password:");
+            String[] getPassword = getPasswordText[1].split(".\n" +
+                    "RealiseMe Team");
+            for (String password : getPassword) {
+                System.out.println("Password: " + password.trim());
+                Serenity.getCurrentSession().addMetaData("AddAdminPassword", password.trim());
+            }
+            results.set(0,"true");
+
+        }
         return results;
     }
 
@@ -1701,6 +1717,34 @@ public class CommonActions extends PageObject {
 
         return results;
 
+    }
+
+    public void enterEmailOfNewAdmin() {
+        getDriver().findElement(By.xpath("//span[@title='Click to Edit']")).click();
+        getDriver().findElement(By.xpath("(//input[@type='text'])[2]")).sendKeys(Serenity.getCurrentSession().getMetaData().get("emailOfNewUser"));
+        getDriver().findElement(By.xpath("//button[contains(.,'Set')]")).click();
+        waitABit(30000);
+    }
+
+    public void enterPasswordOfNewCreatedAdmin() {
+        $(ILocators.Password_field).type(Serenity.getCurrentSession().getMetaData().get("AddAdminPassword"));
+
+    }
+
+    public void clickOnTheButtonAtTheSectionWith(String arg0, String arg1) {
+      waitUntilElementVisible("//p[contains(.,'Name')]/..//p[contains(.,'"+arg1+"')]",20);
+      Serenity.getCurrentSession().addMetaData("NameOfDeletedAdmin",arg1);
+      getDriver().findElement(By.xpath("//p[contains(.,'Name')]/..//p[contains(.,'"+arg1+"')]/../../../../..//span[contains(.,'"+arg0+"')]")).click();
+    }
+
+    public ArrayList<String> appropriateAdminIsDeleted() {
+        ArrayList<String> results = new ArrayList<>();
+        results.add(0, "false");
+        waitUntilElementIsNotVisible("//p[contains(.,'Name')]/..//p[contains(.,'"+Serenity.getCurrentSession().getMetaData().get("NameOfDeletedAdmin")+"')]",20);
+        if (!isElementPresent("//p[contains(.,'Name')]/..//p[contains(.,'"+Serenity.getCurrentSession().getMetaData().get("NameOfDeletedAdmin")+"')]")){
+            results.set(0,"true");
+        }
+        return results;
     }
 }
 

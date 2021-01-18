@@ -98,13 +98,15 @@ public class SchoolAccountPage  extends PageObject {
     }
 
     public ArrayList<String> adminDetailsPageIsSaved(List<String> list) {
-        commonActions.waitUntilElementVisible("(//p[contains(.,'Name')]/..//p)[2]",20);
+        commonActions.waitUntilElementVisible("//p[contains(.,'Name')]/..//p[contains(.,'"+list.get(0)+"')]",20);
         ArrayList<String> results = new ArrayList<>();
         results.add(0, "true");
-        if (!getDriver().findElement(By.xpath("(//p[contains(.,'Name')]/..//p)[2]")).getText().equals(list.get(0))) {
+        if (!commonActions.isElementPresent("//p[contains(.,'Name')]/..//p[contains(.,'"+list.get(0)+"')]")) {
             results.set(0, "false");
             results.add("Admin Details page isn't saved");
         }
         return results;
     }
+
+
 }
