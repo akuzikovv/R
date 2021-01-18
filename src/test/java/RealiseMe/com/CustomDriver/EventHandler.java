@@ -1,13 +1,14 @@
 package RealiseMe.com.CustomDriver;
 
 import net.serenitybdd.core.time.SystemClock;
-import org.joda.time.DateTime;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.events.WebDriverEventListener;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public  class EventHandler    implements WebDriverEventListener {
+import java.time.ZonedDateTime;
+
+public abstract class EventHandler    implements WebDriverEventListener {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(EventHandler.class);
 
@@ -83,17 +84,17 @@ public  class EventHandler    implements WebDriverEventListener {
 
     }
 
-    @Override
-    public void beforeChangeValueOf(WebElement element,
-                                    WebDriver driver) {
-
-    }
-
-    @Override
-    public void afterChangeValueOf(WebElement element,
-                                   WebDriver driver) {
-
-    }
+//    @Override
+//    public void beforeChangeValueOf(WebElement element,
+//                                    WebDriver driver) {
+//
+//    }
+//
+//    @Override
+//    public void afterChangeValueOf(WebElement element,
+//                                   WebDriver driver) {
+//
+//    }
 
     @Override
     public void beforeScript(String s, WebDriver webDriver) {
@@ -126,7 +127,7 @@ public  class EventHandler    implements WebDriverEventListener {
             }
 
             @Override
-            public DateTime getCurrentTime() {
+            public ZonedDateTime getCurrentTime() {
                 return null;
             }
         };

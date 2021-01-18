@@ -28,8 +28,8 @@ public class CustomChromeDriver implements DriverSource {
         ChromeDriver driver = new ChromeDriver();
         driver.manage().deleteAllCookies();
         EventFiringWebDriver eventDriver = new EventFiringWebDriver(driver);
-        EventHandler handler = new EventHandler();
-        eventDriver.register(handler);
+//        EventHandler handler = new EventHandler();
+//        eventDriver.register(handler);
         WebDriverWait wait = new WebDriverWait(driver, 10);
         return eventDriver;
     }

@@ -64,16 +64,16 @@ public class AuthorizationPage extends PageObject {
         $(ILocators.Password_field).type(arg0);
     }
 
-    public ArrayList<String> clickOnTheLogInButton() {
-        ArrayList<String> results = new ArrayList<>();
-        results.add(0, "true");
+    public void clickOnTheLogInButton() {
+//        ArrayList<String> results = new ArrayList<>();
+//        results.add(0, "true");
         $(ILocators.Log_In).click();
-        commonActions.waitUntilElementVisible("//div[@class='btn__content' and contains(.,'Dashboard')]",100);
-        if (!commonActions.isElementPresent("//div[@class='btn__content' and contains(.,'Dashboard')]")&& !commonActions.isElementPresent("//span[@class='animated fadeInUp']//span")){
-            results.set(0,"false");
-            System.out.println("false");
-        }
-        return results;
+//        commonActions.waitUntilElementVisible("//div[@class='btn__content' and contains(.,'Dashboard')]",100);
+//        if (!commonActions.isElementPresent("//div[@class='btn__content' and contains(.,'Dashboard')]")&& !commonActions.isElementPresent("//span[@class='animated fadeInUp']//span")){
+//            results.set(0,"false");
+//            System.out.println("false");
+//        }
+//        return results;
     }
 
     public void clickOnTheSIGNUPButton() {
@@ -104,6 +104,9 @@ public class AuthorizationPage extends PageObject {
             if (getDriver().findElement(By.xpath("//span[@class='animated fadeInUp']//span")).getText().equals("User already exists.")) {
                 commonActions.waitUntilElementVisible(ILocators.Email_field,5);
                 getDriver().findElement(By.xpath(ILocators.Email_field)).click();
+                for (int i = 0; i < 50; i++) {
+                    getDriver().findElement(By.xpath(ILocators.Email_field)).sendKeys(Keys.ARROW_RIGHT);
+                }
                 for (int i = 0; i < 50; i++) {
                     getDriver().findElement(By.xpath(ILocators.Email_field)).sendKeys(Keys.BACK_SPACE);
                 }

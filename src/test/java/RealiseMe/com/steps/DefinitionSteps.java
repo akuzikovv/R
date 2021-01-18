@@ -5,7 +5,7 @@ import cucumber.api.PendingException;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-import cucumber.runtime.model.CucumberScenario;
+// import cucumber.runtime.model.CucumberScenario;
 import net.thucydides.core.annotations.Steps;
 import org.json.simple.parser.ParseException;
 
@@ -17,7 +17,7 @@ public class DefinitionSteps {
     @Steps
     EndUserSteps steps;
     DefinitionSteps definitionSteps;
-    private Class<CucumberScenario> cucumberScenarioClass;
+   // private Class<CucumberScenario> cucumberScenarioClass;
 
     @Given("open login page")
     public void checkThatLoginPageIsOpened() {

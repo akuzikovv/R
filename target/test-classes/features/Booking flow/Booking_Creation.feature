@@ -163,3 +163,21 @@ Feature:  Booking Creation
     When Click on the "View all invites" button
     Then Appropriate teachers are displayed in the invites list
     When  wait time
+
+  Scenario: Create booking by API
+    When Create Booking using request API
+    |"school_id":"ef1e8d35-5619-4a40-a76e-cd6b4eab07d6"|
+    |"bookingName":"Booking for cleared teacher"|
+    |"bookingDescription":"Booking Description text"|
+    |"other_age_group":""                           |
+    |"dates":[{"date":"2019-12-21T08:30:00+02:00","fullDay":true,"start_time":"2019-12-21T08:30:00+02:00","end_time":"2019-12-21T16:00:00+02:00"},{"date":"2019-12-22T08:30:00+02:00","fullDay":false,"start_time":"2019-12-22T08:30:00+02:00","end_time":"2019-12-22T13:00:00+02:00"}]|
+    |"ageGroupIds":[{"age_group_id":"19abfc90-f45b-476b-920f-b05e6e3124a0"}]                                                              |
+    |"schoolDocumentsIds":{"school_document_id":"18b36a8e-138e-401c-9b73-fddcb50b7d18"}                                                   |
+    |"applyUsersIds":[{"user_id":"bb10963a-f4e7-40be-bcc8-85f4623b8b03","user_type":"TEACHER"}]                                           |
+    |"teachersTypeIdsSchema":[{"teacher_type_id":"59153f42-83b1-4964-b3ad-5a50226c342a"},{"teacher_type_id":"5d714ae1-4fb4-4b89-a927-47c4396c418e"}]|
+    |"creator_id":"f161024f-7d3a-4738-a804-8d9bfeeb9453"                                                                                            |
+    |"anonymisation":false                                                                                                                          |
+    |"documents":null                                                                                                                               |
+    |"subjectIds":[{"subject_id":"e0eb4195-27e9-4a20-8a6a-c994d008cc61"}]                                                                           |
+
+

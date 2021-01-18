@@ -19,6 +19,7 @@ Feature:  School profile Creation
     When Open "https://www.guerrillamail.com/" in  the new tab
     When Enter email of new user
     When Click on the "Confirm my account" button
+    When wait time
     When Back to the first tab
     When Click on the Log in button
     Then School account page contains necessary elements

@@ -110,8 +110,9 @@ public class EndUserSteps  extends ScenarioSteps {
 
     @Step
     public void clickOnTheLogInButton() {
-        ArrayList<String> results =  authorizationPage.clickOnTheLogInButton();
-        Assert.assertTrue("User isn't logged in"+ results, "true".equals(results.get(0)));
+       // ArrayList<String> results =  authorizationPage.clickOnTheLogInButton();
+      // Assert.assertTrue("User isn't logged in"+ results, "true".equals(results.get(0)));
+        authorizationPage.clickOnTheLogInButton();
     }
 
     @Step
@@ -414,7 +415,7 @@ public class EndUserSteps  extends ScenarioSteps {
 
     @Step
     public void waitTime() {
-        waitABit(7000);
+        waitABit(3000);
     }
     @Step
     public void getNamesOfTeachers() {

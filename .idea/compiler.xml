@@ -6,10 +6,12 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="R" />
         <module name="RealiseMecom" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="R" target="8" />
       <module name="RealiseMecom" target="8" />
     </bytecodeTargetLevel>
   </component>

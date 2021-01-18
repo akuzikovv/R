@@ -4,9 +4,9 @@ Feature: School Jobs
     Given open landing page
     When click on the agree button at the banner
     When Click on the login button
-    When Click on the school "Login as a school" button
-    When Enter login "satintest1+school@gmail.com"
-    When Enter password "Test123!"
+#    When Click on the school "Login as a school" button
+    When Enter login "newuatschool28@yopmail.com"
+    When Enter password "AutoTest123!"
     When Click on the Log in button
 
   Scenario: Header contains all necessary elements
@@ -15,7 +15,7 @@ Feature: School Jobs
       | community |
       | jobs  |
       | bookings      |
-    Then  Header contains bell icon
+#    Then  Header contains bell icon
     Then  Header contains user photo icon
     Then  Header contains user name "Main Admin"
     Then  Header contains arrow down button
@@ -23,7 +23,7 @@ Feature: School Jobs
 
 
   Scenario: Jobs page contains necessary elements
-    When Click on the "jobs" button in the header
+    When Click on the "Jobs" button in the header
     Then  Jobs page contains all necessary elements:
       | Jobs            |
       | LIVE            |

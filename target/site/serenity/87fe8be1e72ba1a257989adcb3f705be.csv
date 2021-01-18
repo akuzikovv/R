@@ -1,6 +1,0 @@
-"Story","Title","Result","Date","Stability","Duration (s)"
-"Booking Creation","Accept booking as CLEARED teacher","ERROR","2019-11-22T19:58:19.391+02:00","0.0","104.19"
-"Booking Creation","Accept booking as CLEARED teacher and Decline booking as school","ERROR","2019-11-22T20:01:16.000+02:00","0.0","82.26"
-"Booking Creation","Approve booking as school","ERROR","2019-11-22T20:00:03.733+02:00","0.0","72.13"
-"Booking Creation","Create booking for CLEARED teacher","ERROR","2019-11-22T19:56:29.542+02:00","0.0","108.7"
-"Booking Creation","Decline booking as CLEARED teacher","ERROR","2019-11-22T20:02:38.437+02:00","0.0","107.63"
