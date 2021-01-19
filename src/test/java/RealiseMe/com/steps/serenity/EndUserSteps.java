@@ -1212,6 +1212,41 @@ public class EndUserSteps  extends ScenarioSteps {
         commonActions.uploadFileToTheField(arg0,arg1);
     }
 
+    @Step
+    public void getPasswordFromMail() {
+        ArrayList<String> results = commonActions.getPasswordFromMail();
+        Assert.assertTrue("Can't get a password"+ results, "true".equals(results.get(0)));
+    }
+
+    @Step
+    public void setSchoolSStatusToAsAdminUsingRequestAPI(String arg0) throws IOException, ParseException {
+        ArrayList<String> results = commonActions.setSchoolSStatusToAsAdminUsingRequestAPI(arg0);
+        Assert.assertTrue("Can't set status to active"+ results, "true".equals(results.get(0)));
+
+    }
+
+    @Step
+    public void enterEmailOfNewAdmin() {
+        commonActions.enterEmailOfNewAdmin();
+    }
+
+    @Step
+    public void enterPasswordOfNewCreatedAdmin() {
+        commonActions.enterPasswordOfNewCreatedAdmin();
+    }
+
+    @Step
+    public void clickOnTheButtonAtTheSectionWith(String arg0, String arg1) {
+        commonActions.clickOnTheButtonAtTheSectionWith(arg0,arg1);
+
+    }
+
+    @Step
+    public void appropriateAdminIsDeleted() {
+        ArrayList<String> results = commonActions.appropriateAdminIsDeleted();
+        Assert.assertTrue("Admin isn't deleted"+ results, "true".equals(results.get(0)));
+    }
+
 
 //    @Step
 //    public void openReport() {
