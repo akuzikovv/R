@@ -1601,6 +1601,8 @@ public class CommonActions extends PageObject {
         }
     }
 
+
+
     public ArrayList<String> theAllNecessaryTextAtTheAccountSectionAreDisplayed(List<String> list, String arg0) {
         ArrayList<String> results = new ArrayList<>();
         results.add(0, "true");
@@ -1648,6 +1650,10 @@ public class CommonActions extends PageObject {
         }
         return results;
     }
+
+
+
+
 
     public void uploadFileToTheField(String arg0, String arg1) {
         WebElement uploadElement = getDriver().findElement(By.xpath("//span[contains(.,'"+arg1+"')]/..//input"));
