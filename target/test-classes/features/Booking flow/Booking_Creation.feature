@@ -141,7 +141,7 @@ Feature:  Booking Creation
 
 
   Scenario: Create booking for first three teachers in the search result list
-    When Click on the "bookings" button in the header
+    When Click on the "Bookings" button in the header
     When Click on the "New Supply Booking" button
     When Enter "Booking for first three teachers in the search result list" to the Name your job posting field
     When Enter "Booking Description" to the Describe the job field
